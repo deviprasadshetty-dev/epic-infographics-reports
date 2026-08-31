@@ -1,93 +1,71 @@
-# ⚡ Epic Infographics Studio & Reports
+# ⚡ Architecture & Infographics Visualization Hub
 
-> **Live GitHub Pages Studio:** [https://deviprasadshetty-dev.github.io/epic-infographics-reports/](https://deviprasadshetty-dev.github.io/epic-infographics-reports/)
+> **Live GitHub Pages Deployments:**
+> - ⚡ **Epic Infographics Studio (30 Masterpieces):** [https://deviprasadshetty-dev.github.io/epic-infographics-reports/](https://deviprasadshetty-dev.github.io/epic-infographics-reports/)
+> - 📐 **System Atlas Studio (20 Interactive Architectures):** [https://deviprasadshetty-dev.github.io/epic-infographics-reports/system-atlas.html](https://deviprasadshetty-dev.github.io/epic-infographics-reports/system-atlas.html)
 
-A publication-grade repository and interactive gallery hosting **30 hand-crafted vector infographics** across **12 distinct design languages** and **6 composition patterns**. Every single infographic is a standalone, self-contained HTML/CSS+SVG masterpiece with zero external dependencies, mathematically truthful geometry, and live CSS build motion.
-
----
-
-## 🎨 12 Design Languages
-
-| Language | Aesthetic & Mood | Display / Body Font | Key Signature Devices |
-|---|---|---|---|
-| `blueprint` | Technical drafting on `#123A66` | Saira Condensed / IBM Plex Mono | DWG title block, dimension arrows, drafting cross-hatch |
-| `dark-glass` | Luminous deep space on `#070913` | Sora / Albert Sans / IBM Plex Mono | Aurora radial blooms, dot lattice, double-glow neon |
-| `isometric-world`| 3D miniature floating diorama | Fredoka / Nunito Sans | Ground slab with face triads, 30° isometric projection |
-| `naturalist-plate`| 18th-century copperplate engraving | Cormorant Garamond / EB Garamond | Double-rule frame, botanical linework, Latin binomials, Fig 1/2 |
-| `cutaway` | DK-style annotated cross-section | Bitter / Source Sans 3 | 3px section slice walls, internal gear trains, numbered pins ①–⑥ |
-| `park-poster` | 1930s WPA silkscreen vista | Oswald / Jost | Layered horizon silhouette planes, solid ink frame |
-| `retro-print` | Mid-century 4-ink poster on cream | Alfa Slab One / Karla | Misregistration text-shadow shifts, halftone dots, arc text |
-| `hand-drawn` | Marker sketchbook on graph paper | Shantell Sans / Caveat | SVG `feTurbulence` wobble filter, washi tape, doodle arrows |
-| `swiss` | International Typographic Style | Archivo (Grotesque) | 0 radius, 12-column mathematical grid, Swiss Red `#DA291C` |
-| `editorial` | High-end magazine feature opener | Fraunces 900 / Libre Franklin | Oxblood `#8B1E2D` rules, drop caps, pull-quotes, charticles |
-| `corporate-clean`| Enterprise strategy report | Bricolage Grotesque / Instrument Sans | Ghost anchor numerals, cobalt underline, delta chips |
-| `neo-brutalist` | Loud & bordered on `#FFF8E7` | Archivo Black / Space Grotesk | 3px/4px black borders, hard 6px solid drop-shadows |
+A publication-grade interactive visualization repository hosting **30 hand-crafted vector infographics** across 12 design languages and **20 progressive-disclosure System Atlases** for modern software, AI, fintech, hardware, and distributed systems.
 
 ---
 
-## 📊 Catalog Contents (30 Masterpieces)
+## 📐 1. System Atlas Studio (20 Interactive Architectures)
 
-### 🚀 Deep Tech & Engineering (11)
-1. **Orbital Rocket Launch & Stage Profile** (`blueprint` · Story 1080×1920)
-2. **ITER Magnetic Confinement Tokamak Fusion Core** (`blueprint` · Wide 1920×1080)
-3. **Inside a 4.0 MW Wind Turbine Nacelle** (`cutaway` · A4 1240×1754)
-4. **Inside a 28,800 VPH Automatic Chronograph Movement** (`cutaway` · A4 1240×1754)
-5. **Anatomy of an 800V Solid-State EV Skateboard Chassis** (`cutaway` · Wide 1920×1080)
-6. **Apollo 11 AGC: The 2.048 MHz Computer That Reached the Moon** (`retro-print` · Wide 1920×1080)
-7. **The Road the Internet Took (1969–2026)** (`isometric-world` · Story 1080×1920)
-8. **The 24-Hour Autonomous Smart City Microgrid** (`isometric-world` · Square 1080×1080)
-9. **Inside the Multi-Head Attention of Modern LLMs** (`dark-glass` · Wide 1920×1080)
-10. **The 2-Nanometer Chokepoint: Global Silicon Supremacy** (`editorial` · Wide 1920×1080)
-11. **High-Speed Rail vs Continental Aviation Efficiency** (`swiss` · A4 1240×1754)
+The System Atlas translates complex architectures into explorable isometric maps:
+- **Interactive Progressive Disclosure:** Chapter-by-chapter walkthroughs revealing 2–3 structures at a time.
+- **Dynamic Packet Flows:** Moving data packet animations you can click and pause to inspect JSON payloads.
+- **Deep Structure Specs:** Hover to read summaries, click to pin, go inside for step-by-step execution flows.
+- **Decisions & Question Tracking:** Track open and resolved architectural decisions by ID (`Q-U1`, `Q-B1`).
+- **Authentic Engineering Aesthetic:** Khaki paper (`#E6DFBE`), dark theme toggle, hard-shadow controls, and `IBM Plex Mono` typography.
 
-### 🌿 Nature & Deep Cosmos (7)
-12. **Coffea Arabica — Field Guide Botanical Study** (`naturalist-plate` · A4 1240×1754)
-13. **Balaenoptera Musculus (Blue Whale Anatomy & Dive)** (`naturalist-plate` · Wide 1920×1080)
-14. **Kingdom Fungi — Spore Dynamics & The Wood-Wide Web** (`naturalist-plate` · A4 1240×1754)
-15. **Visit Mars // Olympus Mons Expedition** (`park-poster` · Story 1080×1920)
-16. **Challenger Deep // The Hadal Abyssal Descent (10,994m)** (`park-poster` · Story 1080×1920)
-17. **Yosemite Valley // Dawn Wall Granite Monolith** (`park-poster` · A4 1240×1754)
-18. **The Honeybee Summer Colony Economy** (`retro-print` · A4 1240×1754)
+### 🏛️ System Atlas Catalog Breakdown (20 Systems)
 
-### 📊 Business & Strategy (5)
-19. **Two Tiny Worlds of Work: Remote vs Office** (`isometric-world` · Wide 1920×1080)
-20. **SaaS Signup & Product Growth Funnel** (`dark-glass` · Square 1080×1080)
-21. **2026 Global Streaming Platform Wars** (`dark-glass` · Wide 1920×1080)
-22. **Enterprise Cloud Unit Economics & Multi-Region FinOps** (`corporate-clean` · Wide 1920×1080)
-23. **The Anatomy of a Startup Burn: Where $10M Seed Disappears** (`neo-brutalist` · Story 1080×1920)
-
-### ☕ Culture & Audio (4)
-24. **The Anatomy of a Perfect Margherita Pizza** (`hand-drawn` · Square 1080×1080)
-25. **The Secret Microbiology of a Wild Sourdough Culture** (`hand-drawn` · A4 1240×1754)
-26. **The Physics of the 9-Bar Golden Espresso Extraction** (`hand-drawn` · Wide 1920×1080)
-27. **The Micro-Groove Physics of 33⅓ RPM Vinyl Audio** (`retro-print` · Square 1080×1080)
-
-### 🎨 Design & Architecture (2)
-28. **World's Tallest Buildings Strictly to Scale** (`blueprint` · A4 1240×1754)
-29. **The International Typographic System: Grid & Hierarchy** (`swiss` · Square 1080×1080)
-
-### 🧬 Science & Bio-Kinetics (1)
-30. **The Biological Case for Sleep** (`editorial` · Story 1080×1920)
+| # | System Architecture | Domain Category | Key Structures | Focus & Protocols |
+|---|---|---|---|---|
+| **01** | **Hermes Agent Runtime** | 🤖 AI & Agents | Gateway, Brain, Tools, CDP, Subagents, SQLite | Autonomous tool loop & persistent memory |
+| **02** | **SIMD Distributed Vector RAG** | 🔍 Search & Data | Ingest, Chunker, Embedder, HNSW, BM25, Re-ranker | AVX-512 vector distance & hybrid RRF |
+| **03** | **Real-Time Fraud Detection Stream** | ⚡ Fintech & Streams | Gateway, Kafka, Flink CEP, Redis, XGBoost | Sub-8ms sliding window fraud scoring |
+| **04** | **Kubernetes Control Plane** | ☁️ Cloud & DevOps | API Server, etcd Raft, Controllers, Scheduler, Kubelet | Distributed desired-state reconciliation |
+| **05** | **16,384-GPU Slurm LLM Cluster** | 🤖 AI Infrastructure | Slurm, Checkpoints, Tensor Parallel, Pipeline, ZeRO-3 | 3D parallelism & 3.2 Tbps InfiniBand |
+| **06** | **Ethereum Layer-2 Rollup** | ⚡ Fintech & Web3 | Mempool, Sequencer, EVM Geth, Batcher, L1 Bridge | Optimistic execution & EIP-4844 blobs |
+| **07** | **Autonomous Vehicle Perception** | 🚗 Robotics & Autonomous | 8-Camera ISP, LiDAR, BEV Former, 3D Tracker, MPC | 30 FPS sensor fusion & path planning |
+| **08** | **Global ABR Video Transcoding** | ☁️ Cloud & Media | Upload Origin, S3, Chunk Slicer, GPU Fleet, CDN | 4s GOP slicing & AV1/HEVC packaging |
+| **09** | **Distributed SAGA Checkout** | 🏢 Enterprise Systems | Checkout UI, SAGA Engine, Inventory Lock, Stripe | Zero over-selling & compensation rollbacks |
+| **10** | **Aether CDP Browser Engine** | 🌐 Browser Automation | MCP Gateway, Sandbox Pool, Chromium, AXTree | Native Chrome DevTools Protocol automation |
+| **11** | **WireGuard Zero-Trust Mesh** | 🔒 Cybersecurity | Mesh Client, Control Plane, WireGuard, DERP | Direct peer-to-peer ChaCha20 encryption |
+| **12** | **Scope Codebase LSP Indexer** | 🛠️ Developer Tooling | MCP Router, File Watcher, Tree-Sitter AST, LSP | AST-level symbol resolution & call graphs |
+| **13** | **SpaceX Starship Avionics** | 🚀 Aerospace & Embedded | Ring-Laser Gyros, Dual Flight Computers, TVC, Fins | 1,000 Hz guidance loop & hardware voting |
+| **14** | **Local-First IoT Home Hub** | 🏠 IoT & Smart Home | Multi-Radio Dongles, Translation, SQLite, Engine | 100% offline Zigbee/Matter/Thread hub |
+| **15** | **Real-Time CRDT Canvas** | 🎨 Real-Time Web Apps | WebGL Canvas, Y.Doc IndexedDB, Sync Gateway, Redis | Fractional indexing multiplayer editing |
+| **16** | **Ultra-Low Latency FPGA HFT** | ⚡ Fintech & Trading | Optical Feed, FPGA Parser, L3 Book, Hardware Risk | 380 nanosecond tick-to-trade matching |
+| **17** | **Multi-Agent Debate Consensus** | 🤖 AI & Agents | Ingestion, Proponent, Skeptic, Fact-Checker, Judge | Dialectic synthesis & hallucination elimination |
+| **18** | **HIPAA Clinical Health RAG** | 🏥 Healthcare & Bio | FHIR Ingest, PHI Filter, Medical NER, Drug Graph | De-identified SOAP note summarization |
+| **19** | **Serverless GPU Inference Router** | ☁️ Cloud & AI Infra | Edge Router, Rate Limiter, Pool Scheduler, vLLM | FlashBoot NVMe cache & prefix-cache hits |
+| **20** | **Petabyte Web Crawler & Indexer**| 🔍 Search & Data | URL Frontier, Fetchers, Bloom Filter, Inverted Index | Distributed crawling & PageRank graph |
 
 ---
 
-## 🛠️ Local Development & Viewing
+## ⚡ 2. Epic Infographics Studio (30 Masterpieces)
 
-Open `index.html` directly in any modern browser:
+30 production-grade vector infographics covering all 12 Design Languages:
+- `blueprint`, `dark-glass`, `isometric-world`, `naturalist-plate`, `cutaway`, `park-poster`, `retro-print`, `hand-drawn`, `swiss`, `editorial`, `corporate-clean`, `neo-brutalist`.
+
+---
+
+## 🛠️ Local Viewing & Development
 
 ```bash
-# Windows
+# Clone the repository
+git clone https://github.com/deviprasadshetty-dev/epic-infographics-reports.git
+cd epic-infographics-reports
+
+# Open in browser
+# Windows:
 start index.html
-
-# macOS
-open index.html
-
-# Linux
-xdg-open index.html
+start system-atlas.html
 ```
 
 ---
 
 ## 📄 License
 
-MIT License. Designed with the [Epic Infographics](https://github.com/OrRon/EpicInfographics) framework.
+MIT License. Authored with Hermes Agent.
