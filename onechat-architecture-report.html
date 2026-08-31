@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Technical Analysis: Halofy, Mem0 & Agent Governance</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    :root{
+      --bg:#eef3f1;
+      --surface:#ffffff;
+      --surface-2:#e3ebe8;
+      --ink:#122320;
+      --ink-dim:#4c605a;
+      --border:#cfdbd6;
+      --accent:#157a5f;
+      --accent-ink:#0d5c47;
+      --accent-soft:#d8ede4;
+      --protocol:#5850c9;
+      --protocol-soft:#e6e4fa;
+      --code-bg:#e6edea;
+      --shadow: 0 1px 2px rgba(18,35,32,.06), 0 8px 24px -12px rgba(18,35,32,.12);
+    }
+    @media (prefers-color-scheme: dark){
+      :root:not([data-theme="light"]){
+        --bg:#0e1613;
+        --surface:#151f1c;
+        --surface-2:#1b2723;
+        --ink:#e9f2ee;
+        --ink-dim:#9db2ab;
+        --border:#2a3733;
+        --accent:#3fcd9a;
+        --accent-ink:#8fe9c8;
+        --accent-soft:#173229;
+        --protocol:#a29cf2;
+        --protocol-soft:#242058;
+        --code-bg:#1a2521;
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      }
+    }
+    body {
+      background:var(--bg); color:var(--ink);
+      font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+      line-height:1.55; margin:0; padding:0 20px 120px;
+    }
+    code, .mono { font-family:"IBM Plex Mono", ui-monospace, "SF Mono", monospace; }
+    
+    .wrap { max-width:920px; margin:0 auto; }
+    
+    header.hero { max-width:920px; margin:0 auto; padding:56px 0 28px; border-bottom:1px solid var(--border); }
+    .eyebrow { font-family:"IBM Plex Mono", monospace; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-ink); font-weight:600; display:flex; align-items:center; gap:8px; }
+    .eyebrow::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; }
+    h1 { font-size:clamp(28px,4vw,40px); line-height:1.12; letter-spacing:-.01em; margin:14px 0 10px; text-wrap:balance; font-weight:700; }
+    .lede { font-size:17px; color:var(--ink-dim); max-width:66ch; margin:0; }
+    
+    nav.jump { max-width:920px; margin:0 auto; display:flex; flex-wrap:wrap; gap:6px 4px; padding:16px 0 0; }
+    nav.jump a { font-family:"IBM Plex Mono", monospace; font-size:12px; color:var(--ink-dim); text-decoration:none; padding:6px 10px; border-radius:20px; border:1px solid var(--border); background:var(--surface); }
+    nav.jump a:hover { color:var(--accent-ink); border-color:var(--accent); }
+
+    section { max-width:920px; margin:0 auto; padding:52px 0; border-bottom:1px solid var(--border); }
+    section:last-of-type { border-bottom:none; }
+    .kicker { font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); margin:0 0 8px; }
+    h2 { font-size:24px; margin:0 0 6px; letter-spacing:-.005em; text-wrap:balance; }
+    .section-intro { color:var(--ink-dim); max-width:68ch; margin-bottom: 24px;}
+
+    .tldr { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 24px; box-shadow:var(--shadow); margin-top:20px; }
+    .tldr ul { margin:0; padding-left:0; list-style:none; display:grid; gap:12px; }
+    .tldr li { display:grid; grid-template-columns:22px 1fr; gap:10px; align-items:start; }
+    .tldr li::before { content:"→"; color:var(--accent); font-weight:600; font-family:"IBM Plex Mono",monospace; }
+
+    .callout { border-left:3px solid var(--accent); background:var(--accent-soft); border-radius:0 10px 10px 0; padding:14px 18px; margin:20px 0; font-size:14px; }
+    .callout.protocol { border-left-color:var(--protocol); background:var(--protocol-soft); }
+
+    .schema-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:20px; }
+    .schema-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 18px 16px; box-shadow:var(--shadow); }
+    .schema-card h4 { margin:0 0 4px; font-family:"IBM Plex Mono",monospace; font-size:13.5px; color:var(--accent-ink); font-weight:600; }
+    .schema-card .role { font-size:12px; color:var(--ink-dim); margin-bottom:12px; }
+    .schema-card ul { list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+    .schema-card li { font-size:12.5px; font-family:"IBM Plex Mono",monospace; color:var(--ink); line-height: 1.4; }
+    .schema-card li .pk { color:var(--accent-ink); font-weight:600; }
+
+    pre { background: var(--code-bg); padding: 16px; border-radius: 8px; border: 1px solid var(--border); overflow-x: auto; font-size: 13px; font-family: "IBM Plex Mono", monospace;}
+    code { font-family: "IBM Plex Mono", monospace; color: var(--accent-ink); background: rgba(0,0,0,0.1); padding: 2px 4px; border-radius: 4px; font-size: 0.9em;}
+    @media (prefers-color-scheme: dark){ code { background: rgba(255,255,255,0.1); } }
+
+    .tools-table { width:100%; border-collapse:collapse; margin-top:18px; font-size:14px; }
+    .tools-table th { text-align:left; font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-dim); padding:0 14px 10px; border-bottom:1px solid var(--border); font-weight:600; }
+    .tools-table td { padding:14px; border-bottom:1px solid var(--border); vertical-align:top; }
+    .tools-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); padding:4px 10px; margin-top: 20px;}
+    
+    strong { color: var(--accent-ink); }
+    
+    /* Diagram Frames for SVG */
+    .diagram-frame { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px; box-shadow:var(--shadow); overflow-x:auto; margin:24px 0 6px; text-align: center;}
+    .diagram-frame svg { display:block; max-width:100%; height:auto; margin:0 auto; }
+    figcaption { font-size:13px; color:var(--ink-dim); margin-top:10px; max-width:68ch; }
+
+    .step-list { padding-left: 20px; color: var(--ink); }
+    .step-list li { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="eyebrow">Technical Architecture Report</div>
+    <h1>Halofy & Mem0 Deep Dive</h1>
+    <p class="lede">A comprehensive, code-level analysis of Halofy's governance architecture, its integration tradeoffs with Mem0, strategies for building an enterprise Company Brain, and a structural comparison of market alternatives.</p>
+    
+    <nav class="jump">
+      <a href="#q1-architecture">01. Architecture & Replication</a>
+      <a href="#how-it-works">02. How It Works (Backend Flow & Tools)</a>
+      <a href="#q2-integration">03. Symbiosis with Mem0</a>
+      <a href="#q3-company-brain">04. The Company Brain</a>
+      <a href="#q4-alternatives">05. True Market Alternatives</a>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <div class="tldr">
+      <ul>
+        <li><span><strong>Architecture:</strong> Halofy relies on an append-only, bi-temporal `pgvector` schema. It governs access via an SQL "Ancestor Rule" and packs policy directives before semantic search results. It delegates the actual retrieval logic to cartidges (like Mem0 or Baseline).</span></li>
+        <li><span><strong>Mem0 Integration:</strong> Highly beneficial for enterprise use. Mem0 handles semantic extraction; Halofy provides the strict access control and cryptographic auditability required for B2B compliance.</span></li>
+        <li><span><strong>Replication:</strong> We can replicate Halofy's core mechanisms directly in OneChat's <code>workflow_capability_policy.py</code> by overriding Mem0's metadata filters with strict organizational namespaces.</span></li>
+        <li><span><strong>Alternatives:</strong> Proper alternatives are <strong>Control Planes and Gateways</strong> (like Prisma AIRS or LangSmith LLM Gateway), not databases.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="q1-architecture">
+    <p class="kicker">Question 1</p>
+    <h2>What is the underlying architecture and can we replicate it in our system?</h2>
+    
+    <p>Based on a deep analysis of the <code>halofyai/halofy</code> repository, Halofy is a Node.js/TypeScript kernel built on top of PostgreSQL with <code>pgvector</code>. It does not replace memory extraction databases; it is a <strong>governance and access control gateway</strong> that sits between agents and memory storage, explicitly delegating retrieval to swappable "drivers" (cartridges).</p>
+    
+    <div class="diagram-frame">
+      <svg width="600" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+        <rect x="50" y="100" width="100" height="40" rx="4" fill="var(--surface-2)" stroke="var(--border)" stroke-width="2"/>
+        <text x="100" y="125" font-family="monospace" font-size="14" fill="var(--ink)" text-anchor="middle">Agent/LLM</text>
+
+        <path d="M150 120 L200 120" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)"/>
+
+        <rect x="210" y="40" width="180" height="160" rx="8" fill="var(--accent-soft)" stroke="var(--accent-ink)" stroke-width="2"/>
+        <text x="300" y="70" font-family="monospace" font-size="14" fill="var(--accent-ink)" font-weight="bold" text-anchor="middle">Halofy Kernel</text>
+        <text x="300" y="95" font-family="monospace" font-size="12" fill="var(--ink-dim)" text-anchor="middle">Identity Resolution</text>
+        <text x="300" y="120" font-family="monospace" font-size="12" fill="var(--ink-dim)" text-anchor="middle">Ancestor Rule (SQL)</text>
+        <text x="300" y="145" font-family="monospace" font-size="12" fill="var(--ink-dim)" text-anchor="middle">Audit Ledger</text>
+        <text x="300" y="170" font-family="monospace" font-size="12" fill="var(--ink-dim)" text-anchor="middle">Context Packer</text>
+
+        <path d="M390 100 L440 70" stroke="var(--protocol)" stroke-width="2" marker-end="url(#arrow-p)"/>
+        <path d="M390 140 L440 170" stroke="var(--protocol)" stroke-width="2" marker-end="url(#arrow-p)"/>
+
+        <rect x="450" y="40" width="120" height="40" rx="4" fill="var(--protocol-soft)" stroke="var(--protocol)" stroke-width="2" stroke-dasharray="4"/>
+        <text x="510" y="65" font-family="monospace" font-size="14" fill="var(--protocol)" text-anchor="middle">Driver: Mem0</text>
+        
+        <rect x="450" y="160" width="120" height="40" rx="4" fill="var(--protocol-soft)" stroke="var(--protocol)" stroke-width="2" stroke-dasharray="4"/>
+        <text x="510" y="185" font-family="monospace" font-size="14" fill="var(--protocol)" text-anchor="middle">Driver: Baseline</text>
+
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+          </marker>
+          <marker id="arrow-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--protocol)"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>Halofy handles security and identity, then delegates actual semantic retrieval to isolated read-only drivers like Mem0.</figcaption>
+    </div>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>1. Bi-Temporal Schema (Never Overwrite)</h4>
+        <div class="role">L2 Warm Tier Data Model</div>
+        <ul>
+          <li><span><span class="pk">Mechanism:</span> When an agent updates a fact, Halofy does not execute an SQL <code>UPDATE</code>.</span></li>
+          <li><span><span class="pk">Implementation:</span> It sets <code>t_valid_to = NOW()</code> on the old row and inserts a new row with a <code>supersedes</code> foreign key pointing back.</span></li>
+          <li><span><span class="pk">Why it matters:</span> This preserves a perfect temporal history, allowing agents to reason about what was known in the past.</span></li>
+        </ul>
+      </div>
+      <div class="schema-card">
+        <h4>2. The Ancestor Rule (SQL ACLs)</h4>
+        <div class="role">Namespace-driven Isolation</div>
+        <ul>
+          <li><span><span class="pk">Mechanism:</span> Identities are assigned hierarchical namespaces (e.g., <code>acme/eng</code>).</span></li>
+          <li><span><span class="pk">Implementation:</span> The Halofy kernel strictly compiles this into SQL. An agent at <code>acme/eng</code> generates a query with <code>IN ('acme', 'acme/eng')</code>.</span></li>
+          <li><span><span class="pk">Why it matters:</span> Sibling namespaces (<code>acme/sales</code>) or deep descendants (<code>acme/eng/db</code>) are structurally invisible at the database layer, immune to LLM prompt-injection bypasses.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout protocol">
+      <h4>How to Replicate in OneChat (D:/onechat)</h4>
+      <p>OneChat currently treats Mem0 as a flat vector CRUD store, isolating by string-based <code>user_id</code>s. To replicate Halofy's organizational governance:</p>
+      
+      <p><strong>Step 1: Implement the SQL Namespace Hierarchy</strong><br>
+      Migrate OneChat's flat-file configurations to a relational DB (SQLAlchemy/Postgres). Create an <code>Organization</code> and <code>Role/Namespace</code> schema that maps users to a strict hierarchy (e.g., <code>org_id: 123, namespace: 'c3alabs/engineering'</code>).</p>
+
+      <p><strong>Step 2: Upgrade <code>workflow_capability_policy.py</code> (The Gateway)</strong><br>
+      Intercept all memory read/write requests here. Instead of letting agents query Mem0 directly, force the policy layer to act as the Halofy kernel.</p>
+      
+      <pre><code># Conceptual Replication in OneChat's workflow_capability_policy.py
+def get_governed_memory(agent_session, query):
+    # 1. Resolve Identity & Namespace
+    org_id = agent_session.org_id
+    namespace = agent_session.namespace # e.g., 'c3alabs/eng'
+    
+    # 2. Compute Ancestor Rule (halofy replication)
+    allowed_namespaces = compute_ancestors(namespace) 
+    # Returns: ['c3alabs', 'c3alabs/eng']
+    
+    # 3. Inject strict metadata filters into Mem0
+    mem0_results = mem0_client.search(
+        query=query,
+        user_id=None, # Move from user-level to org-level
+        filters={
+            "and": [
+                {"org_id": org_id},
+                {"namespace": {"in": allowed_namespaces}}
+            ]
+        }
+    )
+    return mem0_results</code></pre>
+    </div>
+  </section>
+
+  <section id="how-it-works">
+    <p class="kicker">02 — In Simple Terms</p>
+    <h2>How Halofy Works in the Backend</h2>
+    
+    <p>In simple terms, Halofy operates like a corporate firewall and identity bouncer for AI memory. It exposes its capabilities to agents through a set of strict tools. Instead of letting the agent talk to the database directly, the agent talks to Halofy's tools. Here is exactly what happens under the hood when an agent makes a request:</p>
+    
+    <ol class="step-list">
+      <li><strong>Identity Check:</strong> The agent hits Halofy's API. Halofy ignores any claims the agent makes in its prompt and securely identifies it via its API key/session token to determine its "Namespace" (e.g., this is Agent X in <code>c3alabs/engineering</code>).</li>
+      <li><strong>Drawing the Boundaries:</strong> Before fetching data, Halofy calculates what the agent is allowed to see. An agent in <code>c3alabs/engineering</code> is allowed to read <code>c3alabs/engineering</code> data and broad <code>c3alabs</code> data, but it is strictly blocked from seeing sibling namespaces like <code>c3alabs/hr</code>. Halofy compiles this into a hard SQL query so prompt-injection cannot bypass it.</li>
+      <li><strong>Delegated Fetch:</strong> Halofy hands the restricted SQL boundaries over to the underlying database (like Mem0). It says: <em>"Search for the answer, but ONLY inside these specific allowed namespaces."</em></li>
+      <li><strong>Packing the Rules:</strong> Before giving the final data back to the agent, Halofy takes mandatory company rules (e.g., "Never reveal internal margins") and packs them into the prompt <strong>first</strong>. It reserves ~35% of the token limit just for rules. If Mem0 returns too much historical data, Halofy will chop off the data rather than sacrifice the security rules.</li>
+      <li><strong>Audit Logging:</strong> Every read, write, denied access, and rate limit is permanently written to a tamper-evident audit ledger in the database.</li>
+    </ol>
+
+    <h3>The Tools Halofy Exposes to Agents</h3>
+    <p>To enforce its "never overwrite, never delete" philosophy, Halofy only exposes a few highly controlled tools to the AI agent:</p>
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>1. <code>mem_search</code></h4>
+        <div class="role">Read-only retrieval</div>
+        <ul>
+          <li><span>Searches the database based on the agent's strictly enforced SQL namespace. It is impossible to use this tool to see out-of-scope data.</span></li>
+        </ul>
+      </div>
+      <div class="schema-card">
+        <h4>2. <code>mem_write</code></h4>
+        <div class="role">Append-only memory creation</div>
+        <ul>
+          <li><span>Creates new memory. If a fact changes (e.g., a budget goes from $10k to $20k), this tool does not delete the old $10k record. It creates a new $20k record that links back to the old one, preserving a perfect history.</span></li>
+        </ul>
+      </div>
+      <div class="schema-card">
+        <h4>3. <code>mem_forget</code> (Admin Only)</h4>
+        <div class="role">The Compliance Exception</div>
+        <ul>
+          <li><span>Used only for legal requirements (like GDPR). It physically wipes the data, inserts a "tombstone" saying the data was wiped, and generates a mathematically signed <code>DeletionCertificate</code> to prove to auditors that the AI no longer has the memory.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="q2-integration">
+    <p class="kicker">03 — Synergy and Tradeoffs</p>
+    <h2>Is it beneficial to use along with Mem0? (Pros & Cons)</h2>
+    <p class="section-intro"><strong>Yes, it is highly beneficial.</strong> Halofy and Mem0 serve completely different, complementary purposes. Mem0 is the engine that extracts intelligence; Halofy is the vault that secures it. As seen in Halofy's architecture, they explicitly support Mem0 as a "driver" cartridge.</p>
+
+    <div class="tools-wrap">
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>Benefit (Pros)</th>
+            <th>Tradeoff (Cons)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Multi-Agent Isolation</strong></td>
+            <td>Mem0 builds a rich Knowledge Graph. Halofy ensures that a Support Agent and an HR Agent can share the same underlying Mem0 instance without the Support Agent being able to query private HR performance reviews.</td>
+            <td><strong>Latency Penalty:</strong> Every query must pass through Halofy's HTTP/MCP transport, resolve identity, compute SQL boundaries, and then hit Mem0. This adds a network hop.</td>
+          </tr>
+          <tr>
+            <td><strong>Context Allocation</strong></td>
+            <td>Halofy uses a "Greedy Packer." It explicitly reserves a percentage (e.g., 35%) of the context window for <em>mandatory organizational policy directives</em> before appending Mem0's semantic search results, preventing agents from "forgetting" rules.</td>
+            <td><strong>Budget Truncation:</strong> If Mem0 returns highly relevant historical context but it exceeds the remaining 65% token budget, Halofy will strictly truncate it to preserve the policy guardrails.</td>
+          </tr>
+          <tr>
+            <td><strong>Cryptographic Auditability</strong></td>
+            <td>Mem0 deletes data silently. Halofy introduces <code>mem_forget</code>, which nullifies relationships, hard-deletes vectors, inserts a tombstone, and issues an ed25519-signed <code>DeletionCertificate</code> (critical for B2B/SOC2 compliance).</td>
+            <td><strong>Operational Complexity:</strong> You are maintaining two complex systems. Mem0 requires tuning vector/graph extraction, while Halofy requires managing cryptographic keys and Postgres schemas.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="q3-company-brain">
+    <p class="kicker">04 — Organizational Knowledge</p>
+    <h2>How can we use this for a "Company Brain"?</h2>
+    <p class="section-intro">A "Company Brain" is an organizational intelligence layer where <em>all</em> company data (Slack, Jira, Google Docs, code) is ingested, but access is dynamically governed based on the querying employee's role.</p>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>1. Governed Ingestion</h4>
+        <ul>
+          <li><span>Connectors scrape organizational data (e.g., Slack threads, Confluence pages).</span></li>
+          <li><span>Before ingestion into Mem0, the data is tagged with a <strong>Halofy Namespace metadata tag</strong> (e.g., a finance doc is tagged <code>c3alabs/finance</code>, an all-hands transcript is tagged <code>c3alabs</code>).</span></li>
+          <li><span>Mem0 extracts entities and relationships, preserving these metadata tags on every node and vector.</span></li>
+        </ul>
+      </div>
+      <div class="schema-card">
+        <h4>2. Scoped Retrieval (The Magic)</h4>
+        <ul>
+          <li><span>An employee interacts with a OneChat agent. The agent resolves the employee's JWT/session to determine their role.</span></li>
+          <li><span>The agent asks: "What are our Q3 margins?"</span></li>
+          <li><span><strong>If the user is an Engineer (<code>c3alabs/eng</code>):</strong> The Halofy layer computes the Ancestor Rule. It queries Mem0 for <code>c3alabs</code> and <code>c3alabs/eng</code>. The finance data is blocked at the database level. The agent replies: "I do not have access to that information."</span></li>
+          <li><span><strong>If the user is the CEO (<code>c3alabs/executive</code>):</strong> The Halofy layer grants access to the executive namespace. Mem0 traverses the graph, retrieves the Q3 margins, and the agent delivers the answer.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="q4-alternatives">
+    <p class="kicker">05 — Ecosystem Analysis</p>
+    <h2>Are there any better alternatives?</h2>
+    <p class="section-intro">Since Halofy is a <strong>policy gateway and governance layer</strong>, comparing it to databases (like Mem0, Zep, or Cognee) is an architectural mistake. The true alternatives to Halofy are enterprise AI control planes that intercept LLM and MCP tool calls to enforce organizational rules.</p>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>1. PRISMA AIRS AI Gateway</h4>
+        <div class="role">Enterprise Security Gateway (Palo Alto)</div>
+        <ul>
+          <li><span><span class="pk">Focus:</span> Centralized control plane designed specifically to govern agent access to tools and models via MCP.</span></li>
+          <li><span><span class="pk">Capabilities:</span> Enforces Role-Based Access Control (RBAC), routes tool calls, and intercepts unauthorized data extraction via 60+ security guardrails. Maintains deep audit logs.</span></li>
+          <li><span><span class="pk">Verdict:</span> The strongest commercial alternative to Halofy's security model, though it is a broader security proxy rather than a dedicated memory governor with cryptographic data erasure.</span></li>
+        </ul>
+      </div>
+
+      <div class="schema-card">
+        <h4>2. Tigera Lynx</h4>
+        <div class="role">Kubernetes-Native Agent Governance</div>
+        <ul>
+          <li><span><span class="pk">Focus:</span> Infrastructure-level governance for AI agents.</span></li>
+          <li><span><span class="pk">Capabilities:</span> Assigns cryptographic identity to every agent runtime, sandboxes them, and enforces least-privilege namespace isolation on every network or API action they attempt.</span></li>
+          <li><span><span class="pk">Verdict:</span> Extremely powerful for stopping rogue agents, but operates at the K8s network/workload layer rather than the application memory layer like Halofy.</span></li>
+        </ul>
+      </div>
+
+      <div class="schema-card">
+        <h4>3. LangSmith LLM Gateway</h4>
+        <div class="role">Runtime Control Plane</div>
+        <ul>
+          <li><span><span class="pk">Focus:</span> Governing Agent-to-Agent (A2A) interactions and tool access.</span></li>
+          <li><span><span class="pk">Capabilities:</span> Enforces boundary policies (preventing an agent from accessing tools it shouldn't) and maintains full audit evidence across multi-agent reasoning chains.</span></li>
+          <li><span><span class="pk">Verdict:</span> Excellent for logging and tracing execution, but lacks Halofy's explicit "Ancestor Rule" memory isolation mechanisms for database queries.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
