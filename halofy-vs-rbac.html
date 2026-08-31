@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halofy vs Standard RBAC | Epic Infographics</title>
+  
+  <!-- DESIGN LANGUAGE: dark-glass -->
+  <!-- COMPOSITION PATTERN: The Big Object (Central Core) + Diagonal Drive -->
+  <!-- CANVAS PRESET: wide (1920x1080) -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;600&family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* dark-glass token palette */
+      --bg: #0B0E17;
+      --bg-surface: rgba(20, 25, 38, 0.6);
+      --bg-card: rgba(30, 36, 51, 0.4);
+      --ink: #FFFFFF;
+      --ink-dim: #94A3B8;
+      
+      --neon-cyan: #00F0FF;
+      --neon-purple: #B026FF;
+      --neon-pink: #FF007F;
+      --neon-green: #39FF14;
+      
+      --border-glow: rgba(0, 240, 255, 0.2);
+      --card-border: rgba(255, 255, 255, 0.08);
+      
+      /* Typography */
+      --font-display: 'Sora', sans-serif;
+      --font-body: 'Albert Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1920px;
+      height: 1080px;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      overflow: hidden;
+      position: relative;
+      /* Dot lattice background */
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* Aurora Glows (Atmosphere) */
+    .aurora {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: 0;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .aurora-1 { width: 800px; height: 800px; background: var(--neon-cyan); top: -200px; left: -100px; }
+    .aurora-2 { width: 900px; height: 900px; background: var(--neon-purple); bottom: -300px; right: -200px; opacity: 0.3; }
+    .aurora-3 { width: 600px; height: 600px; background: var(--neon-pink); top: 20%; left: 40%; opacity: 0.15; }
+
+    /* Layout Wrapper */
+    .canvas {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 480px 1fr;
+      padding: 60px 80px;
+      gap: 80px;
+    }
+
+    /* Left Column: Title & Intro */
+    .col-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 40px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: var(--neon-cyan);
+      box-shadow: 0 0 10px var(--neon-cyan);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0 0 32px 0;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFFFFF 0%, #A0AABF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lede {
+      font-size: 24px;
+      line-height: 1.5;
+      color: var(--ink-dim);
+      margin-bottom: 64px;
+      font-weight: 300;
+    }
+
+    /* Comparison Legend */
+    .legend {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: auto;
+      padding: 32px;
+      background: var(--bg-surface);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      backdrop-filter: blur(20px);
+    }
+    .legend-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .legend-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .icon-rbac { background: rgba(255,255,255,0.1); color: #FFF; border: 1px solid rgba(255,255,255,0.2); }
+    .icon-halofy { background: rgba(0, 240, 255, 0.15); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); }
+    
+    .legend-text h4 { margin: 0 0 4px 0; font-family: var(--font-display); font-size: 18px; }
+    .legend-text p { margin: 0; font-size: 14px; color: var(--ink-dim); line-height: 1.4; }
+
+
+    /* Right Column: Visualizer */
+    .col-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* The Big Object: Core Frame */
+    .hero-frame {
+      width: 100%;
+      height: 800px;
+      background: var(--bg-surface);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      position: relative;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 40px;
+    }
+    
+    /* Subtle inner glow */
+    .hero-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: 24px;
+      box-shadow: inset 0 0 80px rgba(0, 240, 255, 0.05);
+      pointer-events: none;
+    }
+
+    /* 4 Quadrants for the 4 Differences */
+    .diff-card {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .diff-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+      opacity: 0.3;
+    }
+    
+    .diff-card.purple::after { background: linear-gradient(90deg, transparent, var(--neon-purple), transparent); }
+    .diff-card.pink::after { background: linear-gradient(90deg, transparent, var(--neon-pink), transparent); }
+    .diff-card.green::after { background: linear-gradient(90deg, transparent, var(--neon-green), transparent); }
+
+    .diff-number {
+      font-family: var(--font-mono);
+      font-size: 64px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.05);
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      line-height: 1;
+    }
+
+    .diff-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: #FFF;
+      z-index: 1;
+    }
+
+    /* Data Visualizations inside Cards */
+    .viz-container {
+      flex-grow: 1;
+      position: relative;
+      margin-bottom: 24px;
+      min-height: 120px;
+    }
+
+    .desc {
+      font-size: 15px;
+      color: var(--ink-dim);
+      line-height: 1.5;
+      margin: 0;
+      z-index: 1;
+    }
+
+    /* VIZ 1: Token Packing */
+    .viz-packer {
+      display: flex;
+      height: 40px;
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      position: relative;
+      margin-top: 20px;
+    }
+    .vp-policy {
+      width: 35%;
+      background: rgba(0, 240, 255, 0.2);
+      border-right: 2px solid var(--neon-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--neon-cyan);
+    }
+    .vp-memory {
+      width: 65%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      padding-left: 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-dim);
+    }
+    .vp-label {
+      position: absolute;
+      top: -24px;
+      left: 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--neon-cyan);
+    }
+
+    /* VIZ 2: Cryptographic Erasure (Dumbbell) */
+    .viz-crypto {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+    .vc-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .vc-label { width: 80px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-dim); text-align: right; }
+    .vc-track { flex-grow: 1; height: 2px; background: rgba(255,255,255,0.1); position: relative; }
+    .vc-node { width: 12px; height: 12px; border-radius: 50%; position: absolute; top: -5px; }
+    
+    .vc-row.old .vc-node.n1 { left: 10%; background: #555; }
+    .vc-row.old .vc-node.n2 { left: 90%; background: #555; }
+    .vc-row.old .vc-track::after { content:'DELETE ROW'; position:absolute; top:-16px; left:40%; font-family:var(--font-mono); font-size:10px; color:#555;}
+    
+    .vc-row.new .vc-node.n1 { left: 10%; background: var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple); }
+    .vc-row.new .vc-node.n2 { left: 90%; background: #FFF; }
+    .vc-row.new .vc-track { background: var(--neon-purple); opacity: 0.5; }
+    .vc-row.new .vc-track::after { content:'ed25519 SIGNED TOMBSTONE'; position:absolute; top:-16px; left:15%; font-family:var(--font-mono); font-size:10px; color:var(--neon-purple);}
+
+
+    /* VIZ 3: SQL Injection Immunity (Funnel/Block) */
+    .viz-sql {
+      position: relative;
+      height: 100%;
+      margin-top: 10px;
+    }
+    .sql-code {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--ink-dim);
+      margin-bottom: 12px;
+    }
+    .sql-code span.hi { color: var(--neon-pink); }
+    .sql-shield {
+      width: 100%;
+      height: 4px;
+      background: var(--neon-pink);
+      box-shadow: 0 0 15px var(--neon-pink);
+      position: relative;
+    }
+    .sql-shield::before {
+      content: 'PROMPT INJECTION BLOCKED AT DB LAYER';
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--neon-pink);
+      letter-spacing: 0.1em;
+    }
+
+
+    /* VIZ 4: Bi-Temporal Graph (Slope/Timeline) */
+    .viz-time {
+      position: relative;
+      height: 100%;
+      margin-top: 20px;
+    }
+    .time-line {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--ink-dim);
+    }
+    .time-node {
+      position: absolute;
+      bottom: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .tn-dot { width: 8px; height: 8px; border-radius: 50%; background: #FFF; border: 2px solid var(--bg-card); }
+    .tn-card { background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); padding: 6px 12px; border-radius: 4px; font-family: var(--font-mono); font-size: 11px; color: #FFF; white-space: nowrap; }
+    
+    .node-1 { left: 10%; }
+    .node-2 { left: 60%; }
+    
+    /* The Supersedes Arc */
+    .time-arc {
+      position: absolute;
+      bottom: 16px;
+      left: 15%;
+      width: 45%;
+      height: 40px;
+      border-top: 2px dashed var(--neon-green);
+      border-radius: 50% 50% 0 0;
+      opacity: 0.6;
+    }
+    .time-arc::after {
+      content: 'SUPERSEDES';
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--neon-green);
+    }
+    
+    .node-1 .tn-card { opacity: 0.5; text-decoration: line-through; }
+    .node-2 .tn-dot { background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background Aurora Glows -->
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+  <div class="aurora aurora-3"></div>
+
+  <div class="canvas">
+    
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
+      <div class="eyebrow">Architecture Comparison</div>
+      <h1>Beyond<br>Standard RBAC.</h1>
+      <p class="lede">Standard RBAC says "User A can't see Folder B." Halofy is an RBAC engine <strong>purpose-built for the physical limitations of LLMs</strong> (token windows, prompt injection, and vector hallucination).</p>
+      
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-icon icon-rbac">R</div>
+          <div class="legend-text">
+            <h4>Standard RBAC</h4>
+            <p>Designed for traditional APIs. Blind to LLM token limits, relies on silent database row deletions, and vulnerable to prompt injection.</p>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-icon icon-halofy">H</div>
+          <div class="legend-text">
+            <h4>Halofy Governance</h4>
+            <p>Designed for Agents. Packs policy into context limits, mints cryptographic deletion receipts, and tracks bi-temporal vector history.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-right">
+      <div class="hero-frame" data-hero="true">
+        
+        <!-- Difference 1 -->
+        <div class="diff-card">
+          <div class="diff-number">01</div>
+          <h3 class="diff-title">Token-Aware Policy Packing</h3>
+          <div class="viz-container">
+            <div class="viz-packer">
+              <div class="vp-label">HARD CEILING (e.g. 35%)</div>
+              <div class="vp-policy">POLICY GUARDRAILS</div>
+              <div class="vp-memory">TRUNCATED SEMANTIC MEMORY...</div>
+            </div>
+          </div>
+          <p class="desc">Halofy reserves a strict % of the LLM context window for mandatory rules. It forces rules in <em>first</em>. If memory overflows, it truncates the memory, not the guardrails.</p>
+        </div>
+
+        <!-- Difference 2 -->
+        <div class="diff-card purple">
+          <div class="diff-number">02</div>
+          <h3 class="diff-title">Cryptographic Signed Erasure</h3>
+          <div class="viz-container">
+            <div class="viz-crypto">
+              <div class="vc-row old">
+                <div class="vc-label">Standard</div>
+                <div class="vc-track"><div class="vc-node n1"></div><div class="vc-node n2"></div></div>
+              </div>
+              <div class="vc-row new">
+                <div class="vc-label">Halofy</div>
+                <div class="vc-track"><div class="vc-node n1"></div><div class="vc-node n2"></div></div>
+              </div>
+            </div>
+          </div>
+          <p class="desc">AI compliance requires proof. Halofy doesn't just run SQL DELETE. It nullifies vector links, inserts an immutable tombstone, and issues an ed25519 <code>DeletionCertificate</code>.</p>
+        </div>
+
+        <!-- Difference 3 -->
+        <div class="diff-card pink">
+          <div class="diff-number">03</div>
+          <h3 class="diff-title">Prompt Injection Immunity</h3>
+          <div class="viz-container">
+            <div class="viz-sql">
+              <div class="sql-code">
+                SELECT * FROM memory<br>
+                WHERE namespace IN <span class="hi">('acme/hr')</span>
+              </div>
+              <div class="sql-shield"></div>
+            </div>
+          </div>
+          <p class="desc">Standard RBAC in AI often relies on prompt instructions ("You are an HR agent"). Halofy compiles identity directly into hard-coded SQL <code>IN</code> lists. Jailbreaks hit a brick wall.</p>
+        </div>
+
+        <!-- Difference 4 -->
+        <div class="diff-card green">
+          <div class="diff-number">04</div>
+          <h3 class="diff-title">Bi-Temporal Vector History</h3>
+          <div class="viz-container">
+            <div class="viz-time">
+              <div class="time-arc"></div>
+              <div class="time-node node-1">
+                <div class="tn-card">Budget: $10k</div>
+                <div class="tn-dot"></div>
+              </div>
+              <div class="time-node node-2">
+                <div class="tn-card">Budget: $20k</div>
+                <div class="tn-dot"></div>
+              </div>
+              <div class="time-line"></div>
+            </div>
+          </div>
+          <p class="desc">LLMs need to reason about time. Halofy never overwrites vectors. It sets a <code>valid_to</code> timestamp and chains the new record via a <code>supersedes</code> link to preserve the graph.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
