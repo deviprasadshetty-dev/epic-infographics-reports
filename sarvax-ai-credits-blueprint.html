@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Cloud Credit Programs &amp; Infrastructure Runway — SarvaX.ai Blueprint</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --bg: #eef3f1;
+      --surface: #ffffff;
+      --surface-2: #e3ebe8;
+      --ink: #122320;
+      --ink-dim: #4c605a;
+      --border: #cfdbd6;
+      --accent: #157a5f;
+      --accent-ink: #0d5c47;
+      --accent-soft: #d8ede4;
+      --protocol: #5850c9;
+      --protocol-soft: #e6e4fa;
+      --code-bg: #e6edea;
+      --danger: #b71c1c;
+      --danger-soft: #ffebee;
+      --warning: #b26a00;
+      --warning-soft: #fff3e0;
+      --shadow: 0 1px 2px rgba(18,35,32,.06), 0 8px 24px -12px rgba(18,35,32,.12);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0e1613;
+        --surface: #151f1c;
+        --surface-2: #1b2723;
+        --ink: #e9f2ee;
+        --ink-dim: #9db2ab;
+        --border: #2a3733;
+        --accent: #3fcd9a;
+        --accent-ink: #8fe9c8;
+        --accent-soft: #173229;
+        --protocol: #a29cf2;
+        --protocol-soft: #242058;
+        --code-bg: #1a2521;
+        --danger: #ff8a80;
+        --danger-soft: #381b1b;
+        --warning: #ffb74d;
+        --warning-soft: #352613;
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      }
+    }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.55;
+      margin: 0;
+      padding: 0 20px 120px;
+    }
+    code, .mono {
+      font-family: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+    }
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    header.hero {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 56px 0 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .eyebrow {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12.5px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--accent-ink);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+    h1 {
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      margin: 14px 0 10px;
+      font-weight: 700;
+    }
+    .lede {
+      font-size: 16px;
+      color: var(--ink-dim);
+      max-width: 72ch;
+      margin: 0;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      margin-top: 20px;
+      font-size: 13px;
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--ink-dim);
+      border-top: 1px dashed var(--border);
+      padding-top: 14px;
+    }
+    .meta-item strong {
+      color: var(--ink);
+    }
+    nav.jump {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 16px 0 0;
+    }
+    nav.jump a {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      color: var(--ink-dim);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: all 0.15s ease;
+    }
+    nav.jump a:hover {
+      color: var(--accent-ink);
+      border-color: var(--accent);
+    }
+    section {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+    .kicker {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin: 0 0 8px;
+    }
+    h2 {
+      font-size: 24px;
+      margin: 0 0 8px;
+      letter-spacing: -.005em;
+    }
+    h3 {
+      font-size: 18px;
+      margin: 24px 0 10px;
+      font-weight: 600;
+    }
+    .section-intro {
+      color: var(--ink-dim);
+      max-width: 72ch;
+      margin: 0 0 20px;
+      font-size: 15px;
+    }
+    .tldr {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+      margin-top: 16px;
+    }
+    .tldr ul {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .tldr li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14.5px;
+    }
+    .tldr li::before {
+      content: "→";
+      color: var(--accent);
+      font-weight: 600;
+      font-family: "IBM Plex Mono", monospace;
+      flex-shrink: 0;
+      width: 16px;
+    }
+    .tldr li span {
+      flex: 1;
+    }
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .callout.protocol {
+      border-left-color: var(--protocol);
+      background: var(--protocol-soft);
+    }
+    .callout.warning {
+      border-left-color: var(--warning);
+      background: var(--warning-soft);
+    }
+    .schema-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .schema-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    .schema-card h4 {
+      margin: 0 0 6px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 14px;
+      color: var(--accent-ink);
+      font-weight: 600;
+    }
+    .schema-card .role {
+      font-size: 12px;
+      color: var(--ink-dim);
+      margin-bottom: 12px;
+      font-family: "IBM Plex Mono", monospace;
+    }
+    .schema-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+      flex: 1;
+    }
+    .schema-card li {
+      font-size: 13px;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 4px;
+    }
+    .schema-card li .label {
+      color: var(--ink-dim);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+    }
+    .schema-card li .val {
+      font-weight: 600;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12.5px;
+    }
+    .schema-card .card-action {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .schema-card .card-action a {
+      color: var(--accent-ink);
+      font-family: "IBM Plex Mono", monospace;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .schema-card .card-action a:hover {
+      text-decoration: underline;
+    }
+    .diagram-frame {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      margin: 24px 0 10px;
+    }
+    .diagram-frame svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+    figcaption {
+      font-size: 12.5px;
+      color: var(--ink-dim);
+      margin-top: 8px;
+      max-width: 72ch;
+      font-family: "IBM Plex Mono", monospace;
+    }
+    .tools-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+    .tools-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: left;
+    }
+    .tools-table th {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--ink-dim);
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+      font-weight: 600;
+    }
+    .tools-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .tools-table tr:last-child td {
+      border-bottom: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .badge-open {
+      background: var(--accent-soft);
+      color: var(--accent-ink);
+      border: 1px solid var(--accent);
+    }
+    .badge-protocol {
+      background: var(--protocol-soft);
+      color: var(--protocol);
+      border: 1px solid var(--protocol);
+    }
+    .badge-warning {
+      background: var(--warning-soft);
+      color: var(--warning);
+      border: 1px solid var(--warning);
+    }
+    .pill-link {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .pill-link:hover {
+      text-decoration: underline;
+    }
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .step-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 16px;
+    }
+    .step-num {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-ink);
+      background: var(--accent-soft);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content h4 {
+      margin: 0 0 4px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .step-content p {
+      margin: 0;
+      font-size: 13.5px;
+      color: var(--ink-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="eyebrow">Institutional Strategic Report // Cloud Infrastructure</div>
+    <h1>AI Cloud Credit Programs &amp; Runway Blueprint</h1>
+    <p class="lede">Comprehensive analysis of zero-equity, non-dilutive compute credit programs for SarvaX.ai and KaraX.ai following Google for Startups Cloud program expiration. Covers hyperscalers, LPU inference engines, and partner perks.</p>
+    <div class="meta-bar">
+      <div class="meta-item">Target Entity: <strong>C3A Labs (SarvaX.ai / KaraX.ai)</strong></div>
+      <div class="meta-item">Funding Status: <strong>Bootstrapped ($0 VC)</strong></div>
+      <div class="meta-item">Active Affiliation: <strong>NVIDIA Inception Member</strong></div>
+      <div class="meta-item">Date: <strong>September 2026</strong></div>
+    </div>
+  </header>
+
+  <nav class="jump">
+    <a href="#recommendation">01 Top Recommendation</a>
+    <a href="#hyperscalers">02 Hyperscaler Programs</a>
+    <a href="#nvidia-inception">03 Inception Perks</a>
+    <a href="#ai-models">04 Direct AI &amp; LPU APIs</a>
+    <a href="#ecosystem-hacks">05 Non-VC Backdoors</a>
+    <a href="#infra-tooling">06 Vector DBs &amp; Tooling</a>
+    <a href="#india-compute">07 IndiaAI Government Cluster</a>
+    <a href="#action-plan">08 48-Hour Plan</a>
+  </nav>
+
+  <!-- Section 1 -->
+  <section id="recommendation">
+    <p class="kicker">01 — Executive Summary &amp; Top Recommendation</p>
+    <h2>The Winning Architecture: Microsoft Founders Hub + AWS via NVIDIA Inception</h2>
+    <p class="section-intro">For an unfunded B2B multi-agent execution platform with expired Google credits, there is a clear dual-cloud strategy that unlocks immediate enterprise infrastructure without giving away equity or waiting for venture capital.</p>
+
+    <div class="tldr">
+      <ul>
+        <li><span><strong>The Core Driver:</strong> Microsoft for Startups Founders Hub is the top replacement for expired Google credits. It requires zero VC funding, provides $1,000–$5,000 immediately, and unlocks $2,500 in direct OpenAI API credits, 20 GitHub Enterprise seats ($5,000/yr value), and up to $150,000 in Azure compute.</span></li>
+        <li><span><strong>The Master Key:</strong> Because C3A Labs is already an <strong>accepted NVIDIA Inception Member</strong>, you can bypass standard AWS Activate self-funded restrictions ($1k) and claim the <strong>AWS Activate Portfolio tier ($25,000 to $100,000)</strong> using your Inception Provider Org ID.</span></li>
+        <li><span><strong>Model Coverage Shift:</strong> AWS Activate credits now fully apply to <strong>Anthropic Claude 3.5 Sonnet and Cohere Command R+ on Amazon Bedrock</strong>, solving frontier reasoning model expenses without paying third-party API bills.</span></li>
+        <li><span><strong>Zero-Cost Baseline:</strong> Oracle Cloud (OCI) Always Free provides 4 ARM OCPUs, 24 GB RAM, and 10 TB monthly egress permanently for $0, ideal for persistent connector workers and background message queues.</span></li>
+      </ul>
+    </div>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 860 300" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="860" height="300" rx="12" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
+        
+        <!-- Center Target Box -->
+        <rect x="330" y="20" width="200" height="60" rx="8" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="430" y="46" font-family="IBM Plex Sans" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="middle">SarvaX.ai / KaraX.ai</text>
+        <text x="430" y="64" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)" text-anchor="middle">Bootstrapped + NVIDIA Inception</text>
+
+        <!-- Node 1: Azure -->
+        <rect x="40" y="140" width="220" height="120" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+        <text x="150" y="165" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">Microsoft Founders Hub</text>
+        <text x="150" y="185" font-family="IBM Plex Mono" font-size="11" fill="var(--accent)" text-anchor="middle">$1k → $5k → $25k → $150k</text>
+        <text x="55" y="210" font-family="IBM Plex Sans" font-size="11.5" fill="var(--ink-dim)">• $2.5k Direct OpenAI Credits</text>
+        <text x="55" y="228" font-family="IBM Plex Sans" font-size="11.5" fill="var(--ink-dim)">• Azure OpenAI (GPT-4o/o3)</text>
+        <text x="55" y="246" font-family="IBM Plex Sans" font-size="11.5" fill="var(--ink-dim)">• 20 GitHub Enterprise Seats</text>
+
+        <!-- Node 2: AWS -->
+        <rect x="320" y="140" width="220" height="120" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+        <text x="430" y="165" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">AWS Activate via Inception</text>
+        <text x="430" y="185" font-family="IBM Plex Mono" font-size="11" fill="var(--protocol)" text-anchor="middle">$25,000 – $100,000 Portfolio</text>
+        <text x="335" y="210" font-family="IBM Plex Sans" font-size="11.5" fill="var(--ink-dim)">• Amazon Bedrock Engine</text>
+        <text x="335" y="228" font-family="IBM Plex Sans" font-size="11.5" fill="var(--ink-dim)">• Anthropic Claude 3.5/3.7</text>
+        <text x="335" y="246" font-family="IBM Plex Sans" font-size="11.5" fill="var(--ink-dim)">• EC2 GPU &amp; Backend Nodes</text>
+
+        <!-- Node 3: Model & LPU Inference -->
+        <rect x="600" y="140" width="220" height="120" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+        <text x="710" y="165" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">LPU &amp; Serverless APIs</text>
+        <text x="710" y="185" font-family="IBM Plex Mono" font-size="11" fill="var(--warning)" text-anchor="middle">$15k Together + $10k Groq</text>
+        <text x="615" y="210" font-family="IBM Plex Sans" font-size="11.5" fill="var(--ink-dim)">• Real-time Tool-Calling</text>
+        <text x="615" y="228" font-family="IBM Plex Sans" font-size="11.5" fill="var(--ink-dim)">• Ultra-fast LPU Execution</text>
+        <text x="615" y="246" font-family="IBM Plex Sans" font-size="11.5" fill="var(--ink-dim)">• DeepSeek V3 / Llama 3.3</text>
+
+        <!-- Connection Lines -->
+        <path d="M 380 80 L 150 140" stroke="var(--border)" stroke-width="2" fill="none"/>
+        <path d="M 430 80 L 430 140" stroke="var(--border)" stroke-width="2" fill="none"/>
+        <path d="M 480 80 L 710 140" stroke="var(--border)" stroke-width="2" fill="none"/>
+      </svg>
+      <figcaption>Figure 1: Non-dilutive multi-cloud infrastructure orchestration tailored for SarvaX.ai's multi-agent workload.</figcaption>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="hyperscalers">
+    <p class="kicker">02 — Hyperscaler Master Matrix</p>
+    <h2>Core Hyperscaler Startup Credit Programs (2026 Verified)</h2>
+    <p class="section-intro">Detailed breakdown of the four major cloud providers evaluating zero-funding eligibility, credit progression ceilings, and AI model compatibility.</p>
+
+    <div class="tools-wrap">
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th>Provider &amp; Program</th>
+            <th>Initial Unfunded Tier</th>
+            <th>Maximum Runway</th>
+            <th>Key AI Models &amp; Hardware</th>
+            <th>Zero-VC Approval Path</th>
+            <th>Portal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Microsoft Founders Hub</strong></td>
+            <td><span class="badge badge-open">$1,000 – $5,000</span></td>
+            <td>Up to <strong>$150,000</strong></td>
+            <td>$2.5k direct OpenAI API + Azure OpenAI (GPT-4o, o-series)</td>
+            <td>Sign up with personal MSA; submit company domain and founder LinkedIn.</td>
+            <td><a class="pill-link" href="https://www.microsoft.com/en-us/startups" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>AWS Activate</strong></td>
+            <td><span class="badge badge-warning">$1,000 (Founders)</span></td>
+            <td>Up to <strong>$100,000 (Portfolio)</strong></td>
+            <td>Amazon Bedrock (Claude 3.5 Sonnet, Cohere, Llama 3.3)</td>
+            <td>Bypass Founders tier using NVIDIA Inception Provider Org ID.</td>
+            <td><a class="pill-link" href="https://aws.amazon.com/startups/credits/" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>Oracle Cloud (OCI)</strong></td>
+            <td><span class="badge badge-open">Always Free + $500</span></td>
+            <td><strong>70% Discount</strong> (2 yrs)</td>
+            <td>4 ARM OCPUs, 24GB RAM, 10TB egress free; OCI GenAI service</td>
+            <td>Upgrade to Pay-As-You-Go; submit GPU limit request for workloads.</td>
+            <td><a class="pill-link" href="https://www.oracle.com/cloud/oracle-for-startups/" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>IBM Cloud for Startups</strong></td>
+            <td><span class="badge badge-protocol">$12,000 ($1k/mo)</span></td>
+            <td>Up to <strong>$120,000</strong></td>
+            <td>watsonx.ai + watsonx.governance (Audit trail compliance)</td>
+            <td>Builder tier requires zero VC backing. Pitch enterprise governance.</td>
+            <td><a class="pill-link" href="https://orders.cloud.ibm.com/IBMGEP-application/" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>Crucial Microsoft Founders Hub Operational Note:</strong> Sign in with a personal Microsoft Account (Outlook/Live/Hotmail). Attempting to initiate sign-up with an Entra ID (Work/School tenant email) creates directory permission loops. Corporate domain verification is performed in Step 2.
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="nvidia-inception">
+    <p class="kicker">03 — Inception Member Perks</p>
+    <h2>Leveraging C3A Labs' Active NVIDIA Inception Status</h2>
+    <p class="section-intro">As an existing NVIDIA Inception member, SarvaX has access to non-dilutive benefits that bypass standard investor qualification hurdles.</p>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>AWS Activate Portfolio</h4>
+        <div class="role">Direct Partner Org ID</div>
+        <ul>
+          <li><span class="label">Allocation:</span> <span class="val">$25,000 – $100,000</span></li>
+          <li><span class="label">Bedrock Models:</span> <span class="val">Claude 3.5, Cohere</span></li>
+          <li><span class="label">VC Requirement:</span> <span class="val">Waived</span></li>
+        </ul>
+        <div class="card-action">
+          Log into NVIDIA Inception Portal &rarr; Cloud Benefits &rarr; Retrieve AWS Provider Org ID.
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <h4>Lambda Labs GPU</h4>
+        <div class="role">Inception-Exclusive Voucher</div>
+        <ul>
+          <li><span class="label">Allocation:</span> <span class="val">$7,500 Cloud Credits</span></li>
+          <li><span class="label">Hardware:</span> <span class="val">A100 / H100 On-Demand</span></li>
+          <li><span class="label">Availability:</span> <span class="val">Catalog Exclusive</span></li>
+        </ul>
+        <div class="card-action">
+          Claim via Member Benefits catalog (Lambda has no public startup form).
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <h4>Nebius AI Cloud</h4>
+        <div class="role">Inception Fast-Track</div>
+        <ul>
+          <li><span class="label">Allocation:</span> <span class="val">Up to $150,000</span></li>
+          <li><span class="label">Hardware:</span> <span class="val">High-Density H100/H200</span></li>
+          <li><span class="label">Application:</span> <span class="val">Select Inception Track</span></li>
+        </ul>
+        <div class="card-action">
+          Apply on <a href="https://nebius.com/startups" target="_blank" rel="noopener">nebius.com/startups</a> selecting Inception dropdown.
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <h4>NVIDIA NIM Production</h4>
+        <div class="role">Microservices License</div>
+        <ul>
+          <li><span class="label">Prototyping:</span> <span class="val">1,000 Free Calls / Model</span></li>
+          <li><span class="label">Self-Hosted:</span> <span class="val">NVAIE Evaluation Key</span></li>
+          <li><span class="label">Inference Stack:</span> <span class="val">TensorRT-LLM / vLLM</span></li>
+        </ul>
+        <div class="card-action">
+          Access immediately at <a href="https://build.nvidia.com" target="_blank" rel="noopener">build.nvidia.com</a>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="ai-models">
+    <p class="kicker">04 — Direct AI Model &amp; LPU Inference Programs</p>
+    <h2>Specialized AI Model &amp; Inference Provider Grants</h2>
+    <p class="section-intro">For low-latency agent tool routing, document extraction, and reasoning workflows, several model providers offer direct credits to bootstrapped companies.</p>
+
+    <div class="tools-wrap">
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>Credit Value</th>
+            <th>Model Capabilities</th>
+            <th>Application Rules &amp; Unfunded Instructions</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Together AI</strong></td>
+            <td><strong>$15,000 – $50,000</strong></td>
+            <td>DeepSeek V3/R1, Llama 3.3, Serverless &amp; Dedicated Endpoints</td>
+            <td>In intake form, select funding &lt;$5M. Under VCs, write: <em>"Bootstrapped / NVIDIA Inception Member"</em>.</td>
+            <td><a class="pill-link" href="https://www.together.ai/startup-accelerator" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>Groq for Startups</strong></td>
+            <td><strong>$10,000</strong></td>
+            <td>Ultra-fast LPU inference (Llama 3.3 70B, Whisper, tool use)</td>
+            <td>Zero funding required. <strong>Important constraint:</strong> Credits expire in 90 days. Apply when ready to burn volume.</td>
+            <td><a class="pill-link" href="https://groq.com/apply-to-groq-for-startups" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>Fireworks AI</strong></td>
+            <td><strong>$5,000 – $10,000</strong></td>
+            <td>Function calling, compound AI systems, structured JSON output</td>
+            <td>Form explicitly has: <em>"Are you VC backed? No"</em>. Enter corporate email to qualify.</td>
+            <td><a class="pill-link" href="https://fireworks.ai/startup-program" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>Anthropic</strong></td>
+            <td><strong>$1,000 – $25,000</strong></td>
+            <td>Direct Claude Console API (Claude 3.5 Sonnet / Haiku)</td>
+            <td>Direct Claude credits cannot be used on Bedrock. If running on AWS, use Activate Bedrock credits instead.</td>
+            <td><a class="pill-link" href="https://claude.com/form/startups-application" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>OVHcloud</strong></td>
+            <td><strong>€10,000</strong></td>
+            <td>Public cloud, Managed K8s, A100/L4 GPU instances, 0 egress</td>
+            <td>Start Tier requires zero VC. Turnaround within 7 business days.</td>
+            <td><a class="pill-link" href="https://startup.ovhcloud.com/en/" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section id="ecosystem-hacks">
+    <p class="kicker">05 — Non-VC Backdoors</p>
+    <h2>Ecosystem Shortcuts for Extra AWS &amp; Azure Credits</h2>
+    <p class="section-intro">Non-dilutive communities and aggregators that issue verified AWS Activate Provider Organization IDs without venture funding.</p>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>F6S Community Deal</h4>
+        <div class="role">Free Provider Code</div>
+        <ul>
+          <li><span class="label">Cost:</span> <span class="val">$0 (Free)</span></li>
+          <li><span class="label">AWS Value:</span> <span class="val">$5,000</span></li>
+          <li><span class="label">Approval Rate:</span> <span class="val">80%</span></li>
+        </ul>
+        <div class="card-action">
+          Register SarvaX company profile on <a href="https://www.f6s.com/company-deals/amazonwebservices/5k-in-aws-web-hosting-7962" target="_blank" rel="noopener">f6s.com</a> and claim via F6S Advisors.
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <h4>YC Startup School</h4>
+        <div class="role">Automated Perk Claim</div>
+        <ul>
+          <li><span class="label">Cost:</span> <span class="val">$0 (Free)</span></li>
+          <li><span class="label">AWS Value:</span> <span class="val">$2,500</span></li>
+          <li><span class="label">Approval Rate:</span> <span class="val">100%</span></li>
+        </ul>
+        <div class="card-action">
+          Sign up at <a href="https://www.startupschool.org" target="_blank" rel="noopener">startupschool.org</a>, complete 1 curriculum module, unlock perk in dashboard.
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <h4>NachoNacho Fallback</h4>
+        <div class="role">Low-Cost Provider Code</div>
+        <ul>
+          <li><span class="label">Cost:</span> <span class="val">$5 / month</span></li>
+          <li><span class="label">AWS Value:</span> <span class="val">$5,000</span></li>
+          <li><span class="label">Approval Rate:</span> <span class="val">90%</span></li>
+        </ul>
+        <div class="card-action">
+          Cheapest verified paid route if free codes are exhausted.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warning">
+      <strong>Deprecated Program Alert:</strong> Product Hunt Founder Club has been permanently shut down. Any documentation referencing Product Hunt for $5,000 AWS Activate credits is obsolete.
+    </div>
+  </section>
+
+  <!-- Section 6 -->
+  <section id="infra-tooling">
+    <p class="kicker">06 — Vector DBs &amp; Tooling</p>
+    <h2>Supporting AI Infrastructure &amp; Observability Credits</h2>
+    <p class="section-intro">Bootstrapped programs covering vector databases, knowledge graphs, and LLM tracing essential for SarvaX's financial agent memory and audit compliance.</p>
+
+    <div class="tools-wrap">
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Program Value</th>
+            <th>Architectural Role in SarvaX</th>
+            <th>Eligibility</th>
+            <th>Direct Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Neo4j for Startups</strong></td>
+            <td><strong>Up to $16,000</strong> AuraDB</td>
+            <td>GraphRAG for entity relationships and multi-advisor compliance graphs</td>
+            <td>Pre-seed / Bootstrapped (&lt;$5M funding), live domain, proprietary IP</td>
+            <td><a class="pill-link" href="https://neo4j.com/startup-program/apply/" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>MongoDB for Startups</strong></td>
+            <td><strong>$5,000</strong> Atlas Credits</td>
+            <td>Document storage, Atlas Vector Search, Voyage AI embeddings</td>
+            <td>Bootstrapped or early stage; fast 3-day turnaround</td>
+            <td><a class="pill-link" href="https://www.mongodb.com/startups" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>LangSmith (LangChain)</strong></td>
+            <td><strong>$10,000</strong> Credits</td>
+            <td>Multi-agent execution traces, eval runs, secure sandbox execution</td>
+            <td>Early-stage AI agent builders</td>
+            <td><a class="pill-link" href="https://www.langchain.com/startups" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+          <tr>
+            <td><strong>Langfuse</strong></td>
+            <td><strong>50% Off / Free OSS</strong></td>
+            <td>Open-source LLM observability and token audit logs</td>
+            <td>100% free forever self-hosted via Docker, or 50% cloud discount</td>
+            <td><a class="pill-link" href="https://langfuse.com/startups" target="_blank" rel="noopener">Apply</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 7 -->
+  <section id="india-compute">
+    <p class="kicker">07 — IndiaAI Government Cluster</p>
+    <h2>IndiaAI Mission Compute Portal (MeitY Subsidized GPUs)</h2>
+    <p class="section-intro">Direct government compute scheme providing 40% to 100% subsidies on NVIDIA H100 and L40S GPU instances for Indian AI companies.</p>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>Compute Cluster Scale</h4>
+        <div class="role">MeitY ₹10,372 Cr Initiative</div>
+        <ul>
+          <li><span class="label">Empanelled GPUs:</span> <span class="val">18,000+ to 25,000</span></li>
+          <li><span class="label">GPU Types:</span> <span class="val">H100 SXM, L40S, A100</span></li>
+          <li><span class="label">Cloud Partners:</span> <span class="val">E2E, Yotta, Tata</span></li>
+        </ul>
+      </div>
+
+      <div class="schema-card">
+        <h4>Subsidy Structure</h4>
+        <div class="role">Direct Invoice Vouchers</div>
+        <ul>
+          <li><span class="label">General AI:</span> <span class="val">Up to 40% Subsidy</span></li>
+          <li><span class="label">Model Training:</span> <span class="val">Up to 100% Subsidy</span></li>
+          <li><span class="label">Allocation:</span> <span class="val">Direct CSP Credit</span></li>
+        </ul>
+      </div>
+
+      <div class="schema-card">
+        <h4>Eligibility Prerequisite</h4>
+        <div class="role">DPIIT Recognition</div>
+        <ul>
+          <li><span class="label">Requirement:</span> <span class="val">DPIIT Certificate</span></li>
+          <li><span class="label">Portal Login:</span> <span class="val">Jan Parichay / DigiLocker</span></li>
+          <li><span class="label">Cost to Apply:</span> <span class="val">₹0</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout protocol">
+      <strong>Application Route:</strong> Access the portal at <a href="https://compute.indiaai.gov.in/" target="_blank" rel="noopener">compute.indiaai.gov.in</a>. For requests under 5,000 GPU hours, evaluations follow an accelerated approval track through the automated allocation portal.
+    </div>
+  </section>
+
+  <!-- Section 8 -->
+  <section id="action-plan">
+    <p class="kicker">08 — Execution Plan</p>
+    <h2>48-Hour Implementation Sequence</h2>
+    <p class="section-intro">Immediate operational roadmap to transition off expired Google Cloud credits into active production runway.</p>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Apply for Microsoft Founders Hub ($1k &rarr; $5k Azure + $2.5k OpenAI)</h4>
+          <p>Sign up via <a href="https://www.microsoft.com/en-us/startups" target="_blank" rel="noopener">microsoft.com/startups</a> using a personal Microsoft Account. Fill out SarvaX.ai company details, link founder LinkedIn, and claim the $2,500 OpenAI API code and 20 GitHub Enterprise seats upon approval.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Claim AWS Activate Portfolio ($25,000) via Inception</h4>
+          <p>Log into your NVIDIA Inception member dashboard, navigate to Cloud Benefits, retrieve your unique AWS Activate Provider Org ID, and apply on <a href="https://aws.amazon.com/startups" target="_blank" rel="noopener">aws.amazon.com/startups</a> to run Anthropic Claude on Bedrock.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Provision OCI Always Free Compute Infrastructure</h4>
+          <p>Spin up the 4-core Ampere A1 (24 GB RAM) VM on Oracle Cloud. Migrate non-LLM worker processes, Celery job queues, Redis, and 1,000+ connector sync tasks to run permanently at $0 cost with 10 TB free egress.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Submit Together AI &amp; Fireworks AI Applications</h4>
+          <p>Apply for Together AI ($15k) selecting the &lt;$5M tier and stating <em>"Bootstrapped / NVIDIA Inception"</em>, and Fireworks AI ($5k) selecting <em>"Not VC backed"</em> for secondary high-throughput inference.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Activate Vector &amp; Graph Tooling Stack</h4>
+          <p>Submit applications for MongoDB for Startups ($5,000 Atlas credits) and Neo4j for Startups ($16,000 AuraDB credits) to power SarvaX's financial knowledge graph and RAG pipelines.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
