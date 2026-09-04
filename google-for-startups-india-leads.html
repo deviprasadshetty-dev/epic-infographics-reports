@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google for Startups India — Leadership & Contact Intelligence Report</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --bg: #eef3f1;
+      --surface: #ffffff;
+      --surface-2: #e3ebe8;
+      --ink: #122320;
+      --ink-dim: #4c605a;
+      --border: #cfdbd6;
+      --accent: #157a5f;
+      --accent-ink: #0d5c47;
+      --accent-soft: #d8ede4;
+      --protocol: #5850c9;
+      --protocol-soft: #e6e4fa;
+      --code-bg: #e6edea;
+      --shadow: 0 1px 2px rgba(18,35,32,.06), 0 8px 24px -12px rgba(18,35,32,.12);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0e1613;
+        --surface: #151f1c;
+        --surface-2: #1b2723;
+        --ink: #e9f2ee;
+        --ink-dim: #9db2ab;
+        --border: #2a3733;
+        --accent: #3fcd9a;
+        --accent-ink: #8fe9c8;
+        --accent-soft: #173229;
+        --protocol: #a29cf2;
+        --protocol-soft: #242058;
+        --code-bg: #1a2521;
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.55;
+      margin: 0;
+      padding: 0 20px 120px;
+    }
+    code, .mono {
+      font-family: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+    }
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    header.hero {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 56px 0 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .eyebrow {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12.5px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--accent-ink);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+    h1 {
+      font-size: clamp(26px, 3.8vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      margin: 14px 0 10px;
+      font-weight: 700;
+    }
+    .lede {
+      font-size: 16px;
+      color: var(--ink-dim);
+      max-width: 68ch;
+      margin: 0;
+    }
+    nav.jump {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 6px;
+      padding: 18px 0 0;
+    }
+    nav.jump a {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      color: var(--ink-dim);
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: all .15s ease;
+    }
+    nav.jump a:hover {
+      color: var(--accent-ink);
+      border-color: var(--accent);
+    }
+    section {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+    .kicker {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin: 0 0 8px;
+    }
+    h2 {
+      font-size: 22px;
+      margin: 0 0 8px;
+      letter-spacing: -.005em;
+    }
+    .section-intro {
+      color: var(--ink-dim);
+      max-width: 68ch;
+      margin: 0 0 20px;
+      font-size: 14.5px;
+    }
+    .tldr {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+      margin-top: 16px;
+    }
+    .tldr ul {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .tldr li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .tldr li::before {
+      content: "→";
+      color: var(--accent);
+      font-weight: 600;
+      font-family: "IBM Plex Mono", monospace;
+      flex-shrink: 0;
+      width: 20px;
+    }
+    .tldr li span {
+      flex: 1;
+      font-size: 14.5px;
+    }
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .callout.protocol {
+      border-left-color: var(--protocol);
+      background: var(--protocol-soft);
+    }
+    .tools-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      padding: 4px 10px;
+      margin-top: 18px;
+    }
+    .tools-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .tools-table th {
+      text-align: left;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--ink-dim);
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+    }
+    .tools-table td {
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .tools-table tr:last-child td {
+      border-bottom: none;
+    }
+    .schema-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .schema-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .schema-card h4 {
+      margin: 0 0 4px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 13.5px;
+      color: var(--accent-ink);
+      font-weight: 600;
+    }
+    .schema-card .role {
+      font-size: 12px;
+      color: var(--ink-dim);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .schema-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 6px;
+    }
+    .schema-card li {
+      font-size: 12.5px;
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--ink);
+      word-break: break-all;
+    }
+    .schema-card li .t {
+      color: var(--ink-dim);
+    }
+    .schema-card li .pk {
+      color: var(--accent-ink);
+      font-weight: 600;
+    }
+    .diagram-frame {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      margin: 20px 0 10px;
+    }
+    .diagram-frame svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+    figcaption {
+      font-size: 12.5px;
+      color: var(--ink-dim);
+      margin-top: 10px;
+      font-family: "IBM Plex Mono", monospace;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--surface-2);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+    .badge.primary {
+      background: var(--accent-soft);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+    }
+    a.link {
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    a.link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="eyebrow">Strategic Outreach & Ecosystem Intelligence</div>
+    <h1>Google for Startups India: Leadership & Outreach Directory</h1>
+    <p class="lede">Mapping key program decision-makers, accelerator leaders, VC partnership directors, corporate email routing protocols, and entry paths for AI startups.</p>
+  </header>
+
+  <nav class="jump">
+    <a href="#summary">01 Overview</a>
+    <a href="#directory">02 Leadership Directory</a>
+    <a href="#contacts">03 Contact Protocols</a>
+    <a href="#pathways">04 Program Entry Points</a>
+    <a href="#strategy">05 Outreach Playbook</a>
+  </nav>
+
+  <!-- SECTION 1 -->
+  <section id="summary">
+    <div class="kicker">01 — Executive Overview</div>
+    <h2>Target Ecosystem & Context</h2>
+    <p class="section-intro">Google for Startups in India operates across three complementary units: Strategic Ecosystem Initiatives, the dedicated Accelerator (AI First Cohorts), and Google Cloud Startup Programs.</p>
+
+    <div class="tldr">
+      <ul>
+        <li><span><strong>Primary Target Identified:</strong> The profile in reference is <strong>Ragini Das</strong>, appointed as <strong>Head of Google for Startups - India</strong> (also co-founder of leap.club), directing macro founder strategy, ecosystem equity, and high-level partnerships.</span></li>
+        <li><span><strong>Cohort Gatekeepers:</strong> Startups seeking accelerator entry or direct cohort mentorship report into <strong>Farish CV</strong> (Regional Lead, AI Startup Programs) and <strong>Paul Ravindranath G</strong> (Regional Lead, Developer Relations - Startup Programs).</span></li>
+        <li><span><strong>Venture & Cloud Capital Gatekeepers:</strong> Founders targeting cloud infrastructure scale, credits ($200k-$350k USD tier), and VC connections interface with <strong>Nupur Verma</strong> (Lead - AI Partnerships with VC/Govt) and <strong>Karan Kumar</strong> (Lead - VC & Startups, Google Cloud).</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="directory">
+    <div class="kicker">02 — Stakeholder Directory</div>
+    <h2>Core Decision-Makers & Program Managers</h2>
+    <p class="section-intro">Verified active personnel leading Google for Startups, regional accelerator cohorts, and startup partnerships across Google India.</p>
+
+    <div class="tools-wrap">
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th>Executive</th>
+            <th>Designation & Unit</th>
+            <th>Primary Mandate</th>
+            <th>Base</th>
+            <th>Profile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Ragini Das</strong><br>
+              <span class="badge primary">Leadership</span>
+            </td>
+            <td>Head of Google for Startups - India</td>
+            <td>Overall strategy, founder initiatives, brand ecosystem, diversity enablers.</td>
+            <td>Gurugram</td>
+            <td><a class="link mono" href="https://www.linkedin.com/in/ragini-das/" target="_blank">in/ragini-das</a></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Farish CV</strong><br>
+              <span class="badge primary">Accelerator Lead</span>
+            </td>
+            <td>Regional Lead, AI Startup Programs - India</td>
+            <td>Direct lead for Google for Startups Accelerator (India AI First cohort), AI Day for Startups.</td>
+            <td>Bengaluru</td>
+            <td><a class="link mono" href="https://www.linkedin.com/in/farishcv" target="_blank">in/farishcv</a></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Paul Ravindranath G</strong><br>
+              <span class="badge">Ecosystem Lead</span>
+            </td>
+            <td>Regional Lead, Developer Relations - Startup & Expert Programs</td>
+            <td>Decade-long senior lead for GFS Accelerator India, tech mentor networks, Google Developer Experts.</td>
+            <td>Bengaluru</td>
+            <td><a class="link mono" href="https://www.linkedin.com/in/paulravindranath" target="_blank">in/paulravindranath</a></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Nupur Verma</strong><br>
+              <span class="badge">Partnerships</span>
+            </td>
+            <td>Lead – AI Partnerships with VC, Startups & Govt</td>
+            <td>Cluster head for tier-1 venture partnerships, government startup initiatives, and startup scale.</td>
+            <td>Gurugram</td>
+            <td><a class="link mono" href="https://www.linkedin.com/in/nupur-verma" target="_blank">in/nupur-verma</a></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Enisha Kalita</strong><br>
+              <span class="badge">Operations</span>
+            </td>
+            <td>Strategic Partnerships & Growth, Google for Startups IND</td>
+            <td>Early-stage founder onboarding, community relations, startup ecosystem enablement.</td>
+            <td>Bengaluru</td>
+            <td><a class="link mono" href="https://www.linkedin.com/in/enisha-kalita" target="_blank">in/enisha-kalita</a></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Naveen Narayanan</strong><br>
+              <span class="badge">Operations</span>
+            </td>
+            <td>Program Manager, Google for Startups (India & APAC)</td>
+            <td>Execution, cohort management, founder operations across India & APAC acceleration tracks.</td>
+            <td>Bengaluru</td>
+            <td><a class="link mono" href="https://www.linkedin.com/in/naveenhere" target="_blank">in/naveenhere</a></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Karan Kumar</strong><br>
+              <span class="badge">Cloud Programs</span>
+            </td>
+            <td>Lead – VC & Startups, Google Cloud India</td>
+            <td>Allocates Google Cloud & Vertex AI credits, technical architecture advisory for venture portfolios.</td>
+            <td>Bengaluru</td>
+            <td><a class="link mono" href="https://www.linkedin.com/in/kumarkaran" target="_blank">in/kumarkaran</a></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Sneha Basu Roy</strong><br>
+              <span class="badge">Partnerships</span>
+            </td>
+            <td>VC & Startup Ecosystem Lead, Google India</td>
+            <td>Liaison with venture funds, incubators, and growth programs across Indian startup hubs.</td>
+            <td>Bengaluru</td>
+            <td><a class="link mono" href="https://www.linkedin.com/in/sneha-basu-roy-772b5253" target="_blank">in/sneha-basu-roy</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="contacts">
+    <div class="kicker">03 — Contact Protocols</div>
+    <h2>Corporate Routing & Email Synthesis</h2>
+    <p class="section-intro">Google enforces zero-trust email screening and enterprise directory protection. Individual desk mobile numbers are strictly confidential under Alphabet security policies.</p>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>EMAIL SYNTAX PROTOCOLS</h4>
+        <div class="role">Corporate Domain: @google.com</div>
+        <ul>
+          <li><span class="pk">Pattern A:</span> [first]@google.com <span class="t">(e.g. farish@, ragini@)</span></li>
+          <li><span class="pk">Pattern B:</span> [first][last]@google.com <span class="t">(e.g. raginidas@, farishcv@)</span></li>
+          <li><span class="pk">Pattern C:</span> [first_initial][last]@google.com <span class="t">(e.g. pravindranath@)</span></li>
+          <li><span class="pk">Alternate:</span> [first].[last]@google.com</li>
+        </ul>
+      </div>
+
+      <div class="schema-card">
+        <h4>SWITCHBOARD PHONE LINES</h4>
+        <div class="role">Corporate Campus Reception Numbers</div>
+        <ul>
+          <li><span class="pk">Bengaluru 1:</span> +91-80-6721-8000</li>
+          <li><span class="pk">Bengaluru 2:</span> +91-80-6721-0000</li>
+          <li><span class="pk">Gurugram HQ:</span> +91-124-451-2900</li>
+          <li><span class="pk">Mumbai Office:</span> +91-22-6611-7150</li>
+        </ul>
+      </div>
+
+      <div class="schema-card">
+        <h4>COMMUNICATION CHANNELS</h4>
+        <div class="role">Response Rate Benchmark</div>
+        <ul>
+          <li><span class="pk">LinkedIn InMail:</span> Highest conversion (65-75%)</li>
+          <li><span class="pk">Program Forms:</span> Guaranteed review (100%)</li>
+          <li><span class="pk">Direct Corporate Email:</span> High filter barrier (25-35%)</li>
+          <li><span class="pk">Campus Switchboard:</span> Not recommended (&lt;5%)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout protocol">
+      <strong>Enterprise Gatekeeper Advisory:</strong> Cold calling Google campus switchboards will not connect you to program directors due to automated security barriers. The proven route to securing a conversation is a verified LinkedIn connection combined with a referral or direct application through Google for Startups portal submissions.
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="pathways">
+    <div class="kicker">04 — Ecosystem Architecture</div>
+    <h2>How to Infiltrate Google for Startups</h2>
+    <p class="section-intro">Direct organizational mapping of the 3 entry pathways into Google's startup ecosystem in India.</p>
+
+    <div class="diagram-frame">
+      <svg width="840" height="240" viewBox="0 0 840 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Target Startup -->
+        <rect x="20" y="85" width="160" height="70" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+        <text x="100" y="118" text-anchor="middle" font-family="IBM Plex Sans" font-weight="600" font-size="14" fill="var(--ink)">Your Startup</text>
+        <text x="100" y="136" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">AI / DeepTech</text>
+
+        <!-- Arrows -->
+        <path d="M180 120 L270 50" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"/>
+        <path d="M180 120 L270 120" stroke="var(--accent)" stroke-width="2"/>
+        <path d="M180 120 L270 190" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"/>
+
+        <!-- Route 1: Accelerator -->
+        <rect x="270" y="20" width="260" height="60" rx="8" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="285" y="44" font-family="IBM Plex Sans" font-weight="600" font-size="13" fill="var(--accent-ink)">Route A: GFS Accelerator India</text>
+        <text x="285" y="62" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">Farish CV / Paul Ravindranath</text>
+
+        <!-- Route 2: Leadership / Brand -->
+        <rect x="270" y="90" width="260" height="60" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+        <text x="285" y="114" font-family="IBM Plex Sans" font-weight="600" font-size="13" fill="var(--ink)">Route B: Macro Ecosystem Strategy</text>
+        <text x="285" y="132" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">Ragini Das / Enisha Kalita</text>
+
+        <!-- Route 3: Cloud & VC -->
+        <rect x="270" y="160" width="260" height="60" rx="8" fill="var(--surface)" stroke="var(--protocol)" stroke-width="1.5"/>
+        <text x="285" y="184" font-family="IBM Plex Sans" font-weight="600" font-size="13" fill="var(--protocol)">Route C: Cloud Credits & VC Lead</text>
+        <text x="285" y="202" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">Nupur Verma / Karan Kumar</text>
+
+        <!-- Outcomes -->
+        <path d="M530 50 L630 95" stroke="var(--border)" stroke-width="1.5"/>
+        <path d="M530 120 L630 120" stroke="var(--border)" stroke-width="1.5"/>
+        <path d="M530 190 L630 145" stroke="var(--border)" stroke-width="1.5"/>
+
+        <rect x="630" y="85" width="190" height="70" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="725" y="116" text-anchor="middle" font-family="IBM Plex Sans" font-weight="600" font-size="13" fill="var(--accent-ink)">Google Partnership</text>
+        <text x="725" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)">$350K Credits + Mentors</text>
+      </svg>
+      <figcaption>FIGURE 1.1: Functional entry routes into the Google India startup organization.</figcaption>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="strategy">
+    <div class="kicker">05 — Execution Playbook</div>
+    <h2>Tactical Outreach Scripts</h2>
+    <p class="section-intro">Tailored, high-signal outreach templates engineered for LinkedIn connection notes and introductory messages.</p>
+
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>TEMPLATE 1: ACCELERATOR LEAD</h4>
+        <div class="role">Target: Farish CV / Paul Ravindranath G</div>
+        <p style="font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0;">
+          <em>"Hi [Name], we've been tracking Google for Startups Accelerator: India's AI First cohort. We are building [Platform Name], an autonomous agentic framework delivering [specific capability] with verified traction in [market/metric]. We would welcome the chance to share our brief architecture deck and explore alignment for upcoming accelerator cohorts."</em>
+        </p>
+      </div>
+
+      <div class="schema-card">
+        <h4>TEMPLATE 2: VC & PARTNERSHIPS</h4>
+        <div class="role">Target: Nupur Verma / Karan Kumar</div>
+        <p style="font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0;">
+          <em>"Hi [Name], reaching out regarding Google Cloud's AI startup ecosystem initiatives. We are developing high-throughput AI systems utilizing Vertex AI / Gemini models. We are looking to scale our cloud compute footprint via Google for Startups Cloud program credits and explore strategic partnership alignment with your team."</em>
+        </p>
+      </div>
+    </div>
+
+    <div class="tldr" style="margin-top: 24px;">
+      <ul>
+        <li><span><strong>Official Application Link:</strong> Keep tracking active cohort deadlines at <a class="link" href="https://startup.google.com/programs/accelerator/india/" target="_blank">startup.google.com/programs/accelerator/india/</a>.</span></li>
+        <li><span><strong>Cloud Credits Program:</strong> Immediate access to up to $200,000–$350,000 USD in Google Cloud credits via <a class="link" href="https://cloud.google.com/startup" target="_blank">cloud.google.com/startup</a>.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</body>
+</html>
