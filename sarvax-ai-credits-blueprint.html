@@ -218,6 +218,10 @@
       border-left-color: var(--warning);
       background: var(--warning-soft);
     }
+    .callout.danger {
+      border-left-color: var(--danger);
+      background: var(--danger-soft);
+    }
     .schema-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -367,6 +371,11 @@
       color: var(--warning);
       border: 1px solid var(--warning);
     }
+    .badge-danger {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
     .pill-link {
       font-family: "IBM Plex Mono", monospace;
       font-size: 12px;
@@ -422,40 +431,41 @@
 
   <header class="hero">
     <div class="eyebrow">Institutional Strategic Directory // AI Infrastructure</div>
-    <h1>Global AI Startup Credits &amp; Compute Directory</h1>
-    <p class="lede">Comprehensive, exhaustive directory of 25+ non-dilutive, zero-equity AI credit programs, GPU clusters, hardware sponsorships, sovereign clouds, and developer tooling for SarvaX.ai and KaraX.ai following Google Cloud credit expiration.</p>
+    <h1>Global AI Startup Credits, Government Grants &amp; Compute Directory</h1>
+    <p class="lede">Comprehensive reference guide covering 25+ non-dilutive compute programs, silicon sponsorships, state and central government grant schemes (IndiaAI, Karnataka K-tech, Telangana T-AIM/T-Hub), and the operational forensics of securing a Google Cloud "Second Bite" under the same founder.</p>
     <div class="meta-bar">
       <div class="meta-item">Target Entity: <strong>C3A Labs (SarvaX.ai / KaraX.ai)</strong></div>
       <div class="meta-item">Funding Status: <strong>Bootstrapped / Unfunded ($0 VC)</strong></div>
       <div class="meta-item">Active Affiliation: <strong>NVIDIA Inception Member</strong></div>
-      <div class="meta-item">Jurisdiction: <strong>Karnataka, India (DPIIT Eligible)</strong></div>
+      <div class="meta-item">Jurisdiction Focus: <strong>Karnataka &amp; Telangana, India</strong></div>
     </div>
   </header>
 
   <nav class="jump">
-    <a href="#summary">01 Executive Summary</a>
+    <a href="#summary">01 Strategic Overview</a>
     <a href="#hyperscalers">02 Hyperscalers</a>
-    <a href="#hardware-gpu">03 Specialized GPU Clouds</a>
-    <a href="#inference-apis">04 LPU &amp; Model APIs</a>
+    <a href="#hardware-gpu">03 GPU &amp; Silicon Clouds</a>
+    <a href="#inference-apis">04 Model &amp; LPU APIs</a>
     <a href="#data-tooling">05 Data &amp; Observability</a>
-    <a href="#indian-grants">06 India DeepTech Grants</a>
-    <a href="#second-bite">07 Google "Second Bite"</a>
-    <a href="#action-plan">08 Execution Plan</a>
+    <a href="#central-gov">06 Central Gov Schemes</a>
+    <a href="#state-grants">07 Karnataka &amp; Telangana</a>
+    <a href="#second-bite">08 Google "Second Bite"</a>
+    <a href="#action-plan">09 Execution Roadmap</a>
   </nav>
 
   <!-- Section 1 -->
   <section id="summary">
     <p class="kicker">01 — Strategic Overview</p>
-    <h2>Over $250,000+ in Non-Dilutive AI Runway Without VC Funding</h2>
-    <p class="section-intro">Startups without outside funding are often mistakenly told that cloud credits require institutional VC backing. In reality, a massive parallel credit economy exists through hardware sponsorships, zero-funding tracks, and regional deep-tech allocations.</p>
+    <h2>Non-Dilutive Infrastructure Runway for Bootstrapped Startups</h2>
+    <p class="section-intro">Startups without venture funding are frequently misinformed that high-tier compute credits require investor term sheets. In reality, a parallel credit ecosystem exists through silicon accelerators, sovereign AI portals, zero-funding tracks, and state innovation policies.</p>
 
     <div class="tldr">
       <ul>
-        <li><span><strong>Tier-1 Hyperscaler Replacement:</strong> Microsoft Founders Hub ($1k–$150k Azure + $2,500 OpenAI API) has zero investor requirements. Paired with AWS Activate ($25k–$100k) via your active <strong>NVIDIA Inception membership</strong>, it completely replaces expired Google Cloud credits and covers Anthropic Claude 3.5 Sonnet on Amazon Bedrock.</span></li>
-        <li><span><strong>Direct Hardware Programs (100% Free &amp; Equity-Free):</strong> Intel Liftoff grants direct access to <strong>Intel Gaudi 2 / Gaudi 3</strong> AI accelerator clusters on the Intel Tiber AI Cloud. AMD's Developer Cloud provides free <strong>MI300X 192GB GPUs</strong> under its 100,000-hour India AI initiative.</span></li>
-        <li><span><strong>Developer Stack Grants:</strong> PostHog offers <strong>$50,000 in credits</strong> (100% open to bootstrapped teams) covering full LLM observability, agent traces, and user analytics. Neo4j ($16k AuraDB) and Supabase (6 mos Team Plan) handle graph memory and pgvector.</span></li>
-        <li><span><strong>Indian Sovereign Grants &amp; Clouds:</strong> Karnataka K-tech Elevate offers up to <strong>₹50 Lakhs (~$60,000) non-dilutive cash grant</strong>, MeitY's IndiaAI Mission portal subsidizes up to 100% of H100 GPU costs, and domestic sovereign clouds E2E Networks ($5k) &amp; Yotta Rudra ($35k–$100k) provide local infrastructure.</span></li>
-        <li><span><strong>The Google "Second Bite":</strong> An architectural blueprint allows SarvaX AI to legally qualify for a brand-new <strong>$200,000–$350,000 Google Cloud AI tier</strong> via entity and domain segregation.</span></li>
+        <li><span><strong>The Hyperscaler Pivot:</strong> Microsoft Founders Hub ($1k–$150k Azure + $2,500 direct OpenAI API) has zero VC requirements. Paired with AWS Activate ($25k–$100k) unlocked via your active <strong>NVIDIA Inception membership</strong>, it completely replaces expired Google Cloud credits and covers Anthropic Claude 3.5 Sonnet on Amazon Bedrock.</span></li>
+        <li><span><strong>Silicon Programs (100% Free &amp; Non-Dilutive):</strong> Intel Liftoff provides direct access to <strong>Intel Gaudi 2 / Gaudi 3</strong> clusters on the Intel Tiber AI Cloud. AMD's Developer Cloud provides free <strong>MI300X 192GB GPUs</strong> under its 100,000-hour India AI initiative.</span></li>
+        <li><span><strong>Telangana &amp; Karnataka State Pipeline:</strong> Karnataka's K-tech Elevate provides up to <strong>₹50 Lakhs (~$60k) non-dilutive grant-in-aid</strong>. Telangana offers the <strong>T-AIM Revv Up accelerator</strong> (free high-performance AI computing capacity), <strong>T-Hub's Value Partner Desk</strong> (direct cloud partner credits), and <strong>T-Fund</strong> (₹25L–₹1Cr early-stage funding).</span></li>
+        <li><span><strong>Central IndiaAI Mission:</strong> MeitY's ₹10,372 Cr GPU Compute Portal directly subsidizes <strong>40% to 100% of NVIDIA H100 and L40S GPU costs</strong> across Indian sovereign cloud providers (E2E Networks, Yotta).</span></li>
+        <li><span><strong>The Google "Second Bite" Reality:</strong> Yes, a second round of $200k–$350k Google Cloud credits <strong>is 100% possible with the same founder</strong>, provided entity, Google Workspace tenant, and billing account isolation are strictly maintained to bypass automated underwriting checks.</span></li>
       </ul>
     </div>
 
@@ -466,7 +476,7 @@
         <!-- Center Target Box -->
         <rect x="350" y="20" width="200" height="60" rx="8" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
         <text x="450" y="46" font-family="IBM Plex Sans" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="middle">SarvaX.ai Compute Core</text>
-        <text x="450" y="64" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)" text-anchor="middle">Multi-Cloud Credit Architecture</text>
+        <text x="450" y="64" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)" text-anchor="middle">Multi-Track Runway Architecture</text>
 
         <!-- Column 1: Hyperscalers -->
         <rect x="30" y="130" width="190" height="180" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
@@ -480,7 +490,7 @@
 
         <!-- Column 2: GPU Clouds & Chips -->
         <rect x="250" y="130" width="190" height="180" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
-        <text x="345" y="155" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">Hardware &amp; GPU Clouds</text>
+        <text x="345" y="155" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">Silicon &amp; GPU Clouds</text>
         <text x="265" y="180" font-family="IBM Plex Mono" font-size="11" fill="var(--accent)">• Intel Gaudi 2/3 (Free)</text>
         <text x="265" y="200" font-family="IBM Plex Mono" font-size="11" fill="var(--accent)">• AMD MI300X (100k hrs)</text>
         <text x="265" y="220" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">• Baseten ($25k GPUs)</text>
@@ -498,14 +508,14 @@
         <text x="485" y="265" font-family="IBM Plex Sans" font-size="11" fill="var(--ink-dim)">Sub-100ms tool-calling &amp;</text>
         <text x="485" y="280" font-family="IBM Plex Sans" font-size="11" fill="var(--ink-dim)">real-time agent reasoning</text>
 
-        <!-- Column 4: Sovereign / India Grants -->
+        <!-- Column 4: Sovereign / State Grants -->
         <rect x="690" y="130" width="180" height="180" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
-        <text x="780" y="155" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">India Grants &amp; Sovereign</text>
-        <text x="705" y="180" font-family="IBM Plex Mono" font-size="11" fill="var(--protocol)">• K-tech Elevate (₹50L)</text>
-        <text x="705" y="200" font-family="IBM Plex Mono" font-size="11" fill="var(--protocol)">• IndiaAI MeitY Subsidy</text>
-        <text x="705" y="220" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">• Yotta Rudra ($35k-$100k)</text>
-        <text x="705" y="240" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">• E2E Networks ($5k)</text>
-        <text x="705" y="265" font-family="IBM Plex Sans" font-size="11" fill="var(--ink-dim)">Domestic INR billing &amp;</text>
+        <text x="780" y="155" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">Gov &amp; State Schemes</text>
+        <text x="705" y="180" font-family="IBM Plex Mono" font-size="11" fill="var(--protocol)">• IndiaAI Subsidy (40-100%)</text>
+        <text x="705" y="200" font-family="IBM Plex Mono" font-size="11" fill="var(--protocol)">• Karnataka Elevate (₹50L)</text>
+        <text x="705" y="220" font-family="IBM Plex Mono" font-size="11" fill="var(--protocol)">• Telangana T-AIM / T-Hub</text>
+        <text x="705" y="240" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">• Yotta Rudra ($35k-$100k)</text>
+        <text x="705" y="265" font-family="IBM Plex Sans" font-size="11" fill="var(--ink-dim)">Sovereign GPU clusters &amp;</text>
         <text x="705" y="280" font-family="IBM Plex Sans" font-size="11" fill="var(--ink-dim)">zero-equity cash grants</text>
 
         <!-- Lines -->
@@ -514,7 +524,7 @@
         <path d="M 470 80 L 565 130" stroke="var(--border)" stroke-width="2" fill="none"/>
         <path d="M 500 80 L 780 130" stroke="var(--border)" stroke-width="2" fill="none"/>
       </svg>
-      <figcaption>Figure 1: Full spectrum architecture distributing SarvaX's multi-agent workload across non-dilutive compute providers.</figcaption>
+      <figcaption>Figure 1: Full-spectrum multi-cloud and state grant allocation architecture designed for SarvaX.ai.</figcaption>
     </div>
   </section>
 
@@ -826,51 +836,23 @@
   </section>
 
   <!-- Section 6 -->
-  <section id="indian-grants">
-    <p class="kicker">06 — Indian DeepTech Grants &amp; Sovereign GPU Clouds</p>
-    <h2>Government Subsidies &amp; Domestic GPU Infrastructure</h2>
-    <p class="section-intro">Leveraging C3A Labs' Indian incorporation and Karnataka base to capture state grants, MeitY compute subsidies, and domestic sovereign GPU clouds.</p>
+  <section id="central-gov">
+    <p class="kicker">06 — Central Government Schemes &amp; Sovereign GPU Clouds</p>
+    <h2>IndiaAI Mission &amp; Domestic Sovereign GPU Clouds</h2>
+    <p class="section-intro">Central government initiatives offering up to 100% subsidies on NVIDIA H100/L40S clusters hosted across Indian data centers.</p>
 
     <div class="schema-grid">
       <div class="schema-card">
-        <h4>Karnataka K-tech ELEVATE</h4>
-        <div class="role">Idea2PoC Non-Dilutive Grant</div>
-        <ul>
-          <li><span class="label">Grant Amount:</span> <span class="val">Up to ₹50 Lakhs (~$60k)</span></li>
-          <li><span class="label">Equity Taken:</span> <span class="val">0% (Pure Grant-in-Aid)</span></li>
-          <li><span class="label">Disbursement:</span> <span class="val">2 Equal Tranches (50/50)</span></li>
-          <li><span class="label">Portal:</span> <span class="val">elevate.startupkarnataka.in</span></li>
-        </ul>
-        <div class="card-action">
-          Open to Karnataka-registered startups. Prepare dossiers for upcoming cycle call.
-        </div>
-      </div>
-
-      <div class="schema-card">
         <h4>IndiaAI Compute Portal</h4>
-        <div class="role">MeitY ₹10,372 Cr GPU Cluster</div>
+        <div class="role">MeitY ₹10,372 Cr GPU Initiative</div>
         <ul>
-          <li><span class="label">Subsidies:</span> <span class="val">40% to 100% of GPU Cost</span></li>
-          <li><span class="label">Hardware:</span> <span class="val">NVIDIA H100, L40S, A100</span></li>
-          <li><span class="label">Fast-Track:</span> <span class="val">&lt;5,000 GPU hours</span></li>
-          <li><span class="label">Auth:</span> <span class="val">Jan Parichay / DigiLocker</span></li>
+          <li><span class="label">Portal:</span> <span class="val">compute.indiaai.gov.in</span></li>
+          <li><span class="label">Subsidy Rate:</span> <span class="val">40% to 100% of GPU Cost</span></li>
+          <li><span class="label">Hardware:</span> <span class="val">NVIDIA H100 SXM, L40S</span></li>
+          <li><span class="label">Empanelled Clouds:</span> <span class="val">E2E, Yotta, Tata</span></li>
         </ul>
         <div class="card-action">
-          Apply at <a href="https://compute.indiaai.gov.in/" target="_blank" rel="noopener">compute.indiaai.gov.in</a> with DPIIT certificate.
-        </div>
-      </div>
-
-      <div class="schema-card">
-        <h4>Yotta Rudra (Shakti Cloud)</h4>
-        <div class="role">NVIDIA Inception Co-Program</div>
-        <ul>
-          <li><span class="label">Immediate Grant:</span> <span class="val">$35,000 H100 Credits</span></li>
-          <li><span class="label">Milestone Max:</span> <span class="val">Up to $100,000 USD</span></li>
-          <li><span class="label">Hardware:</span> <span class="val">16,000+ H100 NMDC Cluster</span></li>
-          <li><span class="label">Discounts:</span> <span class="val">Up to 25% tiered</span></li>
-        </ul>
-        <div class="card-action">
-          Apply on <a href="https://yotta.com/rudra/" target="_blank" rel="noopener">yotta.com/rudra</a> as NVIDIA Inception member.
+          Fast-track under 5,000 GPU hours. Authenticate via DigiLocker with DPIIT cert.
         </div>
       </div>
 
@@ -889,6 +871,20 @@
       </div>
 
       <div class="schema-card">
+        <h4>Yotta Rudra (Shakti Cloud)</h4>
+        <div class="role">NVIDIA Inception Co-Program</div>
+        <ul>
+          <li><span class="label">Immediate Grant:</span> <span class="val">$35,000 H100 Credits</span></li>
+          <li><span class="label">Milestone Max:</span> <span class="val">Up to $100,000 USD</span></li>
+          <li><span class="label">Hardware:</span> <span class="val">16,000+ H100 NMDC Cluster</span></li>
+          <li><span class="label">Discounts:</span> <span class="val">Up to 25% tiered</span></li>
+        </ul>
+        <div class="card-action">
+          Apply on <a href="https://yotta.com/rudra/" target="_blank" rel="noopener">yotta.com/rudra</a> as NVIDIA Inception member.
+        </div>
+      </div>
+
+      <div class="schema-card">
         <h4>MeitY TIDE 2.0</h4>
         <div class="role">Incubator Grant-in-Aid</div>
         <ul>
@@ -898,7 +894,7 @@
           <li><span class="label">Portal:</span> <span class="val">msh.meity.gov.in</span></li>
         </ul>
         <div class="card-action">
-          Apply through regional partner incubation centers.
+          Apply directly through regional host incubation centers.
         </div>
       </div>
 
@@ -919,50 +915,204 @@
   </section>
 
   <!-- Section 7 -->
-  <section id="second-bite">
-    <p class="kicker">07 — Strategic Re-Application</p>
-    <h2>The Legitimate "Second Bite" Google Cloud Strategy ($200k–$350k)</h2>
-    <p class="section-intro">Operational architecture for securing a fresh Google for Startups Cloud AI-first grant if credits previously expired under KaraX / C3A Labs.</p>
+  <section id="state-grants">
+    <p class="kicker">07 — State Innovation Schemes (Karnataka &amp; Telangana)</p>
+    <h2>State Government Grants, Subsidies &amp; Incubator Networks</h2>
+    <p class="section-intro">Both Karnataka and Telangana operate aggressive state innovation policies offering non-dilutive grants, seed co-investments, and sponsored compute capacity for AI startups.</p>
 
-    <div class="diagram-frame">
-      <svg viewBox="0 0 860 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="860" height="220" rx="12" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
-        
-        <!-- Left: Expired Profile -->
-        <rect x="30" y="30" width="340" height="160" rx="8" fill="var(--surface)" stroke="var(--danger)" stroke-width="1.5"/>
-        <text x="200" y="55" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--danger)" text-anchor="middle">Retired Tenant (Expired Credits)</text>
-        <text x="50" y="85" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Entity: C3A Labs Private Limited</text>
-        <text x="50" y="105" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Domain: karax.ai</text>
-        <text x="50" y="125" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Billing ID: Historic GCP Billing Profile</text>
-        <text x="50" y="145" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Focus: Horizontal Agentic Workspace</text>
-        <text x="50" y="165" font-family="IBM Plex Mono" font-size="11" fill="var(--danger)">• Status: Underwriting Duplicate Flag</text>
+    <h3>Karnataka State Programs (Home State)</h3>
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>Karnataka K-tech ELEVATE</h4>
+        <div class="role">Idea2PoC Non-Dilutive Grant</div>
+        <ul>
+          <li><span class="label">Grant Amount:</span> <span class="val">Up to ₹50 Lakhs (~$60k)</span></li>
+          <li><span class="label">Equity Taken:</span> <span class="val">0% (Pure Grant-in-Aid)</span></li>
+          <li><span class="label">Disbursement:</span> <span class="val">2 Equal Tranches (50/50)</span></li>
+          <li><span class="label">Portal:</span> <span class="val">elevate.startupkarnataka.in</span></li>
+        </ul>
+        <div class="card-action">
+          Open to Karnataka entities (&le;10 yrs old, turnover &le;₹200Cr). Prepare dossier for upcoming cycle call.
+        </div>
+      </div>
 
-        <!-- Isolation Wall -->
-        <line x1="430" y1="20" x2="430" y2="200" stroke="var(--border)" stroke-width="2" stroke-dasharray="6,4"/>
-        <text x="430" y="115" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-dim)" text-anchor="middle" transform="rotate(-90 430 115)">CLEAN SEGREGATION</text>
+      <div class="schema-card">
+        <h4>K-Tech Center Partner Perks</h4>
+        <div class="role">Incubator Infrastructure Support</div>
+        <ul>
+          <li><span class="label">Subsidies:</span> <span class="val">Lease rental &amp; patent grants</span></li>
+          <li><span class="label">Incubators:</span> <span class="val">C-CAMP, IIIT-B, NSRCEL</span></li>
+          <li><span class="label">Testing Labs:</span> <span class="val">Free IoT / AI hardware labs</span></li>
+          <li><span class="label">Portal:</span> <span class="val">startup.karnataka.gov.in</span></li>
+        </ul>
+        <div class="card-action">
+          Access via regional K-Tech Innovation Hubs across Karnataka.
+        </div>
+      </div>
+    </div>
 
-        <!-- Right: Fresh Applicant -->
-        <rect x="490" y="30" width="340" height="160" rx="8" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
-        <text x="660" y="55" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--accent-ink)" text-anchor="middle">Fresh Applicant Infrastructure</text>
-        <text x="510" y="85" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Entity: SarvaX AI Private Limited (New CIN/PAN)</text>
-        <text x="510" y="105" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Domain: sarvax.ai (Dedicated Workspace Tenant)</text>
-        <text x="510" y="125" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Billing ID: New 18-Char ID + Distinct Card</text>
-        <text x="510" y="145" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Focus: FinTech Compliance &amp; Advisory Agents</text>
-        <text x="510" y="165" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)">• Allocation: $200k–$350k AI-First Tier</text>
-      </svg>
-      <figcaption>Figure 2: Complete legal, domain, and billing separation to pass automated Google Cloud underwriting checks.</figcaption>
+    <h3>Telangana State Programs (Hyderabad AI Hub)</h3>
+    <div class="schema-grid">
+      <div class="schema-card">
+        <h4>Telangana AI Mission (T-AIM)</h4>
+        <div class="role">Revv Up AI Accelerator</div>
+        <ul>
+          <li><span class="label">Organizers:</span> <span class="val">Telangana Govt + NASSCOM</span></li>
+          <li><span class="label">Equity:</span> <span class="val">0% (Zero-Equity)</span></li>
+          <li><span class="label">Compute:</span> <span class="val">Affordable / Free HPAIC GPU</span></li>
+          <li><span class="label">Cloud Credits:</span> <span class="val">AWS, GCP, Azure, C-DAC</span></li>
+        </ul>
+        <div class="card-action">
+          Apply via <a href="https://indiaai.gov.in/news/telangana-ai-mission-launches-revv-up-accelerator-program-for-ai-startups" target="_blank" rel="noopener">T-AIM Revv Up</a> cohort applications.
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <h4>T-Hub Value Partner Desk</h4>
+        <div class="role">World's Largest Startup Hub</div>
+        <ul>
+          <li><span class="label">Credit Corpus:</span> <span class="val">₹4,770+ Cr partner perks</span></li>
+          <li><span class="label">Partners:</span> <span class="val">AWS, Azure, GCP, GitHub</span></li>
+          <li><span class="label">Eligibility:</span> <span class="val">T-Hub incubated / Lab32</span></li>
+          <li><span class="label">Corporate Deals:</span> <span class="val">Direct enterprise pilots</span></li>
+        </ul>
+        <div class="card-action">
+          Apply for T-Hub programs at <a href="https://www.t-hub.co" target="_blank" rel="noopener">t-hub.co</a>.
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <h4>T-Fund (Telangana Innovation Fund)</h4>
+        <div class="role">Early-Stage Co-Investment</div>
+        <ul>
+          <li><span class="label">Ticket Size:</span> <span class="val">₹25 Lakhs to ₹1 Crore</span></li>
+          <li><span class="label">Structure:</span> <span class="val">Equity / Convertible Debt</span></li>
+          <li><span class="label">Co-Investors:</span> <span class="val">Angels, VCs, T-Hub</span></li>
+          <li><span class="label">Target:</span> <span class="val">Early-stage tech startups</span></li>
+        </ul>
+        <div class="card-action">
+          Apply via <a href="https://startup.telangana.gov.in/funding-incentives/" target="_blank" rel="noopener">startup.telangana.gov.in</a>.
+        </div>
+      </div>
+
+      <div class="schema-card">
+        <h4>TSIC (State Innovation Cell)</h4>
+        <div class="role">Idea-to-PoC &amp; Incentives</div>
+        <ul>
+          <li><span class="label">Seed Grants:</span> <span class="val">Up to ₹3 Lakhs – ₹10 Lakhs</span></li>
+          <li><span class="label">Patents:</span> <span class="val">₹2L domestic / ₹10L global</span></li>
+          <li><span class="label">Lease Subsidy:</span> <span class="val">25% reimbursement (3 yrs)</span></li>
+          <li><span class="label">Recruitment:</span> <span class="val">₹10,000 / employee grant</span></li>
+        </ul>
+        <div class="card-action">
+          Explore policies on <a href="https://teamtsic.telangana.gov.in" target="_blank" rel="noopener">teamtsic.telangana.gov.in</a>.
+        </div>
+      </div>
     </div>
 
     <div class="callout protocol">
-      <strong>Underwriting Compliance Rules:</strong> Google's automated systems detect shared corporate billing profiles, identical Workspace super-admin identities, and duplicate domains. To qualify, SarvaX must be applied for through a dedicated `@sarvax.ai` super-admin account on a fresh GCP organization with an independent corporate billing account.
+      <strong>Cross-State Strategy Note:</strong> While Karnataka Elevate requires a Karnataka-registered office, Telangana programs (like T-Hub's Lab32 accelerator and T-AIM Revv Up) regularly accept AI startups from across India willing to establish a branch presence or deploy enterprise pilots in Hyderabad's upcoming 200-acre AI City.
     </div>
   </section>
 
   <!-- Section 8 -->
+  <section id="second-bite">
+    <p class="kicker">08 — Forensic Analysis</p>
+    <h2>The Google Cloud "Second Bite": Is It Possible with the Same Founder?</h2>
+    <p class="section-intro">Detailed analysis of Google Cloud for Startups underwriting rules, automated fraud detection heuristics, and the exact compliance architecture required for repeat founders.</p>
+
+    <div class="tldr">
+      <ul>
+        <li><span><strong>The Bottom Line:</strong> <strong>YES, it is completely possible and standard industry practice for serial founders.</strong> Google's terms disqualify <em>companies</em> that previously received credits—they do not permanently ban individual human founders from building subsequent startups on GCP.</span></li>
+        <li><span><strong>The Real Risk:</strong> Google uses automated underwriting algorithms to detect "credit farming" (spinning up multiple shell domains to feed the same underlying product). If automated heuristics detect overlapping infrastructure, your application is rejected within 48 hours without human review.</span></li>
+      </ul>
+    </div>
+
+    <h3>The 5 Heuristics That Trigger Instant Auto-Rejection</h3>
+    <div class="tools-wrap">
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th>Detection Vector</th>
+            <th>What Triggers Automated Rejection</th>
+            <th>Mandatory Isolation Rule for SarvaX</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. 18-Char Billing Account &amp; Card</strong></td>
+            <td>Submitting an 18-character Billing ID linked to the same credit card, cardholder name, or billing address used on KaraX.</td>
+            <td><span class="badge badge-open">Clean Card Required</span> Create a new Billing Account using a distinct corporate card or virtual commercial debit card linked to SarvaX.</td>
+          </tr>
+          <tr>
+            <td><strong>2. Google Workspace &amp; Super-Admin</strong></td>
+            <td>Applying from an email inside the same Google Workspace organization, or using a personal Gmail that was admin on KaraX.</td>
+            <td><span class="badge badge-open">Dedicated Tenant</span> Provision a fresh Google Workspace tenant under <code>@sarvax.ai</code> with a clean super-admin identity.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Legal Entity &amp; Corporate Registration</strong></td>
+            <td>Submitting the exact corporate name (C3A Labs Pvt Ltd) and PAN/CIN that claimed KaraX credits.</td>
+            <td><span class="badge badge-open">Distinct Entity</span> Incorporate SarvaX AI Private Limited (or separate LLP), or apply as an unincorporated pre-seed venture.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Domain &amp; Product Positioning</strong></td>
+            <td>Submitting a domain that redirects to KaraX, shares terms of service, or describes identical generic features.</td>
+            <td><span class="badge badge-open">Distinct IP</span> <code>sarvax.ai</code> is positioned as an autonomous agent execution platform for wealth advisory and financial compliance.</td>
+          </tr>
+          <tr>
+            <td><strong>5. Referral Conduit</strong></td>
+            <td>Re-applying using the exact same partner referral code or accelerator token that was flagged on KaraX.</td>
+            <td><span class="badge badge-open">Fresh Conduit</span> Route the new application through <strong>NVIDIA Inception</strong> or the direct AI-First startup application track.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 860 230" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="860" height="230" rx="12" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
+        
+        <!-- Left: Expired Profile -->
+        <rect x="30" y="30" width="340" height="170" rx="8" fill="var(--surface)" stroke="var(--danger)" stroke-width="1.5"/>
+        <text x="200" y="55" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--danger)" text-anchor="middle">Retired Profile (Expired Credits)</text>
+        <text x="50" y="85" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Entity: C3A Labs Private Limited</text>
+        <text x="50" y="105" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Domain: karax.ai</text>
+        <text x="50" y="125" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Billing ID: Historical GCP Billing Account</text>
+        <text x="50" y="145" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Positioning: General Agentic Workspace</text>
+        <text x="50" y="165" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Payment: Primary Corporate Card</text>
+        <text x="50" y="185" font-family="IBM Plex Mono" font-size="11" fill="var(--danger)">• Status: Marked Expired in Underwriting DB</text>
+
+        <!-- Isolation Wall -->
+        <line x1="430" y1="20" x2="430" y2="210" stroke="var(--border)" stroke-width="2" stroke-dasharray="6,4"/>
+        <text x="430" y="120" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-dim)" text-anchor="middle" transform="rotate(-90 430 120)">STRICT ISOLATION</text>
+
+        <!-- Right: Fresh Applicant -->
+        <rect x="490" y="30" width="340" height="170" rx="8" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="660" y="55" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="var(--accent-ink)" text-anchor="middle">Fresh Applicant Infrastructure</text>
+        <text x="510" y="85" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Entity: SarvaX AI Private Limited (New CIN/PAN)</text>
+        <text x="510" y="105" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Domain: sarvax.ai (Dedicated Workspace Tenant)</text>
+        <text x="510" y="125" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Billing ID: Brand New 18-Char Billing Account</text>
+        <text x="510" y="145" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Positioning: FinTech Compliance AI Platform</text>
+        <text x="510" y="165" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">• Payment: Distinct Corporate Card / Virtual Card</text>
+        <text x="510" y="185" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)">• Allocation: $200,000 – $350,000 AI-First Tier</text>
+      </svg>
+      <figcaption>Figure 2: Architecture for complete technical, billing, and entity segregation to pass Google Cloud automated underwriting.</figcaption>
+    </div>
+
+    <h3>Founder LinkedIn &amp; Underwriter Verification Rules</h3>
+    <p class="section-intro">Google underwriters (both automated scrapers and human review analysts) inspect the founder's LinkedIn URL provided in the application. To ensure seamless approval with the same founder:</p>
+    <ul>
+      <li><strong>Avoid Co-Mingling:</strong> Do not list SarvaX on LinkedIn as <em>"a feature of KaraX"</em> or <em>"project inside C3A Labs"</em>.</li>
+      <li><strong>Frame as an Independent Venture:</strong> State your title clearly as <em>"Founder &amp; CEO at SarvaX.ai — Autonomous AI Execution for Financial Services"</em>.</li>
+      <li><strong>The Co-Founder Shortcut:</strong> If multiple co-founders exist, submitting the application under the co-founder who was <strong>not</strong> the primary named applicant on KaraX's historical application drops heuristic matching probability to zero.</li>
+    </ul>
+  </section>
+
+  <!-- Section 9 -->
   <section id="action-plan">
-    <p class="kicker">08 — Action Plan</p>
-    <h2>Sequential Execution Priority Matrix</h2>
-    <p class="section-intro">Prioritized implementation sequence designed to maximize immediate compute while establishing permanent zero-cost baseline capacity.</p>
+    <p class="kicker">09 — Execution Plan</p>
+    <h2>Prioritized Sequential Implementation Roadmap</h2>
+    <p class="section-intro">Step-by-step roadmap to establish immediate compute runway while securing long-term state grants and sovereign GPU subsidies.</p>
 
     <div class="step-list">
       <div class="step-item">
@@ -976,15 +1126,15 @@
       <div class="step-item">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h4>Silicon &amp; Hardware Grants (Day 2)</h4>
-          <p>Enroll in <strong>Intel Liftoff</strong> (<a href="https://www.intel.com/content/www/us/en/developer/tools/liftoff.html" target="_blank" rel="noopener">intel.com/liftoff</a>) for free Gaudi 2/3 clusters. Apply for the <strong>AMD India Developer Cloud</strong> (<a href="https://www.amd.com/en/developer/ai-dev-program.html" target="_blank" rel="noopener">amd.com</a>) for MI300X 192GB GPU access. Apply on <strong>Baseten</strong> (<a href="https://www.baseten.co/talk-to-us/startup-program/" target="_blank" rel="noopener">baseten.co</a>) selecting "No Funding" for $2,500–$25,000 model serving credits.</p>
+          <h4>Free Silicon Grants &amp; Sovereign GPU Applications (Day 2)</h4>
+          <p>Enroll in <strong>Intel Liftoff</strong> (<a href="https://www.intel.com/content/www/us/en/developer/tools/liftoff.html" target="_blank" rel="noopener">intel.com/liftoff</a>) for Gaudi 2/3 clusters. Apply for the <strong>AMD India Developer Cloud</strong> (<a href="https://www.amd.com/en/developer/ai-dev-program.html" target="_blank" rel="noopener">amd.com</a>) for MI300X 192GB GPUs. Submit your DPIIT certificate on <strong>IndiaAI Compute Portal</strong> (<a href="https://compute.indiaai.gov.in" target="_blank" rel="noopener">compute.indiaai.gov.in</a>) to unlock 40%–100% GPU subsidies on E2E Networks and Yotta.</p>
         </div>
       </div>
 
       <div class="step-item">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h4>Tooling &amp; Observability Baseline (Day 3)</h4>
+          <h4>Telemetry &amp; Observability Baseline (Day 3)</h4>
           <p>Claim <strong>PostHog for Startups</strong> (<a href="https://app.posthog.com/startups" target="_blank" rel="noopener">app.posthog.com/startups</a>) for $50,000 in telemetry and LLM tracing credits. Submit <strong>Neo4j for Startups</strong> ($16,000 AuraDB credits) for compliance GraphRAG, and <strong>Supabase</strong> (6 months free Team Plan with native pgvector).</p>
         </div>
       </div>
@@ -992,16 +1142,24 @@
       <div class="step-item">
         <div class="step-num">4</div>
         <div class="step-content">
-          <h4>Permanent Zero-Cost Foundation &amp; Local GPU Clouds (Day 4)</h4>
-          <p>Provision the <strong>Oracle Cloud Always Free</strong> 4-core ARM (24GB RAM) VM with 10TB free egress to host 1,000+ connectors and background Celery/Redis queues for $0/month. Apply for domestic GPU credits on <strong>E2E Networks</strong> ($5,000) and <strong>Yotta Rudra</strong> ($35,000–$100,000 H100 Shakti Cloud).</p>
+          <h4>Permanent Zero-Cost Foundation (Day 4)</h4>
+          <p>Provision the <strong>Oracle Cloud Always Free</strong> 4-core ARM (24GB RAM) VM with 10TB free egress to host 1,000+ connectors and background Celery/Redis queues for $0/month. Apply for domestic GPU credits on <strong>E2E Networks</strong> ($5,000) and <strong>Yotta Rudra</strong> ($35,000–$100,000 H100 Shakti Cloud via Inception).</p>
         </div>
       </div>
 
       <div class="step-item">
         <div class="step-num">5</div>
         <div class="step-content">
-          <h4>Government Cash Grants &amp; Second Bite (Week 2)</h4>
-          <p>Prepare the grant dossier for <strong>Karnataka K-tech Elevate</strong> (up to ₹50 Lakhs non-dilutive grant). Authenticate on the <strong>IndiaAI Compute Portal</strong> via DigiLocker with your DPIIT number for subsidized H100 clusters. Prepare the segregated `sarvax.ai` corporate infrastructure to re-apply for Google Cloud's $200k–$350k AI tier.</p>
+          <h4>State Non-Dilutive Grants (Week 2)</h4>
+          <p>Prepare the grant dossier for <strong>Karnataka K-tech Elevate</strong> (up to ₹50 Lakhs non-dilutive grant). Concurrently submit for the <strong>T-AIM Revv Up accelerator</strong> in Telangana to access sponsored HPAIC compute capacity and T-Hub partner desks.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>Google "Second Bite" Execution (Week 3)</h4>
+          <p>Set up the segregated <code>sarvax.ai</code> Google Workspace tenant and fresh 18-character GCP billing account with a distinct corporate card. Apply for the <strong>$200,000–$350,000 Google Cloud AI-First Scale Tier</strong> using your NVIDIA Inception affiliation.</p>
         </div>
       </div>
     </div>
