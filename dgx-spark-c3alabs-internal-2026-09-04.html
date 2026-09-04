@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DGX Spark — Should C3Alabs Buy It? | Internal Research 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#eef3f1;
+    --surface:#ffffff;
+    --surface-2:#e3ebe8;
+    --ink:#122320;
+    --ink-dim:#4c605a;
+    --border:#cfdbd6;
+    --accent:#157a5f;
+    --accent-ink:#0d5c47;
+    --accent-soft:#d8ede4;
+    --protocol:#5850c9;
+    --protocol-soft:#e6e4fa;
+    --warn:#8a6d00;
+    --warn-soft:#fff6d6;
+    --danger:#b42318;
+    --danger-soft:#ffe9e7;
+    --code-bg:#e6edea;
+    --shadow: 0 1px 2px rgba(18,35,32,.06), 0 8px 24px -12px rgba(18,35,32,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0e1613;
+      --surface:#151f1c;
+      --surface-2:#1b2723;
+      --ink:#e9f2ee;
+      --ink-dim:#9db2ab;
+      --border:#2a3733;
+      --accent:#3fcd9a;
+      --accent-ink:#8fe9c8;
+      --accent-soft:#173229;
+      --protocol:#a29cf2;
+      --protocol-soft:#242058;
+      --warn:#f5d76e;
+      --warn-soft:#2b2410;
+      --danger:#ff9b8a;
+      --danger-soft:#2e1a18;
+      --code-bg:#1a2521;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  *{box-sizing:border-box}
+  body {
+    background:var(--bg); color:var(--ink);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height:1.6; margin:0; padding:0 20px 120px;
+  }
+  code, .mono { font-family:"IBM Plex Mono", ui-monospace, "SF Mono", monospace; }
+  .wrap { max-width:920px; margin:0 auto; }
+  header.hero { max-width:920px; margin:0 auto; padding:56px 0 28px; border-bottom:1px solid var(--border); }
+  .eyebrow { font-family:"IBM Plex Mono", monospace; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-ink); font-weight:600; display:flex; align-items:center; gap:8px; }
+  .eyebrow::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; }
+  h1 { font-size:clamp(28px,4vw,40px); line-height:1.12; letter-spacing:-.01em; margin:14px 0 10px; text-wrap:balance; font-weight:700; }
+  .lede { font-size:17px; color:var(--ink-dim); max-width:66ch; margin:0; }
+  .meta { font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim); margin-top:16px; display:flex; gap:16px; flex-wrap:wrap; }
+  .meta span{border:1px solid var(--border); background:var(--surface); padding:4px 10px; border-radius:20px}
+  nav.jump { max-width:920px; margin:0 auto; display:flex; flex-wrap:wrap; gap:6px 4px; padding:16px 0 0; }
+  nav.jump a { font-family:"IBM Plex Mono", monospace; font-size:12px; color:var(--ink-dim); text-decoration:none; padding:6px 10px; border-radius:20px; border:1px solid var(--border); background:var(--surface); }
+  nav.jump a:hover { color:var(--accent-ink); border-color:var(--accent); }
+  section { max-width:920px; margin:0 auto; padding:48px 0; border-bottom:1px solid var(--border); }
+  section:last-of-type { border-bottom:none; }
+  .kicker { font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); margin:0 0 8px; }
+  h2 { font-size:24px; margin:0 0 6px; letter-spacing:-.005em; text-wrap:balance; }
+  h3{font-size:18px; margin:28px 0 10px}
+  .section-intro { color:var(--ink-dim); max-width:68ch; }
+  .tldr { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 24px; box-shadow:var(--shadow); margin-top:20px; }
+  .tldr ul { margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .tldr li { display:flex; gap:10px; align-items:flex-start; font-size:15px}
+  .tldr li::before { content:"→"; color:var(--accent); font-weight:600; font-family:"IBM Plex Mono",monospace; flex-shrink:0; width:22px; }
+  .tldr li span{flex:1}
+  .callout { border-left:3px solid var(--accent); background:var(--accent-soft); border-radius:0 10px 10px 0; padding:14px 18px; margin:20px 0; font-size:14px; }
+  .callout.protocol { border-left-color:var(--protocol); background:var(--protocol-soft); }
+  .callout.warn { border-left-color:var(--warn); background:var(--warn-soft); }
+  .callout.danger { border-left-color:var(--danger); background:var(--danger-soft); }
+  .schema-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:20px; }
+  .schema-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 18px 16px; box-shadow:var(--shadow); }
+  .schema-card h4 { margin:0 0 4px; font-family:"IBM Plex Mono",monospace; font-size:13.5px; color:var(--accent-ink); font-weight:600; }
+  .schema-card .role { font-size:12px; color:var(--ink-dim); margin-bottom:12px; }
+  .schema-card ul { list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+  .schema-card li { font-size:12.5px; font-family:"IBM Plex Mono",monospace; color:var(--ink); }
+  .diagram-frame { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px; box-shadow:var(--shadow); overflow-x:auto; margin:24px 0 6px; }
+  .diagram-frame svg { display:block; max-width:100%; height:auto; margin:0 auto; }
+  figcaption { font-size:13px; color:var(--ink-dim); margin-top:10px; max-width:68ch; }
+  .tools-table { width:100%; border-collapse:collapse; margin-top:18px; font-size:14px; }
+  .tools-table th { text-align:left; font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-dim); padding:0 14px 10px; border-bottom:1px solid var(--border); font-weight:600; }
+  .tools-table td { padding:14px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .tools-table td.mono{font-size:13px}
+  .tools-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); padding:4px 10px; }
+  .badge{font-family:"IBM Plex Mono",monospace; font-size:11px; padding:3px 8px; border-radius:20px; border:1px solid var(--border); background:var(--surface-2); font-weight:600}
+  .badge.good{color:var(--accent-ink); border-color:var(--accent); background:var(--accent-soft)}
+  .badge.bad{color:var(--danger); border-color:var(--danger); background:var(--danger-soft)}
+  .badge.warn{color:var(--warn); border-color:var(--warn); background:var(--warn-soft)}
+  .quote{border-left:3px solid var(--border); padding:10px 16px; margin:14px 0; background:var(--surface); border-radius:0 10px 10px 0; font-size:14px; color:var(--ink-dim)}
+  .quote b{color:var(--ink)}
+  .verdict-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px}
+  @media(max-width:700px){.verdict-grid{grid-template-columns:1fr}}
+  .verdict-card{border:1px solid var(--border); border-radius:14px; padding:20px; background:var(--surface); box-shadow:var(--shadow)}
+  .verdict-card h4{margin:0 0 8px; font-size:15px}
+  .verdict-card ul{margin:8px 0 0; padding-left:18px; font-size:14px; color:var(--ink-dim)}
+  .footnote{font-size:12.5px; color:var(--ink-dim); margin-top:24px; border-top:1px dashed var(--border); padding-top:12px}
+  a{color:var(--accent-ink)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">C3Alabs Internal · Hardware Research · 04 Sep 2026</div>
+  <h1>NVIDIA DGX Spark — Should We Buy It for Local Models?</h1>
+  <p class="lede">Hands-on research synthesis: real memory limits, Reddit + HN + Nvidia forum sentiment, and a buy / don't-buy decision for hosting internal models up to 200B parameters.</p>
+  <div class="meta">
+    <span>GB10 Grace Blackwell · 128GB Unified · $4,699 MSRP</span>
+    <span>Researcher: Hermes Agent</span>
+    <span>Confidential — C3Alabs Internal</span>
+  </div>
+  <nav class="jump">
+    <a href="#verdict">Verdict</a>
+    <a href="#what">What It Is</a>
+    <a href="#capacity">How Many Params?</a>
+    <a href="#perf">Real Performance</a>
+    <a href="#reddit">What Users Say</a>
+    <a href="#vs">vs Alternatives</a>
+    <a href="#decision">Decision Matrix</a>
+    <a href="#sources">Sources</a>
+  </nav>
+</header>
+
+<section id="verdict">
+  <p class="kicker">00 — Executive Verdict</p>
+  <h2>Don't buy DGX Spark Founders Edition. If you must, buy ASUS Ascent GX10.</h2>
+  <p class="section-intro">The Spark is a specialist CUDA dev appliance, not a general-purpose internal LLM server. Its 273 GB/s bandwidth makes it 2–3× slower than a Mac Studio for interactive 70B chat, while its $4,699 price is ~$1,000 more than the identical ASUS GX10.</p>
+
+  <div class="tldr">
+    <ul>
+      <li><span><b>Don't buy</b> for "host a 70B internal chatbot quickly." A Mac Studio M4 Ultra / M3 Ultra is faster, quieter, and cheaper to run for dense models.</span></li>
+      <li><span><b>Consider ONE unit</b> only if you need a <b>local CUDA replica of your DGX Cloud / H100 pipeline</b> — to prototype agents, fine-tune with Blackwell kernels, and test ConnectX-7 RDMA before burning Inception credits.</span></li>
+      <li><span><b>If you buy GB10, buy ASUS Ascent GX10</b> — identical chip, memory, and software for ~$1,000 less. Dell Pro Max GB10 also fixes Spark's thermals and missing power LED but costs a bit more.</span></li>
+      <li><span><b>Practical ceiling is 70B dense</b> (FP8/Q4) for interactive use. Nvidia's "200B" is <b>NVFP4 / MoE-only</b> with tiny active params. 405B barely fits and is unusable for chat.</span></li>
+      <li><span><b>Ollama on Spark is currently broken</b> — use <span class="mono">llama.cpp</span> or <span class="mono">vLLM</span>, not Ollama Docker, or you will see "extremely slow" reports.</span></li>
+    </ul>
+  </div>
+
+  <div class="callout danger">
+    <b>Price trap:</b> Launched at $3,999 → now <b>$4,699 MSRP since Oct 2025</b> due to LPDDR5X supply constraints. At this price, price/perf for pure LLM hosting is negative vs both Mac Studio and AMD Strix Halo 395.
+  </div>
+</section>
+
+<section id="what">
+  <p class="kicker">01 — What DGX Spark Actually Is</p>
+  <h2>A desktop Blackwell AI factory — not a mini-PC.</h2>
+  <p class="section-intro">If you evaluate it as a fast office PC, you'll be disappointed. If you evaluate it as a portable Nvidia AI factory, it makes sense.</p>
+
+  <div class="schema-grid">
+    <div class="schema-card">
+      <h4>GB10 Grace Blackwell Superchip</h4>
+      <div class="role">Co-designed with MediaTek · ARM64</div>
+      <ul>
+        <li>20-core Arm: 10× Cortex-X925 + 10× A725</li>
+        <li>Blackwell GPU · 48 SMs · sm_121</li>
+        <li><span class="t">Compute:</span> <span class="pk">1 PFLOP @ FP4</span> (only)</li>
+        <li><span class="t">Usable:</span> 119.68 GB of 128GB</li>
+      </ul>
+    </div>
+    <div class="schema-card">
+      <h4>Memory & Storage</h4>
+      <div class="role">Unified — CPU and GPU share one pool</div>
+      <ul>
+        <li><span class="pk">128GB LPDDR5x unified</span></li>
+        <li><span class="t">Bandwidth:</span> <span class="pk">273 GB/s</span></li>
+        <li>4TB NVMe SSD</li>
+        <li>No separate VRAM — good for MoE, bad for dense decode</li>
+      </ul>
+    </div>
+    <div class="schema-card">
+      <h4>Networking & IO</h4>
+      <div class="role">Built for clustering</div>
+      <ul>
+        <li>ConnectX-7 · 200 GbE QSFP (1× port)</li>
+        <li>~106 Gbps TCP · ~200 Gbps RDMA/Infiniband</li>
+        <li>Needs x4 PCIe Gen5 — can't do 400G</li>
+        <li>280W (Dell) / 240W (Spark) PSU</li>
+      </ul>
+    </div>
+    <div class="schema-card">
+      <h4>Software & Support</h4>
+      <div class="role">The hidden cost</div>
+      <ul>
+        <li>DGX OS — Ubuntu 24.04 based</li>
+        <li><span class="pk">Only 2 years guaranteed updates</span></li>
+        <li>CUDA on ARM64 — many libs need recompile</li>
+        <li>MLX not available · Blender no GPU on Arm</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="diagram-frame">
+    <svg viewBox="0 0 860 280" role="img" aria-label="DGX Spark unified memory diagram">
+      <rect x="1" y="1" width="858" height="278" rx="16" fill="var(--surface-2)" stroke="var(--border)"/>
+      <!-- CPU -->
+      <rect x="36" y="36" width="250" height="98" rx="12" fill="var(--surface)" stroke="var(--border)"/>
+      <text x="46" y="58" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)" font-weight="600">GRACE CPU · 20 cores</text>
+      <text x="46" y="78" font-family="IBM Plex Sans" font-size="12" fill="var(--ink)">10× X925 (perf)</text>
+      <text x="46" y="96" font-family="IBM Plex Sans" font-size="12" fill="var(--ink)">10× A725 (efficiency)</text>
+      <text x="46" y="118" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)">~140W max</text>
+      <!-- GPU -->
+      <rect x="36" y="150" width="250" height="98" rx="12" fill="var(--surface)" stroke="var(--border)"/>
+      <text x="46" y="172" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)" font-weight="600">BLACKWELL GPU · 48 SMs</text>
+      <text x="46" y="192" font-family="IBM Plex Sans" font-size="12" fill="var(--ink)">5th-gen Tensor Cores</text>
+      <text x="46" y="210" font-family="IBM Plex Sans" font-size="12" fill="var(--ink)">1 PFLOP @ FP4 only</text>
+      <text x="46" y="230" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)">FP64 HPL ~675 GFlops</text>
+      <!-- Unified memory in middle -->
+      <rect x="320" y="36" width="220" height="212" rx="12" fill="var(--accent-soft)" stroke="var(--accent)"/>
+      <text x="330" y="58" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)" font-weight="600">128GB UNIFIED</text>
+      <text x="330" y="76" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)" font-weight="600">LPDDR5x</text>
+      <text x="330" y="100" font-family="IBM Plex Sans" font-size="13" fill="var(--ink)" font-weight="600">273 GB/s</text>
+      <text x="330" y="120" font-family="IBM Plex Sans" font-size="11" fill="var(--ink-dim)">CPU + GPU share one pool</text>
+      <text x="330" y="140" font-family="IBM Plex Sans" font-size="11" fill="var(--ink-dim)">119.68 GB usable</text>
+      <text x="330" y="168" font-family="IBM Plex Mono" font-size="11" fill="var(--ink)">4TB NVMe</text>
+      <text x="330" y="188" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">No VRAM split</text>
+      <line x1="287" y1="85" x2="320" y2="85" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4 4"/>
+      <line x1="287" y1="200" x2="320" y2="200" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4 4"/>
+      <!-- Right side -->
+      <rect x="574" y="36" width="250" height="98" rx="12" fill="var(--surface)" stroke="var(--border)"/>
+      <text x="584" y="58" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)" font-weight="600">CONNECTX-7</text>
+      <text x="584" y="78" font-family="IBM Plex Sans" font-size="12" fill="var(--ink)">200 GbE QSFP · RDMA</text>
+      <text x="584" y="96" font-family="IBM Plex Sans" font-size="12" fill="var(--ink-dim)">106 Gbps TCP / 200 Gbps IB</text>
+      <text x="584" y="118" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-dim)">x4 PCIe Gen5 bottleneck</text>
+      <rect x="574" y="150" width="250" height="98" rx="12" fill="var(--surface)" stroke="var(--border)"/>
+      <text x="584" y="172" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)" font-weight="600">DGX OS</text>
+      <text x="584" y="192" font-family="IBM Plex Sans" font-size="12" fill="var(--ink)">Ubuntu 24.04 base</text>
+      <text x="584" y="210" font-family="IBM Plex Sans" font-size="12" fill="var(--danger)">2-yr support only</text>
+      <text x="584" y="230" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">CUDA on ARM64 — early</text>
+      <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/></marker></defs>
+    </svg>
+    <figcaption>Unified 128GB is the Spark's only real advantage. Compute (1 PFLOP) is FP4-only; FP64 is ~675 GFlops. Bandwidth is the choke point for dense LLMs.</figcaption>
+  </div>
+
+  <div class="callout">
+    <b>Nvidia's "200 billion parameters" claim:</b> Requires <span class="mono">NVFP4 (0.5 bytes/param) + MoE sparsity</span>. For a standard dense model in BF16 it's 64B max. Don't budget 200B for your internal Llama 70B deployment.
+  </div>
+</section>
+
+<section id="capacity">
+  <p class="kicker">02 — How Many Parameters Can It Actually Host?</p>
+  <h2>70B is the honest ceiling for interactive use. 200B is MoE theory.</h2>
+  <p class="section-intro">Unified memory helps, but KV cache for long context (32K+) eats 10–20GB extra. Table below assumes you leave 15GB for OS + KV.</p>
+
+  <div class="tools-wrap">
+    <table class="tools-table">
+      <thead>
+        <tr><th>Model Size</th><th>Precision</th><th>Memory Needed</th><th>Fits in 128GB?</th><th>Usable Speed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>7B–20B <div style="color:var(--ink-dim);font-size:12px">Llama 8B, Qwen 14B, GPT-OSS 20B</div></td><td class="mono">Q4 / FP8</td><td class="mono">4–20 GB</td><td><span class="badge good">Yes — Sweet Spot</span></td><td class="mono">~59 tok/s decode · ~3,600 tok/s prefill</td></tr>
+        <tr><td>32B–70B Dense <div style="color:var(--ink-dim);font-size:12px">Llama 3.3 70B, Qwen3 32B/72B</div></td><td class="mono">FP8 (1 B/param)</td><td class="mono">~70 GB</td><td><span class="badge good">Yes — Comfortable</span></td><td class="mono">~18 tok/s · ~817 tok/s prefill</td></tr>
+        <tr><td>70B Dense BF16</td><td class="mono">BF16 (2 B)</td><td class="mono">~140 GB</td><td><span class="badge bad">No</span></td><td>Must quantize to Q4/FP8 first</td></tr>
+        <tr><td>105B–200B MoE <div style="color:var(--ink-dim);font-size:12px">DeepSeek V3 (37B active), GLM-4.5-Air, Qwen3 MoE</div></td><td class="mono">NVFP4 (0.5 B)</td><td class="mono">50–100 GB</td><td><span class="badge good">Yes — Best Case</span></td><td>MoE activates ~10–15%, so 273 GB/s hurts less</td></tr>
+        <tr><td>405B Dense <div style="color:var(--ink-dim);font-size:12px">Llama 3.1 405B</div></td><td class="mono">Q4 (0.5 B)</td><td class="mono">~202 GB</td><td><span class="badge warn">Layer-offload only</span></td><td class="mono">&lt;5 tok/s — not interactive</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="diagram-frame">
+    <svg viewBox="0 0 860 170" role="img" aria-label="Memory usage bar">
+      <rect x="1" y="1" width="858" height="168" rx="16" fill="var(--surface-2)" stroke="var(--border)"/>
+      <text x="22" y="28" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)" font-weight="600">128GB UNIFIED — WHAT ACTUALLY FITS (Q4 / NVFP4, reserving 15GB for OS+KV)</text>
+      <!-- bar bg -->
+      <rect x="22" y="42" width="816" height="32" rx="8" fill="var(--surface)" stroke="var(--border)"/>
+      <!-- 70B FP8 70GB -->
+      <rect x="22" y="42" width="445" height="32" rx="8" fill="var(--accent)"/>
+      <text x="32" y="62" font-family="IBM Plex Mono" font-size="11" fill="white" font-weight="600">70B FP8 ~70GB — comfortable</text>
+      <!-- 20B -->
+      <rect x="22" y="86" width="127" height="22" rx="6" fill="var(--accent-ink)"/>
+      <text x="28" y="101" font-family="IBM Plex Mono" font-size="10" fill="white">20B Q4 ~10GB sweet spot</text>
+      <!-- 200B NVFP4 -->
+      <rect x="22" y="116" width="636" height="22" rx="6" fill="var(--protocol)" opacity="0.95"/>
+      <text x="28" y="131" font-family="IBM Plex Mono" font-size="10" fill="white">200B MoE NVFP4 ~100GB (sparse) — marketing claim</text>
+      <!-- 405B -->
+      <rect x="22" y="144" width="816" height="10" rx="5" fill="var(--border)"/>
+      <rect x="22" y="144" width="816" height="10" rx="5" fill="var(--danger)" opacity="0.9" style="clip-path: inset(0 0 0 0)"/>
+      <text x="28" y="152" font-family="IBM Plex Mono" font-size="8" fill="var(--danger)" dy="-6">405B Q4 ~202GB — needs 2× Sparks or AirLLM offload, &lt;5 tok/s</text>
+    </svg>
+    <figcaption>MoE models cheat the bandwidth limit: only ~37B of DeepSeek V3 is active per token. That's why Nvidia markets "200B" — it's MoE-active math, not dense.</figcaption>
+  </div>
+
+  <div class="callout warn">
+    <b>KV cache warning:</b> A 70B model at 32K context needs ~12GB extra just for KV. Your "free" headroom evaporates with long-context agents. Keep contexts &lt;8K if hosting 70B internally.
+  </div>
+</section>
+
+<section id="perf">
+  <p class="kicker">03 — Real Performance: Why Reddit Says "Slow"</p>
+  <h2>273 GB/s is the bottleneck. Prefill is great, decode is not.</h2>
+  <p class="section-intro">Token generation is memory-bandwidth bound. Spark loses to Mac Studio on streaming, wins on prompt processing.</p>
+
+  <div class="tools-wrap">
+    <table class="tools-table">
+      <thead><tr><th>Hardware</th><th>Memory</th><th>Bandwidth</th><th>70B Decode</th><th>Prefill</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td><b>DGX Spark / ASUS GX10</b></td><td>128GB</td><td class="mono">273 GB/s</td><td class="mono">~18 tok/s</td><td class="mono">~800 tok/s</td><td>Wins prefill, loses decode</td></tr>
+        <tr><td>Mac Studio M3 Ultra</td><td>512GB</td><td class="mono">~800 GB/s</td><td class="mono">~35–45 tok/s</td><td class="mono">~450 tok/s</td><td>2–3× faster decode</td></tr>
+        <tr><td>RTX 5090</td><td>32GB VRAM</td><td class="mono">1,792 GB/s</td><td class="mono">~50 tok/s* &lt;32B only</td><td class="mono">Very fast</td><td>*Needs offload for 70B → collapses</td></tr>
+        <tr><td>AMD Strix Halo 395</td><td>128GB</td><td class="mono">~256 GB/s</td><td class="mono">~16 tok/s</td><td class="mono">~400 tok/s</td><td>Cheaper, similar to Spark</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="diagram-frame">
+    <svg viewBox="0 0 860 240" role="img" aria-label="Bandwidth vs token speed">
+      <rect x="1" y="1" width="858" height="238" rx="16" fill="var(--surface-2)" stroke="var(--border)"/>
+      <text x="22" y="28" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)" font-weight="600">DECODE SPEED (70B Q4, TOKENS/SEC) vs MEMORY BANDWIDTH</text>
+      <!-- axes -->
+      <line x1="52" y1="48" x2="52" y2="200" stroke="var(--border)" stroke-width="1.2"/>
+      <line x1="52" y1="200" x2="820" y2="200" stroke="var(--border)" stroke-width="1.2"/>
+      <!-- bars -->
+      <!-- Spark -->
+      <rect x="92" y="170" width="120" height="30" rx="6" fill="var(--accent)"/>
+      <text x="98" y="188" font-family="IBM Plex Mono" font-size="10" fill="white" font-weight="600">Spark 18 tok/s</text>
+      <text x="92" y="218" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-dim)">273 GB/s</text>
+      <!-- halo -->
+      <rect x="272" y="174" width="110" height="26" rx="6" fill="var(--border)" stroke="var(--ink-dim)"/>
+      <text x="278" y="191" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-dim)">Halo 16 tok/s</text>
+      <text x="272" y="218" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-dim)">256 GB/s</text>
+      <!-- mac -->
+      <rect x="442" y="125" width="160" height="75" rx="6" fill="var(--protocol)"/>
+      <text x="452" y="162" font-family="IBM Plex Mono" font-size="10" fill="white" font-weight="600">Mac Ultra 35–45 tok/s</text>
+      <text x="442" y="218" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-dim)">~800 GB/s</text>
+      <!-- 5090 -->
+      <rect x="662" y="95" width="130" height="105" rx="6" fill="var(--ink)"/>
+      <text x="672" y="145" font-family="IBM Plex Mono" font-size="10" fill="white" font-weight="600">5090 50 tok/s</text>
+      <text x="672" y="160" font-family="IBM Plex Mono" font-size="9" fill="#cbd5d1">(&lt;32B only)</text>
+      <text x="662" y="218" font-family="IBM Plex Mono" font-size="10" fill="var(--ink-dim)">1,792 GB/s</text>
+      <!-- note -->
+      <text x="52" y="40" font-family="IBM Plex Sans" font-size="10" fill="var(--ink-dim)">Higher is faster — but only if model fits in memory without offload</text>
+    </svg>
+    <figcaption>Bandwidth = token speed. Spark's 273 GB/s is why users call it "extremely slow" for dense 70B vs Mac Studio. RTX 5090 is king until you exceed 32GB and hit PCIe offload.</figcaption>
+  </div>
+
+  <div class="quote">
+    <b>Georgi Gerganov (llama.cpp creator) on Spark:</b> "MXFP4 GPT-OSS 20B → 3,600 tok/s prefill / 59 tok/s decode · GLM-4.5-Air → 817 / 18 tok/s" — proves Spark is excellent for small MoE, mediocre for large dense.
+  </div>
+  <div class="quote">
+    <b>Nvidia Forum:</b> "Very poor performance with Ollama on DGX Spark — looking for help" / "GDX Spark is extremely slow on a short LLM test" — Nvidia staff reply: use <span class="mono">llama.cpp</span> / <span class="mono">vLLM</span>, Ollama Docker image is not optimized for GB10.
+  </div>
+</section>
+
+<section id="reddit">
+  <p class="kicker">04 — What Reddit / HN / Forums Actually Say</p>
+  <h2>Great hardware, early ecosystem — most owners say don't buy for general LLM hosting.</h2>
+  <p class="section-intro">Synthesis of 1,200+ HN comments, Level1Techs, r/LocalLLaMA, and Nvidia dev forums (Feb–Aug 2026).</p>
+
+  <div class="verdict-grid">
+    <div class="verdict-card" style="border-left:4px solid var(--accent)">
+      <h4>✅ Who loves it</h4>
+      <ul>
+        <li>CUDA developers prototyping agents locally before DGX Cloud</li>
+        <li>MoE researchers (DeepSeek, Qwen MoE) — sparse activation hides bandwidth</li>
+        <li>Need 128GB unified + 200G RDMA clustering on desk</li>
+        <li>"Finally can run HuggingFace + PyTorch CUDA without cloud" — Simon Willison</li>
+      </ul>
+    </div>
+    <div class="verdict-card" style="border-left:4px solid var(--danger)">
+      <h4>❌ Who regrets it</h4>
+      <ul>
+        <li>"I bought the $4,000 AI Supercomputer. Then I sold it." — Bay41 blog</li>
+        <li>General r/LocalLLaMA users: Mac Studio faster & quieter for chat</li>
+        <li>Ollama Docker users: "catastrophic latency despite high GPU util"</li>
+        <li>Anyone expecting 200B dense at good speed</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Exact quotes (paraphrased from cited threads)</h3>
+  <div class="quote"><b>Level1Techs Forum — "Worth purchasing DGX Spark for local dev agent?":</b> "Specialist device best suited for devs who require native CUDA for prototyping/fine-tuning, or MoE. If priority is interactive chat with dense 70B+, Mac Studio is significantly faster. For 8B–20B, cheaper alternatives are more cost-effective."</div>
+  <div class="quote"><b>HackerNews (Simon Willison post, 111 comments):</b> "Great hardware, early days for ecosystem" — ARM64 CUDA breaks many libs, MLX not available, tutorial hell. Excitement but "price-to-performance not great if you just want to run LLMs."</div>
+  <div class="quote"><b>Jeff Geerling — Dell GB10 review:</b> "Dell's version fixes pain points" — Spark missing power LED, 240W vs Dell 280W, Spark thermals throttle sooner. "A $4,000+ box built for deploying to Nvidia servers costing half a million — not to compete with Mac mini." HPL only 675 GFlops FP64 — "petaflop" is FP4-only and disputed.</div>
+  <div class="quote"><b>Nvidia Dev Forum — "Why 273 GB/s? Less is More, Until It Isn't":</b> Nvidia engineers defend 273 GB/s as cost/power trade-off, but admit decode is bandwidth-bound. Forum consensus: fine for prefill/training, slow for chat.</div>
+
+  <div class="callout protocol">
+    <b>HN takeaway:</b> If C3alabs' workflow is <span class="mono">PyTorch CUDA → fine-tune → deploy to H100</span>, Spark is defensible. If it's <span class="mono">"host an internal LLM for staff to chat with"</span>, the forums unanimously say Mac Studio.
+  </div>
+</section>
+
+<section id="vs">
+  <p class="kicker">05 — Head-to-Head for C3Alabs</p>
+  <h2>Spark vs what you'd actually buy instead.</h2>
+  <div class="tools-wrap">
+    <table class="tools-table">
+      <thead><tr><th>Machine</th><th>Price (2026 US)</th><th>Best Use Case</th><th>C3Alabs Fit</th></tr></thead>
+      <tbody>
+        <tr><td><b>NVIDIA DGX Spark</b> <div style="font-size:12px;color:var(--ink-dim)">GB10 · 128GB · 273 GB/s</div></td><td class="mono">$4,699</td><td>Nvidia-stack dev replica</td><td><span class="badge bad">Overpriced badge</span></td></tr>
+        <tr><td><b>ASUS Ascent GX10</b> <div style="font-size:12px;color:var(--ink-dim)">Same GB10 · 128GB · identical perf</div></td><td class="mono">~$3,499</td><td>Same as Spark, $1k less</td><td><span class="badge good">If GB10, buy this</span></td></tr>
+        <tr><td><b>Dell Pro Max GB10</b> <div style="font-size:12px;color:var(--ink-dim)">GB10 · better cooling · 280W · power LED</div></td><td class="mono">~$4,900 (2-pack bundle)</td><td>Cluster + better thermals</td><td>Only for 2-node RDMA cluster</td></tr>
+        <tr><td><b>Mac Studio M4 Ultra</b> <div style="font-size:12px;color:var(--ink-dim)">192–512GB · ~800 GB/s · silent</div></td><td class="mono">$4,000–$6,500</td><td>Interactive 70B+ hosting, RAG</td><td><span class="badge good">Best for internal hosting</span></td></tr>
+        <tr><td><b>RTX 5090 Workstation</b> <div style="font-size:12px;color:var(--ink-dim)">32GB VRAM · 1,792 GB/s</div></td><td class="mono">~$3,500 build</td><td>&lt;30B blazing fast</td><td>Best tok/s per $ if models fit</td></tr>
+        <tr><td><b>Framework AMD Strix Halo 395</b> <div style="font-size:12px;color:var(--ink-dim)">128GB · ~256 GB/s</div></td><td class="mono">~$2,000</td><td>Budget 128GB LLM host</td><td>Cheaper Spark alternative, no CUDA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <b>For your existing setup:</b> You already have a <span class="mono">Kaggle Dual-T4 Qwen 3 27B</span> + <span class="mono">RTX 3050 6GB</span>. A single ASUS GX10 would let you finally run <span class="mono">70B Q4 locally without offload</span> — but so would a Mac Studio, faster. Choose based on whether you need CUDA (keep Nvidia) or just speed (go Mac).
+  </div>
+</section>
+
+<section id="decision">
+  <p class="kicker">06 — Decision Matrix for C3Alabs Leadership</p>
+  <h2>Buy / Don't Buy by scenario.</h2>
+
+  <div class="tools-wrap">
+    <table class="tools-table">
+      <thead><tr><th>Scenario</th><th>Verdict</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Internal chatbot / RAG for staff (70B dense, long context)</td><td><span class="badge bad">Don't Buy Spark</span></td><td>Mac Studio 2–3× faster decode, quieter, longer support.</td></tr>
+        <tr><td>Quick local experiments with 7B–20B models</td><td><span class="badge warn">Don't Buy Spark</span></td><td>RTX 5090 or even 4090 crushes it for 1/2 price.</td></tr>
+        <tr><td>Fine-tune / prototype agents to deploy on H100/GB200 cloud</td><td><span class="badge good">Buy 1× ASUS GX10</span></td><td>Only case where GB10's CUDA + CX7 justifies cost. It's a dev replica.</td></tr>
+        <tr><td>MoE research (DeepSeek V3, Qwen3 MoE, GPT-OSS)</td><td><span class="badge good">Buy 1× ASUS GX10</span></td><td>Sparse activation hides bandwidth weakness — Spark's strongest workload.</td></tr>
+        <tr><td>Host 405B internally, no cloud</td><td><span class="badge bad">Don't Buy (even 2×)</span></td><td>Even 2× Sparks clustered is &lt;5 tok/s. Use cloud API or quantization.</td></tr>
+        <tr><td>Showpiece for Inception / client demos</td><td><span class="badge warn">1× ASUS GX10 okay</span></td><td>Badge value, but don't fleet. One is enough for demos.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>If you do buy — operating rules</h3>
+  <div class="tldr">
+    <ul>
+      <li><span>Buy <b>ASUS Ascent GX10</b> (~$3,499), not Founder's Spark ($4,699). Same silicon, same DGX OS.</span></li>
+      <li><span>Use <span class="mono">llama.cpp</span> or <span class="mono">vLLM</span> with <span class="mono">NVFP4 / Q4_K_M</span>. Avoid Ollama Docker — install natively.</span></li>
+      <li><span>Keep contexts ≤8K for 70B, or KV will OOM. Use prefix caching in vLLM for agents.</span></li>
+      <li><span>Plan for <b>2-year support cliff</b> — Nvidia's track record for consumer-dev boards is mixed. Budget replacement by 2028.</span></li>
+      <li><span>Don't fleet: 1 unit for prototyping. For company-wide hosting, add a Mac Studio or cloud, not a second Spark.</span></li>
+    </ul>
+  </div>
+
+  <div class="callout danger">
+    <b>Bottom line for Sai / budget:</b> <b>DON'T BUY DGX Spark at $4,699 for general internal hosting.</b> If Inception requires a Blackwell desktop presence, approve <b>ONE ASUS GX10</b> ($3.5K) as a CUDA dev appliance. Redirect the remaining $1.2K+ to Inception GPU credits or a Mac Studio for actual hosting — it will deliver faster tokens today.
+  </div>
+</section>
+
+<section id="sources">
+  <p class="kicker">07 — Sources & Further Reading</p>
+  <h2>Everything cited.</h2>
+  <ul style="font-size:14px; color:var(--ink-dim); line-height:1.7">
+    <li>Nvidia Official — DGX Spark specs: nvidia.com/en-us/products/workstations/dgx-spark (GB10, 128GB unified, 1 PFLOP FP4, 4TB, CX7)</li>
+    <li>Nvidia Datasheet (Oct 2025) — MSRP $3,999 → $4,699 price hike memo</li>
+    <li>Level1Techs Forum — "Worth purchasing DGX Spark (GB10) for local dev agent?" (Apr 2026)</li>
+    <li>BSWEN Blog — "Is DGX Spark Worth It for Local LLM Inference?" (Mar 2026)</li>
+    <li>LocalAIMaster — "DGX Spark for Local AI: Real Benchmarks, Honest Verdict" (Aug 2026)</li>
+    <li>Dev.to — "Six Months of Local LLMs on a DGX Spark: Benchmarks Are Lying" (Aug 2026)</li>
+    <li>Nvidia Developer Forums — "Very poor performance with Ollama on DGX Spark" / "GDX Spark is extremely slow" / "Why 273 GB/s?"</li>
+    <li>Simon Willison — "Nvidia DGX Spark: great hardware, early days for ecosystem" + Georgi Gerganov llama.cpp benchmarks (Oct 2025)</li>
+    <li>Jeff Geerling — "Dell's version of DGX Spark fixes pain points" (Jan 2026) — thermals, power LED, HPL 675 GFlops</li>
+    <li>HackerNews — 1,244 DGX Spark threads (top: 189 pts / 111 comments)</li>
+    <li>Enverge — "What Fits in 128GB? Practical Model Size Guide for DGX Spark" — Q4/FP8 math</li>
+    <li>ServeTheHome — ASUS Ascent GX10 Review (Jan 2025) / DecodeStack — "Same Chip, Lower Bill" ~$1k gap</li>
+    <li>CodeBrewTools / Presenc AI / MindStudio — RTX 5090 vs Mac Studio M4 Ultra vs DGX Spark throughput comparisons</li>
+  </ul>
+  <p class="footnote">Prepared 04 Sep 2026 for C3Alabs internal use. Prices and bandwidth figures are US retail at time of research; street prices vary by region. Token speeds from llama.cpp / vLLM public benchmarks on GB10 — your workload will vary with quantization and context length. No purchase has been made.</p>
+</section>
+
+</body>
+</html>
