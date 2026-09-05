@@ -7,11 +7,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--fg:#fff;--mut:#9a9a9e;--faint:#4d4d52;--line:rgba(255,255,255,.12);--card:#0d0d0f;--soft:#161618;--chip:#1d1d1f}
+:root{--bg:#ffffff;--fg:#000;--mut:#6e6e73;--faint:#86868b;--line:rgba(0,0,0,.12);--card:#f5f5f7;--soft:#ececf0;--chip:#e8e8ed}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--fg);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
-nav{position:sticky;top:0;z-index:50;height:48px;display:flex;align-items:center;gap:16px;padding:0 24px;background:rgba(0,0,0,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line);font-size:11.5px;letter-spacing:.04em;overflow-x:auto;white-space:nowrap}
+nav{position:sticky;top:0;z-index:50;height:48px;display:flex;align-items:center;gap:16px;padding:0 24px;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line);font-size:11.5px;letter-spacing:.04em;overflow-x:auto;white-space:nowrap}
 nav a{color:var(--mut);text-decoration:none;text-transform:uppercase;font-weight:600}
 nav a:hover{color:#fff}
 nav .brand{color:#fff;font-weight:700;letter-spacing:.08em;font-size:12px}
@@ -42,31 +42,31 @@ tr:hover td{background:var(--soft)}
 .email{font-family:'Geist Mono',monospace;font-size:11.5px;white-space:nowrap}
 .phone{font-family:'Geist Mono',monospace;font-size:12px;white-space:nowrap}
 .tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);color:var(--mut);white-space:nowrap;margin-top:4px}
-.tag.on{background:#fff;color:#000;border-color:#fff}
-.tag.warn{border-color:rgba(255,255,255,.5);color:#fff}
+.tag.on{background:#000;color:#fff;border-color:#000}
+.tag.warn{border-color:rgba(0,0,0,.55);color:#000}
 .nf{color:var(--faint);font-style:italic;font-size:11.5px}
-a.li{color:#fff;text-decoration:none;border-bottom:1px solid var(--line);font-family:'Geist Mono',monospace;font-size:11.5px;white-space:nowrap}
-a.li:hover{border-bottom-color:#fff}
+a.li{color:#000;text-decoration:none;border-bottom:1px solid var(--line);font-family:'Geist Mono',monospace;font-size:11.5px;white-space:nowrap}
+a.li:hover{border-bottom-color:#000}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:26px}
 .card{background:var(--card);border:1px solid var(--line);padding:24px}
-.card.focal{border-color:#fff}
+.card.focal{border-color:#000}
 .card h3{margin-bottom:6px}
 .card p{font-size:13px;color:var(--mut)}
-.card .num{font-family:'Geist Mono',monospace;font-size:10.5px;color:#fff;background:var(--chip);display:inline-block;padding:2px 8px;border-radius:4px;margin-bottom:12px;letter-spacing:.1em}
-.alert{border:1px solid #fff;background:var(--card);padding:20px 22px;margin-top:22px;display:flex;gap:16px;align-items:flex-start}
-.alert .ic{font-family:'Geist Mono',monospace;font-weight:600;font-size:11.5px;border:1px solid #fff;padding:2px 8px;white-space:nowrap}
+.card .num{font-family:'Geist Mono',monospace;font-size:10.5px;color:#000;background:var(--chip);display:inline-block;padding:2px 8px;border-radius:4px;margin-bottom:12px;letter-spacing:.1em}
+.alert{border:1px solid #000;background:var(--card);padding:20px 22px;margin-top:22px;display:flex;gap:16px;align-items:flex-start}
+.alert .ic{font-family:'Geist Mono',monospace;font-weight:600;font-size:11.5px;border:1px solid #000;padding:2px 8px;white-space:nowrap}
 .alert p{font-size:13px;color:var(--mut)}
 .alert b{color:#fff}
-.fig{background:var(--card);border:1px solid var(--line);margin-top:26px;padding:22px;overflow-x:auto}
+.fig{background:#ffffff;border:1px solid var(--line);margin-top:26px;padding:22px;overflow-x:auto}
 .fig svg{display:block;min-width:880px;margin:0 auto}
 .figcap{font-family:'Geist Mono',monospace;font-size:10.5px;color:var(--mut);text-align:center;margin-top:14px;letter-spacing:.08em}
 .script{background:var(--card);border:1px solid var(--line);padding:22px;margin-top:14px}
 .script h3{font-size:12px;font-family:'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
 .script .tgt{font-size:12px;color:var(--mut);margin-bottom:10px}
-.script blockquote{border-left:2px solid #fff;padding-left:14px;font-size:13px;color:#d8d8dc;font-style:italic}
+.script blockquote{border-left:2px solid #000;padding-left:14px;font-size:13px;color:#3a3a3e;font-style:italic}
 ul.tight{margin:14px 0 0 18px;font-size:13px;color:var(--mut)}
 ul.tight li{margin-bottom:8px}
-ul.tight b{color:#fff}
+ul.tight b{color:#000}
 .foot{padding:40px 0 72px;color:var(--mut);font-size:11.5px;font-family:'Geist Mono',monospace;letter-spacing:.04em}
 .grid2{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;align-items:start}
 @media(max-width:900px){.grid2{grid-template-columns:1fr}}
@@ -94,56 +94,56 @@ ul.tight b{color:#fff}
 <section id="arch"><div class="wrap">
 <div class="kicker">01 — Ecosystem Architecture</div>
 <h2>Complete Chain of Command</h2>
-<p class="sub">Google for Startups operates as a coordinated multi-tier organization spanning Alphabet, Google Cloud and Google DeepMind — unified global leadership with autonomous regional heads. <b style="color:#fff">Darren Mowry</b> holds worldwide P&amp;L as VP of Global Startups. Accelerator policy flows through <b style="color:#fff">Kevin O'Toole</b> (Global Head of Accelerators) and <b style="color:#fff">Karen Fiester</b> (Global Director). India execution runs through <b style="color:#fff">Ragini Das</b> (Head of GFS India) and <b style="color:#fff">Farish CV</b> (AI-First Accelerator cohorts). North America through <b style="color:#fff">Danny Navarro</b>, cloud infrastructure through <b style="color:#fff">Scott Barneson</b>, and the Gemini/AI Studio ecosystem through <b style="color:#fff">Matt Ridenour</b> at Google DeepMind &amp; Labs. Venture and non-dilutive capital sit with <b style="color:#fff">Samantha Rodriguez</b> (Founders Funds) and <b style="color:#fff">Kathryn Van Nuys</b> (global VC &amp; PE).</p>
+<p class="sub">Google for Startups operates as a coordinated multi-tier organization spanning Alphabet, Google Cloud and Google DeepMind — unified global leadership with autonomous regional heads. <b style="color:#000">Darren Mowry</b> holds worldwide P&amp;L as VP of Global Startups. Accelerator policy flows through <b style="color:#000">Kevin O'Toole</b> (Global Head of Accelerators) and <b style="color:#000">Karen Fiester</b> (Global Director). India execution runs through <b style="color:#000">Ragini Das</b> (Head of GFS India) and <b style="color:#000">Farish CV</b> (AI-First Accelerator cohorts). North America through <b style="color:#000">Danny Navarro</b>, cloud infrastructure through <b style="color:#000">Scott Barneson</b>, and the Gemini/AI Studio ecosystem through <b style="color:#000">Matt Ridenour</b> at Google DeepMind &amp; Labs. Venture and non-dilutive capital sit with <b style="color:#000">Samantha Rodriguez</b> (Founders Funds) and <b style="color:#000">Kathryn Van Nuys</b> (global VC &amp; PE).</p>
 <div class="fig">
 <svg viewBox="0 0 1080 460" role="img" aria-labelledby="org-title org-desc" xmlns="http://www.w3.org/2000/svg">
 <title id="org-title">Google for Startups leadership hierarchy</title>
 <desc id="org-desc">Three-tier org chart: one global VP at top, four global program leaders in the middle, and four regional or fund leads at the bottom.</desc>
-<rect width="1080" height="460" fill="#000"/>
+<rect width="1080" height="460" fill="#ffffff"/>
 <defs>
-<marker id="a-mut" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#9a9a9e"/></marker>
+<marker id="a-mut" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#6e6e73"/></marker>
 </defs>
-<text x="24" y="84" fill="#4d4d52" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">GLOBAL P&amp;L</text>
-<text x="24" y="212" fill="#4d4d52" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">POLICY &amp; PROGRAMS</text>
-<text x="24" y="356" fill="#4d4d52" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">REGIONAL COMMAND</text>
-<path d="M492,116 L492,140 Q492,148 484,148 L228,148 Q220,148 220,156 L220,172" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#a-mut)"/>
-<path d="M524,116 L524,140 Q524,148 532,148 L444,148 Q444,148 444,156 L444,172" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#a-mut)"/>
-<path d="M556,116 L556,140 Q556,148 564,148 L652,148 Q660,148 660,156 L660,172" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#a-mut)"/>
-<path d="M588,116 L588,140 Q588,148 596,148 L872,148 Q880,148 880,156 L880,172" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#a-mut)"/>
-<rect x="460" y="52" width="160" height="64" rx="6" fill="#fff"/>
-<text x="540" y="80" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Darren Mowry</text>
-<text x="540" y="98" fill="#000" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">VP · GLOBAL STARTUPS</text>
-<rect x="140" y="176" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="220" y="204" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Kevin O'Toole</text>
-<text x="220" y="222" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">GLOBAL ACCELERATORS</text>
-<rect x="360" y="176" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="440" y="204" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Karen Fiester</text>
-<text x="440" y="222" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">GLOBAL DIRECTOR · GFS</text>
-<rect x="580" y="176" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="660" y="204" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">David McLaughlin</text>
-<text x="660" y="222" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">DEV ECOSYSTEM · GLOBAL</text>
-<rect x="800" y="176" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="880" y="204" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Mike Kim</text>
-<text x="880" y="222" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">STARTUP/INVESTOR MKTG</text>
-<rect x="120" y="300" width="880" height="120" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.12)" stroke-width="1" stroke-dasharray="4,3"/>
-<rect x="140" y="320" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="220" y="348" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Ragini Das</text>
-<text x="220" y="366" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">HEAD · INDIA</text>
-<rect x="360" y="320" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="440" y="348" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Danny Navarro</text>
-<text x="440" y="366" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">HEAD · NORTH AMERICA</text>
-<rect x="580" y="320" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="660" y="348" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Kathryn Van Nuys</text>
-<text x="660" y="366" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">VC &amp; PE · GLOBAL CLOUD</text>
-<rect x="800" y="320" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="880" y="348" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Samantha Rodriguez</text>
-<text x="880" y="366" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">FOUNDERS FUNDS · US</text>
-<line x1="24" y1="436" x2="1056" y2="436" stroke="rgba(255,255,255,.12)" stroke-width="0.8"/>
-<rect x="24" y="446" width="12" height="8" rx="2" fill="#fff"/>
-<text x="44" y="453" fill="#9a9a9e" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">FOCAL — TOP OF CHAIN</text>
-<rect x="220" y="446" width="12" height="8" rx="2" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="240" y="453" fill="#9a9a9e" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">VERIFIED VIA APOLLO PERSON ID</text>
-<text x="560" y="453" fill="#4d4d52" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">DASHED ZONE = REGIONAL COMMAND</text>
+<text x="24" y="84" fill="#86868b" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">GLOBAL P&amp;L</text>
+<text x="24" y="212" fill="#86868b" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">POLICY &amp; PROGRAMS</text>
+<text x="24" y="356" fill="#86868b" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">REGIONAL COMMAND</text>
+<path d="M492,116 L492,140 Q492,148 484,148 L228,148 Q220,148 220,156 L220,172" fill="none" stroke="#6e6e73" stroke-width="1" marker-end="url(#a-mut)"/>
+<path d="M524,116 L524,140 Q524,148 532,148 L444,148 Q444,148 444,156 L444,172" fill="none" stroke="#6e6e73" stroke-width="1" marker-end="url(#a-mut)"/>
+<path d="M556,116 L556,140 Q556,148 564,148 L652,148 Q660,148 660,156 L660,172" fill="none" stroke="#6e6e73" stroke-width="1" marker-end="url(#a-mut)"/>
+<path d="M588,116 L588,140 Q588,148 596,148 L872,148 Q880,148 880,156 L880,172" fill="none" stroke="#6e6e73" stroke-width="1" marker-end="url(#a-mut)"/>
+<rect x="460" y="52" width="160" height="64" rx="6" fill="#000"/>
+<text x="540" y="80" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Darren Mowry</text>
+<text x="540" y="98" fill="#fff" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">VP · GLOBAL STARTUPS</text>
+<rect x="140" y="176" width="160" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="220" y="204" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Kevin O'Toole</text>
+<text x="220" y="222" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">GLOBAL ACCELERATORS</text>
+<rect x="360" y="176" width="160" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="440" y="204" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Karen Fiester</text>
+<text x="440" y="222" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">GLOBAL DIRECTOR · GFS</text>
+<rect x="580" y="176" width="160" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="660" y="204" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">David McLaughlin</text>
+<text x="660" y="222" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">DEV ECOSYSTEM · GLOBAL</text>
+<rect x="800" y="176" width="160" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="880" y="204" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Mike Kim</text>
+<text x="880" y="222" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">STARTUP/INVESTOR MKTG</text>
+<rect x="120" y="300" width="880" height="120" rx="8" fill="rgba(0,0,0,0.03)" stroke="rgba(0,0,0,.12)" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="140" y="320" width="160" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="220" y="348" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Ragini Das</text>
+<text x="220" y="366" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">HEAD · INDIA</text>
+<rect x="360" y="320" width="160" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="440" y="348" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Danny Navarro</text>
+<text x="440" y="366" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">HEAD · NORTH AMERICA</text>
+<rect x="580" y="320" width="160" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="660" y="348" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Kathryn Van Nuys</text>
+<text x="660" y="366" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">VC &amp; PE · GLOBAL CLOUD</text>
+<rect x="800" y="320" width="160" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="880" y="348" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Samantha Rodriguez</text>
+<text x="880" y="366" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">FOUNDERS FUNDS · US</text>
+<line x1="24" y1="436" x2="1056" y2="436" stroke="rgba(0,0,0,.12)" stroke-width="0.8"/>
+<rect x="24" y="446" width="12" height="8" rx="2" fill="#000"/>
+<text x="44" y="453" fill="#6e6e73" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">FOCAL — TOP OF CHAIN</text>
+<rect x="220" y="446" width="12" height="8" rx="2" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="240" y="453" fill="#6e6e73" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">VERIFIED VIA APOLLO PERSON ID</text>
+<text x="560" y="453" fill="#86868b" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">DASHED ZONE = REGIONAL COMMAND</text>
 </svg>
 <div class="figcap">FIGURE 1.1 — LEADERSHIP HIERARCHY · ALL NINE NODES IDENTITY-ANCHORED AND LIVE-VERIFIED</div>
 </div>
@@ -179,43 +179,43 @@ ul.tight b{color:#fff}
 <svg viewBox="0 0 1080 340" role="img" aria-labelledby="rt-title rt-desc" xmlns="http://www.w3.org/2000/svg">
 <title id="rt-title">Program entry routes</title>
 <desc id="rt-desc">Flow from C3A Labs through three parallel routes — accelerator, cloud credits, founders funds — each with a named gatekeeper and outcome.</desc>
-<rect width="1080" height="340" fill="#000"/>
+<rect width="1080" height="340" fill="#ffffff"/>
 <defs>
-<marker id="r-mut" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#9a9a9e"/></marker>
-<marker id="r-wht" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#ffffff"/></marker>
+<marker id="r-mut" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#6e6e73"/></marker>
+<marker id="r-wht" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#000000"/></marker>
 </defs>
-<path d="M232,160 L264,160 Q272,160 272,152 L272,72 Q272,64 280,64 L312,64" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
-<path d="M232,160 L304,160" fill="none" stroke="#fff" stroke-width="1.2" marker-end="url(#r-wht)"/>
-<path d="M232,160 L264,160 Q272,160 272,168 L272,256 Q272,264 280,264 L312,264" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
-<path d="M552,64 L724,64" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
-<path d="M552,160 L724,160" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
-<path d="M552,264 L724,264" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
-<rect x="72" y="128" width="160" height="64" rx="6" fill="#fff"/>
-<text x="152" y="156" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">C3A Labs · SARVAX</text>
-<text x="152" y="174" fill="#000" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">DPIIT · NVIDIA INCEPTION</text>
-<rect x="316" y="32" width="236" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="434" y="56" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">GFS Accelerator · AI-First</text>
-<text x="434" y="76" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">FARISH CV (IN) · K. O'TOOLE (GL)</text>
-<rect x="316" y="128" width="236" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="434" y="152" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Cloud Startup Credits</text>
-<text x="434" y="172" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">KARAN KUMAR (IN) · S. BARNESON (US)</text>
-<rect x="316" y="224" width="236" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
-<text x="434" y="248" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Founders Funds</text>
-<text x="434" y="268" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">SAMANTHA RODRIGUEZ (US)</text>
-<rect x="728" y="32" width="272" height="64" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-<text x="864" y="56" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Equity-free 10-week cohort</text>
-<text x="864" y="76" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">MENTORSHIP · OKR · ARCHITECTURE</text>
-<rect x="728" y="128" width="272" height="64" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-<text x="864" y="152" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">$200K–$350K compute · 2 yrs</text>
-<text x="864" y="172" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">VERTEX AI · GCP CREDITS</text>
-<rect x="728" y="224" width="272" height="64" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-<text x="864" y="248" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Non-dilutive cash award</text>
-<text x="864" y="268" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">+ HANDS-ON GOOGLE MENTORSHIP</text>
-<line x1="24" y1="312" x2="1056" y2="312" stroke="rgba(255,255,255,.12)" stroke-width="0.8"/>
-<line x1="24" y1="326" x2="52" y2="326" stroke="#fff" stroke-width="1.2" marker-end="url(#r-wht)"/>
-<text x="64" y="329" fill="#9a9a9e" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">PRIMARY ROUTE — APPLY FIRST</text>
-<line x1="300" y1="326" x2="328" y2="326" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
-<text x="340" y="329" fill="#9a9a9e" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">PARALLEL / CONDITIONAL ROUTE</text>
+<path d="M232,160 L264,160 Q272,160 272,152 L272,72 Q272,64 280,64 L312,64" fill="none" stroke="#6e6e73" stroke-width="1" marker-end="url(#r-mut)"/>
+<path d="M232,160 L304,160" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#r-wht)"/>
+<path d="M232,160 L264,160 Q272,160 272,168 L272,256 Q272,264 280,264 L312,264" fill="none" stroke="#6e6e73" stroke-width="1" marker-end="url(#r-mut)"/>
+<path d="M552,64 L724,64" fill="none" stroke="#6e6e73" stroke-width="1" marker-end="url(#r-mut)"/>
+<path d="M552,160 L724,160" fill="none" stroke="#6e6e73" stroke-width="1" marker-end="url(#r-mut)"/>
+<path d="M552,264 L724,264" fill="none" stroke="#6e6e73" stroke-width="1" marker-end="url(#r-mut)"/>
+<rect x="72" y="128" width="160" height="64" rx="6" fill="#000"/>
+<text x="152" y="156" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">C3A Labs · SARVAX</text>
+<text x="152" y="174" fill="#fff" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">DPIIT · NVIDIA INCEPTION</text>
+<rect x="316" y="32" width="236" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="434" y="56" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">GFS Accelerator · AI-First</text>
+<text x="434" y="76" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">FARISH CV (IN) · K. O'TOOLE (GL)</text>
+<rect x="316" y="128" width="236" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="434" y="152" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Cloud Startup Credits</text>
+<text x="434" y="172" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">KARAN KUMAR (IN) · S. BARNESON (US)</text>
+<rect x="316" y="224" width="236" height="64" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+<text x="434" y="248" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Founders Funds</text>
+<text x="434" y="268" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">SAMANTHA RODRIGUEZ (US)</text>
+<rect x="728" y="32" width="272" height="64" rx="6" fill="rgba(0,0,0,0.04)" stroke="rgba(0,0,0,.2)" stroke-width="1"/>
+<text x="864" y="56" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Equity-free 10-week cohort</text>
+<text x="864" y="76" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">MENTORSHIP · OKR · ARCHITECTURE</text>
+<rect x="728" y="128" width="272" height="64" rx="6" fill="rgba(0,0,0,0.04)" stroke="rgba(0,0,0,.2)" stroke-width="1"/>
+<text x="864" y="152" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">$200K–$350K compute · 2 yrs</text>
+<text x="864" y="172" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">VERTEX AI · GCP CREDITS</text>
+<rect x="728" y="224" width="272" height="64" rx="6" fill="rgba(0,0,0,0.04)" stroke="rgba(0,0,0,.2)" stroke-width="1"/>
+<text x="864" y="248" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Non-dilutive cash award</text>
+<text x="864" y="268" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">+ HANDS-ON GOOGLE MENTORSHIP</text>
+<line x1="24" y1="312" x2="1056" y2="312" stroke="rgba(0,0,0,.12)" stroke-width="0.8"/>
+<line x1="24" y1="326" x2="52" y2="326" stroke="#000" stroke-width="1.2" marker-end="url(#r-wht)"/>
+<text x="64" y="329" fill="#6e6e73" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">PRIMARY ROUTE — APPLY FIRST</text>
+<line x1="300" y1="326" x2="328" y2="326" stroke="#6e6e73" stroke-width="1" marker-end="url(#r-mut)"/>
+<text x="340" y="329" fill="#6e6e73" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">PARALLEL / CONDITIONAL ROUTE</text>
 </svg>
 <div class="figcap">FIGURE 1.2 — FUNCTIONAL ENTRY TRACKS · NO FUNDING GATE ON THE ACCELERATOR LANE</div>
 </div>
@@ -255,20 +255,20 @@ ul.tight b{color:#fff}
 <svg viewBox="0 0 1080 120" role="img" aria-labelledby="vf-title vf-desc" xmlns="http://www.w3.org/2000/svg">
 <title id="vf-title">Verification chain</title>
 <desc id="vf-desc">Six sequential steps from live LinkedIn check through Apollo identity anchoring, dual waterfall passes, email validation, DNC screening, to the certainty-gated register.</desc>
-<rect width="1080" height="120" fill="#000"/>
-<defs><marker id="v-a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#9a9a9e"/></marker></defs>
-<path d="M164,60 L176,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
-<path d="M328,60 L340,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
-<path d="M492,60 L504,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
-<path d="M656,60 L668,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
-<path d="M820,60 L832,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
+<rect width="1080" height="120" fill="#ffffff"/>
+<defs><marker id="v-a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#6e6e73"/></marker></defs>
+<path d="M164,60 L176,60" stroke="#6e6e73" stroke-width="1" marker-end="url(#v-a)"/>
+<path d="M328,60 L340,60" stroke="#6e6e73" stroke-width="1" marker-end="url(#v-a)"/>
+<path d="M492,60 L504,60" stroke="#6e6e73" stroke-width="1" marker-end="url(#v-a)"/>
+<path d="M656,60 L668,60" stroke="#6e6e73" stroke-width="1" marker-end="url(#v-a)"/>
+<path d="M820,60 L832,60" stroke="#6e6e73" stroke-width="1" marker-end="url(#v-a)"/>
 <g font-family="'Geist',sans-serif" font-size="11" font-weight="600" text-anchor="middle">
-<rect x="12" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="88" y="56" fill="#fff">LINKEDIN LIVE</text><text x="88" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">23/23 RESOLVE</text>
-<rect x="176" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="252" y="56" fill="#fff">APOLLO ID ANCHOR</text><text x="252" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">NO NAME GUESSING</text>
-<rect x="340" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="416" y="56" fill="#fff">DUAL WATERFALL</text><text x="416" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">EMAIL + PHONE ×2</text>
-<rect x="504" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="580" y="56" fill="#fff">ZEROBOUNCE</text><text x="580" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">TIMESTAMPED VALID</text>
-<rect x="668" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="744" y="56" fill="#fff">DNC SCREENING</text><text x="744" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">2 FOUND · 2 CLEAN</text>
-<rect x="832" y="36" width="236" height="48" rx="6" fill="#fff"/><text x="950" y="56" fill="#000">CERTAINTY-GATED REGISTER</text><text x="950" y="72" fill="#000" font-size="9" font-family="'Geist Mono',monospace">UNCERTAIN FIELDS WITHHELD</text>
+<rect x="12" y="36" width="152" height="48" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)"/><text x="88" y="56" fill="#000">LINKEDIN LIVE</text><text x="88" y="72" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace">23/23 RESOLVE</text>
+<rect x="176" y="36" width="152" height="48" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)"/><text x="252" y="56" fill="#000">APOLLO ID ANCHOR</text><text x="252" y="72" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace">NO NAME GUESSING</text>
+<rect x="340" y="36" width="152" height="48" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)"/><text x="416" y="56" fill="#000">DUAL WATERFALL</text><text x="416" y="72" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace">EMAIL + PHONE ×2</text>
+<rect x="504" y="36" width="152" height="48" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)"/><text x="580" y="56" fill="#000">ZEROBOUNCE</text><text x="580" y="72" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace">TIMESTAMPED VALID</text>
+<rect x="668" y="36" width="152" height="48" rx="6" fill="#ffffff" stroke="rgba(0,0,0,.35)"/><text x="744" y="56" fill="#000">DNC SCREENING</text><text x="744" y="72" fill="#6e6e73" font-size="9" font-family="'Geist Mono',monospace">2 FOUND · 2 CLEAN</text>
+<rect x="832" y="36" width="236" height="48" rx="6" fill="#000"/><text x="950" y="56" fill="#fff">CERTAINTY-GATED REGISTER</text><text x="950" y="72" fill="#fff" font-size="9" font-family="'Geist Mono',monospace">UNCERTAIN FIELDS WITHHELD</text>
 </g>
 </svg>
 <div class="figcap">FIGURE 1.3 — SIX-STAGE VERIFICATION CHAIN · 563 APOLLO CREDITS ACROSS BOTH RUNS</div>
@@ -334,7 +334,7 @@ function row(d){
  if(dnc==="reanchor") flags = '<br><span class="tag warn">RE-ANCHORED</span>';
  if(dnc==="moved") flags = '<br><span class="tag warn">ROLE MOVED</span>';
  const laneName = {global:"GLOBAL HQ",india:"INDIA",us:"US / AMERICAS"}[lane];
- return `<tr><td class="name">${esc(name)}<span class="lane">${laneName} · ${esc(tagline)}</span></td><td class="mandate"><strong style="color:#fff;font-size:12.5px">${esc(role)}</strong><br>${esc(mandate)}${flags}</td><td class="base">${esc(base)}</td><td>${em}</td><td>${pe}</td><td>${ph}</td><td><a class="li" href="https://www.linkedin.com/in/${esc(handle)}/" target="_blank" rel="noopener">in/${esc(handle)}</a></td></tr>`;
+ return `<tr><td class="name">${esc(name)}<span class="lane">${laneName} · ${esc(tagline)}</span></td><td class="mandate"><strong style="color:#000;font-size:12.5px">${esc(role)}</strong><br>${esc(mandate)}${flags}</td><td class="base">${esc(base)}</td><td>${em}</td><td>${pe}</td><td>${ph}</td><td><a class="li" href="https://www.linkedin.com/in/${esc(handle)}/" target="_blank" rel="noopener">in/${esc(handle)}</a></td></tr>`;
 }
 for(const lane of ["global","india","us"]) document.getElementById("tb-"+lane).innerHTML = DATA.filter(d=>d[0]===lane).map(row).join("");
 </script>
