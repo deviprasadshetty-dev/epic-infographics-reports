@@ -1,965 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google for Startups — Exhaustive Leadership & Outreach Directory (Global, US & India)</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-  <style>
-    :root {
-      --bg: #eef3f1;
-      --surface: #ffffff;
-      --surface-2: #e3ebe8;
-      --ink: #122320;
-      --ink-dim: #4c605a;
-      --border: #cfdbd6;
-      --accent: #157a5f;
-      --accent-ink: #0d5c47;
-      --accent-soft: #d8ede4;
-      --protocol: #5850c9;
-      --protocol-soft: #e6e4fa;
-      --code-bg: #e6edea;
-      --shadow: 0 1px 2px rgba(18,35,32,.06), 0 8px 24px -12px rgba(18,35,32,.12);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #0e1613;
-        --surface: #151f1c;
-        --surface-2: #1b2723;
-        --ink: #e9f2ee;
-        --ink-dim: #9db2ab;
-        --border: #2a3733;
-        --accent: #3fcd9a;
-        --accent-ink: #8fe9c8;
-        --accent-soft: #173229;
-        --protocol: #a29cf2;
-        --protocol-soft: #242058;
-        --code-bg: #1a2521;
-        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-      line-height: 1.55;
-      margin: 0;
-      padding: 0 20px 120px;
-    }
-    code, .mono {
-      font-family: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
-    }
-    .wrap {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-    header.hero {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 56px 0 28px;
-      border-bottom: 1px solid var(--border);
-    }
-    .eyebrow {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 12.5px;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      color: var(--accent-ink);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: inline-block;
-    }
-    h1 {
-      font-size: clamp(26px, 3.8vw, 38px);
-      line-height: 1.15;
-      letter-spacing: -.01em;
-      margin: 14px 0 10px;
-      font-weight: 700;
-    }
-    .lede {
-      font-size: 16px;
-      color: var(--ink-dim);
-      max-width: 74ch;
-      margin: 0;
-    }
-    nav.jump {
-      max-width: 980px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 6px;
-      padding: 18px 0 0;
-    }
-    nav.jump a {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 12px;
-      color: var(--ink-dim);
-      text-decoration: none;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      transition: all .15s ease;
-    }
-    nav.jump a:hover {
-      color: var(--accent-ink);
-      border-color: var(--accent);
-    }
-    section {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    section:last-of-type {
-      border-bottom: none;
-    }
-    .kicker {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
-      margin: 0 0 8px;
-    }
-    h2 {
-      font-size: 22px;
-      margin: 0 0 8px;
-      letter-spacing: -.005em;
-    }
-    .section-intro {
-      color: var(--ink-dim);
-      max-width: 74ch;
-      margin: 0 0 20px;
-      font-size: 14.5px;
-    }
-    .tldr {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px 24px;
-      box-shadow: var(--shadow);
-      margin-top: 16px;
-    }
-    .tldr ul {
-      margin: 0;
-      padding-left: 0;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .tldr li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-    .tldr li::before {
-      content: "→";
-      color: var(--accent);
-      font-weight: 600;
-      font-family: "IBM Plex Mono", monospace;
-      flex-shrink: 0;
-      width: 20px;
-    }
-    .tldr li span {
-      flex: 1;
-      font-size: 14.5px;
-    }
-    .callout {
-      border-left: 3px solid var(--accent);
-      background: var(--accent-soft);
-      border-radius: 0 10px 10px 0;
-      padding: 14px 18px;
-      margin: 20px 0;
-      font-size: 14px;
-    }
-    .callout.protocol {
-      border-left-color: var(--protocol);
-      background: var(--protocol-soft);
-    }
-    .tools-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--surface);
-      box-shadow: var(--shadow);
-      padding: 4px 10px;
-      margin-top: 18px;
-    }
-    .tools-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13.5px;
-    }
-    .tools-table th {
-      text-align: left;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      color: var(--ink-dim);
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--border);
-      font-weight: 600;
-    }
-    .tools-table td {
-      padding: 14px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-    .tools-table tr:last-child td {
-      border-bottom: none;
-    }
-    .schema-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .schema-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-    .schema-card h4 {
-      margin: 0 0 4px;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 13.5px;
-      color: var(--accent-ink);
-      font-weight: 600;
-    }
-    .schema-card .role {
-      font-size: 12px;
-      color: var(--ink-dim);
-      margin-bottom: 12px;
-      font-weight: 500;
-    }
-    .badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 11px;
-      font-weight: 600;
-      background: var(--surface-2);
-      color: var(--ink);
-      border: 1px solid var(--border);
-    }
-    .badge.primary {
-      background: var(--accent-soft);
-      color: var(--accent-ink);
-      border-color: var(--accent);
-    }
-    .badge.us {
-      background: var(--protocol-soft);
-      color: var(--protocol);
-      border-color: var(--protocol);
-    }
-    .badge.global {
-      background: #fde8e8;
-      color: #9b1c1c;
-      border-color: #f8b4b4;
-    }
-    a.link {
-      color: var(--accent-ink);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    a.link:hover {
-      text-decoration: underline;
-    }
-    .diagram-frame {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      overflow-x: auto;
-      margin: 20px 0 10px;
-    }
-    .diagram-frame svg {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto;
-    }
-    figcaption {
-      font-size: 12.5px;
-      color: var(--ink-dim);
-      margin-top: 10px;
-      font-family: "IBM Plex Mono", monospace;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google for Startups — Leadership Directory & Verified Outreach Register · C3A Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--fg:#fff;--mut:#9a9a9e;--faint:#4d4d52;--line:rgba(255,255,255,.12);--card:#0d0d0f;--soft:#161618;--chip:#1d1d1f}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+nav{position:sticky;top:0;z-index:50;height:48px;display:flex;align-items:center;gap:16px;padding:0 24px;background:rgba(0,0,0,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line);font-size:11.5px;letter-spacing:.04em;overflow-x:auto;white-space:nowrap}
+nav a{color:var(--mut);text-decoration:none;text-transform:uppercase;font-weight:600}
+nav a:hover{color:#fff}
+nav .brand{color:#fff;font-weight:700;letter-spacing:.08em;font-size:12px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+.kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:12px;font-family:'Geist Mono',monospace}
+h1{font-size:clamp(32px,4.6vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.06}
+h2{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+h3{font-size:15px;font-weight:700;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:15.5px;max-width:840px;margin-top:12px}
+.hero{padding:88px 0 64px;border-bottom:1px solid var(--line)}
+.pill{display:inline-block;padding:5px 14px;border:1px solid var(--line);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:20px;font-family:'Geist Mono',monospace}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px}
+.stat{background:var(--card);padding:20px 18px}
+.stat b{display:block;font-size:28px;font-weight:800;letter-spacing:-.02em}
+.stat b i{font-style:normal;font-size:14px;color:var(--mut);font-weight:600}
+.stat span{font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.tblwrap{overflow-x:auto;margin-top:24px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:1080px}
+th{font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut);text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);font-weight:700;white-space:nowrap;background:var(--card)}
+td{padding:15px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--soft)}
+.name{font-weight:700;white-space:nowrap}
+.lane{display:block;font-family:'Geist Mono',monospace;font-size:9.5px;color:var(--faint);letter-spacing:.12em;margin-top:3px}
+.mandate{color:var(--mut);font-size:12.5px;min-width:240px}
+.base{color:var(--mut);font-size:12px;white-space:nowrap}
+.email{font-family:'Geist Mono',monospace;font-size:11.5px;white-space:nowrap}
+.phone{font-family:'Geist Mono',monospace;font-size:12px;white-space:nowrap}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);color:var(--mut);white-space:nowrap;margin-top:4px}
+.tag.on{background:#fff;color:#000;border-color:#fff}
+.tag.warn{border-color:rgba(255,255,255,.5);color:#fff}
+.nf{color:var(--faint);font-style:italic;font-size:11.5px}
+a.li{color:#fff;text-decoration:none;border-bottom:1px solid var(--line);font-family:'Geist Mono',monospace;font-size:11.5px;white-space:nowrap}
+a.li:hover{border-bottom-color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:26px}
+.card{background:var(--card);border:1px solid var(--line);padding:24px}
+.card.focal{border-color:#fff}
+.card h3{margin-bottom:6px}
+.card p{font-size:13px;color:var(--mut)}
+.card .num{font-family:'Geist Mono',monospace;font-size:10.5px;color:#fff;background:var(--chip);display:inline-block;padding:2px 8px;border-radius:4px;margin-bottom:12px;letter-spacing:.1em}
+.alert{border:1px solid #fff;background:var(--card);padding:20px 22px;margin-top:22px;display:flex;gap:16px;align-items:flex-start}
+.alert .ic{font-family:'Geist Mono',monospace;font-weight:600;font-size:11.5px;border:1px solid #fff;padding:2px 8px;white-space:nowrap}
+.alert p{font-size:13px;color:var(--mut)}
+.alert b{color:#fff}
+.fig{background:var(--card);border:1px solid var(--line);margin-top:26px;padding:22px;overflow-x:auto}
+.fig svg{display:block;min-width:880px;margin:0 auto}
+.figcap{font-family:'Geist Mono',monospace;font-size:10.5px;color:var(--mut);text-align:center;margin-top:14px;letter-spacing:.08em}
+.script{background:var(--card);border:1px solid var(--line);padding:22px;margin-top:14px}
+.script h3{font-size:12px;font-family:'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.script .tgt{font-size:12px;color:var(--mut);margin-bottom:10px}
+.script blockquote{border-left:2px solid #fff;padding-left:14px;font-size:13px;color:#d8d8dc;font-style:italic}
+ul.tight{margin:14px 0 0 18px;font-size:13px;color:var(--mut)}
+ul.tight li{margin-bottom:8px}
+ul.tight b{color:#fff}
+.foot{padding:40px 0 72px;color:var(--mut);font-size:11.5px;font-family:'Geist Mono',monospace;letter-spacing:.04em}
+.grid2{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;align-items:start}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
-  <header class="hero">
-    <div class="eyebrow">Strategic Outreach & Ecosystem Intelligence</div>
-    <h1>Google for Startups: Comprehensive Global, US & India Directory</h1>
-    <p class="lede">An exhaustive hierarchy mapping executive leadership, global accelerator managers, Google DeepMind AI ecosystem directors, and venture capital leads across India, the United States, and Global HQ.</p>
-  </header>
+<nav><span class="brand">C3A LABS</span><a href="#arch">01 Hierarchy</a><a href="#global">02 Global</a><a href="#india">03 India</a><a href="#us">04 US</a><a href="#routes">05 Entry Points</a><a href="#playbook">06 Playbook</a><a href="#register">07 Register</a><a href="#method">08 Method</a></nav>
 
-  <nav class="jump">
-    <a href="#overview">01 Executive Hierarchy</a>
-    <a href="#global-directors">02 Global Executives</a>
-    <a href="#india-directory">03 India Leadership</a>
-    <a href="#us-directory">04 US Leadership</a>
-    <a href="#pathways">05 Program Entry Points</a>
-    <a href="#playbook">06 Outreach Playbook</a>
-    <a href="#register">07 Validation Register</a>
-  </nav>
+<header class="hero"><div class="wrap">
+<span class="pill">Verified Edition · 05 Sep 2026 · C3A Labs × Deviprasad Shetty</span>
+<h1>Google for Startups.<br>Leadership directory, twice-verified.</h1>
+<p class="sub">The complete executive hierarchy across Global HQ, India and the US — every mandate mapped, every LinkedIn handle live-checked, and every contact enriched through a dual Apollo waterfall pass: ZeroBounce-validated work emails, personal emails where providers hold them, high-confidence phones, and binding Do-Not-Call flags. Fields that could not be confidently tied to the person are withheld, not guessed.</p>
+<div class="stats">
+<div class="stat"><b>23</b><span>Executives mapped</span></div>
+<div class="stat"><b>23<i>/23</i></b><span>LinkedIn live-verified</span></div>
+<div class="stat"><b>21<i>/23</i></b><span>Verified work emails</span></div>
+<div class="stat"><b>3</b><span>Personal emails</span></div>
+<div class="stat"><b>20<i>/23</i></b><span>Confirmed phones</span></div>
+<div class="stat"><b>2</b><span>DNC — email only</span></div>
+<div class="stat"><b>563</b><span>Apollo credits</span></div>
+</div>
+</div></header>
 
-  <!-- SECTION 1: OVERVIEW -->
-  <section id="overview">
-    <div class="kicker">01 — Ecosystem Architecture</div>
-    <h2>Complete Chain of Command</h2>
-    <p class="section-intro">Google for Startups operates as a coordinated multi-tier organization spanning Alphabet, Google Cloud, and Google DeepMind. The organization runs under unified global leadership with autonomous regional leads in North America and India.</p>
+<section id="arch"><div class="wrap">
+<div class="kicker">01 — Ecosystem Architecture</div>
+<h2>Complete Chain of Command</h2>
+<p class="sub">Google for Startups operates as a coordinated multi-tier organization spanning Alphabet, Google Cloud and Google DeepMind — unified global leadership with autonomous regional heads. <b style="color:#fff">Darren Mowry</b> holds worldwide P&amp;L as VP of Global Startups. Accelerator policy flows through <b style="color:#fff">Kevin O'Toole</b> (Global Head of Accelerators) and <b style="color:#fff">Karen Fiester</b> (Global Director). India execution runs through <b style="color:#fff">Ragini Das</b> (Head of GFS India) and <b style="color:#fff">Farish CV</b> (AI-First Accelerator cohorts). North America through <b style="color:#fff">Danny Navarro</b>, cloud infrastructure through <b style="color:#fff">Scott Barneson</b>, and the Gemini/AI Studio ecosystem through <b style="color:#fff">Matt Ridenour</b> at Google DeepMind &amp; Labs. Venture and non-dilutive capital sit with <b style="color:#fff">Samantha Rodriguez</b> (Founders Funds) and <b style="color:#fff">Kathryn Van Nuys</b> (global VC &amp; PE).</p>
+<div class="fig">
+<svg viewBox="0 0 1080 460" role="img" aria-labelledby="org-title org-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="org-title">Google for Startups leadership hierarchy</title>
+<desc id="org-desc">Three-tier org chart: one global VP at top, four global program leaders in the middle, and four regional or fund leads at the bottom.</desc>
+<rect width="1080" height="460" fill="#000"/>
+<defs>
+<marker id="a-mut" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#9a9a9e"/></marker>
+</defs>
+<text x="24" y="84" fill="#4d4d52" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">GLOBAL P&amp;L</text>
+<text x="24" y="212" fill="#4d4d52" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">POLICY &amp; PROGRAMS</text>
+<text x="24" y="356" fill="#4d4d52" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">REGIONAL COMMAND</text>
+<path d="M492,116 L492,140 Q492,148 484,148 L228,148 Q220,148 220,156 L220,172" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#a-mut)"/>
+<path d="M524,116 L524,140 Q524,148 532,148 L444,148 Q444,148 444,156 L444,172" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#a-mut)"/>
+<path d="M556,116 L556,140 Q556,148 564,148 L652,148 Q660,148 660,156 L660,172" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#a-mut)"/>
+<path d="M588,116 L588,140 Q588,148 596,148 L872,148 Q880,148 880,156 L880,172" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#a-mut)"/>
+<rect x="460" y="52" width="160" height="64" rx="6" fill="#fff"/>
+<text x="540" y="80" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Darren Mowry</text>
+<text x="540" y="98" fill="#000" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">VP · GLOBAL STARTUPS</text>
+<rect x="140" y="176" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="220" y="204" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Kevin O'Toole</text>
+<text x="220" y="222" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">GLOBAL ACCELERATORS</text>
+<rect x="360" y="176" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="440" y="204" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Karen Fiester</text>
+<text x="440" y="222" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">GLOBAL DIRECTOR · GFS</text>
+<rect x="580" y="176" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="660" y="204" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">David McLaughlin</text>
+<text x="660" y="222" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">DEV ECOSYSTEM · GLOBAL</text>
+<rect x="800" y="176" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="880" y="204" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Mike Kim</text>
+<text x="880" y="222" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">STARTUP/INVESTOR MKTG</text>
+<rect x="120" y="300" width="880" height="120" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,.12)" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="140" y="320" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="220" y="348" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Ragini Das</text>
+<text x="220" y="366" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">HEAD · INDIA</text>
+<rect x="360" y="320" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="440" y="348" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Danny Navarro</text>
+<text x="440" y="366" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">HEAD · NORTH AMERICA</text>
+<rect x="580" y="320" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="660" y="348" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Kathryn Van Nuys</text>
+<text x="660" y="366" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">VC &amp; PE · GLOBAL CLOUD</text>
+<rect x="800" y="320" width="160" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="880" y="348" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Samantha Rodriguez</text>
+<text x="880" y="366" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">FOUNDERS FUNDS · US</text>
+<line x1="24" y1="436" x2="1056" y2="436" stroke="rgba(255,255,255,.12)" stroke-width="0.8"/>
+<rect x="24" y="446" width="12" height="8" rx="2" fill="#fff"/>
+<text x="44" y="453" fill="#9a9a9e" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">FOCAL — TOP OF CHAIN</text>
+<rect x="220" y="446" width="12" height="8" rx="2" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="240" y="453" fill="#9a9a9e" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">VERIFIED VIA APOLLO PERSON ID</text>
+<text x="560" y="453" fill="#4d4d52" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">DASHED ZONE = REGIONAL COMMAND</text>
+</svg>
+<div class="figcap">FIGURE 1.1 — LEADERSHIP HIERARCHY · ALL NINE NODES IDENTITY-ANCHORED AND LIVE-VERIFIED</div>
+</div>
+</div></section>
 
-    <div class="tldr">
-      <ul>
-        <li><span><strong>Global Vice President:</strong> <strong>Darren Mowry</strong> serves as <strong>VP of Global Startups at Google</strong>, holding ultimate P&L and strategic authority over all worldwide startup, venture, and cloud founder initiatives.</span></li>
-        <li><span><strong>Global Accelerator Gatekeeper:</strong> <strong>Kevin O'Toole</strong> (Global Head of Google Accelerators) and <strong>Karen Fiester</strong> (Global Director) oversee all accelerator cohorts worldwide.</span></li>
-        <li><span><strong>India Leadership (Screenshot Match):</strong> <strong>Ragini Das</strong> leads overall strategy as <strong>Head of Google for Startups - India</strong>, while <strong>Farish CV</strong> controls the flagship <strong>Google for Startups Accelerator: India (AI First)</strong> cohort.</span></li>
-        <li><span><strong>US & North America Leadership:</strong> <strong>Danny Navarro</strong> leads North America operations, <strong>Scott Barneson</strong> directs North America startup cloud infrastructure, and <strong>Matt Ridenour</strong> directs startup partnerships for <strong>Google DeepMind & Google Labs</strong> (Gemini API & AI Studio).</span></li>
-        <li><span><strong>Venture & Non-Dilutive Capital:</strong> <strong>Samantha Rodriguez</strong> manages US VC partnerships and the Google Founders Funds, while <strong>Kathryn Van Nuys</strong> leads global VC & PE relationships across Tier-1 funds.</span></li>
-      </ul>
-    </div>
-  </section>
+<section id="global"><div class="wrap">
+<div class="kicker">02 — Global Headquarters</div>
+<h2>Alphabet / Google Global Startup Executives</h2>
+<p class="sub">The executive leadership steering startup strategy, global budget allocations and accelerator policy across all geographies. Contact columns added by the Apollo verification pass.</p>
+<div class="tblwrap"><table><thead><tr><th>Executive</th><th>Role &amp; Strategic Mandate</th><th>Base</th><th>Work Email</th><th>Personal</th><th>Phone</th><th>LinkedIn</th></tr></thead><tbody id="tb-global"></tbody></table></div>
+</div></section>
 
-  <!-- SECTION 2: GLOBAL EXECUTIVES -->
-  <section id="global-directors">
-    <div class="kicker">02 — Global Headquarters Leadership</div>
-    <h2>Alphabet / Google Global Startup Executives</h2>
-    <p class="section-intro">The executive leadership steering startup strategy, global budget allocations, and accelerator policy across all geographies.</p>
+<section id="india"><div class="wrap">
+<div class="kicker">03 — India Ecosystem Directory</div>
+<h2>Key Decision-Makers: Google for Startups India</h2>
+<p class="sub">Verified personnel driving the India Accelerator cohorts, developer ecosystems and regional venture partnerships. Every India mobile re-confirmed identical across two independent waterfall passes. Sorted by outreach order for the accelerator + credits play.</p>
+<div class="tblwrap"><table><thead><tr><th>Executive</th><th>Role &amp; Strategic Mandate</th><th>Base</th><th>Work Email</th><th>Personal</th><th>Phone</th><th>LinkedIn</th></tr></thead><tbody id="tb-india"></tbody></table></div>
+</div></section>
 
-    <div class="tools-wrap">
-      <table class="tools-table">
-        <thead>
-          <tr>
-            <th>Executive</th>
-            <th>Role & Organization</th>
-            <th>Strategic Mandate</th>
-            <th>Base</th>
-            <th>LinkedIn Profile</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Darren Mowry</strong><br>
-              <span class="badge global">Global VP</span>
-            </td>
-            <td>Vice President, Global Startups @ Google</td>
-            <td>Top executive running Google's worldwide startup ecosystem, cloud programs, and venture strategy.</td>
-            <td>San Francisco Bay Area</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/darren-mowry-06630711" target="_blank">in/darren-mowry-06630711</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Karen Fiester</strong><br>
-              <span class="badge global">Global Director</span>
-            </td>
-            <td>Global Director, Google for Startups</td>
-            <td>Global operational strategy, resource governance, and multi-region startup alignment.</td>
-            <td>San Francisco Bay Area</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/karen-fiester-64947ba" target="_blank">in/karen-fiester-64947ba</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Kevin O'Toole</strong><br>
-              <span class="badge global">Global Accelerators</span>
-            </td>
-            <td>Global Head of Google Accelerators</td>
-            <td>Directs Google's global accelerator programs, curriculum standards, and cohort approvals worldwide.</td>
-            <td>San Francisco Bay Area</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/kevotoole" target="_blank">in/kevotoole</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>David McLaughlin</strong><br>
-              <span class="badge global">Global Ecosystem</span>
-            </td>
-            <td>Director, Global Developer & Startup Ecosystem</td>
-            <td>Executive steering developer programs, regional startup networks, and community infrastructure.</td>
-            <td>San Francisco Bay Area</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/davidsmclaughlin" target="_blank">in/davidsmclaughlin</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Mike Kim</strong><br>
-              <span class="badge global">Global Marketing</span>
-            </td>
-            <td>Global Head, Startup & Investor Ecosystem Marketing</td>
-            <td>Global positioning, venture community marketing, and international startup demo day visibility.</td>
-            <td>Singapore / Global</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/mikekim" target="_blank">in/mikekim</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+<section id="us"><div class="wrap">
+<div class="kicker">04 — United States &amp; North America</div>
+<h2>Key Decision-Makers: Google for Startups US</h2>
+<p class="sub">Executive leads directing North American regional hubs, the Google DeepMind AI ecosystem and venture capital alliances. Two rows carry binding Do-Not-Call flags — email only for those contacts.</p>
+<div class="tblwrap"><table><thead><tr><th>Executive</th><th>Role &amp; Strategic Mandate</th><th>Base</th><th>Work Email</th><th>Personal</th><th>Phone</th><th>LinkedIn</th></tr></thead><tbody id="tb-us"></tbody></table></div>
+<div class="alert"><span class="ic">⛔ DNC</span><p><b>Do Not Call — listed on a Do Not Call registry. Check applicable telemarketing regulations before dialing; this may implicate the TCPA and other applicable regulations.</b> Two registry hits: <b>Matt Ridenour</b> (+1 805 660 6288) and <b>Kathryn Van Nuys</b> (+1 845 548 1203). Email only, permanently. Karen Fiester's two lines are the only numbers explicitly DNC-screened clean.</p></div>
+</div></section>
 
-  <!-- SECTION 3: INDIA DIRECTORY -->
-  <section id="india-directory">
-    <div class="kicker">03 — India Ecosystem Directory</div>
-    <h2>Key Decision-Makers: Google for Startups India</h2>
-    <p class="section-intro">Verified personnel driving the India Accelerator cohorts, developer ecosystems, and regional venture partnerships.</p>
+<section id="routes"><div class="wrap">
+<div class="kicker">05 — Institutional Entry Points</div>
+<h2>Program Pathways &amp; Cohorts</h2>
+<p class="sub">Direct organizational routes to mentorship, credits and formal backing from Google's startup ecosystem — with the verified gatekeeper named on each door.</p>
+<div class="fig">
+<svg viewBox="0 0 1080 340" role="img" aria-labelledby="rt-title rt-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="rt-title">Program entry routes</title>
+<desc id="rt-desc">Flow from C3A Labs through three parallel routes — accelerator, cloud credits, founders funds — each with a named gatekeeper and outcome.</desc>
+<rect width="1080" height="340" fill="#000"/>
+<defs>
+<marker id="r-mut" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#9a9a9e"/></marker>
+<marker id="r-wht" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#ffffff"/></marker>
+</defs>
+<path d="M232,160 L264,160 Q272,160 272,152 L272,72 Q272,64 280,64 L312,64" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
+<path d="M232,160 L304,160" fill="none" stroke="#fff" stroke-width="1.2" marker-end="url(#r-wht)"/>
+<path d="M232,160 L264,160 Q272,160 272,168 L272,256 Q272,264 280,264 L312,264" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
+<path d="M552,64 L724,64" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
+<path d="M552,160 L724,160" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
+<path d="M552,264 L724,264" fill="none" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
+<rect x="72" y="128" width="160" height="64" rx="6" fill="#fff"/>
+<text x="152" y="156" fill="#000" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">C3A Labs · SARVAX</text>
+<text x="152" y="174" fill="#000" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">DPIIT · NVIDIA INCEPTION</text>
+<rect x="316" y="32" width="236" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="434" y="56" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">GFS Accelerator · AI-First</text>
+<text x="434" y="76" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">FARISH CV (IN) · K. O'TOOLE (GL)</text>
+<rect x="316" y="128" width="236" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="434" y="152" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Cloud Startup Credits</text>
+<text x="434" y="172" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">KARAN KUMAR (IN) · S. BARNESON (US)</text>
+<rect x="316" y="224" width="236" height="64" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+<text x="434" y="248" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Founders Funds</text>
+<text x="434" y="268" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">SAMANTHA RODRIGUEZ (US)</text>
+<rect x="728" y="32" width="272" height="64" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+<text x="864" y="56" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Equity-free 10-week cohort</text>
+<text x="864" y="76" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">MENTORSHIP · OKR · ARCHITECTURE</text>
+<rect x="728" y="128" width="272" height="64" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+<text x="864" y="152" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">$200K–$350K compute · 2 yrs</text>
+<text x="864" y="172" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">VERTEX AI · GCP CREDITS</text>
+<rect x="728" y="224" width="272" height="64" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+<text x="864" y="248" fill="#fff" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Non-dilutive cash award</text>
+<text x="864" y="268" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">+ HANDS-ON GOOGLE MENTORSHIP</text>
+<line x1="24" y1="312" x2="1056" y2="312" stroke="rgba(255,255,255,.12)" stroke-width="0.8"/>
+<line x1="24" y1="326" x2="52" y2="326" stroke="#fff" stroke-width="1.2" marker-end="url(#r-wht)"/>
+<text x="64" y="329" fill="#9a9a9e" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">PRIMARY ROUTE — APPLY FIRST</text>
+<line x1="300" y1="326" x2="328" y2="326" stroke="#9a9a9e" stroke-width="1" marker-end="url(#r-mut)"/>
+<text x="340" y="329" fill="#9a9a9e" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.08em">PARALLEL / CONDITIONAL ROUTE</text>
+</svg>
+<div class="figcap">FIGURE 1.2 — FUNCTIONAL ENTRY TRACKS · NO FUNDING GATE ON THE ACCELERATOR LANE</div>
+</div>
+<div class="cards">
+<div class="card"><span class="num">ACCELERATOR PROGRAM</span><h3>Equity-Free 10-Week Cohorts</h3><p>Tailored for seed to Series A AI-first startups. Direct pairing with Google AI specialists, OKR mentorship and deep architectural assistance. Gatekeeper: Farish CV (India) / Kevin O'Toole (Global). <a class="li" href="https://startup.google.com/programs/accelerator/" target="_blank" rel="noopener">startup.google.com/programs/accelerator →</a></p></div>
+<div class="card"><span class="num">CLOUD STARTUP CREDITS</span><h3>Vertex AI &amp; Compute Allocation</h3><p>Up to $200,000–$350,000 USD in Google Cloud credits over 2 years for venture-backed AI startups utilizing foundation models. Gatekeepers: Karan Kumar (India) / Scott Barneson (US). <a class="li" href="https://cloud.google.com/startup" target="_blank" rel="noopener">cloud.google.com/startup →</a></p></div>
+<div class="card"><span class="num">FOUNDERS FUNDS</span><h3>Non-Dilutive Capital Awards</h3><p>Direct cash awards plus hands-on Google mentorship for underrepresented founders via Black, Latino and Women Founders Funds. Gatekeeper: Samantha Rodriguez. <a class="li" href="https://startup.google.com/programs/founders-funds/" target="_blank" rel="noopener">startup.google.com/programs/founders-funds →</a></p></div>
+</div>
+</div></section>
 
-    <div class="tools-wrap">
-      <table class="tools-table">
-        <thead>
-          <tr>
-            <th>Executive</th>
-            <th>Role & Organization</th>
-            <th>Focus & Mandate</th>
-            <th>Location</th>
-            <th>LinkedIn Profile</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Ragini Das</strong><br>
-              <span class="badge primary">India Head</span>
-            </td>
-            <td>Head of Google for Startups - India</td>
-            <td>Overall India startup strategy, founder equity, ecosystem partnerships, and builder community.</td>
-            <td>Gurugram / NCR</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/ragini-das/" target="_blank">in/ragini-das</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Farish CV</strong><br>
-              <span class="badge primary">Accelerator Lead</span>
-            </td>
-            <td>Regional Lead, AI Startup Programs - India</td>
-            <td>Direct lead for Google for Startups Accelerator: India (AI First Cohorts) and AI Day for Startups.</td>
-            <td>Bengaluru</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/farishcv" target="_blank">in/farishcv</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Paul Ravindranath G</strong><br>
-              <span class="badge">Ecosystem Lead</span>
-            </td>
-            <td>Regional Lead, Developer Relations - Startup Programs</td>
-            <td>Senior accelerator director, technical mentorship network, Google Developer Experts (GDE).</td>
-            <td>Bengaluru</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/paulravindranath" target="_blank">in/paulravindranath</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Karthik Padmanabhan</strong><br>
-              <span class="badge">Developer Ecosystem</span>
-            </td>
-            <td>Developer Ecosystem Lead - India @ Google</td>
-            <td>Leads technical founder enablers, developer communities, and deep tech adoption across India.</td>
-            <td>Bengaluru</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/karthikp" target="_blank">in/karthikp</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Nupur Verma</strong><br>
-              <span class="badge">VC & Govt</span>
-            </td>
-            <td>Lead – AI Partnerships with VC, Startups & Govt</td>
-            <td>Tier-1 venture capital alliances, high-growth startup portfolios, and government partnerships.</td>
-            <td>Gurugram</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/nupur-verma" target="_blank">in/nupur-verma</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Karan Kumar</strong><br>
-              <span class="badge">Cloud Programs</span>
-            </td>
-            <td>Lead – VC & Startups, Google Cloud India</td>
-            <td>Allocates Google Cloud & Vertex AI credit grants ($200k-$350k USD), startup architecture advisory.</td>
-            <td>Bengaluru</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/kumarkaran" target="_blank">in/kumarkaran</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Enisha Kalita</strong><br>
-              <span class="badge">Partnerships</span>
-            </td>
-            <td>Strategic Partnerships & Growth, Google for Startups IND</td>
-            <td>Early-stage founder community, developer ecosystems, and startup acceleration onboarding.</td>
-            <td>Bengaluru</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/enisha-kalita" target="_blank">in/enisha-kalita</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Naveen Narayanan</strong><br>
-              <span class="badge">Operations</span>
-            </td>
-            <td>Program Manager, Google for Startups (India & APAC)</td>
-            <td>Regional program operations, cohort selection logistics, and founder execution tracks.</td>
-            <td>Bengaluru</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/naveenhere" target="_blank">in/naveenhere</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Sneha Basu Roy</strong><br>
-              <span class="badge">Partnerships</span>
-            </td>
-            <td>VC & Startup Ecosystem Lead, Google India</td>
-            <td>Venture ecosystem alliance, portfolio enablement with Indian seed and early-stage funds.</td>
-            <td>Bengaluru</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/sneha-basu-roy-772b5253" target="_blank">in/sneha-basu-roy</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+<section id="playbook"><div class="wrap">
+<div class="kicker">06 — Outreach Playbook</div>
+<h2>Tactical Messaging Scripts</h2>
+<p class="sub">LinkedIn InMail and connection-note templates calibrated for startup heads and accelerator directors — retargeted to the verified names and contact channels from this register.</p>
+<div class="script"><h3>Script A — Accelerator Directors</h3><div class="tgt">Target: Farish CV (IN) / Kevin O'Toole (Global) — verified email + confirmed phone</div><blockquote>"Hi [Name], following your leadership across Google for Startups Accelerator cohorts. We are building SARVAX, an approval-aware AI execution platform for wealth management — live in production with recorded client telemetry. We would welcome the chance to share our brief and explore alignment with the upcoming AI-First India cohort."</blockquote></div>
+<div class="script"><h3>Script B — DeepMind &amp; AI Labs</h3><div class="tgt">Target: Matt Ridenour (US) — EMAIL ONLY ⛔ (DNC on file, never dial)</div><blockquote>"Hi Matt, tracking your ecosystem work bridging Google DeepMind and AI founders. We are engineering agentic AI workflows integrating Gemini &amp; Vertex AI infrastructure with deterministic computation at the core. Reaching out to connect and explore engagement with the DeepMind startup initiatives."</blockquote></div>
+<div class="script"><h3>Script C — Cloud Startups &amp; VC Alliance</h3><div class="tgt">Target: Danny Navarro / Scott Barneson / Karan Kumar — all verified</div><blockquote>"Hi [Name], reaching out regarding Google Cloud's startup ecosystem support. We are scaling our compute footprint and deploying multimodal agent pipelines on Google Cloud for regulated financial firms. Looking to connect on onboarding to the Google for Startups Cloud program and strategic synergies."</blockquote></div>
+</div></section>
 
-  <!-- SECTION 4: US DIRECTORY -->
-  <section id="us-directory">
-    <div class="kicker">04 — United States & North America Ecosystem</div>
-    <h2>Key Decision-Makers: Google for Startups US</h2>
-    <p class="section-intro">Verified executive leads directing North American regional hubs, Google DeepMind AI ecosystem, and venture capital alliances.</p>
+<section id="register"><div class="wrap">
+<div class="kicker">07 — Validation Register</div>
+<h2>Coverage, Corrections &amp; Certainty</h2>
+<div class="grid2">
+<div>
+<h3 style="margin-bottom:4px">What the verification pass changed</h3>
+<ul class="tight">
+<li><b>Six corrections</b> to the original directory: Sneha Basu Roy is a Video Solutions Specialist (not VC lead — do not route credits outreach through her); Mike Kim's row was contaminated by a same-name industrial designer and re-anchored by person ID; Francisco Solsona moved to GDE Lead Americas; Ashley Francisco is Canada-based with only a low-confidence number (withheld); Angelica Bucci's email surfaced only on a zero-confidence record (withheld); Paul Ravindranath has no reachable email (InMail route) and his only phone is US-format on an India contact (withheld).</li>
+<li><b>Coverage:</b> 21/23 verified work emails · 3 personal emails (Ridenour, Barneson, Fiester) · 20 confirmed phones · 2 DNC-flagged · 3 fields withheld for uncertainty. India lane: 9/9 mobiles identical across both independent passes.</li>
+<li><b>Identity collisions resolved:</b> two Apollo records share the Karen Fiester name — the LinkedIn-anchored Global Director record is authoritative; both passes returned identical DNC-clean numbers plus her verified personal email.</li>
+</ul>
+</div>
+<div>
+<div class="card" style="height:100%"><span class="num">RULE</span><h3>Certainty beats coverage</h3><p>Every field printed here passed: live LinkedIn resolution → Apollo person-ID anchor → dual waterfall (email + phone) → ZeroBounce validation → DNC screening. Anything failing one of these gates is shown as "Not found" or "Withheld" — never guessed, never pattern-filled. Verification proves identity, role and contactability — not relationship, endorsement, or willingness to engage. No outreach has been sent from this data.</p></div>
+</div>
+</div>
+<div class="fig">
+<svg viewBox="0 0 1080 120" role="img" aria-labelledby="vf-title vf-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="vf-title">Verification chain</title>
+<desc id="vf-desc">Six sequential steps from live LinkedIn check through Apollo identity anchoring, dual waterfall passes, email validation, DNC screening, to the certainty-gated register.</desc>
+<rect width="1080" height="120" fill="#000"/>
+<defs><marker id="v-a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#9a9a9e"/></marker></defs>
+<path d="M164,60 L176,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
+<path d="M328,60 L340,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
+<path d="M492,60 L504,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
+<path d="M656,60 L668,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
+<path d="M820,60 L832,60" stroke="#9a9a9e" stroke-width="1" marker-end="url(#v-a)"/>
+<g font-family="'Geist',sans-serif" font-size="11" font-weight="600" text-anchor="middle">
+<rect x="12" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="88" y="56" fill="#fff">LINKEDIN LIVE</text><text x="88" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">23/23 RESOLVE</text>
+<rect x="176" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="252" y="56" fill="#fff">APOLLO ID ANCHOR</text><text x="252" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">NO NAME GUESSING</text>
+<rect x="340" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="416" y="56" fill="#fff">DUAL WATERFALL</text><text x="416" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">EMAIL + PHONE ×2</text>
+<rect x="504" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="580" y="56" fill="#fff">ZEROBOUNCE</text><text x="580" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">TIMESTAMPED VALID</text>
+<rect x="668" y="36" width="152" height="48" rx="6" fill="#0d0d0f" stroke="rgba(255,255,255,.35)"/><text x="744" y="56" fill="#fff">DNC SCREENING</text><text x="744" y="72" fill="#9a9a9e" font-size="9" font-family="'Geist Mono',monospace">2 FOUND · 2 CLEAN</text>
+<rect x="832" y="36" width="236" height="48" rx="6" fill="#fff"/><text x="950" y="56" fill="#000">CERTAINTY-GATED REGISTER</text><text x="950" y="72" fill="#000" font-size="9" font-family="'Geist Mono',monospace">UNCERTAIN FIELDS WITHHELD</text>
+</g>
+</svg>
+<div class="figcap">FIGURE 1.3 — SIX-STAGE VERIFICATION CHAIN · 563 APOLLO CREDITS ACROSS BOTH RUNS</div>
+</div>
+</div></section>
 
-    <div class="tools-wrap">
-      <table class="tools-table">
-        <thead>
-          <tr>
-            <th>Executive</th>
-            <th>Role & Organization</th>
-            <th>Focus & Mandate</th>
-            <th>Location</th>
-            <th>LinkedIn Profile</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Danny Navarro</strong><br>
-              <span class="badge us">US / NA Head</span>
-            </td>
-            <td>Head of Google for Startups - North America</td>
-            <td>Leads Google for Startups programs, accelerator operations, and founder funds across the US.</td>
-            <td>San Francisco / Austin</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/dnavarro688" target="_blank">in/dnavarro688</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Matt Ridenour</strong><br>
-              <span class="badge us">DeepMind AI</span>
-            </td>
-            <td>Head of Startups @ Google DeepMind & Google Labs</td>
-            <td>Startup go-to-market for Gemini models, AI Studio developer ecosystem, deep tech AI founders.</td>
-            <td>San Francisco Bay Area</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/matthewridenour" target="_blank">in/matthewridenour</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Scott Barneson</strong><br>
-              <span class="badge us">Cloud Startups</span>
-            </td>
-            <td>Managing Director, North America Startups @ Google Cloud</td>
-            <td>Directs cloud infrastructure go-to-market, startup scaling, and cloud credit grants for US founders.</td>
-            <td>Seattle, WA</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/barneson" target="_blank">in/barneson</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Kathryn Van Nuys</strong><br>
-              <span class="badge us">VC / PE Global</span>
-            </td>
-            <td>Global Director, Venture Capital & Private Equity @ Google Cloud</td>
-            <td>Manages strategic relationships with top US VC firms and their high-growth startup portfolios.</td>
-            <td>New York, NY</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/kathryn-van-nuys" target="_blank">in/kathryn-van-nuys</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Samantha Rodriguez</strong><br>
-              <span class="badge us">VC & Funds</span>
-            </td>
-            <td>US Lead for VC Partnerships & Fund Manager, Founders Funds</td>
-            <td>Manages non-dilutive capital awards via Google Founders Funds and AI venture partnerships.</td>
-            <td>San Francisco Bay Area</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/samtrodriguez" target="_blank">in/samtrodriguez</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Ashley Francisco</strong><br>
-              <span class="badge us">Americas</span>
-            </td>
-            <td>Global Lead for Accelerator Alumni / Head of Startup Ecosystem, Americas</td>
-            <td>Ecosystem director supporting Americas accelerator alumni network and strategic scale.</td>
-            <td>North America</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/ashley-francisco-51484847" target="_blank">in/ashley-francisco-51484847</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Francisco Solsona</strong><br>
-              <span class="badge us">Accelerators</span>
-            </td>
-            <td>Regional Lead, Google for Startups Accelerators (Americas)</td>
-            <td>Curates and manages accelerator program tracks, mentorship cohorts, and partner relations.</td>
-            <td>Mountain View, CA</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/solsona" target="_blank">in/solsona</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Iran Karimian</strong><br>
-              <span class="badge us">North America</span>
-            </td>
-            <td>Head of Accelerator & Startup Ecosystem, Canada / North America</td>
-            <td>Manages northern regional startup programs, AI hubs, and accelerator cohorts.</td>
-            <td>Toronto / North America</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/irankarimian" target="_blank">in/irankarimian</a></td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Angelica Cameron Bucci</strong><br>
-              <span class="badge us">Operations</span>
-            </td>
-            <td>Program Manager, Google for Startups Accelerators</td>
-            <td>Cohort operations, founder logistics, mentor matching for North America accelerators.</td>
-            <td>United States</td>
-            <td><a class="link mono" href="https://www.linkedin.com/in/angelica-cameron-bucci-615aa282" target="_blank">in/angelica-cameron-bucci-615aa282</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+<section id="method"><div class="wrap">
+<div class="kicker">08 — Evidence Trail</div>
+<h2>Source &amp; Handling Notes</h2>
+<ul class="tight">
+<li><b>Directory content:</b> compiled by Deviprasad Shetty (C3A Labs); all 23 LinkedIn handles opened in an isolated browser session Sep 5, 2026 — 23/23 resolve to the named person.</li>
+<li><b>Contact data:</b> Apollo (C3A Labs team account) — name+domain match, then exact person-ID re-anchor via each live LinkedIn URL. Synthetic echo and zero-confidence records rejected.</li>
+<li><b>Emails:</b> two-pass waterfall (primary CRM record → partner providers); every published address carries a ZeroBounce "valid" stamp timestamped Sep 5, 2026. Personal emails: providers hold exactly 3 — nothing guessed.</li>
+<li><b>Phones:</b> async waterfall reveal; valid_number + high confidence only. DNC: 2 registry hits (flagged), 2 confirmed clean, remainder unscreened — treat as not-DNC-proven.</li>
+<li><b>Handling:</b> this page contains direct contact data for named individuals. Treat as confidential business-development material; do not repost to public channels.</li>
+</ul>
+</div></section>
 
-  <!-- SECTION 5: PROGRAM ENTRY POINTS -->
-  <section id="pathways">
-    <div class="kicker">05 — Institutional Entry Points</div>
-    <h2>Program Pathways & Cohorts</h2>
-    <p class="section-intro">Direct organizational routes to access mentorship, credits, and formal backing from Google's startup ecosystem.</p>
+<footer class="foot"><div class="wrap">
+C3A LABS · GFS LEADERSHIP DIRECTORY — VERIFIED EDITION · 05 SEP 2026 · DIRECTORY: DEVIPRASAD SHETTY · VALIDATION: APOLLO PERSON-ID ANCHORING + DUAL WATERFALL + ZEROBOUNCE + LIVE LINKEDIN CHECKS · DNC FLAGS BINDING · UNVERIFIED FIELDS WITHHELD
+</div></footer>
 
-    <div class="diagram-frame">
-      <svg width="860" height="230" viewBox="0 0 860 230" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Target Startup -->
-        <rect x="20" y="80" width="160" height="70" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
-        <text x="100" y="112" text-anchor="middle" font-family="IBM Plex Sans" font-weight="600" font-size="14" fill="var(--ink)">Your Startup</text>
-        <text x="100" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">AI & DeepTech</text>
-
-        <!-- Arrows -->
-        <path d="M180 115 L260 50" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"/>
-        <path d="M180 115 L260 115" stroke="var(--accent)" stroke-width="2"/>
-        <path d="M180 115 L260 180" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"/>
-
-        <!-- Tracks -->
-        <rect x="260" y="20" width="280" height="58" rx="8" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
-        <text x="275" y="44" font-family="IBM Plex Sans" font-weight="600" font-size="13" fill="var(--accent-ink)">Route 1: GFS Accelerators (AI First)</text>
-        <text x="275" y="62" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">Farish CV (IN) | Kevin O'Toole (Global)</text>
-
-        <rect x="260" y="86" width="280" height="58" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
-        <text x="275" y="110" font-family="IBM Plex Sans" font-weight="600" font-size="13" fill="var(--ink)">Route 2: DeepMind AI & Labs</text>
-        <text x="275" y="128" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">Matt Ridenour (US / Gemini Ecosystem)</text>
-
-        <rect x="260" y="152" width="280" height="58" rx="8" fill="var(--surface)" stroke="var(--protocol)" stroke-width="1.5"/>
-        <text x="275" y="176" font-family="IBM Plex Sans" font-weight="600" font-size="13" fill="var(--protocol)">Route 3: Cloud Credits ($350K) & VC</text>
-        <text x="275" y="194" font-family="IBM Plex Mono" font-size="11" fill="var(--ink-dim)">Scott Barneson (US) | Karan Kumar (IN)</text>
-
-        <!-- Arrows to Outcome -->
-        <path d="M540 49 L650 95" stroke="var(--border)" stroke-width="1.5"/>
-        <path d="M540 115 L650 115" stroke="var(--border)" stroke-width="1.5"/>
-        <path d="M540 181 L650 135" stroke="var(--border)" stroke-width="1.5"/>
-
-        <!-- Outcome Box -->
-        <rect x="650" y="80" width="190" height="70" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
-        <text x="745" y="112" text-anchor="middle" font-family="IBM Plex Sans" font-weight="600" font-size="13" fill="var(--accent-ink)">Google Partnership</text>
-        <text x="745" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="var(--accent-ink)">$350K Compute + Mentorship</text>
-      </svg>
-      <figcaption>FIGURE 1.1: Functional entry tracks across Google for Startups programs.</figcaption>
-    </div>
-
-    <div class="schema-grid">
-      <div class="schema-card">
-        <h4>ACCELERATOR PROGRAM</h4>
-        <div class="role">Equity-Free 10-Week Cohorts</div>
-        <p style="font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0 0 10px;">
-          Tailored for Seed to Series A AI-first startups. Provides direct pairing with Google AI specialists, OKR mentorship, and deep architectural assistance.
-        </p>
-        <a class="link mono" style="font-size: 12px;" href="https://startup.google.com/programs/accelerator/" target="_blank">startup.google.com/programs/accelerator/ →</a>
-      </div>
-
-      <div class="schema-card">
-        <h4>CLOUD STARTUP CREDITS</h4>
-        <div class="role">Vertex AI & Compute Allocation</div>
-        <p style="font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0 0 10px;">
-          Provides up to $200,000–$350,000 USD in Google Cloud credits over 2 years for venture-backed AI startups utilizing foundation models.
-        </p>
-        <a class="link mono" style="font-size: 12px;" href="https://cloud.google.com/startup" target="_blank">cloud.google.com/startup →</a>
-      </div>
-
-      <div class="schema-card">
-        <h4>FOUNDERS FUNDS</h4>
-        <div class="role">Non-Dilutive Capital Awards</div>
-        <p style="font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0 0 10px;">
-          Direct cash awards plus hands-on Google mentorship for underrepresented founders via Black, Latino, and Women Founders Funds.
-        </p>
-        <a class="link mono" style="font-size: 12px;" href="https://startup.google.com/programs/founders-funds/" target="_blank">startup.google.com/programs/founders-funds/ →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 6: OUTREACH PLAYBOOK -->
-  <section id="playbook">
-    <div class="kicker">06 — Outreach Playbook</div>
-    <h2>Tactical Messaging Scripts</h2>
-    <p class="section-intro">Tailored LinkedIn InMail and connection notes calibrated for high engagement with startup heads and accelerator directors.</p>
-
-    <div class="schema-grid">
-      <div class="schema-card">
-        <h4>SCRIPT A: ACCELERATOR DIRECTORS</h4>
-        <div class="role">Target: Farish CV (IN) / Kevin O'Toole (Global)</div>
-        <p style="font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0;">
-          <em>"Hi [Name], following your leadership across Google for Startups Accelerator cohorts. We are building [Platform Name], an autonomous AI system delivering [core capability] with active production benchmarks in [market/metric]. We would welcome the chance to share our architectural brief and explore alignment with upcoming AI First accelerator cohorts."</em>
-        </p>
-      </div>
-
-      <div class="schema-card">
-        <h4>SCRIPT B: DEEPMIND & AI LABS</h4>
-        <div class="role">Target: Matt Ridenour (US)</div>
-        <p style="font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0;">
-          <em>"Hi Matt, tracking your ecosystem work bridging Google DeepMind and AI founders. We are engineering agentic AI workflows integrating Gemini & Vertex AI infrastructure to solve [concrete problem]. Reaching out to connect and explore how our team can engage with the DeepMind startup initiatives."</em>
-        </p>
-      </div>
-
-      <div class="schema-card">
-        <h4>SCRIPT C: CLOUD STARTUPS & VC ALLIANCE</h4>
-        <div class="role">Target: Danny Navarro / Scott Barneson / Karan Kumar</div>
-        <p style="font-size: 13px; color: var(--ink); line-height: 1.5; margin: 0;">
-          <em>"Hi [Name], reaching out regarding Google Cloud's startup ecosystem support. We are currently scaling our compute footprint and deploying multimodal agent pipelines on Google Cloud. Looking to connect regarding onboarding to the Google for Startups Cloud program and exploring strategic synergies."</em>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 7: VALIDATION REGISTER (C3A Labs deep-verification pass) -->
-  <section id="register">
-    <div class="kicker">07 — Validation Register · C3A Labs</div>
-    <h2>Apollo Deep-Verification: Emails, Phones &amp; Corrections</h2>
-    <p class="section-intro">All 23 contacts re-anchored to exact Apollo person IDs and run through a dual waterfall pass (Sep 5, 2026). Work emails are ZeroBounce-validated; phones are async waterfall reveals at high confidence. Two numbers are on the Do Not Call registry — email only for those contacts. Fields we could not confidently tie to the person are withheld, not guessed. Five role corrections are flagged inline.</p>
-
-    <div class="tldr" style="border-left:4px solid var(--protocol);">
-      <p style="margin:0;font-size:13.5px;"><strong>⛔ Do Not Call:</strong> Matt Ridenour (+1 805 660 6288) and Kathryn Van Nuys (+1 845 548 1203) are listed on a Do Not Call registry. Check applicable telemarketing regulations before dialing; this may implicate the TCPA. Contact by email only.</p>
-    </div>
-
-    <div class="table-wrap" style="overflow-x:auto;margin-top:20px;">
-      <table>
-        <thead><tr>
-          <th>Contact</th><th>Role (Apollo-verified)</th><th>Work Email</th><th>Personal Email</th><th>Phone</th><th>LinkedIn</th>
-        </tr></thead>
-        <tbody>
-      <tr>
-        <td><strong>Farish CV</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">IN</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Regional Lead, AI Startup Programs — India</td>
-        <td class="mono" style="font-size:12px;">farishcv@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+91 99615 66711</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/farishcv/" target="_blank" rel="noopener">in/farishcv</a></td>
-      </tr>
-      <tr>
-        <td><strong>Karan Kumar</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">IN</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">VC &amp; Startups BD Manager, Google Cloud India</td>
-        <td class="mono" style="font-size:12px;">karankkumar@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+91 97607 91008</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/kumarkaran/" target="_blank" rel="noopener">in/kumarkaran</a></td>
-      </tr>
-      <tr>
-        <td><strong>Ragini Das</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">IN</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Head of Google for Startups — India</td>
-        <td class="mono" style="font-size:12px;">raginidas@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+91 98496 76407</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/ragini-das-95245257/" target="_blank" rel="noopener">in/ragini-das-95245257</a></td>
-      </tr>
-      <tr>
-        <td><strong>Nupur Verma</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">IN</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Cluster Head — VC, Startups &amp; Govt Partnerships</td>
-        <td class="mono" style="font-size:12px;">nupurverma@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+91 95995 96144</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/nupur-verma/" target="_blank" rel="noopener">in/nupur-verma</a></td>
-      </tr>
-      <tr>
-        <td><strong>Karthik Padmanabhan</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">IN</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Developer Relations / Dev Ecosystem Lead — India</td>
-        <td class="mono" style="font-size:12px;">karthikpadman@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+91 98440 16051</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/karthikp/" target="_blank" rel="noopener">in/karthikp</a></td>
-      </tr>
-      <tr>
-        <td><strong>Enisha Kalita</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">IN</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Program Manager, Google for Startups India</td>
-        <td class="mono" style="font-size:12px;">enisha@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+91 97411 00679</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/enisha-kalita/" target="_blank" rel="noopener">in/enisha-kalita</a></td>
-      </tr>
-      <tr>
-        <td><strong>Naveen Narayanan</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">IN</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Startup Program Management — India &amp; APAC</td>
-        <td class="mono" style="font-size:12px;">naveenhere@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+91 79070 85164</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/naveenhere/" target="_blank" rel="noopener">in/naveenhere</a></td>
-      </tr>
-      <tr>
-        <td><strong>Sneha Basu Roy</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">IN</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Video Solutions Specialist, Google India <span class="badge" style="color:var(--protocol);border-color:var(--protocol);">ROLE DRIFT</span></td>
-        <td class="mono" style="font-size:12px;">snehabasuroy@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+91 77188 58042</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/sneha-basu-roy-772b5253/" target="_blank" rel="noopener">in/sneha-basu-roy-772b5253</a></td>
-      </tr>
-      <tr>
-        <td><strong>Paul Ravindranath G</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">IN</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Head of Google Launchpad Accelerator India / DevRel PM</td>
-        <td class="mono" style="font-size:12px;"><em>Not found — InMail route</em></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;"><em>Withheld — unconfirmed</em></td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/paulravindranath/" target="_blank" rel="noopener">in/paulravindranath</a></td>
-      </tr>
-      <tr>
-        <td><strong>Darren Mowry</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">GL</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">VP, Google Cloud Global Startups</td>
-        <td class="mono" style="font-size:12px;">dmowry@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+44 738 424 9379</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/darren-mowry-06630711/" target="_blank" rel="noopener">in/darren-mowry-06630711</a></td>
-      </tr>
-      <tr>
-        <td><strong>Kevin O'Toole</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">GL</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Global Head of Google Accelerators</td>
-        <td class="mono" style="font-size:12px;">otoole@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+1 707 332 1305</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/kevotoole/" target="_blank" rel="noopener">in/kevotoole</a></td>
-      </tr>
-      <tr>
-        <td><strong>Karen Fiester</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">GL</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Global Director, Google for Startups</td>
-        <td class="mono" style="font-size:12px;">kfiester@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">karenpaul@gmail.com</td>
-        <td class="mono" style="font-size:12px;">+1 609 915 2326 · +1 650 214 5055 <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">DNC CLEAN</span></td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/karen-fiester-64947ba/" target="_blank" rel="noopener">in/karen-fiester-64947ba</a></td>
-      </tr>
-      <tr>
-        <td><strong>David McLaughlin</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">GL</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Director, Global Developer Relations Ecosystem</td>
-        <td class="mono" style="font-size:12px;">dsm@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+1 415 728 8392 · +1 650 384 5749</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/davidsmclaughlin/" target="_blank" rel="noopener">in/davidsmclaughlin</a></td>
-      </tr>
-      <tr>
-        <td><strong>Mike Kim</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">GL</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Global Head, Startup &amp; Investor Ecosystem Marketing · Singapore <span class="badge" style="color:var(--protocol);border-color:var(--protocol);">RE-ANCHORED</span></td>
-        <td class="mono" style="font-size:12px;">mikek@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+1 203 641 3838</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/mikekim/" target="_blank" rel="noopener">in/mikekim</a></td>
-      </tr>
-      <tr>
-        <td><strong>Danny Navarro</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">US</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Head of Google for Startups, North America</td>
-        <td class="mono" style="font-size:12px;">dnavarro@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+1 509 308 1404</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/dnavarro688/" target="_blank" rel="noopener">in/dnavarro688</a></td>
-      </tr>
-      <tr>
-        <td><strong>Matt Ridenour</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">US</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Head of Startups, Google DeepMind &amp; Google Labs</td>
-        <td class="mono" style="font-size:12px;">mattridenour@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">matthewridenour@gmail.com</td>
-        <td class="mono" style="font-size:12px;">+1 805 660 6288 <span class="badge" style="background:#fdecea;color:#b3261e;border-color:#b3261e;">⛔ DO NOT CALL — EMAIL ONLY</span></td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/matthewridenour/" target="_blank" rel="noopener">in/matthewridenour</a></td>
-      </tr>
-      <tr>
-        <td><strong>Scott Barneson</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">US</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">MD, North America Startups, Google Cloud</td>
-        <td class="mono" style="font-size:12px;">sbarneson@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">scottmail@gmail.com</td>
-        <td class="mono" style="font-size:12px;">+44 750 091 0822</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/barneson/" target="_blank" rel="noopener">in/barneson</a></td>
-      </tr>
-      <tr>
-        <td><strong>Kathryn Van Nuys</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">US</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Global Director, VC &amp; Private Equity, Google Cloud</td>
-        <td class="mono" style="font-size:12px;">kvannuys@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+1 845 548 1203 <span class="badge" style="background:#fdecea;color:#b3261e;border-color:#b3261e;">⛔ DO NOT CALL — EMAIL ONLY</span></td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/kathryn-van-nuys/" target="_blank" rel="noopener">in/kathryn-van-nuys</a></td>
-      </tr>
-      <tr>
-        <td><strong>Samantha Rodriguez</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">US</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">VC Partnerships &amp; Founders Funds</td>
-        <td class="mono" style="font-size:12px;">samrod@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+1 212 565 8489</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/samtrodriguez/" target="_blank" rel="noopener">in/samtrodriguez</a></td>
-      </tr>
-      <tr>
-        <td><strong>Ashley Francisco</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">US</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Head of Accelerator &amp; Startup Ecosystem, Americas</td>
-        <td class="mono" style="font-size:12px;">ashleyfrancisco@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;"><em>Withheld — low confidence</em></td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/ashley-francisco-51484847/" target="_blank" rel="noopener">in/ashley-francisco-51484847</a></td>
-      </tr>
-      <tr>
-        <td><strong>Francisco Solsona</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">US</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">GDE Lead — Americas <span class="badge" style="color:var(--protocol);border-color:var(--protocol);">ROLE MOVED</span></td>
-        <td class="mono" style="font-size:12px;">solsona@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+1 424 272 5486</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/solsona/" target="_blank" rel="noopener">in/solsona</a></td>
-      </tr>
-      <tr>
-        <td><strong>Iran Karimian</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">US</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Head of Accelerator &amp; Startup Ecosystem, Canada</td>
-        <td class="mono" style="font-size:12px;">ikarimian@google.com <span class="badge" style="color:var(--accent-ink);border-color:var(--accent);">VERIFIED</span></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+1 416 624 4882</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/irankarimian/" target="_blank" rel="noopener">in/irankarimian</a></td>
-      </tr>
-      <tr>
-        <td><strong>Angelica Cameron Bucci</strong><br><span class="mono" style="font-size:11px;color:var(--ink-dim);">US</span></td>
-        <td style="font-size:12.5px;color:var(--ink-dim);">Program Manager II, Google · GFS Accelerators ops</td>
-        <td class="mono" style="font-size:12px;"><em>Withheld — zero-confidence record</em></td>
-        <td class="mono" style="font-size:12px;">—</td>
-        <td class="mono" style="font-size:12px;">+1 763 443 1765</td>
-        <td><a class="link mono" style="font-size:12px;" href="https://www.linkedin.com/in/angelica-cameron-bucci-615aa282/" target="_blank" rel="noopener">in/angelica-cameron-bucci-615aa282</a></td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="schema-grid" style="margin-top:24px;">
-      <div class="schema-card">
-        <h4>COVERAGE</h4>
-        <p style="font-size:13px;line-height:1.55;margin:0;">21/23 verified work emails · 3 personal emails (Ridenour, Barneson, Fiester) · 20 confirmed phones · 2 DNC-flagged · 3 fields withheld for uncertainty. India lane: 9/9 mobiles identical across two independent passes.</p>
-      </div>
-      <div class="schema-card">
-        <h4>METHOD &amp; BOUNDARY</h4>
-        <p style="font-size:13px;line-height:1.55;margin:0;">Name+domain match → LinkedIn-anchored person ID → dual waterfall (email+phone) → ZeroBounce validation → DNC screening. Verification proves identity, role and contactability — not relationship or willingness to engage. No outreach sent from this data.</p>
-      </div>
-    </div>
-  </section>
-
+<script>
+const DATA = [
+// lane,name,tagline,role,mandate,base,work,personal,phone,dnc,handle
+["global","Darren Mowry","Global VP","Vice President, Global Startups @ Google","Top executive running Google's worldwide startup ecosystem, cloud programs, and venture strategy.","San Francisco Bay Area","dmowry@google.com","—","+44 738 424 9379","","darren-mowry-06630711"],
+["global","Karen Fiester","Global Director","Global Director, Google for Startups","Global operational strategy, resource governance, and multi-region startup alignment.","SF Bay Area","kfiester@google.com","karenpaul@gmail.com","+1 609 915 2326 · +1 650 214 5055","clean","karen-fiester-64947ba"],
+["global","Kevin O'Toole","Global Accelerators","Global Head of Google Accelerators","Directs Google's global accelerator programs, curriculum standards, and cohort approvals worldwide.","SF Bay Area","otoole@google.com","—","+1 707 332 1305","","kevotoole"],
+["global","David McLaughlin","Global Ecosystem","Director, Global Developer & Startup Ecosystem","Executive steering developer programs, regional startup networks, and community infrastructure.","SF Bay Area","dsm@google.com","—","+1 415 728 8392 · +1 650 384 5749","","davidsmclaughlin"],
+["global","Mike Kim","Global Marketing","Global Head, Startup & Investor Ecosystem Marketing","Global positioning, venture community marketing, and international startup demo day visibility. Ex-Head GFS Korea/APAC.","Singapore / Global","mikek@google.com","—","+1 203 641 3838","reanchor","mikekim"],
+["india","Farish CV","Accelerator Lead","Regional Lead, AI Startup Programs — India","Direct lead for GFS Accelerator: India (AI First Cohorts) and AI Day for Startups. Primary gatekeeper.","Bengaluru","farishcv@google.com","—","+91 99615 66711","","farishcv"],
+["india","Karan Kumar","Cloud Programs","Lead – VC & Startups, Google Cloud India","Allocates Google Cloud & Vertex AI credit grants ($200k–$350k USD), startup architecture advisory.","Bengaluru","karankkumar@google.com","—","+91 97607 91008","","kumarkaran"],
+["india","Ragini Das","India Head","Head of Google for Startups — India","Overall India startup strategy, founder equity, ecosystem partnerships, builder community. Co-founder leap.club.","Gurugram / NCR","raginidas@google.com","—","+91 98496 76407","","ragini-das-95245257"],
+["india","Nupur Verma","VC & Govt","Lead – AI Partnerships with VC, Startups & Govt","Tier-1 venture capital alliances, high-growth startup portfolios, and government partnerships.","Gurugram","nupurverma@google.com","—","+91 95995 96144","","nupur-verma"],
+["india","Karthik Padmanabhan","Developer Ecosystem","Developer Ecosystem Lead — India @ Google","Leads technical founder enablers, developer communities, and deep tech adoption across India.","Bengaluru","karthikpadman@google.com","—","+91 98440 16051","","karthikp"],
+["india","Enisha Kalita","Partnerships","Strategic Partnerships & Growth, GFS India","Early-stage founder community, developer ecosystems, and startup acceleration onboarding.","Bengaluru","enisha@google.com","—","+91 97411 00679","","enisha-kalita"],
+["india","Naveen Narayanan","Operations","Program Manager, Google for Startups (India & APAC)","Regional program operations, cohort selection logistics, and founder execution tracks.","Bengaluru","naveenhere@google.com","—","+91 79070 85164","","naveenhere"],
+["india","Sneha Basu Roy","Partnerships?","Video Solutions Specialist, Google India","⚠ Verified role differs from directory claim of VC & Startup Ecosystem Lead. Do not route VC/credits outreach.","Bengaluru","snehabasuroy@google.com","—","+91 77188 58042","drift","sneha-basu-roy-772b5253"],
+["india","Paul Ravindranath G","Ecosystem Lead","Head of Google Launchpad Accelerator India / DevRel PM","Senior accelerator director, technical mentorship network, Google Developer Experts (GDE).","Bengaluru","","","","","paulravindranath"],
+["us","Danny Navarro","US / NA Head","Head of Google for Startups — North America","Leads Google for Startups programs, accelerator operations, and founder funds across the US.","SF / Austin","dnavarro@google.com","—","+1 509 308 1404","","dnavarro688"],
+["us","Matt Ridenour","DeepMind AI","Head of Startups @ Google DeepMind & Google Labs","Startup go-to-market for Gemini models, AI Studio developer ecosystem, deep tech AI founders.","SF Bay Area","mattridenour@google.com","matthewridenour@gmail.com","+1 805 660 6288","dnc","matthewridenour"],
+["us","Scott Barneson","Cloud Startups","Managing Director, North America Startups @ Google Cloud","Directs cloud infrastructure go-to-market, startup scaling, and cloud credit grants for US founders.","Seattle, WA","sbarneson@google.com","scottmail@gmail.com","+44 750 091 0822","","barneson"],
+["us","Kathryn Van Nuys","VC / PE Global","Global Director, Venture Capital & Private Equity @ Google Cloud","Manages strategic relationships with top US VC firms and their high-growth startup portfolios.","New York, NY","kvannuys@google.com","—","+1 845 548 1203","dnc","kathryn-van-nuys"],
+["us","Samantha Rodriguez","VC & Funds","US Lead for VC Partnerships & Fund Manager, Founders Funds","Manages non-dilutive capital awards via Google Founders Funds and AI venture partnerships.","SF Bay Area","samrod@google.com","—","+1 212 565 8489","","samtrodriguez"],
+["us","Ashley Francisco","Americas","Global Lead for Accelerator Alumni / Head of Startup Ecosystem, Americas","Ecosystem director supporting Americas accelerator alumni network and strategic scale.","Toronto / Canada","ashleyfrancisco@google.com","—","","","ashley-francisco-51484847"],
+["us","Francisco Solsona","Accelerators","GDE Lead — Americas (ex-Regional Lead, GFS Accelerators SpLATAM)","Curates developer-community tracks; no longer the accelerator door. Mentorship cohorts, partner relations.","Mountain View / Mexico City","solsona@google.com","—","+1 424 272 5486","moved","solsona"],
+["us","Iran Karimian","North America","Head of Accelerator & Startup Ecosystem, Canada / North America","Manages northern regional startup programs, AI hubs, and accelerator cohorts.","Toronto","ikarimian@google.com","—","+1 416 624 4882","","irankarimian"],
+["us","Angelica Cameron Bucci","Operations","Program Manager, Google for Startups Accelerators","Cohort operations, founder logistics, mentor matching for North America accelerators.","United States","","—","+1 763 443 1765","noemail","angelica-cameron-bucci-615aa282"]
+];
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function row(d){
+ const [lane,name,tagline,role,mandate,base,work,personal,phone,dnc,handle]=d;
+ let em;
+ if(work==="") em = dnc==="noemail" ? '<span class="nf">Withheld — zero-confidence record</span>' : '<span class="nf">Not found — InMail route</span>';
+ else em = `<span class="email">${esc(work)}</span><br><span class="tag on">VERIFIED</span>`;
+ const pe = personal==="—" ? '<span class="nf">—</span>' : `<span class="email">${esc(personal)}</span>`;
+ let ph;
+ if(dnc==="dnc") ph = `<span class="phone">${esc(phone)}</span><br><span class="tag warn">⛔ DO NOT CALL — EMAIL ONLY</span>`;
+ else if(phone==="") ph = dnc==="" && work==="" ? '<span class="nf">Withheld — location mismatch</span>' : '<span class="nf">Withheld — low confidence</span>';
+ else ph = `<span class="phone">${esc(phone)}</span>` + (dnc==="clean"?'<br><span class="tag">DNC CLEAN</span>':'');
+ let flags = "";
+ if(dnc==="drift") flags = '<br><span class="tag warn">ROLE DRIFT</span>';
+ if(dnc==="reanchor") flags = '<br><span class="tag warn">RE-ANCHORED</span>';
+ if(dnc==="moved") flags = '<br><span class="tag warn">ROLE MOVED</span>';
+ const laneName = {global:"GLOBAL HQ",india:"INDIA",us:"US / AMERICAS"}[lane];
+ return `<tr><td class="name">${esc(name)}<span class="lane">${laneName} · ${esc(tagline)}</span></td><td class="mandate"><strong style="color:#fff;font-size:12.5px">${esc(role)}</strong><br>${esc(mandate)}${flags}</td><td class="base">${esc(base)}</td><td>${em}</td><td>${pe}</td><td>${ph}</td><td><a class="li" href="https://www.linkedin.com/in/${esc(handle)}/" target="_blank" rel="noopener">in/${esc(handle)}</a></td></tr>`;
+}
+for(const lane of ["global","india","us"]) document.getElementById("tb-"+lane).innerHTML = DATA.filter(d=>d[0]===lane).map(row).join("");
+</script>
 </body>
 </html>
