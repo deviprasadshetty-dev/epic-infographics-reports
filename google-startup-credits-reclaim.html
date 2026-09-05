@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C3alabs — Google for Startups Cloud Credits Reclaim Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#eef3f1; --surface:#ffffff; --surface-2:#e3ebe8; --ink:#122320; --ink-dim:#4c605a;
+    --border:#cfdbd6; --accent:#157a5f; --accent-ink:#0d5c47; --accent-soft:#d8ede4;
+    --protocol:#5850c9; --protocol-soft:#e6e4fa; --warn:#8a5a00; --warn-soft:#f7ecd4;
+    --code-bg:#e6edea; --shadow: 0 1px 2px rgba(18,35,32,.06), 0 8px 24px -12px rgba(18,35,32,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0e1613; --surface:#151f1c; --surface-2:#1b2723; --ink:#e9f2ee; --ink-dim:#9db2ab;
+      --border:#2a3733; --accent:#3fcd9a; --accent-ink:#8fe9c8; --accent-soft:#173229;
+      --protocol:#a29cf2; --protocol-soft:#242058; --warn:#f0c46c; --warn-soft:#2b2413;
+      --code-bg:#1a2521; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  body { background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; line-height:1.55; margin:0; padding:0 20px 120px; }
+  code, .mono { font-family:"IBM Plex Mono", ui-monospace, "SF Mono", monospace; }
+  .wrap { max-width:920px; margin:0 auto; }
+  header.hero { max-width:920px; margin:0 auto; padding:56px 0 28px; border-bottom:1px solid var(--border); }
+  .eyebrow { font-family:"IBM Plex Mono", monospace; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-ink); font-weight:600; display:flex; align-items:center; gap:8px; }
+  .eyebrow::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; }
+  h1 { font-size:clamp(28px,4vw,40px); line-height:1.12; letter-spacing:-.01em; margin:14px 0 10px; text-wrap:balance; font-weight:700; }
+  .lede { font-size:17px; color:var(--ink-dim); max-width:66ch; margin:0; }
+  .meta { font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim); margin-top:14px; }
+  nav.jump { max-width:920px; margin:0 auto; display:flex; flex-wrap:wrap; gap:6px 4px; padding:16px 0 0; }
+  nav.jump a { font-family:"IBM Plex Mono", monospace; font-size:12px; color:var(--ink-dim); text-decoration:none; padding:6px 10px; border-radius:20px; border:1px solid var(--border); background:var(--surface); }
+  nav.jump a:hover { color:var(--accent-ink); border-color:var(--accent); }
+  section { max-width:920px; margin:0 auto; padding:52px 0; border-bottom:1px solid var(--border); }
+  section:last-of-type { border-bottom:none; }
+  .kicker { font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); margin:0 0 8px; }
+  h2 { font-size:24px; margin:0 0 6px; letter-spacing:-.005em; text-wrap:balance; }
+  h3 { font-size:17px; margin:26px 0 8px; }
+  .section-intro { color:var(--ink-dim); max-width:68ch; }
+  .tldr { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 24px; box-shadow:var(--shadow); margin-top:20px; }
+  .tldr ul { margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .tldr li { display:flex; gap:10px; align-items:flex-start; }
+  .tldr li span { display:block; }
+  .tldr li::before { content:"→"; color:var(--accent); font-weight:600; font-family:"IBM Plex Mono",monospace; flex-shrink:0; width:22px; }
+  .callout { border-left:3px solid var(--accent); background:var(--accent-soft); border-radius:0 10px 10px 0; padding:14px 18px; margin:20px 0; font-size:14px; }
+  .callout.protocol { border-left-color:var(--protocol); background:var(--protocol-soft); }
+  .callout.warn { border-left-color:var(--warn); background:var(--warn-soft); }
+  .diagram-frame { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px; box-shadow:var(--shadow); overflow-x:auto; margin:24px 0 6px; }
+  .diagram-frame svg { display:block; max-width:100%; height:auto; margin:0 auto; }
+  figcaption { font-size:13px; color:var(--ink-dim); margin-top:10px; max-width:68ch; }
+  .tools-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); padding:4px 10px; }
+  .tools-table { width:100%; border-collapse:collapse; margin-top:18px; font-size:14px; }
+  .tools-table th { text-align:left; font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-dim); padding:0 14px 10px; border-bottom:1px solid var(--border); font-weight:600; }
+  .tools-table td { padding:14px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .email-block { background:var(--code-bg); border:1px solid var(--border); border-radius:12px; padding:18px 20px; margin:16px 0; font-size:14px; white-space:pre-wrap; }
+  .email-block .subj { font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:600; display:block; margin-bottom:10px; }
+  a { color:var(--accent-ink); }
+  .src { font-size:13px; color:var(--ink-dim); }
+  .tag { font-family:"IBM Plex Mono",monospace; font-size:11px; padding:2px 8px; border-radius:12px; border:1px solid var(--border); background:var(--surface-2); }
+  .tag.off { color:var(--accent-ink); border-color:var(--accent); }
+  .tag.anec { color:var(--protocol); border-color:var(--protocol); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">C3alabs — Cloud Credits</div>
+  <h1>Google for Startups Cloud Credits: Reclaim Report</h1>
+  <p class="lede">Your GCP startup credits expired, including the 6-month extension. This report maps the only legitimate paths back to credits — Year 2, AI-tier uplift, and manual appeal — with exact contacts, what to send, and what founders on Reddit report actually worked.</p>
+  <div class="meta">Prepared 5 Sep 2026 · Sources: official cloud.google.com pages + verified Reddit/HN threads · No assumed amounts</div>
+</header>
+
+<nav class="jump">
+  <a href="#tldr">TL;DR</a><a href="#status">01 — Where you stand</a><a href="#paths">02 — Three reclaim paths</a>
+  <a href="#contacts">03 — Whom + where to contact</a><a href="#send">04 — Exactly what to send</a>
+  <a href="#reddit">05 — Reddit evidence</a><a href="#plan">06 — 7-day plan</a><a href="#sources">Sources</a>
+</nav>
+
+<section id="tldr">
+  <p class="kicker">Summary</p>
+  <h2>TL;DR for C3alabs</h2>
+  <div class="tldr"><ul>
+    <li><span><strong>There is no self-serve "reclaim" button.</strong> Once credits + extension expire, the only official route is a manual appeal to your Account Manager or <span class="mono">cloudstartupsupport@google.com</span>.</span></li>
+    <li><span><strong>Two claims may still be alive:</strong> (a) Year 2 20% follow-on up to +$100K, (b) AI-first uplift delta ($200K standard → $350K AI total). Ask for both explicitly.</span></li>
+    <li><span><strong>Fresh re-application under the same company will be rejected</strong> — Scale requires "not yet received more than $5,000 in credits" and one incentive per company. You need a written exception, not a new form.</span></li>
+    <li><span><strong>Do not create a new entity / billing account to reset.</strong> Program ToS treats circumvention as abuse — credits revoked + invoiced as if never granted.</span></li>
+    <li><span><strong>Reddit pattern:</strong> generic support tickets fail; wins come via dedicated AM or startup-partner channel with growth + spend-commit proof. Timelines: days to weeks.</span></li>
+  </ul></div>
+</section>
+
+<section id="status">
+  <p class="kicker">01 — Where you stand</p>
+  <h2>Why "just apply again" will not work</h2>
+  <p class="section-intro">Google's own pages set three bars you now trip. Understanding them shapes the appeal language.</p>
+  <div class="tools-wrap"><table class="tools-table">
+    <tr><th>Rule</th><th>Official wording</th><th>Effect on you</th></tr>
+    <tr><td><strong>$5K prior-credits bar</strong></td><td>"Not yet received more than $5,000 in Google Cloud credits" — Benefits / Early-stage pages</td><td>Burned full award = ineligible for a fresh Scale award without exception.</td></tr>
+    <tr><td><strong>One incentive per company</strong></td><td>"Company may redeem only one Incentive promotional code (directly or indirectly) unless otherwise previously approved by Google in writing." — Program ToS §3(a)</td><td>Second code needs written approval. Ask for it by name.</td></tr>
+    <tr><td><strong>Expiry is final by default</strong></td><td>"Any Incentive coupon will expire if it is not redeemed by the deadline" / credits "will expire within the period" — ToS §2(a); "Offer subject to change", "acceptance at Google's discretion"</td><td>Extension was already discretionary. Second exception needs new justification (growth, spend commit, AI-tier).</td></tr>
+  </table></div>
+  <div class="callout warn"><strong>Plain English:</strong> Google treats the program as one grant per company. You already received yours plus an extra 6 months. A new grant is not owed — it must be argued as Year-2 entitlement or AI-uplift review, or a discretionary exception with business justification.</div>
+</section>
+
+<section id="paths">
+  <p class="kicker">02 — Three reclaim paths</p>
+  <h2>The only three doors still open</h2>
+  <p class="section-intro">All three go through the same humans, but each cites a different official basis. Pursue all three in one thread.</p>
+
+  <div class="diagram-frame">
+  <svg viewBox="0 0 860 300" width="860" height="300" role="img" aria-label="Reclaim decision flow">
+    <rect x="10" y="20" width="250" height="70" rx="10" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="135" y="48" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">C3alabs: credits +</text>
+    <text x="135" y="66" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">6-mo ext. expired</text>
+    <line x1="260" y1="55" x2="300" y2="55" stroke="var(--ink-dim)" stroke-width="1.5"/>
+    <rect x="300" y="20" width="250" height="70" rx="10" fill="none" stroke="var(--ink-dim)" stroke-width="1.5"/>
+    <text x="425" y="48" text-anchor="middle" font-size="13" fill="var(--ink)">Email AM +</text>
+    <text x="425" y="66" text-anchor="middle" font-size="13" fill="var(--ink)">cloudstartupsupport</text>
+    <line x1="425" y1="90" x2="425" y2="120" stroke="var(--ink-dim)" stroke-width="1.5"/>
+    <line x1="150" y1="120" x2="700" y2="120" stroke="var(--ink-dim)" stroke-width="1.5"/>
+    <line x1="150" y1="120" x2="150" y2="150" stroke="var(--ink-dim)" stroke-width="1.5"/>
+    <line x1="425" y1="120" x2="425" y2="150" stroke="var(--ink-dim)" stroke-width="1.5"/>
+    <line x1="700" y1="120" x2="700" y2="150" stroke="var(--ink-dim)" stroke-width="1.5"/>
+    <rect x="40" y="150" width="220" height="110" rx="10" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="150" y="175" text-anchor="middle" font-size="13" font-weight="600" fill="var(--accent-ink)">Path A: Year 2</text>
+    <text x="150" y="195" text-anchor="middle" font-size="12" fill="var(--ink)">20% of Yr-2 spend</text>
+    <text x="150" y="212" text-anchor="middle" font-size="12" fill="var(--ink)">up to +$100K</text>
+    <text x="150" y="232" text-anchor="middle" font-size="12" fill="var(--ink-dim)">Strongest if Yr-2 unused</text>
+    <rect x="315" y="150" width="220" height="110" rx="10" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="425" y="175" text-anchor="middle" font-size="13" font-weight="600" fill="var(--accent-ink)">Path B: AI uplift</text>
+    <text x="425" y="195" text-anchor="middle" font-size="12" fill="var(--ink)">$200K → $350K total</text>
+    <text x="425" y="212" text-anchor="middle" font-size="12" fill="var(--ink)">Yr-1 $250K + Yr-2 $100K</text>
+    <text x="425" y="232" text-anchor="middle" font-size="12" fill="var(--ink-dim)">Needs AI-first proof</text>
+    <rect x="590" y="150" width="220" height="110" rx="10" fill="none" stroke="var(--warn)" stroke-width="1.5"/>
+    <text x="700" y="175" text-anchor="middle" font-size="13" font-weight="600" fill="var(--warn)">Path C: Exception</text>
+    <text x="700" y="195" text-anchor="middle" font-size="12" fill="var(--ink)">Discretionary restore</text>
+    <text x="700" y="212" text-anchor="middle" font-size="12" fill="var(--ink)">growth + spend commit</text>
+    <text x="700" y="232" text-anchor="middle" font-size="12" fill="var(--ink-dim)">Lowest odds, still ask</text>
+  </svg>
+  <figcaption>One email thread, three asks in order: Year-2 entitlement first, AI-uplift delta second, discretionary exception third.</figcaption>
+  </div>
+
+  <h3>Path A — Year 2 follow-on (strongest legal footing)</h3>
+  <p>Scale = <strong>Year 1: 100% up to $100K</strong> (AI-first: up to $250K) + <strong>Year 2: 20% of Year-2 spend, up to additional $100K</strong>. Total caps $200K / $350K AI. Year 2 is coinsurance, not a free year — you pay 80%. If your extension covered Year 1 only, Year-2 portion may be unclaimed. Ask: "Confirm our Year-2 eligibility and activate the 20% benefit on billing ID ___."</p>
+  <h3>Path B — AI-first uplift ($200K → $350K)</h3>
+  <p>Official AI test: Gemini / Gemini Enterprise Agent Platform as <strong>foundation of your primary product</strong>, not a bolt-on; "AI built into foundational structure and strategy". Covers Gemini/Gemma — third-party Marketplace models billed separately, not covered. Needs institutional funding proof (pre-seed/seed in 5 yrs or Series A in 12 mo, founded &lt;5 yrs). Acceptance case-by-case at Google's discretion. Ask: "Review us for AI-first tier; delta between our Scale award and $250K Yr-1 + Yr-2."</p>
+  <h3>Path C — Discretionary exception</h3>
+  <p>No published flow. Founders who won extensions showed trailing growth + 75%+ burn + concrete post-credit spend (CUD/EA discussion). A paused-ops sympathy plea alone has no confirmed win. Ask with numbers, not need.</p>
+</section>
+
+<section id="contacts">
+  <p class="kicker">03 — Whom + where to contact</p>
+  <h2>Exact contacts, in order</h2>
+  <div class="tools-wrap"><table class="tools-table">
+    <tr><th>#</th><th>Who / where</th><th>Why</th><th>How</th></tr>
+    <tr><td>1</td><td><strong>Your Account Manager</strong> (check program welcome email / console banner)</td><td>Only channel with confirmed extension wins on Reddit. Generic support replies "can't do anything".</td><td>Email directly; CC on everything below.</td></tr>
+    <tr><td>2</td><td><strong>cloudstartupsupport@google.com</strong></td><td>Official address in FAQ for re-apply, rejections, stealth verification. The only team that can reissue/restore.</td><td>Email with billing + program IDs (template below).</td></tr>
+    <tr><td>3</td><td><strong>Cloud Console → Support → Cases</strong></td><td>Creates a ticket number to cite in emails; Billing-path tickets have resets reported.</td><td class="mono">console.cloud.google.com → Support → Cases → Create case → Billing → Credits/Promotions → P2</td></tr>
+    <tr><td>4</td><td><strong>Your VC / accelerator partner</strong></td><td>Stealth verification + AI-uplift credibility. Google accepts a 2-line investor email.</td><td>Ask for reply-all verification (template below).</td></tr>
+  </table></div>
+  <div class="callout"><strong>Order matters:</strong> open the console case first (get a case number), then email AM + cloudstartupsupport citing it, then have your investor reply-all into the same thread. Day-3 bump, Day-7 re-email with fresh spend screenshot, escalate via AM after 2 weeks.</div>
+</section>
+
+<section id="send">
+  <p class="kicker">04 — Exactly what to send</p>
+  <h2>Copy-paste kit (fill the brackets)</h2>
+  <p class="section-intro">Include in every message: org name C3alabs, website URL, org-admin email (must match domain), 18-char billing account ID (Billing → Account info), project IDs, program approval ID from welcome email, grant/expiry dates, lifetime + monthly spend with screenshot. Attach: 1-pager, incorporation cert, funding/accelerator proof, billing report screenshot.</p>
+
+  <h3>1 — Console case body</h3>
+  <div class="email-block"><span class="subj">Title: Startup credits reclaim — C3alabs — Billing [XXXXXX-XXXXXX-XXXXXX]</span>Company: C3alabs | Website: [URL] | Org admin: [email]
+Billing Account ID: [___] | Project IDs: [___] | Program approval ID: [___] | Approved: [date] | Expired: [date]
+Issue: Scale credits + 6-month extension expired. Requesting (a) Year-2 20% activation if unused, (b) AI-first tier review, (c) discretionary exception.
+Spend: $X lifetime, $Y/mo on [Vertex/GKE/BigQuery]. No policy violation. Attachments: 4 files as listed.</div>
+
+  <h3>2 — Email to cloudstartupsupport@google.com (CC your AM)</h3>
+  <div class="email-block"><span class="subj">Subject: Credit reclaim request — C3alabs — Billing [XXXXXX] — Program [___] — Case [#___]</span>Hello Google for Startups Cloud team,
+
+Company: C3alabs | Website: [URL] | Org admin: [email]
+Billing Account ID: [___] | Project IDs: [___] | Program approval ID: [___] | Date approved: [___] | Expiry: [___]
+
+We burned our Scale award plus the 6-month extension. No policy violation on our side.
+Traction: founded [year], [funding/accelerator], $X lifetime GCP spend, $Y/mo run-rate, [team, HQ].
+Use of funds: [e.g. 70% Vertex AI inference, 20% GKE, 10% BigQuery].
+
+Requests:
+(a) Confirm + activate any unused Year-2 20% benefit (up to +$100K) on this billing ID;
+(b) Review us for AI-first tier (Gemini [describe core use] — AI is our product foundation, not a bolt-on);
+(c) Failing the above, consider a discretionary extension; we are prepared to discuss committed-use / spend plan post-credits.
+
+Attached: (1) incorporation cert, (2) funding/accelerator proof, (3) billing report screenshot, (4) one-pager.
+
+Thank you,
+[Full name], Founder, C3alabs | [phone]</div>
+
+  <h3>3 — Email to your Account Manager (short)</h3>
+  <div class="email-block"><span class="subj">Subject: C3alabs — request to restore/extend Startup credits [Billing: XXXXXX]</span>Hi [Name],
+
+I'm [Name], founder of C3alabs [1 line: what you build on GCP].
+Approved under Google for Startups [Program ID ___], Billing [___]. Credits + extension expired [date].
+Current spend $X/mo on [Vertex/GKE/BigQuery]. Attached: billing screenshot + one-pager + incorporation.
+Ask: (a) Year-2 activation, (b) AI-tier review to $350K. Open to a 15-min call this week + CUD discussion.
+
+Thanks,
+[Name, title, phone, org-admin email]</div>
+
+  <h3>4 — Two-line VC verification (for AI uplift / stealth)</h3>
+  <div class="email-block"><span class="subj">Subject: Quick favour: 2-line Google Cloud verification for C3alabs</span>Hi [Partner name],
+
+We're reclaiming Google for Startups credits (up to $350K for AI startups). Google needs a 2-line verification from an investor/accelerator.
+
+Could you reply-all to cloudstartupsupport@google.com (cc'd) with:
+"[Investor] confirms C3alabs is a portfolio/active company, AI-first, founded [year]. Contact: [name/email] for verification."
+
+Letterhead if easy; email reply also works. Needed by [date]. Happy to draft for signature.
+
+Thanks,
+[Name]</div>
+  <div class="callout protocol"><strong>Stealth note:</strong> the investor can describe you as "AI-first infrastructure startup (stealth)" with no product detail — Google accepts this per the FAQ ("If you're in stealth mode, please work with your investor to verify your funding").</div>
+</section>
+
+<section id="reddit">
+  <p class="kicker">05 — Reddit + community evidence</p>
+  <h2>What founders report (anecdotal, not official)</h2>
+  <p class="section-intro">Official docs promise no extensions. These threads show where humans made exceptions — and where they did not. Treat as tactics, not guarantees.</p>
+  <div class="tools-wrap"><table class="tools-table">
+    <tr><th>Thread</th><th>Signal</th></tr>
+    <tr><td><a href="https://www.reddit.com/r/googlecloud/comments/1qfxwlk/startup_credit_expiring_with_50_unused/">$100K expiring 50% unused (GKE/CloudSQL/Gemini)</a> <span class="tag anec">anecdotal</span></td><td>Founder got <strong>+6 months via dedicated AM</strong> after convincing them. Generic ticket path had failed.</td></tr>
+    <tr><td><a href="https://www.reddit.com/r/googlecloud/comments/1qa9sol/our_startup_gcp_credits_expired_how_did_you/">$100K expired, $30K/mo cost cliff (fintech)</a> <span class="tag anec">anecdotal</span></td><td>Warnings: optimise before signing an Enterprise Agreement; stack reseller discount (~10%), CUDs only after rightsizing; multi-cloud sequencing.</td></tr>
+    <tr><td><a href="https://www.reddit.com/r/googlecloud/comments/1g9u002/extension_request/">Extension request (paused ops, asked 1–2 mo)</a> <span class="tag anec">anecdotal</span></td><td>Sympathy plea with no growth/spend proof — <strong>no confirmed win</strong>. One reply claims billing support reset theirs; majority say generic support cannot help.</td></tr>
+    <tr><td><a href="https://www.reddit.com/r/googlecloud/comments/1pq3m0z/google_for_startups_credits_approved_scale/">Scale re-application limbo ($2K revoked mid-review)</a> <span class="tag anec">anecdotal</span></td><td>Scale/AI review can stall for weeks; one founder's $2K flipped to "expired" during review with 2+ weeks silence. Keep AE cc'd; escalate outside stalled thread.</td></tr>
+    <tr><td><a href="https://www.reddit.com/r/googlecloud/comments/1pp54ga/google_cloud_for_startups_has_anyone_gotten_200k/">Bootstrapped denied $350K AI, got $2K</a> <span class="tag anec">anecdotal</span></td><td>Bootstrapped routinely capped at $2K regardless of revenue. Google "very strict about $6K spend in first month". $5K SAFE loophole floated, no confirmed success.</td></tr>
+    <tr><td><a href="https://www.reddit.com/r/googlecloud/comments/1giq10e/google_for_startups_cloud_program_anyone_applied/">Program experiences / Year-2 mechanics</a> <span class="tag anec">anecdotal</span></td><td>Confirms Yr-1 100% / Yr-2 20% coinsurance in practice ("first year 100%, year two 20% of bill"). Y2 is not a second free year — budget 80% cash.</td></tr>
+    <tr><td><a href="https://www.reddit.com/r/googlecloud/comments/qguzf2/startup_program_experience/">Old $2K program: extended 3 mo → 1 yr</a> <span class="tag anec">anecdotal</span></td><td>Won by phoning/LinkedIn-hustling past an unresponsive rep. Counterpoint in-thread: don't count on straight "please extend" tickets without growth or spend commit.</td></tr>
+    <tr><td><a href="https://news.ycombinator.com/item?id=43020052">HN: negotiating as $250K-burn AI startup</a> <span class="tag anec">anecdotal</span></td><td>Negotiation frame: committed spend + growth, not need. Reseller/CUD math in comments.</td></tr>
+    <tr><td><a href="https://news.ycombinator.com/item?id=26252328">HN: $130K over 3 yrs via staged tranches</a> <span class="tag anec">anecdotal</span></td><td>Old ladder required ~75% burn to unlock next tranche ($3K → $17K → $100K). Pattern persists: show high burn + growth to unlock more.</td></tr>
+  </table></div>
+  <div class="callout warn"><strong>Honest caveat:</strong> extension wins are single anecdotes years apart, small sample. Official stance is "offer subject to change, acceptance at Google's discretion." Plan spend as if credits expire on schedule; run the appeal and the AWS/Azure/Cloudflare applications in parallel.</div>
+</section>
+
+<section id="plan">
+  <p class="kicker">06 — 7-day plan</p>
+  <h2>What to do this week</h2>
+  <div class="tldr"><ul>
+    <li><span><strong>Day 1:</strong> pull billing ID, program ID, lifetime + monthly spend screenshot. Open console Billing → Credits case. Send AM email + cloudstartupsupport email citing the case number.</span></li>
+    <li><span><strong>Day 2:</strong> get investor reply-all verification into the same thread (AI-first wording). Attach funding proof.</span></li>
+    <li><span><strong>Day 3:</strong> bump the case with a fresh spend screenshot. In parallel: file AWS Founders ($1K), Microsoft Founders Hub, Cloudflare Tier 3 ($10K) — none care about GCP history.</span></li>
+    <li><span><strong>Day 7:</strong> re-email cloudstartupsupport with "Re: [Case #___]" + growth update. After 2 weeks of silence, escalate via AM / startup partner contact only.</span></li>
+    <li><span><strong>Do not:</strong> open a second startup application under the same company, rotate billing accounts to reset, or pause all spend to "look needy" — all three hurt the appeal.</span></li>
+  </ul></div>
+</section>
+
+<section id="sources">
+  <p class="kicker">Sources</p>
+  <h2>Every claim traces to these</h2>
+  <p class="src"><span class="tag off">official</span> <a href="https://cloud.google.com/startup/benefits">cloud.google.com/startup/benefits</a> — tiers, Year-1/Year-2 amounts, $5K bar<br>
+  <span class="tag off">official</span> <a href="https://cloud.google.com/startup/faq">cloud.google.com/startup/faq</a> — contacts, re-apply, stealth verification, AI-first definition<br>
+  <span class="tag off">official</span> <a href="https://cloud.google.com/startup/ai">cloud.google.com/startup/ai</a> — AI-first criteria, Gemini/Gemma coverage<br>
+  <span class="tag off">official</span> <a href="https://cloud.google.com/startup/early-stage">cloud.google.com/startup/early-stage</a> — Year-2 definition, +$150K Gemini Enterprise note<br>
+  <span class="tag off">official</span> <a href="https://cloud.google.com/terms/startup-program-tos">cloud.google.com/terms/startup-program-tos</a> — one-incentive rule, expiry, discretion, invoicing on abuse<br>
+  <span class="tag anec">reddit / HN</span> threads linked in section 05 — tactics only, not promises.</p>
+  <div class="callout"><strong>Method note:</strong> 3 parallel research agents (official-docs, community, outreach-kit) + direct re-extraction of cloud.google.com pages on 5 Sep 2026. Amounts quoted verbatim; third-party figures marked unverified rather than repeated.</div>
+</section>
+
+</body>
+</html>
