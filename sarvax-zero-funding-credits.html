@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sarvax.ai — Zero-Funding Startup Credits Replacement Path</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#eef3f1; --surface:#ffffff; --surface-2:#e3ebe8; --ink:#122320; --ink-dim:#4c605a;
+    --border:#cfdbd6; --accent:#157a5f; --accent-ink:#0d5c47; --accent-soft:#d8ede4;
+    --protocol:#5850c9; --protocol-soft:#e6e4fa; --code-bg:#e6edea;
+    --warn:#9a6b00; --warn-soft:#fdf0c8; --bad:#a4262c; --bad-soft:#fbe4e4;
+    --shadow: 0 1px 2px rgba(18,35,32,.06), 0 8px 24px -12px rgba(18,35,32,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0e1613; --surface:#151f1c; --surface-2:#1b2723; --ink:#e9f2ee; --ink-dim:#9db2ab;
+      --border:#2a3733; --accent:#3fcd9a; --accent-ink:#8fe9c8; --accent-soft:#173229;
+      --protocol:#a29cf2; --protocol-soft:#242058; --code-bg:#1a2521;
+      --warn:#e8b93e; --warn-soft:#3a2f10; --bad:#f08a8a; --bad-soft:#3a1a1a;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  body{ background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif; line-height:1.55; margin:0; padding:0 20px 120px; }
+  code,.mono{ font-family:"IBM Plex Mono",ui-monospace,"SF Mono",monospace; }
+  .wrap{ max-width:920px; margin:0 auto; }
+  header.hero{ max-width:920px; margin:0 auto; padding:56px 0 28px; border-bottom:1px solid var(--border); }
+  .eyebrow{ font-family:"IBM Plex Mono",monospace; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-ink); font-weight:600; display:flex; align-items:center; gap:8px; }
+  .eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; }
+  h1{ font-size:clamp(28px,4vw,40px); line-height:1.12; letter-spacing:-.01em; margin:14px 0 10px; text-wrap:balance; font-weight:700; }
+  .lede{ font-size:17px; color:var(--ink-dim); max-width:66ch; margin:0; }
+  .meta{ font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim); margin-top:14px; }
+  nav.jump{ max-width:920px; margin:0 auto; display:flex; flex-wrap:wrap; gap:6px 4px; padding:16px 0 0; }
+  nav.jump a{ font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim); text-decoration:none; padding:6px 10px; border-radius:20px; border:1px solid var(--border); background:var(--surface); }
+  nav.jump a:hover{ color:var(--accent-ink); border-color:var(--accent); }
+  section{ max-width:920px; margin:0 auto; padding:52px 0; border-bottom:1px solid var(--border); }
+  section:last-of-type{ border-bottom:none; }
+  .kicker{ font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); margin:0 0 8px; }
+  h2{ font-size:24px; margin:0 0 6px; letter-spacing:-.005em; text-wrap:balance; }
+  .section-intro{ color:var(--ink-dim); max-width:68ch; }
+  .tldr{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 24px; box-shadow:var(--shadow); margin-top:20px; }
+  .tldr ul{ margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .tldr li{ display:flex; gap:10px; align-items:flex-start; }
+  .tldr li::before{ content:"→"; color:var(--accent); font-weight:600; font-family:"IBM Plex Mono",monospace; flex-shrink:0; width:22px; }
+  .callout{ border-left:3px solid var(--accent); background:var(--accent-soft); border-radius:0 10px 10px 0; padding:14px 18px; margin:20px 0; font-size:14px; }
+  .callout.warn{ border-left-color:var(--warn); background:var(--warn-soft); }
+  .callout.bad{ border-left-color:var(--bad); background:var(--bad-soft); }
+  .tools-wrap{ overflow-x:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); padding:4px 10px; }
+  .tools-table{ width:100%; border-collapse:collapse; margin-top:18px; font-size:14px; }
+  .tools-table th{ text-align:left; font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-dim); padding:0 14px 10px; border-bottom:1px solid var(--border); font-weight:600; white-space:nowrap; }
+  .tools-table td{ padding:14px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .badge{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; border:1px solid var(--border); white-space:nowrap; }
+  .badge.pass{ color:var(--accent-ink); border-color:var(--accent); background:var(--accent-soft); }
+  .badge.fail{ color:var(--bad); border-color:var(--bad); background:var(--bad-soft); }
+  .badge.skip{ color:var(--ink-dim); }
+  .timeline{ display:grid; gap:12px; margin-top:20px; }
+  .step{ background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; box-shadow:var(--shadow); }
+  .step h4{ margin:0 0 6px; font-size:15px; }
+  .step p{ margin:0; color:var(--ink-dim); font-size:14px; }
+  a{ color:var(--accent-ink); }
+  footer{ max-width:920px; margin:0 auto; padding-top:32px; color:var(--ink-dim); font-size:13px; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="eyebrow">Sarvax.ai · Zero-funding credits path</div>
+  <h1>Replacing AWS credits before the 4-month cliff — $0 VC only</h1>
+  <p class="lede">Sarvax.ai (formerly KaraX) is an AI execution workspace for financial services firms — wealth advisory, HR and back-office agents that execute briefing packs, meeting intel, CRM updates and compliance records inside client environments with human approval and audit trails. Google credits expired Sep 2026. Team is now on AWS with about 4 months of Activate credits left, running inference partly via OpenRouter (paid). This report lists only programs that accept bootstrapped, $0-funded startups, with live-verified amounts.</p>
+  <div class="meta">Verified live: Sep 6, 2026 · Method: official pages via web_extract + parallel verification · Scope: $0 VC / &lt;50 people / single entity</div>
+  <nav class="jump">
+    <a href="#tldr">TL;DR</a><a href="#phase1">Phase 1 — LLM</a><a href="#phase2">Phase 2 — Voice</a><a href="#phase3">Phase 3 — GPU</a><a href="#timeline">Timeline</a><a href="#skip">Do not apply</a><a href="#reddit">Reddit tactics</a><a href="#verify">Verification log</a>
+  </nav>
+</header>
+
+<section id="tldr">
+  <p class="kicker">00 — TL;DR</p>
+  <h2>Apply in this order</h2>
+  <div class="tldr"><ul>
+    <li><span><strong>Week 1 (fastest approvals):</strong> Cloudflare Tier 3 ($10k) + ElevenLabs (33M chars) + Sarvam (6–12 mo) + Deepgram (up to $100k). Voice and RAG secured first.</span></li>
+    <li><span><strong>Week 2 (post-AWS LLM home):</strong> Microsoft Founders Hub (up to $150k, ~$5k instant bootstrapped) + OVHcloud Start (€10k). Azure OpenAI is the closest Gemini swap.</span></li>
+    <li><span><strong>Week 3 (Inception leverage):</strong> use existing NVIDIA Inception membership to request AWS Portfolio Org ID (up to $200k delta), Nebius (up to $150k), Scaleway Inception bonus (up to €42k), Yotta Rudra ($35k immediate).</span></li>
+    <li><span><strong>Month 2–3 (dev work, no billing needed):</strong> ship a provider switch — Bedrock primary (while free) → Azure secondary → Cloudflare fallback — behind one env flag.</span></li>
+    <li><span><strong>Do not waste time on:</strong> OpenAI direct, Anthropic direct, Together Scale/Grow, Groq startup (discontinued Aug 2026), Google re-entry (blocked: prior &gt;$5k).</span></li>
+  </ul></div>
+  <div class="callout warn"><strong>Why OpenRouter hurts now.</strong> OpenRouter has no startup program — it is pure pay-as-you-go (thin <span class="mono">:free</span> models aside). Every Bedrock call right now is covered by your remaining AWS credits; every identical OpenRouter call is cash. Move paid volume to Bedrock while credits last, keep OpenRouter only as fallback.</div>
+</section>
+
+<section id="phase1">
+  <p class="kicker">01 — Phase 1 · LLM replacement</p>
+  <h2>Where inference lives after AWS</h2>
+  <p class="section-intro">Plain English: these are the programs that pay for the AI models your agents call. Apply Phase 1 first because approvals take 1–4 weeks and must land before month 4.</p>
+  <div class="tools-wrap"><table class="tools-table">
+    <tr><th>Program</th><th>What you get</th><th>$0 eligibility</th><th>Fit for Sarvax</th><th>Status</th></tr>
+    <tr><td><strong>Microsoft Founders Hub</strong><br><a href="https://www.microsoft.com/en-us/startups">microsoft.com/en-us/startups</a></td><td>Up to <strong>$150,000</strong> Azure, staged over up to 4 years. Bootstrapped entry ~$5k instant; $25k+ needs any angel/incubator link.</td><td>No funding required for entry; must not have received &gt;$10k Azure before.</td><td>Azure OpenAI (GPT-4o, o-series) + Llama/Mistral via AI Foundry. Closest Gemini replacement.</td><td><span class="badge pass">PASS — APPLY</span></td></tr>
+    <tr><td><strong>AWS Activate Founders + Portfolio delta</strong><br><a href="https://aws.amazon.com/startups/credits/">aws.amazon.com/startups/credits</a></td><td>Founders <strong>$1k instant, select → $5k</strong>. Portfolio up to <strong>$200k total</strong> (you claim the difference via Org ID).</td><td>Founders: "Apply directly if you're bootstrapped". Portfolio: needs Org ID from Activate Provider — NVIDIA Inception qualifies.</td><td>Bedrock (Claude 3.5/3.7, Llama 3.3, Mistral, Nova). Burn this till month 4.</td><td><span class="badge pass">PASS — DELTA</span></td></tr>
+    <tr><td><strong>Cloudflare Tier 3</strong><br><a href="https://www.cloudflare.com/forstartups">cloudflare.com/forstartups</a></td><td><strong>$10k / 12 mo</strong>. Workers AI cap $2.5k on Tier 3, R2 cap $10k. Approval ~48h.</td><td>Criteria: "Bootstrapped or self-funded, Under $1M raised".</td><td>Workers AI (Llama 3.3) + Vectorize for RAG. Fastest approval.</td><td><span class="badge pass">PASS — APPLY</span></td></tr>
+  </table></div>
+</section>
+
+<section id="phase2">
+  <p class="kicker">02 — Phase 2 · Voice layer</p>
+  <h2>Meeting intel, STT and TTS</h2>
+  <p class="section-intro">Plain English: these pay for speech-to-text, text-to-speech and voice agents — your meeting-intelligence path. Independent of the AWS expiry, so apply in parallel.</p>
+  <div class="tools-wrap"><table class="tools-table">
+    <tr><th>Program</th><th>What you get</th><th>$0 eligibility</th><th>Status</th></tr>
+    <tr><td><strong>ElevenLabs Grants</strong><br><a href="https://elevenlabs.io/startup-grants">elevenlabs.io/startup-grants</a></td><td><strong>33M characters (~680 hrs, $5,500+ value) / 12 mo</strong>. Full platform: TTS, STT, Agents, cloning.</td><td>&lt;25 employees, business email, monetized use-case. No VC gate.</td><td><span class="badge pass">PASS — APPLY</span></td></tr>
+    <tr><td><strong>Deepgram</strong><br><a href="https://deepgram.com/startup-program">deepgram.com/startup-program</a></td><td>Up to <strong>$100k / 12 mo</strong> across STT, TTS, Voice Agents.</td><td>AI builder / early-stage, in prod or launching &lt;6 mo. No VC gate published.</td><td><span class="badge pass">PASS — APPLY</span></td></tr>
+    <tr><td><strong>Sarvam AI</strong><br><a href="https://www.sarvam.ai/startup-program">sarvam.ai/startup-program</a></td><td><strong>6–12 months API credits</strong> matched to scale (exact ₹ not published) + eng support. 22 Indic languages + code-mix.</td><td>No funding gate published. Built for Indian builders.</td><td><span class="badge pass">PASS — APPLY</span></td></tr>
+  </table></div>
+  <div class="callout"><strong>Suggested split.</strong> Sarvam for Kannada/Hindi STT/TTS, Deepgram for low-latency English streaming, ElevenLabs for cloning and conversational agents.</div>
+</section>
+
+<section id="phase3">
+  <p class="kicker">03 — Phase 3 · GPU backup</p>
+  <h2>If you must self-host open models later</h2>
+  <p class="section-intro">Plain English: if credited APIs ever run short, these give you raw GPUs to run Llama/Qwen yourself. Slower approvals — start Week 3.</p>
+  <div class="tools-wrap"><table class="tools-table">
+    <tr><th>Program</th><th>What you get</th><th>$0 eligibility</th><th>Status</th></tr>
+    <tr><td><strong>OVHcloud Start</strong><br><a href="https://startup.ovhcloud.com/en/startups/">startup.ovhcloud.com</a></td><td><strong>€10k (~$12k) / 12 mo</strong> + 6h engineer. A100/L4 + managed K8s.</td><td>Pre-seed/seed, no VC needed, working MVP required.</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td><strong>Scaleway (Inception bonus)</strong><br><a href="https://www.scaleway.com/en/startup-program/founders-program/">scaleway.com/startup-program</a></td><td>Founders €1k → Early €36k; <strong>Inception members up to €42k + Silver support 12 mo</strong>.</td><td>No funding requirement, rolling admission.</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td><strong>Nebius AI Lift</strong><br><a href="https://nebius.com/startups">nebius.com/startups</a></td><td>Up to <strong>$150k + $10k inference</strong>, H100/Blackwell priority. Selective.</td><td>Via free Inception membership; selection-based.</td><td><span class="badge pass">PASS — SELECTIVE</span></td></tr>
+    <tr><td><strong>Yotta Rudra</strong><br><a href="https://yotta.com/rudra/">yotta.com/rudra</a></td><td>Up to <strong>$100k Shakti ($35k immediate)</strong> on 16k-H100 supercomputer.</td><td>Open to Indian startups.</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td><strong>IndiaAI Compute</strong><br><a href="https://compute.indiaai.gov.in/login">compute.indiaai.gov.in</a></td><td><strong>38k+ GPUs at ~₹65–67/hr H100</strong> (~40% subsidy) vs ₹220–400 market.</td><td>Open GPU-hours allocation via portal.</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td><strong>Oracle OCI</strong><br><a href="https://www.oracle.com/cloud/oracle-for-startups/">oracle.com/cloud/oracle-for-startups</a></td><td><strong>$500 + 70% off → up to $100k</strong>, plus Always Free tier forever.</td><td>Base needs only: &lt;10 yr, MVP, not current OCI customer.</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td><strong>Intel Liftoff</strong><br><a href="https://www.intel.com/content/www/us/en/developer/topic/ai-startups.html">intel.com Liftoff</a></td><td>Tiber AI Cloud (Gaudi 2/3, Xeon), free, no equity. Per-startup allocation.</td><td>Early-stage worldwide, no funding stated.</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td><strong>DigitalOcean</strong><br><a href="https://www.digitalocean.com/startups">digitalocean.com/startups</a></td><td>Up to <strong>$5k core / 12 mo</strong> (Hatch AI up to $100k selective). Core credits exclude GPU/inference.</td><td>$0 eligible (cap ≤$10M raised). Backup hosting only.</td><td><span class="badge skip">BACKUP ONLY</span></td></tr>
+  </table></div>
+  <div class="callout"><strong>Situational extras.</strong> Mistral Mistralship (~€30k cohort, selective) · Fireworks (~$10k build credits) · Cohere 25% off · Hugging Face 50% off Enterprise Y1 · Cerebras $5 trial · AMD $100/30d (testing only).</div>
+</section>
+
+<section id="timeline">
+  <p class="kicker">04 — Execution timeline</p>
+  <h2>Four months, no cliff</h2>
+  <div class="timeline">
+    <div class="step"><h4>Week 1 — file four applications</h4><p>Cloudflare Tier 3, ElevenLabs, Sarvam, Deepgram. Fastest decisions; voice + RAG secured first.</p></div>
+    <div class="step"><h4>Week 2 — second LLM home</h4><p>Microsoft Founders Hub + OVHcloud Start. Azure warms up while AWS still covers you.</p></div>
+    <div class="step"><h4>Week 3 — pull the Inception lever</h4><p>Request Inception Org ID → AWS Portfolio delta, Nebius, Scaleway Inception bonus, Yotta. Admin does the Org ID paste (5 min).</p></div>
+    <div class="step"><h4>Month 2–3 — one env-flag switch (dev, no billing needed)</h4><p>Bedrock primary → Azure secondary → Cloudflare fallback. Map current OpenRouter model names to Bedrock/Azure equivalents so cutover is config-only.</p></div>
+    <div class="step"><h4>Month 4 — AWS expires, no outage</h4><p>Traffic flips to Azure + Cloudflare. GPU programs on standby.</p></div>
+  </div>
+</section>
+
+<section id="skip">
+  <p class="kicker">05 — Do not apply</p>
+  <h2>Funding-gated or dead — skip these</h2>
+  <div class="tools-wrap"><table class="tools-table">
+    <tr><th>Program</th><th>Why it fails for $0</th><th>Status</th></tr>
+    <tr><td>OpenAI for Startups</td><td>Credits only via VC partner / Ramp VC path. Bootstrapped ineligible (verified on openai.com/startups).</td><td><span class="badge fail">FAIL — SKIP</span></td></tr>
+    <tr><td>Anthropic direct</td><td>$25k–$100k tier requires institutional equity. Use Claude via Bedrock instead.</td><td><span class="badge fail">FAIL — SKIP</span></td></tr>
+    <tr><td>Together AI Scale/Grow</td><td>$30k needs $5M+, $50k needs $10M+ raised. Build tier selection-based.</td><td><span class="badge fail">FAIL — SKIP</span></td></tr>
+    <tr><td>Groq for Startups</td><td>Program unpublished ~Aug 5 2026; page + console docs gone. Free tier only.</td><td><span class="badge fail">DISCONTINUED</span></td></tr>
+    <tr><td>Google re-entry</td><td>Start $2k needs "not yet received credits"; Scale needs &lt;$5k prior + recent VC. Prior &gt;$5k + Sep 2026 expiry blocks you.</td><td><span class="badge fail">FAIL — SKIP</span></td></tr>
+  </table></div>
+</section>
+
+<section id="reddit">
+  <p class="kicker">06 — Community reality-check</p>
+  <h2>Tactics founders report actually work</h2>
+  <div class="tldr"><ul>
+    <li><span><strong>Inception unlock:</strong> denied $25k with no funding → joined Inception with deck → approved ~$20k + MSFT $25k. (r/googlecloud)</span></li>
+    <li><span><strong>$5k AWS with no VC:</strong> Mercury / Stripe Atlas / HubSpot provider code + clean new AWS account + domain email + 1-pager. Approved in days. (r/SaaS, r/NoCodeSaaS)</span></li>
+    <li><span><strong>Azure ladder:</strong> L1 $1k → L2 $5k → L3 $25k → L4 $150k, clock resets per level. $5k cap bootstrapped; any angel/uni incubator link unlocks $25k+. (r/AZURE)</span></li>
+    <li><span><strong>Stack all three clouds year one:</strong> $1–5k each with incorporation + site covers first-year infra. (r/startups)</span></li>
+    <li><span><strong>AE escalation:</strong> direct mail to cloud startup sales + Inception as credibility → $10–25k discretionary uplifts with deck + roadmap. (r/startups)</span></li>
+  </ul></div>
+  <div class="callout"><strong>Trust stack before applying.</strong> Live domain MX, founder@domain email (no gmail), HTTPS site with Privacy + Terms footer, founder LinkedIn &gt;60 days + 50+ connections listing the startup, no VPN, IP matches card country, real card with AVS, $0.50 burn-in 48h on AWS.</div>
+</section>
+
+<section id="verify">
+  <p class="kicker">07 — Verification log</p>
+  <h2>Claim → live source → status</h2>
+  <div class="tools-wrap"><table class="tools-table">
+    <tr><th>Claim</th><th>Live source checked</th><th>Status</th></tr>
+    <tr><td>MSFT up to $150k, no funding for entry</td><td class="mono">microsoft.com/en-us/startups</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td>AWS Founders $1k → $5k; Portfolio to $200k w/ Org ID</td><td class="mono">aws.amazon.com/startups/credits</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td>GCP $2k / $200k / $350k AI-first; re-entry blocked</td><td class="mono">cloud.google.com/startup</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td>Cloudflare Tier 3 $10k bootstrapped; Workers AI cap $2.5k</td><td class="mono">cloudflare.com/forstartups</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td>OVH Start €10k / 12 mo</td><td class="mono">startup.ovhcloud.com/en/startups</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td>ElevenLabs 33M chars / 12 mo, &lt;25 emp</td><td class="mono">elevenlabs.io/startup-grants</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td>Deepgram up to $100k / 12 mo</td><td class="mono">deepgram.com/startup-program</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td>Sarvam 6–12 mo credits, 22 langs</td><td class="mono">sarvam.ai/startup-program</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td>DigitalOcean core excludes GPU/inference</td><td class="mono">digitalocean.com/startups</td><td><span class="badge pass">PASS</span></td></tr>
+    <tr><td>OpenAI credits via VC partners only</td><td class="mono">openai.com/startups</td><td><span class="badge pass">PASS (gated)</span></td></tr>
+    <tr><td>Together tiers by funding ($5M/$10M)</td><td class="mono">together.ai/startup-accelerator</td><td><span class="badge pass">PASS (gated)</span></td></tr>
+    <tr><td>NVIDIA Inception free, no equity, &lt;10 yr + dev + site</td><td class="mono">nvidia.com/en-us/startups</td><td><span class="badge pass">PASS</span></td></tr>
+  </table></div>
+  <div class="callout warn"><strong>Limits.</strong> Reddit amounts are anecdotal (tactics with caveats); only official docs support must-statements. Credit pages change without notice — re-check apply pages before submitting. No bracket placeholders used; unpublished amounts are labeled as such.</div>
+</section>
+
+<footer>
+  <p>Prepared for Sarvax.ai (C3alabs) · Single entity, renamed from KaraX · On AWS with ~4 months Activate remaining · Developer without billing access · Report: Sarvax zero-funding AI credits path.</p>
+</footer>
+</body>
+</html>
