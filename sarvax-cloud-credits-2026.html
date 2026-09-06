@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SarvaX.ai — Cloud + LLM Credits Playbook 2026 (Verified)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#eef3f1;--surface:#fff;--surface-2:#e3ebe8;--ink:#122320;--ink-dim:#4c605a;--border:#cfdbd6;--accent:#157a5f;--accent-ink:#0d5c47;--accent-soft:#d8ede4;--protocol:#5850c9;--protocol-soft:#e6e4fa;--warn:#9a6b00;--warn-soft:#fdf0cd;--bad:#a4262c;--bad-soft:#fbe4e4;--code-bg:#e6edea;--shadow:0 1px 2px rgba(18,35,32,.06),0 8px 24px -12px rgba(18,35,32,.12)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1613;--surface:#151f1c;--surface-2:#1b2723;--ink:#e9f2ee;--ink-dim:#9db2ab;--border:#2a3733;--accent:#3fcd9a;--accent-ink:#8fe9c8;--accent-soft:#173229;--protocol:#a29cf2;--protocol-soft:#242058;--warn:#e3b008;--warn-soft:#33300f;--bad:#f08a8a;--bad-soft:#3a1d1d;--code-bg:#1a2521;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5)}}
+body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;line-height:1.55;margin:0;padding:0 20px 120px}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,"SF Mono",monospace}
+.wrap{max-width:920px;margin:0 auto}
+header.hero{max-width:920px;margin:0 auto;padding:56px 0 28px;border-bottom:1px solid var(--border)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink);font-weight:600;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.12;letter-spacing:-.01em;margin:14px 0 10px;font-weight:700}
+.lede{font-size:17px;color:var(--ink-dim);max-width:66ch;margin:0}
+nav.jump{max-width:920px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px 4px;padding:16px 0 0}
+nav.jump a{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-dim);text-decoration:none;padding:6px 10px;border-radius:20px;border:1px solid var(--border);background:var(--surface)}
+nav.jump a:hover{color:var(--accent-ink);border-color:var(--accent)}
+section{max-width:920px;margin:0 auto;padding:40px 0;border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:none}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);margin:0 0 8px}
+h2{font-size:24px;margin:0 0 6px}
+.section-intro{color:var(--ink-dim);max-width:68ch}
+.tldr{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow);margin-top:20px}
+.tldr ul{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.tldr li{display:flex;gap:10px;align-items:flex-start}
+.tldr li::before{content:"→";color:var(--accent);font-weight:600;font-family:"IBM Plex Mono",monospace;flex-shrink:0;width:22px}
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:14px 18px;margin:20px 0;font-size:14px}
+.callout.protocol{border-left-color:var(--protocol);background:var(--protocol-soft)}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.callout.bad{border-left-color:var(--bad);background:var(--bad-soft)}
+.schema-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:20px}
+.schema-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+.schema-card h4{margin:0 0 4px;font-family:"IBM Plex Mono",monospace;font-size:13.5px;color:var(--accent-ink);font-weight:600}
+.schema-card .role{font-size:12px;color:var(--ink-dim);margin-bottom:12px}
+.schema-card ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.schema-card li{font-size:12.5px;font-family:"IBM Plex Mono",monospace}
+.tools-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}
+.tools-table th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-dim);padding:0 14px 10px;border-bottom:1px solid var(--border);font-weight:600}
+.tools-table td{padding:14px;border-bottom:1px solid var(--border);vertical-align:top}
+.tools-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);padding:4px 10px}
+.badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid var(--border)}
+.b-pass{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent)}
+.b-fail{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
+.b-warn{background:var(--warn-soft);color:var(--warn);border-color:var(--warn)}
+a{color:var(--accent-ink)}
+.small{font-size:13px;color:var(--ink-dim)}
+ol.tight li,ul.tight li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<header class="hero">
+<p class="eyebrow">SarvaX.ai — verified 2026-09-06</p>
+<h1>Cloud + LLM credits that work with zero institutional funding</h1>
+<p class="lede">SarvaX.ai is a bootstrapped, sub-50-person agentic execution workspace for financial firms. It runs on AWS today (Activate credits active, roughly 4 months left). Its earlier Google for Startups GCP + Gemini credits are expired and the same entity cannot reapply. This report verifies, against live official pages, which 2026 programs still pay for infrastructure and model inference without a VC gate — and how they stack.</p>
+<nav class="jump">
+<a href="#tldr">TL;DR</a><a href="#stack">Recommended stack</a><a href="#cards">Program cards</a><a href="#compare">Comparison</a><a href="#india">India track</a><a href="#tactics">Approval tactics</a><a href="#wording">Agentic-AI wording</a><a href="#verify">Verification log</a>
+</nav>
+</header>
+
+<section id="tldr">
+<p class="kicker">01 — Answer first</p>
+<h2>TL;DR for Sai</h2>
+<div class="tldr"><ul>
+<li><span>Do these three this week: Microsoft for Startups (up to $150,000 Azure incl. Azure OpenAI), Cloudflare Tier 3 ($10,000, no funding needed), NVIDIA Inception (free, same-day) to mint an AWS Activate Portfolio Org ID for a $25,000–$200,000 delta on top of the current AWS credits.</span></li>
+<li><span>Anthropic direct credits are VC-gated in practice (institutional equity, founded within 4 years). The bootstrapped route to Claude is Amazon Bedrock via AWS Activate — same models, paid by AWS credits.</span></li>
+<li><span>Oracle publishes no startup credit amount in 2026. Use its permanent Always Free floor (ARM compute, 200 GB block, 10 TB egress, $300/30-day trial) as infrastructure padding, not as a credit bet.</span></li>
+<li><span>IndiaAI Mission Compute is the cheapest training path: about Rs 65/GPU-hour average, about Rs 92 for H100, plus up to 40% project subsidy through compute.indiaai.gov.in. Get DPIIT recognition first — it unlocks IndiaAI, state top-ups, tax and compliance benefits.</span></li>
+<li><span>Everything below was re-checked live on 2026-09-06. Amounts with PASS come from the provider's own page. Amounts aggregators repeat without an official source are marked UNVERIFIED and excluded from totals.</span></li>
+</ul></div>
+<div class="callout"><strong>Google position.</strong> Do not reapply for Google for Startups on the same entity, domain, billing account or Workspace tenant. A fresh allocation needs a clean-slate entity path or an Inception-backed Scale referral, and even then only the unused-credit delta is eligible. GCP is therefore a later escalation, not this week's application.</div>
+</section>
+
+<section id="stack">
+<p class="kicker">02 — Execution order</p>
+<h2>Recommended stack (zero VC, stacks cleanly)</h2>
+<p class="section-intro">Apply in this order. Each layer pays a different bill, so totals add rather than overlap.</p>
+<div class="schema-grid">
+<div class="schema-card"><h4>1 — Microsoft for Startups</h4><div class="role">Inference + infra. Up to $150,000 Azure. Entry $1,000 → $5,000 fast.</div><ul><li>Covers: Azure VMs, AKS, Azure OpenAI (GPT models)</li><li>Gate: none (open milestones; investor code optional)</li><li>Review: entry typically under 48 hours</li></ul></div>
+<div class="schema-card"><h4>2 — NVIDIA Inception (free)</h4><div class="role">Master key. No credits directly; unlocks partner credits.</div><ul><li>Covers: DLI training, hardware rebate, AWS/Azure/Oracle drops</li><li>Gate: none on funding; needs dev + site + incorporation</li><li>Output: Org ID for AWS Portfolio $25k–$200k</li></ul></div>
+<div class="schema-card"><h4>3 — AWS Activate delta</h4><div class="role">Bedrock Claude + infra. Founders to $5,000; Portfolio to $200,000.</div><ul><li>Covers: EC2, EKS, Bedrock (Claude 3.5/3.7, Llama, Cohere)</li><li>Gate: Org ID only for Portfolio; Founders needs none</li><li>Review: 5–10 business days</li></ul></div>
+<div class="schema-card"><h4>4 — Cloudflare Tier 3</h4><div class="role">Edge AI + RAG. $10,000, 12 months, bootstrapped OK.</div><ul><li>Covers: Workers AI (cap $2,500), Vectorize, R2 (cap $10k)</li><li>Gate: none (bootstrapped / under $1M)</li><li>Review: up to 48 hours</li></ul></div>
+<div class="schema-card"><h4>5 — IndiaAI Compute</h4><div class="role">Training. ~Rs 65/hr avg, H100 ~Rs 92/hr, +40% subsidy.</div><ul><li>Covers: GPU + storage via Yotta / E2E / NxtGen / Jio</li><li>Gate: project approval, not VC</li><li>Portal: compute.indiaai.gov.in</li></ul></div>
+<div class="schema-card"><h4>6 — DPIIT + Oracle floor</h4><div class="role">Compliance + free baseline. No direct inference credits.</div><ul><li>Covers: tax, IPR, procurement; OCI Always Free padding</li><li>Gate: DPIIT recognition (turnover under Rs 200 cr)</li><li>NASSCOM: network only, no credits</li></ul></div>
+</div>
+</section>
+
+<section id="cards">
+<p class="kicker">03 — Per-program verdict</p>
+<h2>What each program actually gives (verified)</h2>
+
+<div class="tools-wrap"><table class="tools-table">
+<tr><th>Program</th><th>Current amount (official)</th><th>Covers</th><th>VC gate?</th></tr>
+<tr><td><strong>Microsoft for Startups</strong><br><span class="badge b-pass">PASS</span></td><td>Up to <strong>$150,000</strong> Azure credits, unlocked progressively ($1,000 → $5,000 → $25,000 → $50,000 → $150,000). Source: microsoft.com/en-us/startups.</td><td>Infra (VMs, AKS, storage, networking) <strong>plus</strong> Azure OpenAI model inference (GPT-4o / o-series class) and GitHub / M365 developer seats.</td><td><strong>No.</strong> Open milestones need no investor. A 10-character Investor Network code only fast-tracks and adds GPU/support.</td></tr>
+<tr><td><strong>AWS Activate</strong><br><span class="badge b-pass">PASS</span></td><td>Founders (self-funded): <strong>start $1,000, up to $5,000</strong>. Portfolio: <strong>up to $200,000</strong> with Org ID. AI Scale $200,000+ invite-only. Source: aws.amazon.com/startups/credits.</td><td>Infra (EC2, EKS, S3) <strong>plus</strong> Bedrock inference (Claude 3.5/3.7, Llama 3.3, Cohere) and Kiro agentic coding credits.</td><td><strong>Split.</strong> Founders: no. Portfolio: needs Activate Provider Org ID (accelerator/angel/VC). NVIDIA Inception is a provider — satisfies without equity.</td></tr>
+<tr><td><strong>NVIDIA Inception</strong><br><span class="badge b-pass">PASS</span></td><td><strong>Free membership; no direct dollar amount.</strong> Value is portal benefits: DLI course codes, hardware rebate pricing, partner cloud drops, VC Alliance intros. Source: nvidia.com/en-us/startups.</td><td>Enabler for both infra and inference via partners. Not itself a GPU-hour grant.</td><td><strong>No.</strong> Explicit: any funding stage; no fees, deadlines, cohorts, or equity. Needs 1+ developer, live site, incorporation, under 10 years.</td></tr>
+<tr><td><strong>Cloudflare for Startups</strong><br><span class="badge b-pass">PASS</span></td><td>Tier 3 <strong>$10,000</strong> / Tier 2 <strong>$100,000</strong> / Tier 1 <strong>$350,000</strong>, 12 months. Workers AI caps: $2,500 / $10,000 / $50,000. R2 cap $10,000. Source: cloudflare.com/forstartups (2026 uplift: $5k→$10k, $250k→$350k).</td><td>Edge inference (Workers AI: Llama 3.3 class), Vectorize/KV/D1/Queues, R2, Pages/Stream. Plus free security (3 enterprise domains, WAF, DDoS). Excludes AI Gateway + Registrar.</td><td><strong>Tiered.</strong> Tier 3: bootstrapped/self-funded/under $1M — no partner needed. Tiers 2–1: need affiliated-partner funding ($5M thresholds).</td></tr>
+<tr><td><strong>Anthropic / Claude for Startups</strong><br><span class="badge b-warn">SPLIT</span></td><td><strong>No amount published</strong> on official terms (May 22, 2025) or program page. Third-party $5k/$25k/$100k figures are <strong>UNVERIFIED</strong>. Source: claude.com/programs/startups + anthropic.com/startup-program-official-terms.</td><td>First-party Claude API via Console only. <strong>Cannot</strong> be used on Bedrock or Vertex. Includes highest rate limits.</td><td><strong>Program open without VC; credits need VC.</strong> FAQ: open "with or without VC backing", but credit eligibility needs institutional equity funding, founded within 4 years, no prior Anthropic credits, Console account + company email.</td></tr>
+<tr><td><strong>Oracle (OCI / for Startups)</strong><br><span class="badge b-fail">UNVERIFIED</span></td><td><strong>No startup credit amount on official pages in 2026.</strong> Verified floor only: 20+ Always Free services + <strong>$300 / 30-day trial</strong> (2 Autonomous DBs, ARM/AMD VMs, 200 GB block, 10 GB object, 10 TB egress/mo). Source: oracle.com (startup page now generic).</td><td>Infra baseline. Useful as permanent $0 padding (cheap egress, ARM). Not an LLM-inference grant.</td><td>Not published. Treat higher-tier allocations as sales-led; common rejection reason per founders is "no accelerator/VC partner or no enterprise MVP".</td></tr>
+<tr><td><strong>IndiaAI Mission Compute</strong><br><span class="badge b-pass">PASS</span></td><td><strong>~Rs 65/GPU-hour average; H100 ~Rs 92/hr; up to 40% further subsidy</strong> on approved projects. Pool: 34,000–40,500 GPUs across 14 providers (Yotta, E2E, NxtGen, Jio, CtrlS, Sify, Tata Comm, NTT-Neysa). Outlay Rs 10,371.92 cr (Compute Rs 4,563.36 cr). Sources: indiaai.gov.in/hub/indiaai-compute-capacity; MoS Jitin Prasada reply; E2E IndiaAI docs.</td><td>GPU compute + object/block/file storage on empanelled clouds. Training and fine-tune heavy. Example: 800 H100-hrs ≈ Rs 73,600 base, ≈ Rs 44,160 with 40% subsidy vs ≈ Rs 245,000 global on-demand.</td><td><strong>No.</strong> Open to startups, MSMEs, researchers, academia, students, govt. Project-gated (proposal + MeitY committee), not self-serve.</td></tr>
+<tr><td><strong>Startup India (DPIIT) / NASSCOM</strong><br><span class="badge b-pass">PASS</span></td><td><strong>No direct cloud dollars.</strong> DPIIT recognition unlocks 80-IAC tax holiday, angel-tax exemption, self-certification, IPR fast-track, procurement preference; SISFS seed fund is periodic (verify window). Turnover bar raised Feb 2026 (Gazette 108(E)): <strong>Rs 100 cr → Rs 200 cr</strong>. NASSCOM: membership network, AI/Deeptech bridges — <strong>no credits published</strong>.</td><td>Compliance + capital access, not inference. DPIIT number is the key that unlocks IndiaAI and state GPU top-ups.</td><td><strong>No.</strong> DPIIT needs Indian entity, incorporation under 10 years, innovation test — not VC.</td></tr>
+</table></div>
+
+<div class="callout protocol"><strong>How stacking works.</strong> Microsoft pays Azure + Azure OpenAI. AWS pays EC2/EKS + Bedrock Claude. Cloudflare pays edge inference + vector/R2. IndiaAI pays raw GPU training. Oracle pays the always-on baseline. DPIIT pays nothing directly but unlocks IndiaAI and state schemes. Because each pays a different bill, SarvaX can hold all five at once. The only conflict: Anthropic direct credits cannot be spent on Bedrock — keep Bedrock spend inside AWS credits and Console spend inside Anthropic credits.</div>
+</section>
+
+<section id="compare">
+<p class="kicker">04 — Application sheet</p>
+<h2>Where to apply, how long, India quirks</h2>
+<div class="tools-wrap"><table class="tools-table">
+<tr><th>Program</th><th>Apply</th><th>Typical review</th><th>India notes</th></tr>
+<tr><td>Microsoft</td><td><span class="mono">microsoft.com/en-us/startups</span> → portal.startups.microsoft.com; support <span class="mono">mfssup@microsoft.com</span></td><td>Entry tier often under 48 hours; higher tiers unlock on usage/workload evidence</td><td>Company-domain email, live HTTPS site with Privacy + Terms, founder LinkedIn match; INR billing fine; no DPIIT needed</td></tr>
+<tr><td>AWS Activate</td><td><span class="mono">aws.amazon.com/startups/credits</span>; Builder ID + linked paid-tier account; support <span class="mono">aws-activate-support@amazon.com</span></td><td>5–10 business days; Portfolio slower (Org ID validation)</td><td>Pre-Series B, founded under 10 years; $0.50 burn-in 48h before applying; AVS international card; residential IP; SarvaX: request Portfolio delta under $200k lifetime cap, not a fresh Founders claim</td></tr>
+<tr><td>NVIDIA Inception</td><td><span class="mono">nvidia.com/en-us/startups</span>; <span class="mono">inceptionprogram@nvidia.com</span></td><td>Days; rolling, no cohorts</td><td>Fully open in India; needs pitch deck, dev on team; then claim AWS/Azure/Oracle partner drops inside portal Benefits tab</td></tr>
+<tr><td>Cloudflare</td><td><span class="mono">cloudflare.com/forstartups</span> (India mirror /en-in/forstartups); <span class="mono">startups@cloudflare.com</span></td><td>Up to 48 hours; rejection always carries a reason; re-evaluation allowed</td><td>First-time applicants only; domain-matching business email; live site + LinkedIn/X/GitHub presence; card on file required (overages auto-billed)</td></tr>
+<tr><td>Anthropic</td><td><span class="mono">claude.com/programs/startups</span> → claude.com/form/startups-application (2 min; needs Console account + company email)</td><td>Rolling; third-party reports 7–21 business days (UNVERIFIED)</td><td>India eligible; sanctions list only excludes BY/CN/CU/IR/MM/KP/RU/SY + Crimea/DPR/LPR. Bootstrapped: expect community tier ($0 credits) until institutional round — use Bedrock instead</td></tr>
+<tr><td>Oracle</td><td><span class="mono">oracle.com/cloud/oracle-for-startups</span> (generic in 2026) + OCI Free Tier signup + sales chat</td><td>Free Tier instant; startup-tier sales-led (weeks)</td><td>OCI Mumbai/Hyderabad regions; same low global pricing; egress 80% cheaper claim (Sep 2024 basis) — verify on current price list before budgeting</td></tr>
+<tr><td>IndiaAI Compute</td><td><span class="mono">compute.indiaai.gov.in</span> (Compute Portal) + NSSO login; provider docs: E2E TIR IndiaAI page</td><td>Project-gated; committee approval (weeks, not hours). Must start using by assigned date or lose allocation</td><td>Needs Indian registration, project proposal (workload, GPUs, duration), approved subsidy % + max cap; subsidy only on designated SKUs; over-quota billed at peak rates; pick Yotta/E2E/NxtGen/Jio by region (Mumbai, Navi Mumbai, Hyderabad, Bengaluru, Noida, Jamnagar)</td></tr>
+<tr><td>DPIIT / NASSCOM</td><td><span class="mono">startupindia.gov.in</span> (recognition + certificate verify); SISFS via seedfund.startupindia.gov.in (check window); <span class="mono">nasscom.in</span> membership</td><td>DPIIT recognition days–weeks; SISFS periodic calls; NASSCOM rolling</td><td>DPIIT needs incorporation cert, PAN, director KYC, pitch + website; download updated certificate after Feb 2026 Rs 200 cr revision; NASSCOM fees apply — join for AI/Deeptech access, not credits</td></tr>
+</table></div>
+</section>
+
+<section id="india">
+<p class="kicker">05 — India track detail</p>
+<h2>IndiaAI + DPIIT: the cheapest training rupee</h2>
+<p class="section-intro">For a financial-services agent that must fine-tune or distil models on Indian data, IndiaAI is structurally cheaper than any hyperscaler credit. The portal allocation table already shows 47 startups + MSMEs and 36 early-stage startups drawing GPUs (A100 40/80GB, H100 SXM/NVL, H200, L4, L40S) from E2E, Yotta and NxtGen.</p>
+<div class="tldr"><ul>
+<li><span>Step 1: secure DPIIT recognition on startupindia.gov.in (use the post-Feb-2026 Rs 200 cr certificate). This is the identity document IndiaAI and state policies ask for.</span></li>
+<li><span>Step 2: file a narrow IndiaAI project on compute.indiaai.gov.in — one workload, one GPU type, one duration (example: 800 H100-hours for a Kannada/English financial-agent fine-tune on E2E). Ask for the 40% subsidy with a national-importance framing (Indic finance, compliance, data residency).</span></li>
+<li><span>Step 3: keep hyperscaler credits for inference (Bedrock Claude, Azure OpenAI, Workers AI) and IndiaAI hours for training. Do not burn scarce Bedrock credits on fine-tuning that IndiaAI covers at one-fifth the price.</span></li>
+</ul></div>
+<div class="callout warn"><strong>Catches that trip teams.</strong> Subsidy applies only to designated IndiaAI SKUs up to a max cap — over-quota disk and platform services bill at standard/peak rates. Allocations carry a must-start-by date. Storage add-ons bill per calendar month in full even if half-used. Read the E2E TIR IndiaAI billing page before booking.</div>
+</section>
+
+<section id="tactics">
+<p class="kicker">06 — Community evidence</p>
+<h2>What actually gets approved (Reddit / HN / founders)</h2>
+<p class="section-intro">Official pages state the rules. Founders report how the rules are enforced. Treat the first list as requirements and the second as tactics with caveats.</p>
+<div class="tools-wrap"><table class="tools-table">
+<tr><th>Signal (2024–2026 threads)</th><th>What founders report</th><th>Implication for SarvaX</th></tr>
+<tr><td>r/startups — "Got rejected for AWS $1,000 credits, is it just bait?"</td><td>Rejections cluster on: fresh accounts with $0 spend, gmail/outlook sender, no live product, VPN/proxy IP, virtual/disposable card. Approvals follow $0.50 S3/Lambda burn-in + domain email + live site.</td><td>Before any AWS delta: 48h burn-in, admin@sarvax.ai on paid tier, AVS card, residential IP, geo-consistent billing.</td></tr>
+<tr><td>r/AZURE — "Microsoft Startups $150k funding — everything you need"</td><td>Founders Hub entry is the fastest win (often under 48h). Higher tiers ($25k/$50k/$150k) need usage evidence and workload narrative, not a VC letter. Prior $10k+ Azure credit history blocks re-entry at low tiers.</td><td>Enter at Ideate/Develop, show Bedrock-to-Azure-OpenAI evaluation workload, then escalate on metered usage.</td></tr>
+<tr><td>r/CloudFlare + Indie Hackers — Tier 3 experience</td><td>$10k Tier 3 approves bootstrapped with just a live site + domain email + social presence. Rejections give reasons; re-application after fixing (usually email domain or site) succeeds. Old BOOTSTRAPPED promo chatter is obsolete — Tier 3 is now $10k by default.</td><td>Apply as bootstrapped/under $1M. List Workers AI + Vectorize architecture explicitly to pass the "technology product" test.</td></tr>
+<tr><td>Anthropic threads + Fin.ai Aug 2026 audit</td><td>Public app accepts anyone, but credit awards track institutional funding in practice. Bootstrapped admissions report $0-credit community tier + rate limits. Bedrock-Claude-via-AWS is the repeated workaround.</td><td>Apply to Anthropic for membership/rate limits, but budget Claude spend on Bedrock (AWS credits) until an institutional round.</td></tr>
+<tr><td>r/developersIndia — IndiaAI Compute usage</td><td>Approvals favour narrow, measurable proposals (GPUs × hours × model × dataset). Vague "research" asks stall. Teams that name provider + region + timeline clear faster.</td><td>Name E2E/Yotta, GPU type, hours, and start-by readiness in the first submission.</td></tr>
+<tr><td>HN + founder blogs — Oracle experience</td><td>Oracle approvals skew to enterprise-facing MVPs with a live demo and a sales conversation. Self-serve credit links that worked in 2023–24 now redirect to generic OCI pages.</td><td>Position SarvaX as BFSI enterprise infra, book the sales call, and bank Always Free regardless of the startup-tier outcome.</td></tr>
+</table></div>
+<div class="callout bad"><strong>Common rejection reasons (all programs).</strong> Disposable email or forwarder without MX records; parked or HTTP-only site; missing Privacy/Terms footer links; founder LinkedIn under 60 days or under ~50 connections with no company affiliation; applying over VPN; card country ≠ IP country ≠ billing address; reapplying on an entity that already hit a lifetime cap. Fix all six before submitting — they are checked by bots before any human reads the pitch.</div>
+</section>
+
+<section id="wording">
+<p class="kicker">07 — Copy that clears underwriting</p>
+<h2>How to word SarvaX as an agentic-AI use case</h2>
+<p class="section-intro">Underwriters fund metered, auditable workloads — not "AI platform" adjectives. Write each answer as workload → models → hours → outcome.</p>
+<ol class="tight">
+<li><strong>One-line product (use everywhere).</strong> "SarvaX.ai is an agentic execution workspace for financial firms — it plans multi-step work, calls tools (MCP, code execution, retrieval), and completes regulated workflows with audit logs." Avoid "chatbot", "copilot", or "GPT wrapper".</li>
+<li><strong>Architecture paragraph (Azure/AWS/Cloudflare variants).</strong> Name the bill-payer: "Evaluation on Azure OpenAI (GPT-4o class) for planning + Bedrock Claude 3.5/3.7 for execution + Workers AI + Vectorize for edge retrieval/RAG." Reviewers approve architectures that map 1:1 to their SKUs.</li>
+<li><strong>Metered ask.</strong> "Requesting $X to cover N GPU/model-hours over M months: e.g., 800 H100-hours fine-tune (IndiaAI) + 20M Bedrock Claude tokens/mo (AWS) + 5M Workers AI requests/mo (Cloudflare)." Unmetered asks ("as much as possible") read as farming.</li>
+<li><strong>Autonomy metrics.</strong> "Task-completion rate, tool-call success rate, human-override rate, cost per completed workflow, PII-redaction pass rate." Agentic reviewers look for tool-use and oversight metrics, not just token counts.</li>
+<li><strong>Compliance line (BFSI matters).</strong> "PII redaction before inference, region-pinned data (Mumbai/Hyderabad), audit trail per run, no training on client data without consent." This is what separates SarvaX from a generic agent demo for Oracle/IndiaAI reviewers.</li>
+<li><strong>Traction without VC.</strong> "Bootstrapped, sub-50 team, live on AWS, paying workloads, BFSI pilots." Never write "pre-revenue idea" and never inflate funding — "bootstrapped" is an accepted Tier 3/Founders category, while a false round triggers verification failure.</li>
+</ol>
+<div class="callout"><strong>Ten-rule pre-submit checklist.</strong> Live MX on sarvax.ai; founder@sarvax.ai sender; HTTPS + Pricing/Demo + Architecture pages; Privacy + Terms footer links; founder LinkedIn over 60 days, 50+ connections, SarvaX as current role; residential IP; geo-consistent card + address; $0.50 AWS burn-in 48h prior; no VPN; Inception Org ID pasted exactly (case-sensitive).</div>
+</section>
+
+<section id="verify">
+<p class="kicker">08 — Trust</p>
+<h2>Verification log (live, 2026-09-06)</h2>
+<p class="section-intro">Each claim below was checked against the provider's own page text on the stated date. Third-party numbers are not promoted to facts.</p>
+<div class="tools-wrap"><table class="tools-table">
+<tr><th>Claim</th><th>Live source</th><th>Status</th></tr>
+<tr><td>Microsoft: up to $150,000 credits</td><td><span class="mono">microsoft.com/en-us/startups</span> ("up to $150,000 in credits") — extracted 2026-09-06</td><td><span class="badge b-pass">PASS</span></td></tr>
+<tr><td>AWS: Founders $1k→$5k; Portfolio to $200k; 5–10 day review; Org ID gate</td><td><span class="mono">aws.amazon.com/startups/credits</span> (tier table + 4-step apply) — extracted 2026-09-06</td><td><span class="badge b-pass">PASS</span></td></tr>
+<tr><td>NVIDIA Inception: free, any funding stage, dev + site + incorporated + &lt;10 yrs</td><td><span class="mono">nvidia.com/en-us/startups</span> (FAQ + benefits) — extracted 2026-09-06</td><td><span class="badge b-pass">PASS</span></td></tr>
+<tr><td>Cloudflare: $10k / $100k / $350k tiers; Workers AI caps $2.5k/$10k/$50k; R2 $10k; 48h review</td><td><span class="mono">cloudflare.com/forstartups</span> (tiers + covered/excluded + FAQ) — extracted 2026-09-06</td><td><span class="badge b-pass">PASS</span></td></tr>
+<tr><td>Anthropic: open with/without VC; credits need institutional equity + &lt;4 yrs + no prior credits; Console-only, not Bedrock/Vertex; no amount published</td><td><span class="mono">claude.com/programs/startups</span> (program + FAQ) + <span class="mono">anthropic.com/startup-program-official-terms</span> (May 2025, no amount) — extracted 2026-09-06</td><td><span class="badge b-pass">PASS</span></td></tr>
+<tr><td>Anthropic $25k / $100k credit figures</td><td>No figure on either official page; only aggregators (guptadeepak, securityboulevard) — Fin.ai Aug 2026 also marks "not published"</td><td><span class="badge b-fail">UNVERIFIED — excluded</span></td></tr>
+<tr><td>Oracle startup credit amount / 70% off</td><td><span class="mono">oracle.com/cloud/oracle-for-startups</span> + <span class="mono">oracle.com/startup</span> render generic OCI in 2026; only Always Free + $300/30d verified</td><td><span class="badge b-fail">UNVERIFIED — excluded</span></td></tr>
+<tr><td>IndiaAI: ~Rs 65/hr avg, H100 ~Rs 92/hr, +40% subsidy, 34k–40.5k GPUs, 14 providers, Rs 10,371.92 cr outlay</td><td><span class="mono">indiaai.gov.in/hub/indiaai-compute-capacity</span> (allocation table) + MoS reply (Medianama PDF) + E2E TIR IndiaAI billing docs — extracted 2026-09-06</td><td><span class="badge b-pass">PASS</span></td></tr>
+<tr><td>DPIIT turnover bar Rs 200 cr (Feb 2026 108(E)); NASSCOM has no published credits</td><td><span class="mono">startupindia.gov.in</span> (notice) + <span class="mono">nasscom.in</span> (membership, no credit table) — extracted 2026-09-06</td><td><span class="badge b-pass">PASS</span></td></tr>
+<tr><td>Community threads (AWS rejection, Azure $150k, Cloudflare 48h, IndiaAI proposals)</td><td>Reddit r/startups, r/AZURE, r/CloudFlare, r/developersIndia; HN; Fin.ai Aug 2026 vendor-only audit — searched 2026-09-06; Reddit bodies via delegate extraction</td><td><span class="badge b-warn">ANECDOTAL — tactics, not guarantees</span></td></tr>
+</table></div>
+<p class="small">Method: parallel delegate fan-out (hyperscalers / silicon / India / community) plus parent re-extraction of all official URLs above via web_extract on 2026-09-06. Failed extractions (anthropic.com/startup-program 404; learn.microsoft.com answer 404; indiaai.gov.in homepage shell) are noted and replaced with canonical live equivalents. Prior internal audits (2026-09-04 reverification; 2026-09-05 investor-referral map) were reused for deltas, not as sources. Re-verify amounts at application time — tiers changed within the last 12 months (Cloudflare $5k→$10k; AWS $100k→$200k headline; Groq program withdrawn Aug 2026).</p>
+</section>
+
+</body>
+</html>
