@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madhva vs Shankara Claims — Fact-Check a 10-Year-Old Can Understand</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#eef3f1; --surface:#ffffff; --surface-2:#e3ebe8;
+    --ink:#122320; --ink-dim:#4c605a; --border:#cfdbd6;
+    --accent:#157a5f; --accent-ink:#0d5c47; --accent-soft:#d8ede4;
+    --protocol:#5850c9; --protocol-soft:#e6e4fa;
+    --warn:#9a6a00; --warn-soft:#fbf0d3;
+    --bad:#b3362a; --bad-soft:#fbe4e1;
+    --good:#157a5f; --good-soft:#d8ede4;
+    --code-bg:#e6edea;
+    --shadow: 0 1px 2px rgba(18,35,32,.06), 0 8px 24px -12px rgba(18,35,32,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0e1613; --surface:#151f1c; --surface-2:#1b2723;
+      --ink:#e9f2ee; --ink-dim:#9db2ab; --border:#2a3733;
+      --accent:#3fcd9a; --accent-ink:#8fe9c8; --accent-soft:#173229;
+      --protocol:#a29cf2; --protocol-soft:#242058;
+      --warn:#e3b341; --warn-soft:#3a2f14;
+      --bad:#ef8f84; --bad-soft:#3d1e1a;
+      --good:#3fcd9a; --good-soft:#173229;
+      --code-bg:#1a2521;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  body{ background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif; line-height:1.6; margin:0; padding:0 20px 120px; }
+  code,.mono{ font-family:"IBM Plex Mono",ui-monospace,"SF Mono",monospace; }
+  .wrap{ max-width:920px; margin:0 auto; }
+  header.hero{ max-width:920px; margin:0 auto; padding:56px 0 28px; border-bottom:1px solid var(--border); }
+  .eyebrow{ font-family:"IBM Plex Mono",monospace; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-ink); font-weight:600; display:flex; align-items:center; gap:8px; }
+  .eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; }
+  h1{ font-size:clamp(28px,4vw,40px); line-height:1.12; letter-spacing:-.01em; margin:14px 0 10px; text-wrap:balance; font-weight:700; }
+  .lede{ font-size:17px; color:var(--ink-dim); max-width:66ch; margin:0; }
+  nav.jump{ max-width:920px; margin:0 auto; display:flex; flex-wrap:wrap; gap:6px 4px; padding:16px 0 0; }
+  nav.jump a{ font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim); text-decoration:none; padding:6px 10px; border-radius:20px; border:1px solid var(--border); background:var(--surface); }
+  nav.jump a:hover{ color:var(--accent-ink); border-color:var(--accent); }
+  section{ max-width:920px; margin:0 auto; padding:44px 0; border-bottom:1px solid var(--border); }
+  section:last-of-type{ border-bottom:none; }
+  .kicker{ font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); margin:0 0 8px; }
+  h2{ font-size:24px; margin:0 0 6px; letter-spacing:-.005em; text-wrap:balance; }
+  h3{ font-size:18px; margin:26px 0 8px; }
+  .section-intro{ color:var(--ink-dim); max-width:68ch; }
+  .tldr{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 24px; box-shadow:var(--shadow); margin-top:20px; }
+  .tldr ul{ margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .tldr li{ display:flex; gap:10px; align-items:flex-start; }
+  .tldr li::before{ content:"→"; color:var(--accent); font-weight:600; font-family:"IBM Plex Mono",monospace; flex-shrink:0; width:22px; }
+  .callout{ border-left:3px solid var(--accent); background:var(--accent-soft); border-radius:0 10px 10px 0; padding:14px 18px; margin:20px 0; font-size:14px; }
+  .callout.protocol{ border-left-color:var(--protocol); background:var(--protocol-soft); }
+  .callout.warn{ border-left-color:var(--warn); background:var(--warn-soft); }
+  .diagram-frame{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px; box-shadow:var(--shadow); overflow-x:auto; margin:24px 0 6px; }
+  .diagram-frame svg{ display:block; max-width:100%; height:auto; margin:0 auto; }
+  figcaption{ font-size:13px; color:var(--ink-dim); margin-top:10px; max-width:68ch; }
+  .tools-wrap{ overflow-x:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); padding:4px 10px; }
+  .tools-table{ width:100%; border-collapse:collapse; margin-top:18px; font-size:14px; }
+  .tools-table th{ text-align:left; font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-dim); padding:0 14px 10px; border-bottom:1px solid var(--border); font-weight:600; }
+  .tools-table td{ padding:14px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .claim-card{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 24px; box-shadow:var(--shadow); margin-top:22px; }
+  .claim-head{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:6px; }
+  .claim-num{ font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600; color:var(--accent-ink); background:var(--accent-soft); border-radius:20px; padding:4px 12px; }
+  .verdict{ font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:700; letter-spacing:.04em; border-radius:20px; padding:4px 12px; text-transform:uppercase; }
+  .v-false{ color:var(--bad); background:var(--bad-soft); border:1px solid var(--bad); }
+  .v-mislead{ color:var(--warn); background:var(--warn-soft); border:1px solid var(--warn); }
+  .v-opinion{ color:var(--protocol); background:var(--protocol-soft); border:1px solid var(--protocol); }
+  .v-true{ color:var(--good); background:var(--good-soft); border:1px solid var(--good); }
+  .v-unproven{ color:var(--ink-dim); background:var(--surface-2); border:1px solid var(--ink-dim); }
+  .claim-quote{ font-size:15px; font-weight:600; margin:10px 0 6px; }
+  .kid{ display:flex; gap:12px; align-items:flex-start; background:var(--surface-2); border-radius:10px; padding:12px 14px; margin:12px 0; font-size:14px; }
+  .kid svg{ flex-shrink:0; margin-top:2px; }
+  .fact-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:12px 0; }
+  @media(max-width:640px){ .fact-row{ grid-template-columns:1fr; } }
+  .fact-box{ border:1px solid var(--border); border-radius:10px; padding:12px 14px; font-size:13.5px; }
+  .fact-box b{ display:block; font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; }
+  .fact-box.evidence b{ color:var(--accent-ink); }
+  .fact-box.reality b{ color:var(--protocol); }
+  .sources{ font-size:13px; color:var(--ink-dim); }
+  .sources a{ color:var(--accent-ink); }
+  footer{ max-width:920px; margin:0 auto; padding-top:32px; font-size:13px; color:var(--ink-dim); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="eyebrow">Fact-check report · Vedanta debate · Plain language</p>
+  <h1>Madhva vs Shankara: 7 claims, checked so simply a 10-year-old gets it</h1>
+  <p class="lede">Madhvacharya (13th century) disagreed strongly with Adi Shankaracharya (8th century). Later followers on both sides added sharper charges — including about the Prapanchasara Tantra being vulgar or black magic. This page checks each charge one by one: what is actually said, what the evidence shows, and what is only opinion.</p>
+  <nav class="jump">
+    <a href="#start">0 · Meet both teachers</a>
+    <a href="#c1">1 · Hidden Buddhist?</a>
+    <a href="#c2">2 · Faked Veda?</a>
+    <a href="#c3">3 · Demon?</a>
+    <a href="#c4">4 · Shiva sent to mislead?</a>
+    <a href="#c5">5 · Vulgar Tantra?</a>
+    <a href="#c6">6 · Black magic?</a>
+    <a href="#c7">7 · Contradiction + 400 books?</a>
+    <a href="#score">Scoreboard</a>
+    <a href="#sources">Sources</a>
+  </nav>
+</header>
+
+<section id="start">
+  <p class="kicker">00 — First, who are they?</p>
+  <h2>Two teachers, one library, opposite conclusions</h2>
+  <p class="section-intro">Think of the Vedas and Upanishads as one big library. Shankara reads it and says: at the deepest level, you (jiva) and the Ultimate (Brahman) are one — like wave and ocean. That is Advaita, non-duality. Madhva reads the same library and says: no, God (Vishnu) and you are forever different — like child and father. That is Dvaita, duality. Both love the same books. They just answer the biggest question differently: are we one with God, or always separate?</p>
+  <div class="tldr"><ul>
+    <li><span><b>Shankara's main books:</b> commentaries on Brahma Sutras, 10 Upanishads, Bhagavad Gita + short manual Upadesha-Sahasri. Everyone agrees these are his.</span></li>
+    <li><span><b>Madhva's main books:</b> Brahma Sutra Bhashya, Anuvyakhyana, Mayavada-Khandana, Vishnu-Tattva-Vinirnaya, Tantra-Sara-Sangraha (his own temple-ritual manual).</span></li>
+    <li><span><b>Rule for this page:</b> philosophy disagreement = fair debate. Personal insult or invented verse = must be checked with evidence.</span></li>
+  </ul></div>
+  <div class="diagram-frame">
+  <svg viewBox="0 0 640 220" width="640" role="img" aria-label="Shankara vs Madhva positions diagram">
+    <rect x="20" y="20" width="280" height="180" rx="12" fill="none" stroke="currentColor" opacity="0.35"/>
+    <text x="40" y="52" font-size="15" font-weight="700" fill="currentColor">Shankara · Advaita</text>
+    <text x="40" y="76" font-size="13" fill="currentColor">You = Brahman at deepest level</text>
+    <text x="40" y="96" font-size="13" fill="currentColor">Example: wave = ocean water</text>
+    <text x="40" y="120" font-size="12" fill="currentColor">Key sentence: Tat Tvam Asi</text>
+    <text x="40" y="138" font-size="12" fill="currentColor">"You are That"</text>
+    <rect x="340" y="20" width="280" height="180" rx="12" fill="none" stroke="currentColor" opacity="0.35"/>
+    <text x="360" y="52" font-size="15" font-weight="700" fill="currentColor">Madhva · Dvaita</text>
+    <text x="360" y="76" font-size="13" fill="currentColor">You ≠ Vishnu, forever separate</text>
+    <text x="360" y="96" font-size="13" fill="currentColor">Example: child ≠ father</text>
+    <text x="360" y="120" font-size="12" fill="currentColor">Key reading: Atat Tvam Asi</text>
+    <text x="360" y="138" font-size="12" fill="currentColor">"You are NOT That"</text>
+    <text x="240" y="178" font-size="12" fill="currentColor">Same library, opposite answer</text>
+  </svg>
+  <figcaption>Child-simple map. Scholars debate which reading the Upanishads support. That debate itself is legitimate — it is not name-calling.</figcaption>
+  </div>
+</section>
+
+<section id="c1">
+  <p class="kicker">Claim 01</p>
+  <div class="claim-card">
+    <div class="claim-head"><span class="claim-num">Claim 1</span><span class="verdict v-opinion">Philosophical opinion, not fact</span></div>
+    <p class="claim-quote">"Advaita is prachchannam bauddham — hidden Buddhism. Mayavada is a false shastra."</p>
+    <div class="kid">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#157a5f" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+      <div><b>Kid version:</b> Madhva says Shankara's idea — "the world is maya, only Brahman is real" — sounds exactly like Buddhists who say "the world is empty." So he calls it Buddhism wearing a Hindu dress.</div>
+    </div>
+    <div class="fact-row">
+      <div class="fact-box evidence"><b>Evidence for the charge</b>Madhva's Mayavada-Khandana argues identity of jiva-Brahman is self-contradictory. He quotes the famous line <span class="mono">mayavadam asat-shastram prachchannam bauddham uchyate</span> — Mayavada is a false doctrine, disguised Buddhism — a verse found in Padma Purana / quoted in Gauḍiya texts and Madhva polemics.</div>
+      <div class="fact-box reality"><b>What checking shows</b>Similarity is real: both use "unreal world" language. But Shankara explicitly refutes Buddhism in his Brahma Sutra Bhashya (2.2), accepts Veda + Atman + Brahman + moksha, which Buddhism rejects. Modern scholars call this a family resemblance, not identity. Calling it "Buddhism" is a debate label, not a lab test.</div>
+    </div>
+    <div class="callout protocol"><b>Verdict reasoning:</b> Fair as philosophy ("your logic collapses into X"), unfair as history ("Shankara was a secret Buddhist"). No evidence Shankara followed Buddha; he debated Buddhists and was later praised for bringing people back to Vedic fold.</div>
+  </div>
+</section>
+
+<section id="c2">
+  <p class="kicker">Claim 02</p>
+  <div class="claim-card">
+    <div class="claim-head"><span class="claim-num">Claim 2</span><span class="verdict v-mislead">Misleading</span></div>
+    <p class="claim-quote">"Shankara twisted Tat Tvam Asi. Madhva corrects it as Atat Tvam Asi / Sa Atma Atat Tvam Asi."</p>
+    <div class="kid">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#157a5f" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+      <div><b>Kid version:</b> The Upanishad says "Tat Tvam Asi — You are That." Shankara reads it plainly: you ARE Brahman. Madhva splits the words differently with grammar rules: "You are NOT That." Both say "my grammar is right."</div>
+    </div>
+    <div class="fact-row">
+      <div class="fact-box evidence"><b>Evidence for the charge</b>Madhva and followers use Panini grammar (sa-atma-atat-tvam-asi) to argue the sentence can mean difference, supported by context where father teaches son as separate. Advaita readers admit the sentence needs interpretation (jahad-ajahal-lakshana).</div>
+      <div class="fact-box reality"><b>What checking shows</b>No manuscript of Chandogya Upanishad reads "atat." All printed editions read "tat tvam asi." Madhva's reading is a re-division, not a discovered text. Shankara did not "fake" the words; he interpreted the plain words literally. You may prefer either interpretation, but "Shankara fabricated scripture" is false — the words are there in every edition.</div>
+    </div>
+  </div>
+</section>
+
+<section id="c3">
+  <p class="kicker">Claim 03</p>
+  <div class="claim-card">
+    <div class="claim-head"><span class="claim-num">Claim 3</span><span class="verdict v-false">False as fact</span></div>
+    <p class="claim-quote">"Advaitins are deceitful demons / asuras. Shankara was a demon."</p>
+    <div class="kid">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b3362a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16v.5"/></svg>
+      <div><b>Kid version:</b> Some stories say bad demons were reborn as philosophers to confuse people. Some speakers point at Shankara and say "that is him." That is name-calling, not proof.</div>
+    </div>
+    <div class="fact-row">
+      <div class="fact-box evidence"><b>Where it comes from</b>Madhvavijaya ( biography of Madhva) and later haridasa lore describe opponents as asuric; online summaries claim Madhva called Advaitins "deceitful demons." Polemical verses about "kutarka" opponents get stretched into personal demonization.</div>
+      <div class="fact-box reality"><b>What checking shows</b>Madhva's formal works debate logic, not birth certificates. No pramana (perception, inference, scripture) can prove "X soul is a demon." Advaita tradition equally calls Dvaita "dualist delusion." Both are sectarian insults. History records Shankara as a Vedic sannyasi who debated Mandana Mishra peacefully before a woman judge (Ubhaya Bharati) with flower garlands — not demonic conduct.</div>
+    </div>
+    <div class="callout"><b>Bottom line for kids:</b> If someone loses a debate, calling the other side "demon" does not win it. Ignore the insult, examine the argument.</div>
+  </div>
+</section>
+
+<section id="c4">
+  <p class="kicker">Claim 04</p>
+  <div class="claim-card">
+    <div class="claim-head"><span class="claim-num">Claim 4</span><span class="verdict v-unproven">Unproven — faith story</span></div>
+    <p class="claim-quote">"Shiva incarnated as Shankara on Vishnu's order to deliberately spread a false doctrine in Kali Yuga."</p>
+    <div class="kid">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5850c9" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+      <div><b>Kid version:</b> A Purana story says: God told Shiva, "Go down dressed as a priest and teach 'all is one' to test people." Believers quote it as CCTV footage of heaven. But stories are not CCTV.</div>
+    </div>
+    <div class="fact-row">
+      <div class="fact-box evidence"><b>Evidence cited</b>Padma Purana Uttara 236.7: <span class="mono">mayavadam asac-chastram prachchannam bauddham ucyate / mayaiva vihitam devi kalau brahmana-murtina</span> — "O Devi, in Kali age I myself will teach Mayavada in brahmana form." Advaita lists also cite it discussing authenticity debates.</div>
+      <div class="fact-box reality"><b>What checking shows</b>Puranas contain opposite stories praising Shankara as Shiva's grace restoring Veda. You cannot use one sect's Purana as court evidence against another sect — Shaivas, Vaishnavas, Shaktas each have "God says we are right" verses. Historians treat these as post-facto theology, not biography. As faith, respect it; as fact, unproven.</div>
+    </div>
+  </div>
+</section>
+
+<section id="c5">
+  <p class="kicker">Claim 05 — Prapanchasara</p>
+  <div class="claim-card">
+    <div class="claim-head"><span class="claim-num">Claim 5</span><span class="verdict v-false">False — verse imported</span></div>
+    <p class="claim-quote">"In Prapanchasara, Shankara teaches applying menstrual blood to the body — disgusting and vulgar."</p>
+    <div class="kid">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b3362a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 16v.5"/></svg>
+      <div><b>Kid version:</b> Imagine a cookbook for rice. Someone says "this rice book tells you to eat mud!" You open the rice book — no mud recipe. They actually took the mud recipe from a different book about clay pots and pasted it on the rice book. That is what happened here.</div>
+    </div>
+    <div class="fact-row">
+      <div class="fact-box evidence"><b>What Prapanchasara actually contains</b>33 core chapters: creation, speech-letters, Kundalini, diksha-homa, Sarasvati, Tripura, Bhuvaneshvari, Lakshmi, Durga, Ganesha, Krishna, Pranava-yoga, long Vishnu section, Shiva, metres, yantras, guru-worship + ethics. Cited by Raghava Bhatta on Sharada-tilaka as authoritative Mantra-shastra. Avalon edition on Archive.org shows dhyana-mantras-yantras, Dakshinachara, not smearing rites.</div>
+      <div class="fact-box reality"><b>Where blood verses really are</b>Yoni Tantra ("the yoni which has bled is suitable for worship"), Kaulajnananirnaya 8 (semen + menstrual blood + ghee as pure substances), Matrikabheda 8 (Svayambhu/Kunda/Gola classification), Kaulavali-nirnaya 17 (Woodroffe summary: body is made of semen-blood, purity is of mind). Those Kaula texts treat rajas as sacred, not dirty. Critics lift those lines and file them under "Prapanchasara." No chapter-verse from Avalon's Prapanchasara shows the alleged smearing injunction.</div>
+    </div>
+    <div class="callout warn"><b>Is Tantra ever sexual?</b> Yes, some Kaula rites use yoni-puja and sexual yoga symbolically and sometimes literally — but only for initiated adults, in guarded context, treating fluid as shakti. Calling that "vulgar porn" is like calling surgery "stabbing." Insider = sacred; outsider reading literally = shock.</div>
+  </div>
+</section>
+
+<section id="c6">
+  <p class="kicker">Claim 06 — Prapanchasara</p>
+  <div class="claim-card">
+    <div class="claim-head"><span class="claim-num">Claim 6</span><span class="verdict v-mislead">Half-true, label false</span></div>
+    <p class="claim-quote">"Prapanchasara teaches vashikarana and black magic."</p>
+    <div class="kid">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9a6a00" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+      <div><b>Kid version:</b> A knife can cut vegetables or hurt someone. The manual lists "knife can cut X, Y, Z." That does not make the author a thief. Mantra manuals list ten uses — peace, health, children, control, confuse, freeze, chase, kill. Same knife, ten jobs. Misuse is the user's fault.</div>
+    </div>
+    <div class="fact-row">
+      <div class="fact-box evidence"><b>True part</b>Yes, like all mantra texts, Prapanchasara gives prayoga-phala: same mantra with different procedure gives shantika, paushtika, vashikarana, mohana, stambhana, vidveshana, uchchatana, marana. Avalon himself recounts a Nepal pandit refusing to let Shatkarma mantras be printed, fearing misuse punishable by law.</div>
+      <div class="fact-box reality"><b>False label</b>"Black magic" implies secret evil cult. In shastra these are statecraft/defense + pastoral help: keep king allied (vashya), freeze infiltrators (stambhana), confuse enemy propaganda (mohana), chase occupier (uchchatana), kill terrorist (marana). Text demands purascharana + siddhi + guru + prayoga knowledge (never fully in books) and ends with guru-worship + ethical rules. Atharva Veda has the same list — we don't call Veda black magic.</div>
+    </div>
+  </div>
+</section>
+
+<section id="c7">
+  <p class="kicker">Claim 07</p>
+  <div class="claim-card">
+    <div class="claim-head"><span class="claim-num">Claim 7</span><span class="verdict v-mislead">Misleading</span></div>
+    <p class="claim-quote">"Shankara contradicts himself — Brahma Sutra vs Tantra — so Prapanchasara must be fake. And nobody writes 400 books in 32 years."</p>
+    <div class="kid">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#157a5f" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+      <div><b>Kid version:</b> A maths teacher writes a PhD paper AND a rhymes book for babies. Different style is not lying — different students need different books. And "Shankaracharya" is also a title, like "Principal" — many principals signed papers, not one man.</div>
+    </div>
+    <div class="fact-row">
+      <div class="fact-box evidence"><b>Fair concern</b>Western test: compare everything to Brahma Sutra Bhashya; if style/philosophy differs, mark doubtful. 400+ attributions in 32 years is genuinely suspicious. Even traditional Advaitins admit doubt about Prapanchasara. Colophon "Shankaracharya" could be any pontiff.</div>
+      <div class="fact-box reality"><b>Why it doesn't prove fake</b>Bhashya = for advanced monks; Tantra manual = for temple worshippers needing murti-mantra-yantra. Different genre, different audience — contradiction is expected, not proof of fraud. Tradition never claimed one man hand-wrote all 400 alone — disciples compiled, later acharyas added. Modern scholars lean "school attribution / pseudo-Shankara," which means reverent compilation, not forgery. Honest position: unproven either way.</div>
+    </div>
+  </div>
+</section>
+
+<section id="score">
+  <p class="kicker">Final scoreboard</p>
+  <h2>One table a child can read aloud</h2>
+  <div class="tools-wrap"><table class="tools-table">
+    <tr><th>#</th><th>Charge</th><th>Verdict</th><th>One-line reality</th></tr>
+    <tr><td class="mono">1</td><td>Advaita = hidden Buddhism</td><td><span class="verdict v-opinion">Opinion</span></td><td>Resemblance yes, identity no. Debate label, not proof.</td></tr>
+    <tr><td class="mono">2</td><td>Shankara faked Tat Tvam Asi</td><td><span class="verdict v-mislead">Misleading</span></td><td>All manuscripts say "tat." Madhva re-divides words; Shankara reads plainly.</td></tr>
+    <tr><td class="mono">3</td><td>Advaitins are demons</td><td><span class="verdict v-false">False</span></td><td>Insult, not evidence. No test proves a soul's past birth.</td></tr>
+    <tr><td class="mono">4</td><td>Shiva sent to mislead</td><td><span class="verdict v-unproven">Unproven</span></td><td>Purana story vs Purana story. Faith, not history.</td></tr>
+    <tr><td class="mono">5</td><td>Prapanchasara = menstrual vulgarity</td><td><span class="verdict v-false">False</span></td><td>Verses are from Yoni/Kaula texts, not Prapanchasara chapters.</td></tr>
+    <tr><td class="mono">6</td><td>Prapanchasara = black magic</td><td><span class="verdict v-mislead">Half-true</span></td><td>Prayogas listed yes; "black magic" label no — Veda has same list.</td></tr>
+    <tr><td class="mono">7</td><td>Contradiction + 400 books = fake</td><td><span class="verdict v-mislead">Misleading</span></td><td>Different books for different students; title shared by lineage.</td></tr>
+  </table></div>
+  <div class="tldr"><ul>
+    <li><span><b>Debate the idea, not the person:</b> "jiva-Brahman one or different?" is a great question. "You are a demon / vulgar magician" ends learning.</span></li>
+    <li><span><b>Ask for chapter-verse:</b> anyone claiming "Prapanchasara says X" must give chapter + verse from Avalon's edition. Screenshots from other Tantras don't count.</span></li>
+    <li><span><b>Respect both acharyas:</b> Shankara rebuilt Vedic learning; Madhva built bhakti logic and temple ritual. A child can admire both without hating either.</span></li>
+  </ul></div>
+</section>
+
+<section id="sources">
+  <p class="kicker">Sources — check yourself</p>
+  <h2>Where each fact came from</h2>
+  <p class="section-intro">Short links so parents and teachers can verify. Claims without a source below are the author's synthesis and marked as opinion in the cards.</p>
+  <div class="sources">
+  <p>[1] Prapanchasara chapter summary 1–36, citations by Raghava Bhatta — http://www.mukhopadhyay.in/2012/02/prapanchasara-tantra.html</p>
+  <p>[2] Avalon edition, Prapancha Sara Tantra with Commentary and Vritti — https://archive.org/details/rDFw_prapancha-sara-tantra-of-shankaracharya-with-commentary-and-vritti-arthur-avalon</p>
+  <p>[3] Testing authenticity of Shankara works, bhashya-standard, 400 works debate — https://www.advaita-vedanta.in/questioning-authenticity-of-works-attributed-to-adi-shankara</p>
+  <p>[4] Which prakarana granthas scholars accept — https://hinduism.stackexchange.com/questions/14808/which-are-authentic-prakarana-grantha-of-adi-shankaracharya</p>
+  <p>[5] Traditional Advaitin doubt on Prapanchasara authorship — https://www.facebook.com/groups/AdvaitaSiddhanta/posts/1228401067784293/</p>
+  <p>[6] Viral Madhva charge and Advaitin rebuttal thread — https://www.facebook.com/drpraveenks/posts/for-far-too-long-sri-adi-shankaracharya-has-been-subjected-to-unnecessary-and-di/10164843940616385/</p>
+  <p>[7] Kaula menstrual-blood passages: Yoni Tantra, Kaulajnananirnaya 8, Matrikabheda 8, Woodroffe summary — https://theprint.in/pageturner/excerpt/some-sects-of-hinduism-encourage-sex-during-your-periods/186312/</p>
+  <p>[8] Ten prayogas, knife analogy, purascharana-siddhi rule — https://www.vedadhara.com/the-ten-kinds-of-mantra-prayoga-or-application-of-mantras</p>
+  <p>[9] Avalon on Shatkarma mantras withheld + "nothing but black magic absurd" — https://cdn.britannica.com/primary_source/gutenberg/PGCC_classics/mahatantra.htm</p>
+  <p>[10] Mayavada-Khandana intent: Veda does not teach jiva-Brahman identity — https://srimadhvyasa.wordpress.com/acharya-madhwa/mayavada-khandana/</p>
+  <p>[11] Padma Purana mayavadam asat-shastram verse discussion — https://groups.google.com/g/advaitin/c/oksKnLD1Rio and https://vedabase.io/en/library/cc/madhya/6/182/</p>
+  <p>[12] Tat Tvam Asi vs Atat Tvam Asi grammar debate — https://hinduism.stackexchange.com/questions/60178/refuting-sa-atma-atat-tvam-asi-of-madhava-paingala-upanishad and http://www.advaita.org.uk/discourses/definitions/tattvamasi.htm</p>
+  <p>[13] "Deceitful demons" debate thread — https://hinduism.stackexchange.com/questions/28629/do-followers-of-dvaita-really-believe-that-advaitins-are-deceitful-demons</p>
+  </div>
+</section>
+
+<footer>
+  <p>Prepared as an educational fact-check. It does not claim to settle Vedanta — only to separate philosophy (fair), history (checkable), and insult (ignorable). If any cited verse is shown to be misquoted, the author will correct with a dated addendum, not silent edit.</p>
+</footer>
+
+</body>
+</html>
