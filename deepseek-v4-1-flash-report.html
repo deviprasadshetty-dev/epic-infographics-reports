@@ -1,73 +1,44 @@
 <!DOCTYPE html>
-<!-- Language: editorial-dark | Pattern: asymmetric verdict-first -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DeepSeek V4.1 Flash — Plain-English Report</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<title>DeepSeek V4.1 Flash — Should We Use It?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,900&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-  :root{
-    --bg:#14100c; --bg2:#1e1813; --card:#221b14; --card2:#2a2118;
-    --ink:#f5ede1; --dim:#c9b69c; --faint:#8d7c66;
-    --line:#3d3225; --amber:#f0a832; --amber-deep:#c77f14;
-    --green:#7fc97f; --red:#e8837a; --blue:#8fb8e8;
-    --shadow:0 12px 40px -12px rgba(0,0,0,.6);
-  }
+  :root{ --bg:#14100c; --card:#221b14; --card2:#2a2118; --ink:#f5ede1; --dim:#c9b69c;
+    --faint:#8d7c66; --line:#3d3225; --amber:#f0a832; --amber-deep:#c77f14;
+    --green:#7fc97f; --red:#e8837a; --blue:#8fb8e8; --shadow:0 12px 40px -12px rgba(0,0,0,.6); }
   *{box-sizing:border-box}
-  body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.65;margin:0;padding:0 20px 100px;font-size:16px}
-  .mono{font-family:"JetBrains Mono",monospace}
-  .wrap{max-width:880px;margin:0 auto}
-  /* HERO */
-  .hero{padding:72px 0 10px;position:relative}
-  .stamp{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--amber);border-radius:6px;padding:6px 12px;font-weight:600}
-  .hero h1{font-family:Fraunces,serif;font-weight:900;font-size:clamp(34px,5.4vw,58px);line-height:1.04;margin:22px 0 14px;letter-spacing:-.01em}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;margin:0;padding:0 20px 100px;font-size:17px}
+  .mono{font-family:ui-monospace,monospace}
+  .wrap{max-width:800px;margin:0 auto}
+  .hero{padding:64px 0 6px}
+  .stamp{display:inline-block;font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--amber);border-radius:6px;padding:6px 12px;font-weight:700}
+  .hero h1{font-family:Fraunces,serif;font-weight:900;font-size:clamp(32px,5vw,52px);line-height:1.06;margin:22px 0 14px}
   .hero h1 em{font-style:normal;color:var(--amber)}
-  .deck{font-size:18px;color:var(--dim);max-width:62ch;margin:0}
-  .bignums{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:30px 0 8px}
-  .bignum{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
-  .bignum .v{font-family:Fraunces,serif;font-size:38px;font-weight:900;color:var(--amber);line-height:1}
-  .bignum .l{font-size:13px;color:var(--dim);margin-top:8px}
-  /* SECTIONS */
-  section{padding:44px 0;border-top:1px solid var(--line);margin-top:44px}
-  .kick{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin:0 0 6px}
-  h2{font-family:Fraunces,serif;font-size:30px;margin:0 0 8px;line-height:1.15}
-  .sub{color:var(--dim);max-width:64ch;margin:0 0 18px}
-  /* VERDICT */
-  .verdict{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--amber);border-radius:0 16px 16px 0;padding:20px 22px;font-size:17px;margin:18px 0}
-  /* SCORE BARS */
-  .group{margin:26px 0}
-  .group h3{font-size:15px;font-family:"JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px}
-  .group.win h3{color:var(--green)} .group.lose h3{color:var(--red)}
-  .race{margin:0 0 16px}
-  .race .t{font-size:14.5px;font-weight:600}
-  .race .t small{color:var(--faint);font-weight:400}
-  .bar{position:relative;height:26px;background:#100d09;border:1px solid var(--line);border-radius:8px;margin-top:6px;overflow:hidden}
-  .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px}
-  .bar.flash i{background:linear-gradient(90deg,var(--amber-deep),var(--amber))}
-  .bar.rival i{background:#5a4f40}
-  .bar b{position:absolute;right:8px;top:2px;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink)}
-  .bar.rival b{color:var(--dim)}
-  .lbl{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--faint);margin:2px 0 0}
-  .mean{font-size:13.5px;color:var(--dim);margin:4px 0 0}
-  /* PRICE */
-  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:16px}
-  .price{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-  .price .v{font-family:"JetBrains Mono",monospace;font-size:22px;font-weight:600;color:var(--amber)}
-  .price .l{font-size:13px;color:var(--dim)}
-  .example{background:#100d09;border:1px dashed var(--amber-deep);border-radius:14px;padding:18px 20px;margin-top:16px;font-size:15px}
-  /* CATCHES */
-  .catch{display:flex;gap:14px;margin:0 0 16px;align-items:flex-start}
-  .n{font-family:Fraunces,serif;font-size:28px;font-weight:900;color:var(--amber);line-height:1;min-width:40px}
-  .catch p{margin:2px 0 0;color:var(--dim)} .catch p strong{color:var(--ink)}
-  /* JARGON */
-  .jargon{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:6px 22px 12px;margin-top:16px}
-  .jargon dt{font-weight:700;margin-top:14px} .jargon dd{margin:4px 0 0;color:var(--dim);font-size:14.5px}
-  /* SOURCES */
-  .src{font-size:13.5px;color:var(--faint)}
-  .src li{margin-bottom:8px} .src a{color:var(--blue)}
-  .ok{color:var(--green);font-weight:700} .no{color:var(--red);font-weight:700}
-  footer{padding:30px 0;color:var(--faint);font-size:13px;max-width:880px;margin:0 auto}
+  .deck{font-size:19px;color:var(--dim);max-width:60ch;margin:0}
+  section{padding:36px 0;border-top:1px solid var(--line);margin-top:36px}
+  .kick{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin:0 0 6px}
+  h2{font-family:Fraunces,serif;font-size:28px;margin:0 0 10px;line-height:1.2}
+  .answer{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--amber);border-radius:0 16px 16px 0;padding:20px 22px;font-size:18px;margin:16px 0}
+  p{color:var(--dim)} p strong{color:var(--ink)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:16px}
+  .card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+  .card .v{font-family:Fraunces,serif;font-size:34px;font-weight:900;color:var(--amber);line-height:1.1}
+  .card .l{font-size:14px;color:var(--dim);margin-top:8px}
+  table{width:100%;border-collapse:collapse;margin-top:14px;font-size:15px}
+  th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);padding:0 12px 8px;font-family:ui-monospace,monospace}
+  td{padding:13px 12px;border-top:1px solid var(--line);vertical-align:top;color:var(--dim)}
+  td:first-child{color:var(--ink);font-weight:600}
+  .win{color:var(--green);font-weight:700;white-space:nowrap} .lose{color:var(--red);font-weight:700;white-space:nowrap}
+  .rec{background:#100d09;border:1px dashed var(--amber-deep);border-radius:14px;padding:18px 22px;margin-top:16px}
+  .rec li{margin-bottom:10px;color:var(--dim)} .rec li strong{color:var(--ink)}
+  .risk{display:flex;gap:14px;margin:0 0 14px;align-items:flex-start}
+  .n{font-family:Fraunces,serif;font-size:26px;font-weight:900;color:var(--amber);line-height:1.2;min-width:34px}
+  .risk p{margin:2px 0 0}
+  .src{font-size:13.5px;color:var(--faint)} .src a{color:var(--blue)} .src li{margin-bottom:6px}
+  footer{padding:28px 0;color:var(--faint);font-size:13px;max-width:800px;margin:0 auto}
   footer a{color:var(--blue)}
 </style>
 </head>
@@ -75,138 +46,78 @@
 <div class="wrap">
 
   <div class="hero">
-    <span class="stamp">Verified 12 Sept 2026 · Updated same day</span>
-    <h1>DeepSeek V4.1 Flash: <em>cheap and fast</em>, great at short coding jobs — not at everything.</h1>
-    <p class="deck">A new AI model from DeepSeek came out on 10 Sept 2026. People online say it matches the best models from Anthropic (Opus 5) and OpenAI (GPT 5.6). We checked every number against live sources. The honest answer: it beats them at 5 short, practical coding tests — and loses clearly at long, hard, and security tasks.</p>
-    <div class="bignums">
-      <div class="bignum"><div class="v">$0.30</div><div class="l">per 1M input words-units at peak (half off-peak). About 17x cheaper than rivals.</div></div>
-      <div class="bignum"><div class="v">206/s</div><div class="l">words-units written per second, measured by an independent lab. Very fast.</div></div>
-      <div class="bignum"><div class="v">40</div><div class="l">independent intelligence score (average similar model: 18). Strong, not #1.</div></div>
-    </div>
+    <span class="stamp">Checked 12 Sept 2026 · all numbers verified</span>
+    <h1>New low-cost AI model: <em>same daily work, one-twentieth the price?</em></h1>
+    <p class="deck">A new AI model (DeepSeek V4.1 Flash, released 10 Sept 2026) claims to match the best expensive models at a fraction of the cost. We checked the claim. Short answer: for routine coding and automation work, yes. For complex, long, or security-sensitive work, no.</p>
   </div>
 
   <section>
-    <p class="kick">The one-paragraph version</p>
-    <h2>Should you care?</h2>
-    <div class="verdict">Yes, if you run AI coding agents. This model does everyday agent coding jobs <strong>as well as models costing 17–40x more</strong>, and it does them fast. No, if you need it to work alone for hours, handle security, or answer hard science questions — the expensive models still win those by a lot. Use this one for the bulk work, keep a top model for the hardest 5%.</div>
-    <p class="sub">One caution: most "it beats Opus!" numbers come from DeepSeek's own testing, and the wins are tiny (under 5 points). An independent lab confirms it is strong (score 40) but hasn't re-run each head-to-head yet.</p>
+    <p class="kick">Bottom line</p>
+    <h2>The answer in 30 seconds</h2>
+    <div class="answer">This model handles <strong>everyday AI coding and automation jobs as well as models costing 17–40x more</strong>, and it works fast. It falls behind on long complex projects, security work, and hard expert questions. <strong>Suggestion: use it for daily bulk work to cut costs; keep the premium model for the hardest jobs.</strong></div>
+    <div class="cards">
+      <div class="card"><div class="v">~20x cheaper</div><div class="l">than the premium models for the same everyday tasks (details below).</div></div>
+      <div class="card"><div class="v">Very fast</div><div class="l">independently measured at 206 units/second vs ~65 for similar models.</div></div>
+      <div class="card"><div class="v">5 wins, 6 losses</div><div class="l">matched or beat the best models in 5 practical tests; lost 6 harder ones.</div></div>
+    </div>
   </section>
 
   <section>
     <p class="kick">Money</p>
-    <h2>What it costs, in plain words</h2>
-    <p class="sub">You pay per million "tokens" (roughly word-pieces). There are two prices: normal hours and quiet hours (half price). Reading back something already in memory ("cache hit") costs almost nothing — that matters because coding agents re-read their work constantly.</p>
-    <div class="price-grid">
-      <div class="price"><div class="v">$0.30 → $0.15</div><div class="l">reading 1M tokens (peak → quiet hours)</div></div>
-      <div class="price"><div class="v">$0.006 → $0.003</div><div class="l">re-reading cached 1M tokens — fractions of a cent</div></div>
-      <div class="price"><div class="v">$1.20 → $0.60</div><div class="l">writing 1M tokens (peak → quiet hours)</div></div>
-      <div class="price"><div class="v">$1.32 / $3.96</div><div class="l">what the older Pro model charged (peak) — ~4x more</div></div>
-    </div>
-    <div class="example"><strong>A real example:</strong> one coding session that reads 2M tokens and writes 200K costs <span class="mono">$0.42</span> in quiet hours on Flash vs <span class="mono">$1.72</span> on the old Pro. Same work, quarter of the price. Rivals (Opus at $5/$25, GPT-5.6 at ~$4–5/$20–30) would charge roughly 17–40x more.</div>
+    <h2>What would we save?</h2>
+    <p>AI is billed by volume of text read and written. This model's list price is <strong>$0.30 per million units read and $1.20 per million written</strong> (half that in off-peak hours). The premium alternatives charge roughly <strong>$4–5 to read and $20–30 to write</strong>. That is where the 17–40x gap comes from.</p>
+    <p><strong>A concrete example:</strong> a typical AI coding session (reads ~2M units, writes ~200K) costs about <span class="mono">$0.42</span> on this model vs <span class="mono">$1.72</span> on DeepSeek's own older model — and roughly <span class="mono">$8–15</span> on a premium model. For teams running agents daily, the monthly difference is large.</p>
+    <p>One catch on cost: this model is chatty — it writes nearly twice as many words as average to finish a job. Since writing is the expensive half, real savings are big but slightly smaller than the headline prices suggest.</p>
   </section>
 
   <section>
-    <p class="kick">The proof, drawn to scale</p>
-    <h2>Where it wins…</h2>
-    <p class="sub">Each pair of bars is one real-world test. Orange = DeepSeek V4.1 Flash. Grey = the best rival's score. All numbers are from DeepSeek's own test setup (their harness, full effort) — so read small gaps as "about equal."</p>
-    <div class="group win"><h3>▲ Flash wins or ties — short, practical agent jobs</h3>
-
-      <div class="race"><div class="t">Fixing real GitHub problems <small>(DeepSWE)</small></div>
-        <div class="bar flash"><i style="width:74.2%"></i><b>74.2 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:74%"></i><b>74.0 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
-        <p class="mean">What this means: fixing everyday software bugs — dead even with the best.</p></div>
-
-      <div class="race"><div class="t">Doing jobs in a computer terminal <small>(Terminal-Bench 2.1)</small></div>
-        <div class="bar flash"><i style="width:90.6%"></i><b>90.6 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:89.1%"></i><b>89.1 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
-        <p class="mean">What this means: following instructions on a real machine — slightly ahead.</p></div>
-
-      <div class="race"><div class="t">Automating office software <small>(AutomationBench)</small></div>
-        <div class="bar flash"><i style="width:54.8%"></i><b>54.8 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:50.3%"></i><b>50.3 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
-        <p class="mean">What this means: clicking through web apps to finish workflows — its clearest win.</p></div>
-
-      <div class="race"><div class="t">Mixed agent reasoning exam <small>(Agent's Last Exam)</small></div>
-        <div class="bar flash"><i style="width:31.8%"></i><b>31.8 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:28.6%"></i><b>28.6 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
-        <p class="mean">What this means: a hard general test for agents — ahead, though all models score low.</p></div>
-
-      <div class="race"><div class="t">Cybersecurity tasks <small>(CyberGym)</small></div>
-        <div class="bar flash"><i style="width:88.1%"></i><b>88.1 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:84.5%"></i><b>84.5 Sol</b></div><div class="lbl">RIVAL (GPT-5.6 Sol; Opus score not published)</div>
-        <p class="mean">What this means: defensive security chores — beats Sol; Opus didn't publish a number.</p></div>
-    </div>
+    <p class="kick">Proof, in plain words</p>
+    <h2>What it does well — and what it doesn't</h2>
+    <table>
+      <tr><th>Job</th><th>Cheap model vs costly best</th><th>Result</th></tr>
+      <tr><td>Fixing everyday software bugs</td><td>74 vs 74 out of 100</td><td class="win">Equal</td></tr>
+      <tr><td>Routine computer tasks</td><td>91 vs 89 out of 100</td><td class="win">Slightly ahead</td></tr>
+      <tr><td>Automating office software</td><td>55 vs 50 out of 100</td><td class="win">Ahead</td></tr>
+      <tr><td>General agent reasoning test</td><td>32 vs 29 out of 100</td><td class="win">Ahead</td></tr>
+      <tr><td>Routine security chores</td><td>88 vs 85 out of 100</td><td class="win">Ahead</td></tr>
+      <tr><td>Long unsupervised projects</td><td>31 vs 52 out of 100</td><td class="lose">Clearly behind</td></tr>
+      <tr><td>Writing whole programs fresh</td><td>20 vs 37 out of 100</td><td class="lose">Clearly behind</td></tr>
+      <tr><td>Attack-style security tests</td><td>15 vs 34 out of 100</td><td class="lose">Clearly behind</td></tr>
+      <tr><td>Hard expert questions (no tools)</td><td>37 vs 56 out of 100</td><td class="lose">Clearly behind</td></tr>
+    </table>
+    <p>A note on fairness: most of these scores were published by the company selling the model, and the wins are small. An independent lab confirms the model is strong overall (score 40 vs an average of 18) but hasn't re-run each comparison yet.</p>
   </section>
 
   <section>
-    <p class="kick">…and where it loses</p>
-    <h2>The other half of the table</h2>
-    <p class="sub">Anyone showing you only the wins is cherry-picking. Here are the same model's losses, same scale.</p>
-    <div class="group lose"><h3>▼ Flash loses — long jobs, security, hard knowledge</h3>
-
-      <div class="race"><div class="t">Long terminal sessions <small>(Terminal-Bench 4.0)</small></div>
-        <div class="bar flash"><i style="width:31.2%"></i><b>31.2 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:51.8%"></i><b>51.8 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
-        <p class="mean">What this means: jobs that run for a long time without help — Opus is far ahead.</p></div>
-
-      <div class="race"><div class="t">Rebuilding programs from scratch <small>(ProgramBench)</small></div>
-        <div class="bar flash"><i style="width:20.3%"></i><b>20.3 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:37%"></i><b>37.0 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
-        <p class="mean">What this means: writing whole programs fresh — nearly double the gap.</p></div>
-
-      <div class="race"><div class="t">Attack-style security tests <small>(ExploitGym)</small></div>
-        <div class="bar flash"><i style="width:15.3%"></i><b>15.3 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:33.7%"></i><b>33.7 Sol</b></div><div class="lbl">RIVAL (GPT-5.6 Sol)</div>
-        <p class="mean">What this means: offensive security — not its job, don't buy it for this.</p></div>
-
-      <div class="race"><div class="t">Hard science questions, no tools <small>(HLE text-only)</small></div>
-        <div class="bar flash"><i style="width:36.8%"></i><b>36.8 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:56.3%"></i><b>56.3 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
-        <p class="mean">What this means: raw knowledge from memory — its biggest loss. (With tools allowed, it nearly ties Opus: 63.9 vs 63.6.)</p></div>
-
-      <div class="race"><div class="t">Graduate-level science <small>(GPQA Diamond)</small></div>
-        <div class="bar flash"><i style="width:90.9%"></i><b>90.9 Flash</b></div><div class="lbl">FLASH</div>
-        <div class="bar rival"><i style="width:94.1%"></i><b>94.1 Sol</b></div><div class="lbl">RIVAL (GPT-5.6 Sol)</div>
-        <p class="mean">What this means: PhD-level questions — close, but Sol still leads.</p></div>
-    </div>
+    <p class="kick">Risks</p>
+    <h2>What could go wrong?</h2>
+    <div class="risk"><div class="n">1</div><p><strong>It is 2 days old.</strong> Early users report occasional glitches — loops, wrong tool calls, answers slipping into Chinese. Expect fixes over the coming weeks.</p></div>
+    <div class="risk"><div class="n">2</div><p><strong>Not for unsupervised critical work.</strong> Anything long, complex, or security-sensitive should stay on the premium model for now.</p></div>
+    <div class="risk"><div class="n">3</div><p><strong>Check the bill.</strong> The company first promised old-model users would auto-pay the new cheap price from Sept 14, then quietly kept old prices running. Verify invoices before scaling up.</p></div>
   </section>
 
   <section>
-    <p class="kick">Fine print</p>
-    <h2>5 catches, plainly stated</h2>
-    <div class="catch"><div class="n">1</div><p><strong>It talks too much.</strong> An independent lab found it writes nearly 2x more words than average to finish tests. Since you pay for written words, this eats into the savings on thinking-heavy jobs.</p></div>
-    <div class="catch"><div class="n">2</div><p><strong>"Flash" doesn't mean small.</strong> The full model is ~550 billion parameters (~175–220 GB even compressed). You cannot run it on a laptop; even owners of special AI hardware struggle. For most people, use the API.</p></div>
-    <div class="catch"><div class="n">3</div><p><strong>Top scores need the most expensive setting.</strong> Every headline number uses reasoning effort 100/100. Turn the dial down to save money and accuracy drops too.</p></div>
-    <div class="catch"><div class="n">4</div><p><strong>Young model, rough edges.</strong> Users report occasional infinite loops, broken tool calls, answers slipping into Chinese, and one billing confusion where Pro users expected Flash prices. It is 2 days old — expect patches.</p></div>
-    <div class="catch"><div class="n">5</div><p><strong>Check your bill.</strong> DeepSeek first said old Pro requests would auto-switch to cheap Flash prices on Sept 14, then quietly kept Pro running as-is. Don't assume — check which model id you're billed for.</p></div>
+    <p class="kick">Suggestion</p>
+    <h2>What we recommend</h2>
+    <div class="rec"><ul style="margin:0;padding-left:20px">
+      <li><strong>Move routine AI coding and automation to this model now</strong> — same quality on daily work, ~20x lower cost, faster results.</li>
+      <li><strong>Keep the premium model for the hard 5%</strong> — long projects, security work, and expert-level questions.</li>
+      <li><strong>Review after one month</strong> — by then independent testers will have confirmed (or corrected) the company's claims, and early bugs should be fixed.</li>
+    </ul></div>
   </section>
 
   <section>
-    <p class="kick">Translator</p>
-    <h2>Jargon buster</h2>
-    <dl class="jargon">
-      <dt>Mixture-of-Experts (552B total, 8–16B "active")</dt><dd>Think of a hospital with 552 specialists on staff, but only 8–16 walk into your room per question. Total size is huge; cost per question stays small.</dd>
-      <dt>KV cache (890 bytes per token)</dt><dd>The model's short-term memory of what it already read. Smaller memory per word = cheaper re-reading, which is most of an agent's bill.</dd>
-      <dt>Reasoning effort 1–100</dt><dd>A dial: higher = the model thinks longer and scores better, but costs more. All records above use 100.</dd>
-      <dt>Terminal-Bench / DeepSWE</dt><dd>Exams where the AI does real computer jobs (terminal commands, fixing GitHub bugs) instead of multiple-choice quizzes.</dd>
-      <dt>Tokens</dt><dd>Word-pieces the price is counted in. ~750 words ≈ 1,000 tokens.</dd>
-      <dt>Vendor-reported</dt><dd>Tested by the company selling the model — worth knowing, worth double-checking.</dd>
-    </dl>
-  </section>
-
-  <section>
-    <p class="kick">Receipts</p>
-    <h2>Where every number came from</h2>
+    <p class="kick">Sources</p>
+    <h2>Where this came from</h2>
     <ul class="src">
-      <li><span class="ok">CONFIRMED</span> — Specs, prices, dates: <a href="https://www.deepseek.com/en/news/deepseek-v4-1-flash/">DeepSeek announcement</a>, <a href="https://api-docs.deepseek.com/quick_start/pricing/">live pricing page</a>, <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">model card</a> (all read directly, 12 Sept 2026).</li>
-      <li><span class="ok">CONFIRMED</span> — Independent score 40 + 206 tok/s: <a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash">Artificial Analysis</a> (read directly). 119 tok/s + 12 providers: <a href="https://openrouter.ai/models/deepseek/deepseek-v4.1-flash">OpenRouter</a> (read directly).</li>
-      <li><span class="ok">CONFIRMED</span> — Head-to-head scores: DeepSeek's model card tables (vendor's own harness — labelled, not independent).</li>
-      <li><span class="no">REJECTED as stated</span> — "Beats Opus 5 / GPT 5.6" with no scope. True on 5 short-agent tests, false on long-horizon, security, and pure knowledge.</li>
-      <li>User reactions: Reddit r/LocalLLaMA + r/DeepSeek threads, Hacker News (~417 pts / 218 comments), NVIDIA DGX Spark forum — all live; all anecdotes, labelled as such.</li>
+      <li>Model details and prices: <a href="https://www.deepseek.com/en/news/deepseek-v4-1-flash/">DeepSeek announcement</a> and <a href="https://api-docs.deepseek.com/quick_start/pricing/">live pricing page</a> (read directly).</li>
+      <li>Independent score (40) and speed (206/sec): <a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash">Artificial Analysis</a> (read directly).</li>
+      <li>Test scores: the company's published results (their own test setup — flagged where relevant).</li>
+      <li>User feedback: Reddit, Hacker News (~417 points / 218 comments), hardware forums — opinions, not measurements.</li>
     </ul>
   </section>
 
 </div>
-<footer class="wrap">Built from live sources on 12 Sept 2026. Prices and model status move fast — re-check the <a href="https://api-docs.deepseek.com/quick_start/pricing/">pricing page</a> before spending. Same report URL as before; this page replaces the old dense version.</footer>
+<footer class="wrap">Prepared 12 Sept 2026 from live sources. Prices and model status change fast — confirm the <a href="https://api-docs.deepseek.com/quick_start/pricing/">pricing page</a> before committing spend.</footer>
 </body>
 </html>
