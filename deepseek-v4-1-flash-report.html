@@ -1,230 +1,212 @@
 <!DOCTYPE html>
+<!-- Language: editorial-dark | Pattern: asymmetric verdict-first -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DeepSeek V4.1 Flash — Verified Capability, Benchmark &amp; Cost Report</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<title>DeepSeek V4.1 Flash — Plain-English Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
   :root{
-    --bg:#eef3f1; --surface:#ffffff; --surface-2:#e3ebe8; --ink:#122320; --ink-dim:#4c605a;
-    --border:#cfdbd6; --accent:#157a5f; --accent-ink:#0d5c47; --accent-soft:#d8ede4;
-    --protocol:#5850c9; --protocol-soft:#e6e4fa; --warn:#9a5b00; --warn-soft:#f7ead2;
-    --bad:#a4262c; --bad-soft:#f7dfe0; --code-bg:#e6edea;
-    --shadow: 0 1px 2px rgba(18,35,32,.06), 0 8px 24px -12px rgba(18,35,32,.12);
+    --bg:#14100c; --bg2:#1e1813; --card:#221b14; --card2:#2a2118;
+    --ink:#f5ede1; --dim:#c9b69c; --faint:#8d7c66;
+    --line:#3d3225; --amber:#f0a832; --amber-deep:#c77f14;
+    --green:#7fc97f; --red:#e8837a; --blue:#8fb8e8;
+    --shadow:0 12px 40px -12px rgba(0,0,0,.6);
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#0e1613; --surface:#151f1c; --surface-2:#1b2723; --ink:#e9f2ee; --ink-dim:#9db2ab;
-      --border:#2a3733; --accent:#3fcd9a; --accent-ink:#8fe9c8; --accent-soft:#173229;
-      --protocol:#a29cf2; --protocol-soft:#242058; --warn:#e0aa4e; --warn-soft:#33270f;
-      --bad:#ef8a8f; --bad-soft:#3a1a1c; --code-bg:#1a2521;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
-    }
-  }
-  body{ background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif; line-height:1.55; margin:0; padding:0 20px 120px; }
-  code,.mono{ font-family:"IBM Plex Mono",ui-monospace,"SF Mono",monospace; }
-  .wrap{ max-width:920px; margin:0 auto; }
-  header.hero{ max-width:920px; margin:0 auto; padding:56px 0 28px; border-bottom:1px solid var(--border); }
-  .eyebrow{ font-family:"IBM Plex Mono",monospace; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-ink); font-weight:600; display:flex; align-items:center; gap:8px; }
-  .eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; }
-  h1{ font-size:clamp(28px,4vw,40px); line-height:1.12; letter-spacing:-.01em; margin:14px 0 10px; text-wrap:balance; font-weight:700; }
-  .lede{ font-size:17px; color:var(--ink-dim); max-width:66ch; margin:0; }
-  .meta{ font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim); margin-top:14px; }
-  nav.jump{ max-width:920px; margin:0 auto; display:flex; flex-wrap:wrap; gap:6px 4px; padding:16px 0 0; }
-  nav.jump a{ font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim); text-decoration:none; padding:6px 10px; border-radius:20px; border:1px solid var(--border); background:var(--surface); }
-  nav.jump a:hover{ color:var(--accent-ink); border-color:var(--accent); }
-  section{ max-width:920px; margin:0 auto; padding:52px 0; border-bottom:1px solid var(--border); }
-  section:last-of-type{ border-bottom:none; }
-  .kicker{ font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); margin:0 0 8px; }
-  h2{ font-size:24px; margin:0 0 6px; letter-spacing:-.005em; text-wrap:balance; }
-  .section-intro{ color:var(--ink-dim); max-width:68ch; }
-  .tldr{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 24px; box-shadow:var(--shadow); margin-top:20px; }
-  .tldr ul{ margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:12px; }
-  .tldr li{ display:flex; gap:10px; align-items:flex-start; }
-  .tldr li::before{ content:"→"; color:var(--accent); font-weight:600; font-family:"IBM Plex Mono",monospace; flex-shrink:0; width:22px; }
-  .tldr li span{ display:block; }
-  .callout{ border-left:3px solid var(--accent); background:var(--accent-soft); border-radius:0 10px 10px 0; padding:14px 18px; margin:20px 0; font-size:14px; }
-  .callout.protocol{ border-left-color:var(--protocol); background:var(--protocol-soft); }
-  .callout.warn{ border-left-color:var(--warn); background:var(--warn-soft); }
-  .callout.bad{ border-left-color:var(--bad); background:var(--bad-soft); }
-  .schema-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:20px; }
-  .schema-card{ background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 18px 16px; box-shadow:var(--shadow); }
-  .schema-card h4{ margin:0 0 4px; font-family:"IBM Plex Mono",monospace; font-size:13.5px; color:var(--accent-ink); font-weight:600; }
-  .schema-card .role{ font-size:12px; color:var(--ink-dim); margin-bottom:12px; }
-  .schema-card ul{ list-style:none; margin:0; padding:0; display:grid; gap:6px; }
-  .schema-card li{ font-size:12.5px; font-family:"IBM Plex Mono",monospace; color:var(--ink); }
-  .schema-card li .t{ color:var(--ink-dim); }
-  .tools-wrap{ overflow-x:auto; border:1px solid var(--border); border-radius:14px; background:var(--surface); box-shadow:var(--shadow); padding:4px 10px; }
-  .tools-table{ width:100%; border-collapse:collapse; margin-top:18px; font-size:14px; min-width:640px; }
-  .tools-table th{ text-align:left; font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-dim); padding:0 14px 10px; border-bottom:1px solid var(--border); font-weight:600; }
-  .tools-table td{ padding:14px; border-bottom:1px solid var(--border); vertical-align:top; }
-  .pill{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; padding:2px 9px; border-radius:20px; border:1px solid var(--border); }
-  .pill.win{ color:var(--accent-ink); border-color:var(--accent); }
-  .pill.lose{ color:var(--bad); border-color:var(--bad); }
-  .pill.mixed{ color:var(--warn); border-color:var(--warn); }
-  .vlog td:first-child{ font-family:"IBM Plex Mono",monospace; font-size:12px; }
-  .pass{ color:var(--accent-ink); font-weight:700; } .fail{ color:var(--bad); font-weight:700; } .unver{ color:var(--warn); font-weight:700; }
-  a{ color:var(--accent-ink); }
-  footer{ max-width:920px; margin:0 auto; padding:32px 0; color:var(--ink-dim); font-size:13px; }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.65;margin:0;padding:0 20px 100px;font-size:16px}
+  .mono{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:880px;margin:0 auto}
+  /* HERO */
+  .hero{padding:72px 0 10px;position:relative}
+  .stamp{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--amber);border-radius:6px;padding:6px 12px;font-weight:600}
+  .hero h1{font-family:Fraunces,serif;font-weight:900;font-size:clamp(34px,5.4vw,58px);line-height:1.04;margin:22px 0 14px;letter-spacing:-.01em}
+  .hero h1 em{font-style:normal;color:var(--amber)}
+  .deck{font-size:18px;color:var(--dim);max-width:62ch;margin:0}
+  .bignums{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:30px 0 8px}
+  .bignum{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+  .bignum .v{font-family:Fraunces,serif;font-size:38px;font-weight:900;color:var(--amber);line-height:1}
+  .bignum .l{font-size:13px;color:var(--dim);margin-top:8px}
+  /* SECTIONS */
+  section{padding:44px 0;border-top:1px solid var(--line);margin-top:44px}
+  .kick{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin:0 0 6px}
+  h2{font-family:Fraunces,serif;font-size:30px;margin:0 0 8px;line-height:1.15}
+  .sub{color:var(--dim);max-width:64ch;margin:0 0 18px}
+  /* VERDICT */
+  .verdict{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--amber);border-radius:0 16px 16px 0;padding:20px 22px;font-size:17px;margin:18px 0}
+  /* SCORE BARS */
+  .group{margin:26px 0}
+  .group h3{font-size:15px;font-family:"JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px}
+  .group.win h3{color:var(--green)} .group.lose h3{color:var(--red)}
+  .race{margin:0 0 16px}
+  .race .t{font-size:14.5px;font-weight:600}
+  .race .t small{color:var(--faint);font-weight:400}
+  .bar{position:relative;height:26px;background:#100d09;border:1px solid var(--line);border-radius:8px;margin-top:6px;overflow:hidden}
+  .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px}
+  .bar.flash i{background:linear-gradient(90deg,var(--amber-deep),var(--amber))}
+  .bar.rival i{background:#5a4f40}
+  .bar b{position:absolute;right:8px;top:2px;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink)}
+  .bar.rival b{color:var(--dim)}
+  .lbl{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--faint);margin:2px 0 0}
+  .mean{font-size:13.5px;color:var(--dim);margin:4px 0 0}
+  /* PRICE */
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:16px}
+  .price{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .price .v{font-family:"JetBrains Mono",monospace;font-size:22px;font-weight:600;color:var(--amber)}
+  .price .l{font-size:13px;color:var(--dim)}
+  .example{background:#100d09;border:1px dashed var(--amber-deep);border-radius:14px;padding:18px 20px;margin-top:16px;font-size:15px}
+  /* CATCHES */
+  .catch{display:flex;gap:14px;margin:0 0 16px;align-items:flex-start}
+  .n{font-family:Fraunces,serif;font-size:28px;font-weight:900;color:var(--amber);line-height:1;min-width:40px}
+  .catch p{margin:2px 0 0;color:var(--dim)} .catch p strong{color:var(--ink)}
+  /* JARGON */
+  .jargon{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:6px 22px 12px;margin-top:16px}
+  .jargon dt{font-weight:700;margin-top:14px} .jargon dd{margin:4px 0 0;color:var(--dim);font-size:14.5px}
+  /* SOURCES */
+  .src{font-size:13.5px;color:var(--faint)}
+  .src li{margin-bottom:8px} .src a{color:var(--blue)}
+  .ok{color:var(--green);font-weight:700} .no{color:var(--red);font-weight:700}
+  footer{padding:30px 0;color:var(--faint);font-size:13px;max-width:880px;margin:0 auto}
+  footer a{color:var(--blue)}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header class="hero">
-  <p class="eyebrow">Verified model report — cross-checked against live sources</p>
-  <h1>DeepSeek V4.1 Flash: fast and cheap, frontier-class only in short-horizon agent work</h1>
-  <p class="lede">Released 10 Sept 2026. DeepSeek's 552B-parameter open-weights MoE beats GPT-5.6 Sol and Claude Opus-5.0 on five short-horizon agentic coding benchmarks — but trails both decisively on long-horizon autonomy, repo-scale refactors, security, and pure knowledge tests. All vendor benchmark numbers below are labelled as vendor-reported; independent replication is still pending because the model is two days old.</p>
-  <p class="meta">Researched 12 Sept 2026 · Method: live page extraction of official docs, model card, pricing page + community threads · All prices in USD per 1M tokens</p>
-</header>
-
-<nav class="jump">
-  <a href="#verdict">01 Verdict</a><a href="#specs">02 Specs</a><a href="#cost">03 Cost</a>
-  <a href="#benchmarks">04 Benchmarks</a><a href="#limits">05 Limitations</a><a href="#community">06 Community</a><a href="#vlog">07 Verification log</a>
-</nav>
-
-<section id="verdict">
-  <p class="kicker">01 — Verdict on the claim</p>
-  <h2>"On par with Opus 5 and GPT 5.6": partly true, not universally</h2>
-  <p class="section-intro">The claim circulating online needs a scope correction. Against official vendor-reported numbers, V4.1 Flash beats or ties both rivals on short, high-volume agent loops — and loses clearly everywhere else.</p>
-  <div class="tldr"><ul>
-    <li><span><strong>TRUE — short-horizon agentic coding (5 wins):</strong> DeepSWE v1.1 74.2 vs Opus 74.0 / Sol 73.0; Terminal-Bench 2.1 90.6 vs 89.1 / 88.8; AutomationBench 54.8 vs 50.3 / 45.8; Agent's Last Exam 31.8 vs 28.6 / 26.7; CyberGym 88.1 vs Sol 84.5 (Opus not reported). HLE with tools 63.9 vs Opus 63.6 is effectively a tie.</span></li>
-    <li><span><strong>FALSE — long-horizon, security, pure knowledge:</strong> Opus leads Terminal-Bench 3.0 (43.3 vs 30.0), 4.0 (51.8 vs 31.2), ProgramBench (37.0 vs 20.3), NL2Repo (75.3 vs 64.0). Sol leads SEC-Bench Pro (74.3 vs 62.8), ExploitGym (33.7 vs 15.3), GPQA Diamond (94.1 vs 90.9). Opus leads text-only HLE 56.3 vs 36.8–39.1 by a wide margin.</span></li>
-    <li><span><strong>TRUE — cost and speed:</strong> peak $0.30 input / $1.20 output per 1M tokens, off-peak half that; roughly 4x cheaper than V4 Pro it replaces and ~17x cheaper on input / ~21–42x on output than Claude Opus 5 ($5/$25) and GPT-5.6 Sol ($4–5/$20–30). Lab-measured throughput is 206 tok/s (Artificial Analysis) with OpenRouter's best provider at 119 tok/s; community reports reach 300–400+ tok/s. Concurrency limit rises 500 → 2,500.</span></li>
-    <li><span><strong>Caveat — vendor harness, tiny margins:</strong> all head-to-head figures come from DeepSeek's own harness at maximum reasoning effort (reasoning_effort=100, temp 1.0, top_p 0.95), and most wins are by 0.2–4.5 points — within harness noise. First independent data is now in: Artificial Analysis scores it <strong>40 on the Intelligence Index</strong> (well above the open-weight-large median of 18) at a lab-measured <strong>206 tok/s</strong>, but flags it as very verbose (250M eval tokens vs 130M median). Treat vendor decimals as provisional until more third parties re-run.</span></li>
-    <li><span><strong>Practical rule:</strong> route bulk agent traffic to V4.1 Flash; keep a frontier model for the hard ~5% — marathon sessions, repo-scale refactors, offensive security. DeepSeek itself signals this by keeping a bigger V4.1 Pro for later.</span></li>
-  </ul></div>
-  <div class="callout warn"><strong>Do not trust bare benchmark screenshots.</strong> Every comparison table in this report states its source. Vendor-run rows are marked as such; community praise is marked as anecdotal. Anything that failed live verification was cut.</div>
-</section>
-
-<section id="specs">
-  <p class="kicker">02 — What the model is</p>
-  <h2>Specs (official, live-verified)</h2>
-  <p class="section-intro">V4.1 Flash is the smallest model in a new architecture family — "Flash" refers to active compute per token, not total size. Total weights are large; per-token cost is small.</p>
-  <div class="schema-grid">
-    <div class="schema-card"><h4>Architecture</h4><div class="role">Causal Encoder–Decoder MoE</div><ul>
-      <li>552B <span class="t">backbone params</span></li>
-      <li>8B <span class="t">active / prefill</span> · 16B <span class="t">active / decode</span></li>
-      <li>40-layer <span class="t">20 enc + 20 dec</span></li>
-      <li>1 shared + 384 routed experts <span class="t">6 active / token</span></li>
-      <li>196B <span class="t">Engram conditional memory</span></li>
-    </ul></div>
-    <div class="schema-card"><h4>Efficiency tech</h4><div class="role">Why it is cheap to serve</div><ul>
-      <li>890 bytes <span class="t">KV cache / token (~1/4 of V4 Flash)</span></li>
-      <li>1/8 <span class="t">SSD KV footprint (SWA Bounded Replay)</span></li>
-      <li>CSA2 sparse attention <span class="t">+ FP4 E2M1 KV</span></li>
-      <li>DSpark <span class="t">speculative decoding</span></li>
-      <li>reasoning_effort <span class="t">1–100, controllable</span></li>
-    </ul></div>
-    <div class="schema-card"><h4>Context &amp; I/O</h4><div class="role">API model id: deepseek-flash</div><ul>
-      <li>1M <span class="t">input context</span></li>
-      <li>384K <span class="t">max output</span></li>
-      <li>text + image <span class="t">in · text out, native vision</span></li>
-      <li>tool calls · JSON · Responses API <span class="t">supported</span></li>
-      <li>MIT license <span class="t">open weights on Hugging Face</span></li>
-    </ul></div>
+  <div class="hero">
+    <span class="stamp">Verified 12 Sept 2026 · Updated same day</span>
+    <h1>DeepSeek V4.1 Flash: <em>cheap and fast</em>, great at short coding jobs — not at everything.</h1>
+    <p class="deck">A new AI model from DeepSeek came out on 10 Sept 2026. People online say it matches the best models from Anthropic (Opus 5) and OpenAI (GPT 5.6). We checked every number against live sources. The honest answer: it beats them at 5 short, practical coding tests — and loses clearly at long, hard, and security tasks.</p>
+    <div class="bignums">
+      <div class="bignum"><div class="v">$0.30</div><div class="l">per 1M input words-units at peak (half off-peak). About 17x cheaper than rivals.</div></div>
+      <div class="bignum"><div class="v">206/s</div><div class="l">words-units written per second, measured by an independent lab. Very fast.</div></div>
+      <div class="bignum"><div class="v">40</div><div class="l">independent intelligence score (average similar model: 18). Strong, not #1.</div></div>
+    </div>
   </div>
-  <div class="callout">Training: from scratch on 45T multimodal tokens, context extended to 1M at the 34T mark. Post-training is standard SFT → RL → on-policy distillation; DeepSeek credits gains to large-scale synthetic agent-task generation, not a new algorithm. Sampling for reported scores: temperature 1.0, top_p 0.95, max reasoning effort.</div>
-  <div class="callout protocol"><strong>Lifecycle note (verified on pricing page):</strong> V4 Flash and V4 Flash Vision Exp are retired and temporarily route to V4.1 Flash. V4 Pro was to route to V4.1 Flash from 04:00 UTC 14 Sept 2026 — but the pricing page now carries a footnote that V4 Pro API service <em>continues</em> after Sept 14 unchanged "in response to user demand." One community report of being billed Pro rates while expecting Flash routing is consistent with this last-minute change. Pin model id <span class="mono">deepseek-flash</span> rather than assuming Pro auto-routes.</div>
-</section>
 
-<section id="cost">
-  <p class="kicker">03 — Cost</p>
-  <h2>Pricing (live from DeepSeek pricing page)</h2>
-  <p class="section-intro">Peak / off-peak schedule continues. Peak hours: 01:00–04:00 and 06:00–10:00 UTC, Mon–Fri. Everything else is off-peak at half price. New Flash pricing effective 04:00 UTC 10 Sept 2026.</p>
-  <div class="tools-wrap"><table class="tools-table">
-    <tr><th>Cost per 1M tokens</th><th>V4.1 Flash peak</th><th>V4.1 Flash off-peak</th><th>V4 Pro (reference)</th></tr>
-    <tr><td>Input, cache miss</td><td class="mono">$0.30</td><td class="mono">$0.15</td><td class="mono">$1.32 / $0.66</td></tr>
-    <tr><td>Input, cache hit</td><td class="mono">$0.006</td><td class="mono">$0.003</td><td class="mono">$0.044 / $0.022</td></tr>
-    <tr><td>Output</td><td class="mono">$1.20</td><td class="mono">$0.60</td><td class="mono">$3.96 / $1.98</td></tr>
-    <tr><td>Concurrency limit</td><td class="mono" colspan="2">2,500</td><td class="mono" colspan="1">500</td></tr>
-  </table></div>
-  <div class="tldr"><ul>
-    <li><span><strong>Worked example (the honest maths):</strong> one agentic coding session burning 2M input + 200K output tokens costs <span class="mono">$0.30 + $0.12 = $0.42</span> off-peak on V4.1 Flash vs <span class="mono">$1.32 + $0.40 = $1.72</span> on V4 Pro off-peak — a 4.1x saving. Same session at peak: $0.84 vs $3.43.</span></li>
-    <li><span><strong>Why cache matters:</strong> agent loops re-read stable context constantly. A 500K-token context re-read on a cache hit costs about $0.003 peak — fractions of a cent per pass. KV compression (890 bytes/token) is the economic story, not just a technical one.</span></li>
-    <li><span><strong>Third-party check:</strong> BenchLM lists $0.30 in / $1.20 out, $0.006 cached, blended $0.75 — matches official peak. No placeholder or guessed reseller prices are used in this report.</span></li>
-  </ul></div>
-</section>
+  <section>
+    <p class="kick">The one-paragraph version</p>
+    <h2>Should you care?</h2>
+    <div class="verdict">Yes, if you run AI coding agents. This model does everyday agent coding jobs <strong>as well as models costing 17–40x more</strong>, and it does them fast. No, if you need it to work alone for hours, handle security, or answer hard science questions — the expensive models still win those by a lot. Use this one for the bulk work, keep a top model for the hardest 5%.</div>
+    <p class="sub">One caution: most "it beats Opus!" numbers come from DeepSeek's own testing, and the wins are tiny (under 5 points). An independent lab confirms it is strong (score 40) but hasn't re-run each head-to-head yet.</p>
+  </section>
 
-<section id="benchmarks">
-  <p class="kicker">04 — Benchmarks, honestly labelled</p>
-  <h2>Head-to-head (all rows vendor-reported, max reasoning effort)</h2>
-  <p class="section-intro">Source: DeepSeek-V4.1-Flash model card on Hugging Face, live-extracted 12 Sept 2026. DeepSeek ran its own harness; rivals' figures are as quoted by DeepSeek. Bold marks the row leader. Independent re-runs are pending.</p>
-  <div class="tools-wrap"><table class="tools-table">
-    <tr><th>Benchmark</th><th>Opus-5.0</th><th>GPT-5.6 Sol</th><th>V4.1 Flash</th><th>Reading</th></tr>
-    <tr><td>DeepSWE v1.1 (real GitHub issues)</td><td class="mono">74.0</td><td class="mono">73.0</td><td class="mono"><strong>74.2</strong></td><td><span class="pill win">FLASH WINS</span></td></tr>
-    <tr><td>Terminal-Bench 2.1</td><td class="mono">89.1</td><td class="mono">88.8</td><td class="mono"><strong>90.6</strong></td><td><span class="pill win">FLASH WINS</span></td></tr>
-    <tr><td>AutomationBench</td><td class="mono">50.3</td><td class="mono">45.8</td><td class="mono"><strong>54.8</strong></td><td><span class="pill win">FLASH WINS</span></td></tr>
-    <tr><td>Agent's Last Exam</td><td class="mono">28.6</td><td class="mono">26.7</td><td class="mono"><strong>31.8</strong></td><td><span class="pill win">FLASH WINS</span></td></tr>
-    <tr><td>CyberGym</td><td class="mono">n/r</td><td class="mono">84.5</td><td class="mono"><strong>88.1</strong></td><td><span class="pill win">FLASH WINS*</span></td></tr>
-    <tr><td>HLE with tools</td><td class="mono">63.6</td><td class="mono">n/r</td><td class="mono"><strong>63.9</strong></td><td><span class="pill mixed">TIE</span></td></tr>
-    <tr><td>Terminal-Bench 3.0</td><td class="mono"><strong>43.3</strong></td><td class="mono">34.4</td><td class="mono">30.0</td><td><span class="pill lose">FLASH LOSES</span></td></tr>
-    <tr><td>Terminal-Bench 4.0</td><td class="mono"><strong>51.8</strong></td><td class="mono">39.9</td><td class="mono">31.2</td><td><span class="pill lose">FLASH LOSES</span></td></tr>
-    <tr><td>ProgramBench</td><td class="mono"><strong>37.0</strong></td><td class="mono">23.0</td><td class="mono">20.3</td><td><span class="pill lose">FLASH LOSES</span></td></tr>
-    <tr><td>NL2Repo-Bench</td><td class="mono"><strong>75.3</strong></td><td class="mono">56.8</td><td class="mono">64.0</td><td><span class="pill mixed">BEATS SOL, LOSES OPUS</span></td></tr>
-    <tr><td>SEC-Bench Pro</td><td class="mono">n/r</td><td class="mono"><strong>74.3</strong></td><td class="mono">62.8</td><td><span class="pill lose">FLASH LOSES</span></td></tr>
-    <tr><td>ExploitGym</td><td class="mono">22.1</td><td class="mono"><strong>33.7</strong></td><td class="mono">15.3</td><td><span class="pill lose">FLASH LOSES</span></td></tr>
-    <tr><td>GPQA Diamond</td><td class="mono">93.4</td><td class="mono"><strong>94.1</strong></td><td class="mono">90.9</td><td><span class="pill lose">FLASH LOSES</span></td></tr>
-    <tr><td>HLE text-only</td><td class="mono"><strong>56.3</strong></td><td class="mono">44.5</td><td class="mono">36.8 (39.1*)</td><td><span class="pill lose">FLASH LOSES BADLY</span></td></tr>
-    <tr><td>Codeforces rating</td><td class="mono">—</td><td class="mono">—</td><td class="mono">3471 (vs V4 Pro 3348)</td><td><span class="pill mixed">STRONG, NO RIVAL QUOTED</span></td></tr>
-    <tr><td>MathArena Apex</td><td class="mono">—</td><td class="mono">—</td><td class="mono">65.6 (ties Kimi K3)</td><td><span class="pill mixed">TIE FOR LEAD</span></td></tr>
-  </table></div>
-  <p class="section-intro">n/r = rival figure not reported in DeepSeek's table. * CyberGym: Opus figure absent, so "win" is over Sol only. * HLE text-only 39.1 = pure-text subset retest.</p>
-  <div class="callout warn"><strong>Why scepticism is warranted:</strong> (1) vendor-run harness, vendor-chosen settings; (2) max reasoning effort inflates cost — real bills at effort 100 exceed headline per-token impressions; (3) wins cluster in short-horizon tasks where DeepSeek's synthetic agent-task training transfers best; long-horizon and security gaps are large, not noise. BenchLM (22 tracked rows, no public rank yet) and Artificial Analysis (no V4.1 score yet) have not confirmed any row.</div>
-</section>
+  <section>
+    <p class="kick">Money</p>
+    <h2>What it costs, in plain words</h2>
+    <p class="sub">You pay per million "tokens" (roughly word-pieces). There are two prices: normal hours and quiet hours (half price). Reading back something already in memory ("cache hit") costs almost nothing — that matters because coding agents re-read their work constantly.</p>
+    <div class="price-grid">
+      <div class="price"><div class="v">$0.30 → $0.15</div><div class="l">reading 1M tokens (peak → quiet hours)</div></div>
+      <div class="price"><div class="v">$0.006 → $0.003</div><div class="l">re-reading cached 1M tokens — fractions of a cent</div></div>
+      <div class="price"><div class="v">$1.20 → $0.60</div><div class="l">writing 1M tokens (peak → quiet hours)</div></div>
+      <div class="price"><div class="v">$1.32 / $3.96</div><div class="l">what the older Pro model charged (peak) — ~4x more</div></div>
+    </div>
+    <div class="example"><strong>A real example:</strong> one coding session that reads 2M tokens and writes 200K costs <span class="mono">$0.42</span> in quiet hours on Flash vs <span class="mono">$1.72</span> on the old Pro. Same work, quarter of the price. Rivals (Opus at $5/$25, GPT-5.6 at ~$4–5/$20–30) would charge roughly 17–40x more.</div>
+  </section>
 
-<section id="limits">
-  <p class="kicker">05 — Real limitations</p>
-  <h2>Where it falls short</h2>
-  <div class="tldr"><ul>
-    <li><span><strong>Long-horizon autonomy gap:</strong> ~13–20 points behind Opus on Terminal-Bench 3.0/4.0. Marathon sessions and repo-scale refactors still favour Opus.</span></li>
-    <li><span><strong>Security gap:</strong> ~11 points behind Sol on SEC-Bench Pro, ~18 behind on ExploitGym. Do not pick it as a security specialist.</span></li>
-    <li><span><strong>Pure knowledge/reasoning gap:</strong> text-only HLE ~17–20 points behind Opus; GPQA ~3 points behind Sol. Tool use closes the gap; without tools it is not frontier.</span></li>
-    <li><span><strong>"Flash" does not mean small to host:</strong> 552B total (some HF listings show ~485B loadable — the delta is the Engram memory block). Budget ~175GB at 4-bit / ~220GB at 5-bit plus offload; KV is tiny (~900MB at 1M context) but weights are not. NVIDIA DGX Spark owners confirm 500GB+ official weights cannot fit 4x512GB unified memory as-is; workable configs need tensor-parallel 3–4 plus NVMe Engram offload (one user reports 369 tok/s over 27,700 steps with TP=4). One local user quipped it is "Flash Max, not Flash."</span></li>
-    <li><span><strong>Scores need max reasoning effort:</strong> all headline numbers use reasoning_effort=100, the most expensive setting. Lower effort = lower accuracy; advertised cheapness assumes you also tune effort down, which surrenders the benchmark edge.</span></li>
-    <li><span><strong>Very verbose — output tokens are the bill:</strong> Artificial Analysis measured 250M eval tokens vs a 130M median, nearly double. At $1.20/M output (peak), verbosity eats into the input-price advantage on reasoning-heavy tasks ($0.27/task, $476.89 total eval cost). One HN user notes output on high effort runs ~2x a rival's medium setting.</span></li>
-    <li><span><strong>Known agent bugs (community-reported, unverified):</strong> infinite loops, hallucinations, premature termination, invalid tool calls that derail agents into retry loops; occasional Chinese-language thinking chains/answers to English prompts; web UI reportedly lost PDF reading; LM Studio tensor-format load failure; uneven OpenRouter latency. Expect rough edges on a two-day-old release.</span></li>
-  </ul></div>
-</section>
+  <section>
+    <p class="kick">The proof, drawn to scale</p>
+    <h2>Where it wins…</h2>
+    <p class="sub">Each pair of bars is one real-world test. Orange = DeepSeek V4.1 Flash. Grey = the best rival's score. All numbers are from DeepSeek's own test setup (their harness, full effort) — so read small gaps as "about equal."</p>
+    <div class="group win"><h3>▲ Flash wins or ties — short, practical agent jobs</h3>
 
-<section id="community">
-  <p class="kicker">06 — What real users say</p>
-  <h2>Community reception (anecdotal, labelled)</h2>
-  <p class="section-intro">First-48-hour reactions from Reddit, Hacker News, and hardware forums. Anecdotes, not measurements — useful for direction, not proof.</p>
-  <div class="tldr"><ul>
-    <li><span><strong>Speed praise is unanimous:</strong> "300–400 tok/s", "blazing fast", "killed the demand in one shot" (research proposal vs GPT Astra). Direction matches the lab-measured 206 tok/s (Artificial Analysis) — fast either way.</span></li>
-    <li><span><strong>Launch thread heat:</strong> Hacker News launch discussion drew ~417 points / 218 comments in its first day, centred on KV-cache compression tech and price-per-task rather than benchmark triumphalism. Top sentiments: "how much power you get for the cost" (full Rails app + tests), agents at "20–30% of the price per task", and "the price drop is more interesting than the benchmark improvement."</span></li>
-    <li><span><strong>Naming backlash:</strong> multiple r/LocalLLaMA users dispute "Flash" for a 485–552B model (vs 304B for Flash 0731, 1.7T for Pro): "You can't inflate the model by 50% and call it a flash." Counter-argument: "flash" now means active-compute-per-token, and the label scales with lab compute.</span></li>
-    <li><span><strong>Self-hosting pain:</strong> "doesn't fit dual DGX Sparks", "even with 4x DGX Spark we can hardly run this locally." Workable quants discussed: ~4-bit ≈ 175GB, 5-bit ≈ 220GB, NVFP4 + Engram offload on 256GB boxes. Not a laptop model.</span></li>
-    <li><span><strong>Benchmark sceptics exist:</strong> "those stats are inflated, no way it's competing against GPT SOL and Opus" — a fair reflection of the vendor-run caveat above. Others note open weights historically trail closed frontier by months and expect V4.1 Pro, not Flash, to be the true frontier fight.</span></li>
-    <li><span><strong>Billing confusion (actionable):</strong> one user spent two off-peak hours on Pro expecting Flash routing/pricing and was billed Pro rates — consistent with DeepSeek's late footnote keeping Pro alive. Verify your model id and invoice before running bulk jobs.</span></li>
-  </ul></div>
-</section>
+      <div class="race"><div class="t">Fixing real GitHub problems <small>(DeepSWE)</small></div>
+        <div class="bar flash"><i style="width:74.2%"></i><b>74.2 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:74%"></i><b>74.0 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
+        <p class="mean">What this means: fixing everyday software bugs — dead even with the best.</p></div>
 
-<section id="vlog">
-  <p class="kicker">07 — Verification log</p>
-  <h2>Claim → live source → status</h2>
-  <p class="section-intro">Every check below was run against live page text on 12 Sept 2026, not search snippets. UNVERIFIED means replication is pending, not that the claim is false.</p>
-  <div class="tools-wrap"><table class="tools-table vlog">
-    <tr><th>Claim</th><th>Live source</th><th>Status</th></tr>
-    <tr><td>Released 10 Sept 2026; pricing effective 04:00 UTC Sept 10</td><td>deepseek.com news + api-docs news260910 + pricing page</td><td class="pass">PASS</td></tr>
-    <tr><td>552B MoE; 8B prefill / 16B decode active; 1 shared + 384 routed experts (6 active)</td><td>Hugging Face model card (live-extracted)</td><td class="pass">PASS</td></tr>
-    <tr><td>1M context; 384K max output; native vision; MIT weights</td><td>Pricing page + HF model card + api-docs news</td><td class="pass">PASS</td></tr>
-    <tr><td>KV 890 B/token (~1/4 V4 Flash); 1/8 SSD; concurrency 2500</td><td>HF card + deepseek.com news + pricing page</td><td class="pass">PASS</td></tr>
-    <tr><td>Flash pricing: in $0.30/$0.15, cache hit $0.006/$0.003, out $1.20/$0.60; peak hrs as listed</td><td>Pricing page (live-extracted table)</td><td class="pass">PASS</td></tr>
-    <tr><td>Head-to-head scores (DeepSWE 74.2, TB2.1 90.6, Automation 54.8, ALE 31.8, CyberGym 88.1, TB3 30.0, TB4 31.2, etc.)</td><td>HF model card eval tables (live-extracted)</td><td class="pass">PASS — vendor-reported</td></tr>
-    <tr><td>"Beats Opus 5 / GPT 5.6" without scope</td><td>Same table: wins 5 rows, loses/ties rest</td><td class="fail">FAIL as stated — scope required</td></tr>
-    <tr><td>Independent AA / LMArena confirmation of V4.1 rows</td><td>Artificial Analysis model page (live-extracted): Index 40, 206.3 tok/s, TTFT 1.13s, $0.27/task; OpenRouter model page: 119 tok/s best, 12 providers; no LMArena entry yet</td><td class="pass">PASS — first independent data in</td></tr>
-    <tr><td>Speed ~206 tok/s lab / 119 tok/s OpenRouter best / 300–400+ community</td><td>AA page + OpenRouter page (both live-extracted) / Reddit anecdotes</td><td class="pass">PASS — labelled mixed source</td></tr>
-    <tr><td>V4 Pro routes to Flash from Sept 14 at Flash rates</td><td>Pricing page footnote now says Pro continues unchanged</td><td class="unver">SUPERSEDED — verify at billing time</td></tr>
-    <tr><td>HN 417 pts / 218 comments; Reddit naming / hosting debate; billing complaint; DGX Spark fit workarounds</td><td>HN thread + Reddit threads + NVIDIA forum (all LIVE per re-resolution)</td><td class="pass">PASS — anecdotal, labelled</td></tr>
-  </table></div>
-  <div class="callout">What was cut: reseller/aggregator prices, guessed emails/URLs, and any benchmark screenshot without a traceable source. Per policy, no placeholders appear in this report — every number above names its live source.</div>
-</section>
+      <div class="race"><div class="t">Doing jobs in a computer terminal <small>(Terminal-Bench 2.1)</small></div>
+        <div class="bar flash"><i style="width:90.6%"></i><b>90.6 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:89.1%"></i><b>89.1 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
+        <p class="mean">What this means: following instructions on a real machine — slightly ahead.</p></div>
 
-<footer>
-  Built from live sources on 12 Sept 2026 (updated with Artificial Analysis + OpenRouter independent data the same day). Model state moves fast — re-check the <a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek pricing page</a>, the <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">Hugging Face model card</a>, <a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash">Artificial Analysis tracking</a>, and <a href="https://openrouter.ai/models/deepseek/deepseek-v4.1-flash">OpenRouter stats</a> before spending. Vendor-reported figures need independent replication.
-</footer>
+      <div class="race"><div class="t">Automating office software <small>(AutomationBench)</small></div>
+        <div class="bar flash"><i style="width:54.8%"></i><b>54.8 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:50.3%"></i><b>50.3 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
+        <p class="mean">What this means: clicking through web apps to finish workflows — its clearest win.</p></div>
 
+      <div class="race"><div class="t">Mixed agent reasoning exam <small>(Agent's Last Exam)</small></div>
+        <div class="bar flash"><i style="width:31.8%"></i><b>31.8 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:28.6%"></i><b>28.6 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
+        <p class="mean">What this means: a hard general test for agents — ahead, though all models score low.</p></div>
+
+      <div class="race"><div class="t">Cybersecurity tasks <small>(CyberGym)</small></div>
+        <div class="bar flash"><i style="width:88.1%"></i><b>88.1 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:84.5%"></i><b>84.5 Sol</b></div><div class="lbl">RIVAL (GPT-5.6 Sol; Opus score not published)</div>
+        <p class="mean">What this means: defensive security chores — beats Sol; Opus didn't publish a number.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kick">…and where it loses</p>
+    <h2>The other half of the table</h2>
+    <p class="sub">Anyone showing you only the wins is cherry-picking. Here are the same model's losses, same scale.</p>
+    <div class="group lose"><h3>▼ Flash loses — long jobs, security, hard knowledge</h3>
+
+      <div class="race"><div class="t">Long terminal sessions <small>(Terminal-Bench 4.0)</small></div>
+        <div class="bar flash"><i style="width:31.2%"></i><b>31.2 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:51.8%"></i><b>51.8 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
+        <p class="mean">What this means: jobs that run for a long time without help — Opus is far ahead.</p></div>
+
+      <div class="race"><div class="t">Rebuilding programs from scratch <small>(ProgramBench)</small></div>
+        <div class="bar flash"><i style="width:20.3%"></i><b>20.3 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:37%"></i><b>37.0 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
+        <p class="mean">What this means: writing whole programs fresh — nearly double the gap.</p></div>
+
+      <div class="race"><div class="t">Attack-style security tests <small>(ExploitGym)</small></div>
+        <div class="bar flash"><i style="width:15.3%"></i><b>15.3 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:33.7%"></i><b>33.7 Sol</b></div><div class="lbl">RIVAL (GPT-5.6 Sol)</div>
+        <p class="mean">What this means: offensive security — not its job, don't buy it for this.</p></div>
+
+      <div class="race"><div class="t">Hard science questions, no tools <small>(HLE text-only)</small></div>
+        <div class="bar flash"><i style="width:36.8%"></i><b>36.8 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:56.3%"></i><b>56.3 Opus</b></div><div class="lbl">RIVAL (Opus 5)</div>
+        <p class="mean">What this means: raw knowledge from memory — its biggest loss. (With tools allowed, it nearly ties Opus: 63.9 vs 63.6.)</p></div>
+
+      <div class="race"><div class="t">Graduate-level science <small>(GPQA Diamond)</small></div>
+        <div class="bar flash"><i style="width:90.9%"></i><b>90.9 Flash</b></div><div class="lbl">FLASH</div>
+        <div class="bar rival"><i style="width:94.1%"></i><b>94.1 Sol</b></div><div class="lbl">RIVAL (GPT-5.6 Sol)</div>
+        <p class="mean">What this means: PhD-level questions — close, but Sol still leads.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kick">Fine print</p>
+    <h2>5 catches, plainly stated</h2>
+    <div class="catch"><div class="n">1</div><p><strong>It talks too much.</strong> An independent lab found it writes nearly 2x more words than average to finish tests. Since you pay for written words, this eats into the savings on thinking-heavy jobs.</p></div>
+    <div class="catch"><div class="n">2</div><p><strong>"Flash" doesn't mean small.</strong> The full model is ~550 billion parameters (~175–220 GB even compressed). You cannot run it on a laptop; even owners of special AI hardware struggle. For most people, use the API.</p></div>
+    <div class="catch"><div class="n">3</div><p><strong>Top scores need the most expensive setting.</strong> Every headline number uses reasoning effort 100/100. Turn the dial down to save money and accuracy drops too.</p></div>
+    <div class="catch"><div class="n">4</div><p><strong>Young model, rough edges.</strong> Users report occasional infinite loops, broken tool calls, answers slipping into Chinese, and one billing confusion where Pro users expected Flash prices. It is 2 days old — expect patches.</p></div>
+    <div class="catch"><div class="n">5</div><p><strong>Check your bill.</strong> DeepSeek first said old Pro requests would auto-switch to cheap Flash prices on Sept 14, then quietly kept Pro running as-is. Don't assume — check which model id you're billed for.</p></div>
+  </section>
+
+  <section>
+    <p class="kick">Translator</p>
+    <h2>Jargon buster</h2>
+    <dl class="jargon">
+      <dt>Mixture-of-Experts (552B total, 8–16B "active")</dt><dd>Think of a hospital with 552 specialists on staff, but only 8–16 walk into your room per question. Total size is huge; cost per question stays small.</dd>
+      <dt>KV cache (890 bytes per token)</dt><dd>The model's short-term memory of what it already read. Smaller memory per word = cheaper re-reading, which is most of an agent's bill.</dd>
+      <dt>Reasoning effort 1–100</dt><dd>A dial: higher = the model thinks longer and scores better, but costs more. All records above use 100.</dd>
+      <dt>Terminal-Bench / DeepSWE</dt><dd>Exams where the AI does real computer jobs (terminal commands, fixing GitHub bugs) instead of multiple-choice quizzes.</dd>
+      <dt>Tokens</dt><dd>Word-pieces the price is counted in. ~750 words ≈ 1,000 tokens.</dd>
+      <dt>Vendor-reported</dt><dd>Tested by the company selling the model — worth knowing, worth double-checking.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <p class="kick">Receipts</p>
+    <h2>Where every number came from</h2>
+    <ul class="src">
+      <li><span class="ok">CONFIRMED</span> — Specs, prices, dates: <a href="https://www.deepseek.com/en/news/deepseek-v4-1-flash/">DeepSeek announcement</a>, <a href="https://api-docs.deepseek.com/quick_start/pricing/">live pricing page</a>, <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">model card</a> (all read directly, 12 Sept 2026).</li>
+      <li><span class="ok">CONFIRMED</span> — Independent score 40 + 206 tok/s: <a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash">Artificial Analysis</a> (read directly). 119 tok/s + 12 providers: <a href="https://openrouter.ai/models/deepseek/deepseek-v4.1-flash">OpenRouter</a> (read directly).</li>
+      <li><span class="ok">CONFIRMED</span> — Head-to-head scores: DeepSeek's model card tables (vendor's own harness — labelled, not independent).</li>
+      <li><span class="no">REJECTED as stated</span> — "Beats Opus 5 / GPT 5.6" with no scope. True on 5 short-agent tests, false on long-horizon, security, and pure knowledge.</li>
+      <li>User reactions: Reddit r/LocalLLaMA + r/DeepSeek threads, Hacker News (~417 pts / 218 comments), NVIDIA DGX Spark forum — all live; all anecdotes, labelled as such.</li>
+    </ul>
+  </section>
+
+</div>
+<footer class="wrap">Built from live sources on 12 Sept 2026. Prices and model status move fast — re-check the <a href="https://api-docs.deepseek.com/quick_start/pricing/">pricing page</a> before spending. Same report URL as before; this page replaces the old dense version.</footer>
 </body>
 </html>
