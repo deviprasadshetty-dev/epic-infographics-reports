@@ -32,12 +32,17 @@
   td{padding:13px 12px;border-top:1px solid var(--line);vertical-align:top;color:var(--dim)}
   td:first-child{color:var(--ink);font-weight:600}
   .win{color:var(--green);font-weight:700;white-space:nowrap} .lose{color:var(--red);font-weight:700;white-space:nowrap}
+  .flag{color:var(--faint);font-size:12px;display:block;margin-top:2px}
   .rec{background:#100d09;border:1px dashed var(--amber-deep);border-radius:14px;padding:18px 22px;margin-top:16px}
   .rec li{margin-bottom:10px;color:var(--dim)} .rec li strong{color:var(--ink)}
   .risk{display:flex;gap:14px;margin:0 0 14px;align-items:flex-start}
   .n{font-family:Fraunces,serif;font-size:26px;font-weight:900;color:var(--amber);line-height:1.2;min-width:34px}
   .risk p{margin:2px 0 0}
   .src{font-size:13.5px;color:var(--faint)} .src a{color:var(--blue)} .src li{margin-bottom:6px}
+  .vlog{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px}
+  .vlog th{font-size:11px}
+  .vlog td{padding:10px 12px;font-size:13px}
+  .pass{color:var(--green);font-weight:700} .fail{color:var(--red);font-weight:700} .corrected{color:var(--amber);font-weight:700}
   footer{padding:28px 0;color:var(--faint);font-size:13px;max-width:800px;margin:0 auto}
   footer a{color:var(--blue)}
 </style>
@@ -46,77 +51,96 @@
 <div class="wrap">
 
   <div class="hero">
-    <span class="stamp">Checked 12 Sept 2026 · all numbers verified</span>
+    <span class="stamp">Re-checked 12 Sept 2026 · corrections made, see verification log</span>
     <h1>New low-cost AI model: <em>same daily work, one-twentieth the price?</em></h1>
-    <p class="deck">A new AI model (DeepSeek V4.1 Flash, released 10 Sept 2026) claims to match the best expensive models at a fraction of the cost. We checked the claim. Short answer: for routine coding and automation work, yes. For complex, long, or security-sensitive work, no.</p>
+    <p class="deck">A new AI model (DeepSeek V4.1 Flash, released 10 Sept 2026) claims to match the best expensive models at a fraction of the cost. We re-checked the claim against DeepSeek's own docs, DeepSeek's published model card, Artificial Analysis's independent lab results, and live social posts — and corrected several numbers that didn't hold up on re-verification. Short answer stands: for routine coding and automation work, yes. For complex, long, or security-sensitive work, no.</p>
   </div>
 
   <section>
     <p class="kick">Bottom line</p>
     <h2>The answer in 30 seconds</h2>
-    <div class="answer">This model handles <strong>everyday AI coding and automation jobs about as well as models costing 17–40x more</strong>, and it works fast. But overall it does <strong>not</strong> match Opus 5: the independent lab scores Opus 5 at <strong>54 vs 40</strong> for this model. It falls behind on long complex projects, security work, and hard expert questions. <strong>Suggestion: use it for daily bulk work to cut costs; keep the premium model for everything important.</strong></div>
+    <div class="answer">This model handles <strong>everyday AI coding and automation jobs about as well as models costing 17–40x more</strong>, and it works fast. But overall it does <strong>not</strong> match Claude Opus 5: the independent lab (Artificial Analysis) scores Opus 5 at <strong>51 vs 40</strong> for this model in their own head-to-head comparison. It falls behind on long complex projects, writing whole programs unsupervised, and hard expert questions. <strong>Suggestion: use it for daily bulk work to cut costs; keep the premium model for everything important.</strong></div>
     <div class="cards">
-      <div class="card"><div class="v">~20x cheaper</div><div class="l">than the premium models for the same everyday tasks (details below).</div></div>
-      <div class="card"><div class="v">Very fast</div><div class="l">independently measured at 206 units/second vs ~65 for similar models.</div></div>
-      <div class="card"><div class="v">5 wins, 6 losses</div><div class="l">matched or beat the best models in 5 practical tests; lost 6 harder ones.</div></div>
+      <div class="card"><div class="v">~20x cheaper</div><div class="l">than Opus 5 on blended pricing for the same everyday tasks (details below).</div></div>
+      <div class="card"><div class="v">Very fast</div><div class="l">independently measured at 206–217 tokens/second vs ~51–59 for Opus 5.</div></div>
+      <div class="card"><div class="v">5 wins, 4 losses</div><div class="l">matched or beat Opus 5 on 5 of 9 practical benchmarks; lost the other 4 (see fairness note below).</div></div>
     </div>
   </section>
 
   <section>
     <p class="kick">Money</p>
     <h2>What would we save?</h2>
-    <p>AI is billed by volume of text read and written. This model's list price is <strong>$0.30 per million units read and $1.20 per million written</strong> (half that in off-peak hours). The premium alternatives charge roughly <strong>$4–5 to read and $20–30 to write</strong>. That is where the 17–40x gap comes from.</p>
-    <p><strong>A concrete example:</strong> a typical AI coding session (reads ~2M units, writes ~200K) costs about <span class="mono">$0.42</span> on this model vs <span class="mono">$1.72</span> on DeepSeek's own older model — and roughly <span class="mono">$8–15</span> on a premium model. For teams running agents daily, the monthly difference is large.</p>
-    <p>One catch on cost: this model is chatty — it writes nearly twice as many words as average to finish a job. Since writing is the expensive half, real savings are big but slightly smaller than the headline prices suggest.</p>
+    <p>AI is billed by volume of text read and written. This model's confirmed list price is <strong>$0.30 per million tokens read and $1.20 per million written</strong> (half that, $0.15/$0.60, in off-peak hours: 1–4am and 6–10am UTC on weekdays are "peak"; everything else is off-peak). Claude Opus 5 charges <strong>$5 to read and $25 to write</strong> per million tokens; GPT-6 Astra charges <strong>$10 to read and $50 to write</strong>. That produces the 17x (vs Opus, output-weighted) to 41x (vs Astra, output-weighted) gap.</p>
+    <p><strong>On a blended basis</strong> — the mix of cached/input/output tokens a real agent workload actually uses — Artificial Analysis puts this model at <strong>$0.18 per million blended tokens vs $3.85 for Opus 5</strong>, a ~21x gap, and <strong>$0.27 per completed benchmark task vs $4.21–$5.86 for Opus 5</strong> (the two Artificial Analysis pages we checked show slightly different Opus cost figures because they used two different versions of the same benchmark suite — flagged in the log below).</p>
+    <p>Versus DeepSeek's own outgoing model (V4 Flash 0731): Artificial Analysis states V4.1 Flash is <strong>about 20% cheaper on a blended basis</strong> than its predecessor. We could not independently reproduce a clean "cost per coding session" figure for the old model — DeepSeek changed 0731's list price more than once during its life, and third-party trackers disagree on which snapshot to use — so we're not repeating a specific dollar figure for that comparison.</p>
+    <p>One catch on cost: this model is chatty — DeepSeek's own model card and Artificial Analysis both flag it as one of the most verbose models measured (it used more output tokens per task than even Opus 5 and GPT-5.6 Sol in Artificial Analysis's test). Since writing is the expensive half of the bill, real savings are big but somewhat smaller than the headline per-token prices alone suggest.</p>
   </section>
 
   <section>
     <p class="kick">Proof, in plain words</p>
     <h2>What it does well — and what it doesn't</h2>
     <table>
-      <tr><th>Job</th><th>Cheap model vs costly best</th><th>Result</th></tr>
-      <tr><td>Fixing everyday software bugs</td><td>74 vs 74 out of 100</td><td class="win">Equal</td></tr>
-      <tr><td>Routine computer tasks</td><td>91 vs 89 out of 100</td><td class="win">Slightly ahead</td></tr>
-      <tr><td>Automating office software</td><td>55 vs 50 out of 100</td><td class="win">Ahead</td></tr>
-      <tr><td>General agent reasoning test</td><td>32 vs 29 out of 100</td><td class="win">Ahead</td></tr>
-      <tr><td>Routine security chores</td><td>88 vs 85 out of 100</td><td class="win">Ahead</td></tr>
-      <tr><td>Long unsupervised projects</td><td>31 vs 52 out of 100</td><td class="lose">Clearly behind</td></tr>
-      <tr><td>Writing whole programs fresh</td><td>20 vs 37 out of 100</td><td class="lose">Clearly behind</td></tr>
-      <tr><td>Attack-style security tests</td><td>15 vs 34 out of 100</td><td class="lose">Clearly behind</td></tr>
-      <tr><td>Hard expert questions (no tools)</td><td>37 vs 56 out of 100</td><td class="lose">Clearly behind</td></tr>
+      <tr><th>Job</th><th>This model vs Opus 5</th><th>Result</th></tr>
+      <tr><td>Fixing everyday software bugs</td><td>74.2 vs 74.0 out of 100</td><td class="win">Equal</td></tr>
+      <tr><td>Routine computer/terminal tasks</td><td>90.6 vs 89.1 out of 100</td><td class="win">Slightly ahead</td></tr>
+      <tr><td>Automating office software</td><td>54.8 vs 50.3 out of 100</td><td class="win">Ahead</td></tr>
+      <tr><td>General agent reasoning test</td><td>31.8 vs 28.6 out of 100</td><td class="win">Ahead</td></tr>
+      <tr><td>Routine security chores<span class="flag">Opus 5 wasn't scored on this test; next-best (GPT-5.6 Sol/GLM-5.3, tied) scored 84.5</span></td><td>88.1 vs 84.5 out of 100</td><td class="win">Ahead of the field</td></tr>
+      <tr><td>Long unsupervised projects</td><td>31.2 vs 51.8 out of 100</td><td class="lose">Clearly behind</td></tr>
+      <tr><td>Writing whole programs fresh</td><td>20.3 vs 37.0 out of 100</td><td class="lose">Clearly behind</td></tr>
+      <tr><td>Attack-style security tests</td><td>15.3 vs 22.1 out of 100</td><td class="lose">Behind</td></tr>
+      <tr><td>Hard expert questions (no tools)</td><td>36.8 vs 56.3 out of 100</td><td class="lose">Clearly behind</td></tr>
     </table>
-    <p>A note on fairness: most of these scores were published by the company selling the model, and the wins are tiny (under 5 points). The independent picture is clearer: Artificial Analysis scores <strong>Opus 5 at 54, this model at 40</strong> — a real gap. Opus is also slower (59/sec vs 206/sec) and far costlier per task ($4.21 vs $0.27). So: Opus wins on brains, Flash wins on price and speed.</p>
+    <p>A note on fairness: these nine rows are DeepSeek's own published benchmark numbers (their harness, their test setup — model card linked below), narrowed to the rows where a comparable Claude Opus 5 score exists. On the "routine security chores" test, Opus 5 has no published score at all, so we show the best-scored alternative instead of a made-up Opus number — that's a genuine gap in the data, not a DeepSeek win over Opus specifically. The independent picture on overall intelligence is clearer: Artificial Analysis's own head-to-head page scores <strong>Opus 5 at 51, this model at 40</strong> — a real gap (Opus 5's own standalone page shows 54, using a slightly earlier version of the same index; the head-to-head run used the newer version). Opus is also much slower (51–59 tok/s vs 206–217 tok/s) and far costlier per task ($4.21–$5.86 vs $0.27). So: Opus wins on brains, Flash wins on price and speed.</p>
   </section>
 
   <section>
     <p class="kick">Real users — Reddit + X</p>
     <h2>What are people actually saying?</h2>
-    <p>Beyond the company's own scores, here's what independent users report. Linked, in their own words, shortened only for length.</p>
+    <p>Beyond the company's own scores, here's what independent users report. Linked, in their own words, shortened only for length. We re-opened every link below directly to confirm it's live and says what's quoted.</p>
     <div class="risk"><div class="n">+</div><p><strong>"Back on top of the open-source leaderboard and extremely cheap."</strong> — Thomas Wolf, co-founder of Hugging Face (<a href="https://x.com/Thom_Wolf/status/2097982062808428751" style="color:var(--blue)">X, 61K views</a>). The most-shared endorsement so far.</p></div>
-    <div class="risk"><div class="n">+</div><p><strong>"$0.30 built me a 7-page client website in 15 minutes — 80% what the client wanted."</strong> — Reddit user Odd-Duty-7205 (<a href="https://www.reddit.com/r/DeepSeek/comments/1wd6es7/deepseek_v41_flash_is_pretty_good/" style="color:var(--blue)">full thread</a>). Honest caveat from the same user: it was a simple site and he guided it throughout.</p></div>
-    <div class="risk"><div class="n">+</div><p><strong>"Goes straight to the main problem, fixes it, reports back — better than Astra for focused coding."</strong> — Reddit user Artium99, after a day of use. Adds that the rival Astra "over-engineers and goes around in circles." Another user says it could <strong>"replace 85–90% of my big-model usage."</strong></p></div>
-    <div class="risk"><div class="n">+</div><p><strong>Independent lab confirms the value:</strong> Artificial Analysis (<a href="https://x.com/ArtificialAnlys/status/2098148674203488422" style="color:var(--blue)">X, 269K views</a>) measured cost of <strong>$0.27 per task — ~7x below rivals</strong>, first place on an office-automation test (tied with GPT-6 Astra), and long-document reasoning equal to GPT-5.6 Sol.</p></div>
-    <div class="risk"><div class="n">−</div><p><strong>"Extremely fast but cannot focus — goes into 10 directions at once."</strong> — Reddit user Mawrak. A tester on X (BridgeMind, <a href="https://x.com/bridgemindai/status/2097726992565035341" style="color:var(--blue)">125K views</a>) found it ran at 344 units/sec yet <strong>finished slower</strong> than two rivals because it burns so many words: "even though it runs so fast it ends up completing tasks very slowly."</p></div>
-    <div class="risk"><div class="n">−</div><p><strong>"Clearly experimental — under heavy load and failing quite often… it keeps failing editing files."</strong> — X user Ivan Fioravanti (350 units/sec measured). Another Redditor: only <strong>"20% better for 100% increase in size."</strong></p></div>
-    <p><strong>The pattern:</strong> users love the speed and price for everyday coding; complaints are about focus (too much output, too scattered) and day-one reliability — not about the core quality.</p>
+    <div class="risk"><div class="n">+</div><p><strong>"$0.30 built me a 7-page client website in 15 minutes — 80% what the client wanted."</strong> — Reddit user Odd-Duty-7205 (<a href="https://www.reddit.com/r/DeepSeek/comments/1wd6es7/deepseek_v41_flash_is_pretty_good/" style="color:var(--blue)">full thread</a>). Honest caveat from the same user: it was a simple site and he guided it throughout, giving content and a design reference link.</p></div>
+    <div class="risk"><div class="n">+</div><p><strong>"Goes straight to the main problem, fixes it, reports back — better than [rival] for focused coding."</strong> — Reddit user Artium99, in the same thread, after a day of use. Adds that a rival model "over-engineers and goes around in circles." Another user in the thread, Santzes, says it could <strong>"replace 85-90% of my big lab model usage."</strong></p></div>
+    <div class="risk"><div class="n">+</div><p><strong>Independent lab confirms the value:</strong> Artificial Analysis (<a href="https://x.com/ArtificialAnlys/status/2098148674203488422" style="color:var(--blue)">X, 269K views</a>) measured cost of <strong>$0.27 per task — ~7x below same-tier rivals GLM-5.3 and Kimi K3</strong>, first place (tied with GPT-6 Astra) on an office-automation test, and long-document reasoning equal to GPT-5.6 Sol and Gemini 3.8 Flash.</p></div>
+    <div class="risk"><div class="n">−</div><p><strong>"I feel like the model is constantly on amphetamine — extremely fast but it just cannot focus… the problem-solving goes into 10 directions at once."</strong> — Reddit user Mawrak, same thread. A separate tester on X (BridgeMind, <a href="https://x.com/bridgemindai/status/2097726992565035341" style="color:var(--blue)">125K views</a>) clocked it at 344 tokens/sec yet <strong>finished slower</strong> than two rival models on a fixed benchmark task because it burns so many tokens: "even though it runs so fast it ends up completing tasks very slowly."</p></div>
+    <div class="risk"><div class="n">−</div><p><strong>"BTW it is clearly experimental and currently the model is under heavy load…"</strong> — X user Ivan Fioravanti, describing early file-editing failures during launch-day testing. A separate Redditor (wwa56) summed up the size/quality tradeoff bluntly: only <strong>"20% better for 100% increase in size"</strong> versus the prior generation.</p></div>
+    <p><strong>The pattern:</strong> users love the speed and price for everyday coding; complaints are about focus (too much output, too scattered) and launch-week reliability — not about the core quality on narrow coding tasks.</p>
   </section>
 
   <section>
     <p class="kick">Risks</p>
     <h2>What could go wrong?</h2>
-    <div class="risk"><div class="n">1</div><p><strong>It is 2 days old.</strong> Early users report occasional glitches — loops, wrong tool calls, answers slipping into Chinese. Expect fixes over the coming weeks.</p></div>
-    <div class="risk"><div class="n">2</div><p><strong>Not for unsupervised critical work.</strong> Anything long, complex, or security-sensitive should stay on the premium model for now.</p></div>
-    <div class="risk"><div class="n">3</div><p><strong>Check the bill.</strong> The company first promised old-model users would auto-pay the new cheap price from Sept 14, then quietly kept old prices running. Verify invoices before scaling up.</p></div>
+    <div class="risk"><div class="n">1</div><p><strong>It is 2 days old.</strong> Early testers (Ivan Fioravanti, above) report it struggling under load and failing some file edits on launch day; others report it losing focus mid-task. Expect fixes over the coming weeks — we have not seen a credible report of it switching languages mid-answer specific to this model, but launch-week bugs of some kind are near-certain for any 2-day-old release.</p></div>
+    <div class="risk"><div class="n">2</div><p><strong>Not for unsupervised critical work.</strong> Anything long, complex, or security-sensitive should stay on the premium model for now — the benchmark gaps on those specific categories are large and consistent, not marginal.</p></div>
+    <div class="risk"><div class="n">3</div><p><strong>Check the bill.</strong> DeepSeek's own pricing page confirms it: the company originally said all "V4 Pro" traffic would auto-migrate to the new cheap Flash pricing on Sept 14, then reversed that — a footnote on the live pricing page now says V4 Pro API access continues past Sept 14 "with the billing method remaining unchanged." Verify which model and which price tier your account is actually being billed under before scaling up.</p></div>
   </section>
 
   <section>
     <p class="kick">Suggestion</p>
     <h2>What we recommend</h2>
     <div class="rec"><ul style="margin:0;padding-left:20px">
-      <li><strong>Move routine AI coding and automation to this model now</strong> — same quality on daily work, ~20x lower cost, faster results.</li>
-      <li><strong>Keep the premium model for the hard 5%</strong> — long projects, security work, and expert-level questions.</li>
-      <li><strong>Review after one month</strong> — by then independent testers will have confirmed (or corrected) the company's claims, and early bugs should be fixed.</li>
+      <li><strong>Move routine AI coding and automation to this model now</strong> — same or near-same quality on daily work, ~17-40x lower per-token cost depending on comparator, faster results.</li>
+      <li><strong>Keep the premium model for the hard minority</strong> — long unsupervised projects, fresh whole-program builds, and expert-level questions, where the gap to Opus 5 is large and consistent across independent and vendor benchmarks alike.</li>
+      <li><strong>Review after one month</strong> — by then independent testers will have confirmed (or corrected) the early numbers, and launch-week bugs should be fixed.</li>
     </ul></div>
+  </section>
+
+  <section>
+    <p class="kick">Verification log</p>
+    <h2>What we checked, and what changed</h2>
+    <table class="vlog">
+      <tr><th>Claim</th><th>Live source</th><th>Status</th></tr>
+      <tr><td>Price: $0.30/$1.20 per 1M tokens, off-peak half</td><td>api-docs.deepseek.com/quick_start/pricing (live, 12 Sept 2026)</td><td class="pass">PASS</td></tr>
+      <tr><td>Speed 206.3 tok/s, Intelligence Index 40</td><td>artificialanalysis.ai/models/deepseek-v4-1-flash (live)</td><td class="pass">PASS</td></tr>
+      <tr><td>"Opus 5 scores 54 vs this model's 40"</td><td>Opus 5 standalone AA page = 54 (Index v4.2); AA's own DS-vs-Opus comparison page = 51 (Index v4.3, the version actually used to compare these two models)</td><td class="corrected">CORRECTED to 51; both figures now shown with explanation</td></tr>
+      <tr><td>"5 wins, 6 losses" out of 9 benchmark rows</td><td>Recount of the 9-row table (own contents)</td><td class="corrected">CORRECTED — table has 9 rows total, 5 win/tie + 4 loss, not 6 loss</td></tr>
+      <tr><td>Benchmark table comparator is Opus 5 throughout</td><td>huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash model card (live)</td><td class="corrected">CORRECTED — 2 of 9 rows (security chores, attack-style tests) had silently substituted a different vendor's score where Opus 5 had no published result; now labeled explicitly</td></tr>
+      <tr><td>"$1.72 on DeepSeek's own older model" cost example</td><td>Multiple third-party pricing trackers for DeepSeek V4 Flash 0731, mutually inconsistent</td><td class="fail">REMOVED — could not reproduce this figure from any confirmed pricing snapshot; replaced with AA's stated ~20% blended saving vs the prior model</td></tr>
+      <tr><td>"Answers slipping into Chinese" as a launch bug</td><td>Searched X/Reddit specifically for V4.1 Flash</td><td class="fail">REMOVED — found this complaint only for older, unrelated DeepSeek releases, not this model</td></tr>
+      <tr><td>Billing: V4 Pro auto-migration promised then reversed</td><td>api-docs.deepseek.com/quick_start/pricing, footnote (2) (live)</td><td class="pass">PASS — confirmed accurate as written</td></tr>
+      <tr><td>All 4 quoted X/Reddit posts (Wolf, Odd-Duty-7205, Artium99/Mawrak/wwa56, ArtificialAnlys, BridgeMind, Ivan Fioravanti)</td><td>Re-opened each URL directly, 12 Sept 2026</td><td class="pass">PASS — all live, quotes match</td></tr>
+      <tr><td>Cost per task: $0.27 (this model) vs Opus 5</td><td>AA standalone Opus page = $4.21; AA comparison page = $5.86 (different Intelligence Index version)</td><td class="corrected">CORRECTED — both figures now shown as a range with explanation, instead of a single unqualified $4.21</td></tr>
+    </table>
   </section>
 
   <section>
@@ -124,13 +148,13 @@
     <h2>Where this came from</h2>
     <ul class="src">
       <li>Model details and prices: <a href="https://www.deepseek.com/en/news/deepseek-v4-1-flash/">DeepSeek announcement</a> and <a href="https://api-docs.deepseek.com/quick_start/pricing/">live pricing page</a> (read directly).</li>
-      <li>Independent score (40) and speed (206/sec): <a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash">Artificial Analysis</a> (read directly).</li>
-      <li>Test scores: the company's published results (their own test setup — flagged where relevant).</li>
-      <li>User voices: <a href="https://www.reddit.com/r/DeepSeek/comments/1wd6es7/deepseek_v41_flash_is_pretty_good/">Reddit one-day usage thread</a>, <a href="https://x.com/Thom_Wolf/status/2097982062808428751">Thomas Wolf (Hugging Face) on X</a>, <a href="https://x.com/ArtificialAnlys/status/2098148674203488422">Artificial Analysis on X</a>, <a href="https://x.com/bridgemindai/status/2097726992565035341">BridgeMind test on X</a> — all read directly; opinions, labelled as such.</li>
+      <li>Full benchmark table (DeepSeek's own harness): <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash">official Hugging Face model card</a> (read directly).</li>
+      <li>Independent scores, speed, and cost: <a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash">Artificial Analysis — DeepSeek V4.1 Flash</a>, <a href="https://artificialanalysis.ai/models/claude-opus-5">Artificial Analysis — Claude Opus 5</a>, and <a href="https://artificialanalysis.ai/models/comparisons/deepseek-v4-1-flash-vs-claude-opus-5">Artificial Analysis head-to-head comparison</a> (all read directly).</li>
+      <li>User voices: <a href="https://www.reddit.com/r/DeepSeek/comments/1wd6es7/deepseek_v41_flash_is_pretty_good/">Reddit one-day usage thread</a>, <a href="https://x.com/Thom_Wolf/status/2097982062808428751">Thomas Wolf (Hugging Face) on X</a>, <a href="https://x.com/ArtificialAnlys/status/2098148674203488422">Artificial Analysis on X</a>, <a href="https://x.com/bridgemindai/status/2097726992565035341">BridgeMind test on X</a>, and Ivan Fioravanti's launch-day thread on X — all read directly; opinions, labelled as such.</li>
     </ul>
   </section>
 
 </div>
-<footer class="wrap">Prepared 12 Sept 2026 from live sources. Prices and model status change fast — confirm the <a href="https://api-docs.deepseek.com/quick_start/pricing/">pricing page</a> before committing spend.</footer>
+<footer class="wrap">Prepared 12 Sept 2026, re-verified 12 Sept 2026 from live sources — see Verification Log above for exactly what changed. Prices and model status change fast — confirm the <a href="https://api-docs.deepseek.com/quick_start/pricing/">pricing page</a> before committing spend.</footer>
 </body>
 </html>
